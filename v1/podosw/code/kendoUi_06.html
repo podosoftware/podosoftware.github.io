@@ -1,0 +1,424 @@
+<div id="grid3"></div>
+
+<script>
+    $("#grid3").kendoGrid({
+        dataSource: {
+            transport: {
+                read: {
+                    url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/operator/sbjct/sbjct_list.do",
+                    type: "POST"
+                },
+                parameterMap: function (options, operation) {
+                    var sortField = "";
+                    var sortDir = "";
+
+                    if (options.sort && options.sort.length > 0) {
+                        sortField = options.sort[0].field;
+                        sortDir = options.sort[0].dir;
+                    }
+                    return {
+                        startIndex: options.skip,
+                        pageSize: options.pageSize,
+                        sortField: sortField,
+                        sortDir: sortDir,
+                        filter: JSON.stringify(options.filter)
+                    };
+                }
+            },
+            schema: {
+                total: "totalCount",
+                data: "items",
+                model: {
+                    id: "SUBJECT_NUM",
+                    fields: {
+                        SUBJECT_NUM: {type: "string"},
+                        SUBJECT_NAME: {type: "string"},
+                        TRAINING_CODE: {type: "string"},
+                        TRAINING_STRING: {type: "string"},
+                        ALW_STD_NM1: {type: "string"},
+                        ALW_STD_NM2: {type: "string"},
+                        ALW_STD_NM: {type: "string"},
+                        CREATETIME: {type: "string"},
+                        MODIFYTIME: {type: "string"},
+                        USEFLAG: {type: "string"}
+                    }
+                },
+                parse: function(response) {
+                    var obj = response.items;
+                    var rtnArr = [];
+                    if(obj != null) {
+                        for (var i = 0; i < obj.length; i++) {
+                            var row = {};
+                            $.each(obj[i], function(key,val){
+                                row[key] = unescapeHtml(val);
+                            });
+
+                            rtnArr.push(row);
+                        }
+                    }
+                    return {items:rtnArr,totalCount:response.totalCount};
+                },
+            },
+            pageSize: 30,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true
+        },
+        columns: [
+            {
+                field: 	"SCHD_SEQ",
+                title: 	"순번",
+                width: 	50,
+                format: '{0:n0}',
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: 	  {"class": "table-cell", style: "text-align: center; cursor: pointer; color: rgb(0,0,0);"}
+            },
+            {
+                hidden: true,
+                field: 	"SCHD_ID",
+                title: 	"스케줄 번호",
+                width: 	50,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: 	  {"class": "table-cell", style: "text-align: center; color: rgb(0,0,0);"}
+            },
+            {
+                field: 	"SCHD_DT",
+                title: 	"일자",
+                width: 	200,
+                format: "{0:yyyy-MM-dd}",
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: 	  {"class": "table-cell", style: "text-align: center; cursor: pointer; color: rgb(0,0,0);"},
+                editor: scheduleDateEditor,
+                template: "#=SCHD_DT#"
+            },
+            {
+                title: "삭제",
+                width: 	80,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: 	  {"class": "table-cell", style: "text-align:center"},
+                template: function (data) {
+                    return "<button class='btn_input' name='schdlDelBtn'><span>삭제</span></button>"
+                }
+            }
+        ],
+        filterable: {
+            extra: false,
+            messages: {
+                filter: "필터",
+                clear: "초기화"
+            },
+            operators: {
+                string: {
+                    contains: "포함",
+                    startswith: "시작문자",
+                    eq: "동일단어"
+                },
+                number: {
+                    eq: "같음",
+                    gte: "이상",
+                    lte: "이하"
+                }
+            }
+        },
+        sortable: true,
+        resizable: true,
+        reorderable: true,
+        selectable: "row",
+        editable: 	 true,
+        editable: {
+            createAt: "bottom"
+        },
+        pageable: {
+            refresh: false,
+            pageSizes: [10, 20, 30],
+            buttonCount: 5
+        },
+        noRecords: {
+            template: "<div class='not-data-cont2'><span>스케줄 정보가 존재하지 않습니다.</span></div>"
+        },
+        detailInit: detailSchdl,
+        edit: function (e) {
+
+            if (e.model.isNew() && !e.model.dirty) {
+                //e.container.find("input[name='SCHD_SEQ']").val(seq).change();
+                //e.container.parents("tr").find("button[name='schdlDelBtn']").attr('onclick', 'Events.removeSchdlRow('+seq+');');
+                e.container.parents("tr").find("button[name='schdlDelBtn']").attr('onclick', 'Events.removeSchdlRow('+e.model.SCHD_SEQ+');');
+            }
+        },
+        dataBound: function (e) {
+            var data = e.sender._data;
+            for(var i=0; i<data.length; i++){
+                var dataUid = data[i].uid;
+                if(data[i].SCHD_SEQ == 0){
+                    var seq = $("#zoomSchedule-grid").data("kendoGrid").dataSource.total();
+                    data[i].SCHD_SEQ = seq;
+                }
+                this.expandRow($("tr[data-uid="+dataUid+"]"));
+                this.collapseRow($("tr[data-uid="+dataUid+"]"));
+            }
+
+            $("input.zoom-schdl-date").kendoDatePicker({
+                format: "yyyy-MM-dd"
+            });
+        }
+    });
+
+    function detailSchdl(e) {
+        var schdlGridNum = e.data.SCHD_SEQ;
+        var html = '<div style="position: relative; margin-top: 40px;" class="schdls" id="schdlGrid' + schdlGridNum + '"></div>';
+        var html2 = '<div style="text-align: right; position: absolute; top: -44px; right: 0;"><button class="btn_inner" onclick="addSchdlDtl('+ schdlGridNum +');" style="margin-bottom: 5px;"><span>강의추가</span></button></div>';
+
+        //var schdlGridNum = e.data.SCHD_SEQ;
+
+        $(html).appendTo(e.detailCell).kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/operator/sbjct/list_sbjct_open_live_schd_class.do",
+                        type: "POST", dataType: 'json'
+                    },
+                    parameterMap: function () {
+                        return {
+                            OPEN_NUM : $("#OPEN_NUM").val(),
+                            SCHD_ID  : e.data.SCHD_ID
+                        };
+                    }
+                },
+                schema: {
+                    total: 	"totalCount",
+                    data: 	"items",
+                    model: {
+                        id: "CLASS_ID",
+                        fields: {
+                            OPEN_NUM: 	{type: "number"},
+                            COMPANYID: 	{type: "number"},
+                            SCHD_ID: 	{type: "number"},
+                            CLASS_ID: 	{type: "number"},
+                            CLASS_SEQ: 	{type: "number", validation: { min: 1 }, editable: true},
+                            ST_TIME: 	{},
+                            ED_TIME: 	{},
+                            CLASS_NM: 	{type: "string", editable: true},
+                            TEACHER_NM: {type: "string", editable: false},
+                            TEACHER_ID: {type: "number", editable: false}
+                        }
+                    },
+                    parse: function(response) {
+                        var obj = response.items;
+                        var rtnArr = [];
+                        if(obj != null) {
+                            for (var i = 0; i < obj.length; i++) {
+                                var selectRow = {};
+                                $.each(obj[i], function(key,val){
+                                    selectRow[key] = unescapeHtml(val);
+                                });
+
+                                rtnArr.push(selectRow);
+                            }
+                        }
+                        return {items:rtnArr,totalCount:response.totalCount};
+                    }
+                },
+                serverPaging: false,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            columns: [
+                {
+                    field: "COMPANYID",
+                    title: "회사번호",
+                    hidden: true
+                },
+                {
+                    field: "SCHD_ID",
+                    title: "스케쥴 번호",
+                    hidden: true
+                },
+                {
+                    field: "CLASS_ID",
+                    title: "강의 번호",
+                    hidden: true
+                },
+                {
+                    field: "CLASS_SEQ",
+                    title: "교시",
+                    width: 50,
+                    format: '{0:n0}',
+                    headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                    attributes: {"class": "table-cell", style: "text-align: center; color: rgb(0,0,0);"},
+                    template: "#:CLASS_SEQ#"
+                },
+                {
+                    field: "CLASS_NM",
+                    title: "강의명",
+                    width: 150,
+                    headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                    attributes: {"class": "table-cell", style: "text-align: left"},
+                    template: function(data){
+                        return '<input type="text" class="k-textbox class-nm" id='+ data.uid +' value="'+ data.CLASS_NM +'" style="width: 100%;" onkeyup="insertText(this, \''+ schdlGridNum +'\', \''+ data.uid +'\', \'CLASS_NM\')"/>';
+                    }
+                },
+                {
+                    field: "ST_TIME",
+                    title: "시작 시간",
+                    width: 100,
+                    headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                    attributes: {"class": "table-cell", style: "text-align: center; color: rgb(0,0,0);"},
+                    editor: scheduleSTimeEditor,
+                    template: "#:ST_TIME#"
+                },
+                {
+                    field: "ED_TIME",
+                    title: "종료 시간",
+                    width: 100,
+                    headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                    attributes: {"class": "table-cell", style: "text-align: center; color: rgb(0,0,0);"},
+                    editor: scheduleETimeEditor,
+                    template: "#:ED_TIME#"
+                },
+                {
+                    field: "TEACHER_NM",
+                    title: "강사",
+                    width: 90,
+                    headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                    attributes: {"class": "table-cell", style: "text-align: center"},
+                    editable:false,
+                    template: function(data){
+                        if(data.TEACHER_NM == "") {
+                            return '<button class="btn_input" name="schdlDtlTch" onclick="Events.showIstrListPopup(\''+ schdlGridNum +'\', \'' + data.uid + '\',\'schdl\')">강사선택</button>';
+                        }else {
+                            return '<p id="istrNm-' + data.uid + '">'+data.TEACHER_NM+'</p>'
+                                +'<button class="btn_input" name="schdlDtlTch" onclick="Events.showIstrListPopup(\''+ schdlGridNum +'\', \'' + data.uid + '\',\'schdl\')">강사변경</button>';
+                        }
+                    }
+                },
+                {
+                    title: "삭제",
+                    width: 50,
+                    headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                    attributes: {"class": "table-cell", style: "text-align:center"},
+                    template: function (data) {
+                        return "<button class='btn_input' name='schdlDtlDel' onclick='Events.removeDtlSchdlRow(\""+ schdlGridNum +"\" , \"" + data.uid + "\")' ><span>삭제</span></button>"
+                    }
+                }
+            ],
+            noRecords: {
+                template: "<div class='not-data-cont2'><span>강의정보가 존재하지 않습니다.</span></div>"
+            },
+            sortable: true,
+            pageable: false,
+            filterable: false,
+            editable: true,
+            editable: {
+                createAt: "bottom"
+            },
+            selectable: "row",
+            scrollable: true,
+            edit: function (e) {
+                var seq = $("#schdlGrid"+schdlGridNum).data("kendoGrid").dataSource.total();
+
+                if (e.model.isNew() && !e.model.dirty) {
+                    e.container.find("input[name='CLASS_SEQ']").val(seq).change();
+                    //e.container.parents("tr").find("button[name='schdlDtlDel']").attr('onclick', 'Events.removeDtlSchdlRow('+seq+');');
+                }
+            },
+            dataBound: function (e) {
+                $(".zoom-stime").kendoTimePicker({
+                    format: "HH:mm",	//24시간
+                    interval: 30,		//30분간격
+                    min: "07:00"		//시작시간
+                });
+
+                $(".zoom-etime").kendoTimePicker({
+                    format: "HH:mm",	//24시간
+                    interval: 30,		//30분간격
+                    min: "07:00"		//시작시간
+                });
+            }
+        }).append(html2);
+
+        var gridNum = e.data.SCHD_SEQ
+
+        //강의 시간
+        $("#schdlGrid" + gridNum + " .k-grid-content").on("change", "input.zoom-stime", function(e) {
+            var grid = $("#schdlGrid" + gridNum).data("kendoGrid");
+            var dataItem = grid.dataItem($(e.target).closest("tr"));
+            var stTime = this.value.replace(':','');
+            var edTime = dataItem.ED_TIME.replace(':','');
+
+            if(edTime != "" && stTime >= edTime){
+                alert("시작 시간은 종료 시간 이전으로 설정해 주세요.");
+                this.value = "";
+            }
+
+            var val = "";
+            if(this.value!=null){
+                val = this.value;
+            }
+            dataItem.set("ST_TIME", val);
+
+            scheduleDataSet();
+        });
+
+        $("#schdlGrid" + gridNum + " .k-grid-content").on("change", "input.zoom-etime", function(e) {
+
+            var grid = $("#schdlGrid" + gridNum).data("kendoGrid");
+            var dataItem = grid.dataItem($(e.target).closest("tr"));
+            var stTime = dataItem.ST_TIME.replace(':','');
+            var edTime = this.value.replace(':','');
+
+            if(edTime <= stTime){
+                alert("종료 시간은 시작 시간 이후로 설정해 주세요.");
+                this.value = "";
+            }else if( stTime = ""){
+                alert("시작 시간을 먼저 설정해 주세요.");
+                this.value = "";
+            }
+
+            var val = "";
+            if(this.value!=null){
+                val = this.value;
+            }
+            dataItem.set("ED_TIME", val);
+        });
+    }
+
+    function scheduleSTimeEditor(container, options){
+        $("<input class='zoom-stime' value='"+ options.model.ST_TIME +"' style='width: 100%; text-align: center;'/>").appendTo(container)
+            .kendoTimePicker({
+                format: "HH:mm",	//24시간
+                interval: 30,		//30분간격
+                min: "07:00"		//시작시간
+            });
+    }
+
+    function scheduleETimeEditor(container, options){
+        $("<input class='zoom-etime' value='"+ options.model.ED_TIME +"' style='width: 100%; text-align: center;'/>").appendTo(container)
+            .kendoTimePicker({
+                format: "HH:mm",	//24시간
+                interval: 30,		//30분간격
+                min: "07:00"		//시작시간
+            });
+    }
+
+    function insertText(obj, gridNum, uid, fieldName) {
+        var inputText = $(obj).val();
+        var tmpDs = $("#schdlGrid"+ gridNum).data("kendoGrid").dataSource.data();
+
+        $.grep(tmpDs, function (e) {
+            if(e.uid == uid) {
+                if (fieldName == "CLASS_NM") {
+                    e.CLASS_NM = inputText;
+                } else if (fieldName == "TEACHER_NM") {
+                    e.TEACHER_NM = inputText;
+                }
+            }
+        });
+    }
+
+    function scheduleDateEditor(container, options){
+        $("<input class='zoom-schdl-date' type='text' value='"+ options.model.SCHD_DT +"' placeholder='스케줄 일자를 입력해 주세요.' style='text-align: center;'/>").appendTo(container)
+            .kendoDatePicker({
+                format: "yyyy-MM-dd"
+            });
+    }
+</script>

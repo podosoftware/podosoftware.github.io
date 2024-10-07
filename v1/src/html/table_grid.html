@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Table</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>Table</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>Table</h2>
+
+                    <div class="flex-group">
+                       <div>
+                           <article id="uploadPage" class="article-">
+                               <h3 class="title"># Kendo Grid</h3>
+                               <p>반응형에 맞게</p>
+
+                               <div class="sec-cont pd-mt30">
+                                   <div>
+                                        <h4 class="title-title pd-mb10">PC</h4>
+                                        <div id="grid" class="front-table-02"></div>
+                                   </div>
+
+                                   <div>
+                                        <h4 class="title-title pd-mb10">모바일</h4>
+                                       <img src="../images/table_m_01.png" alt="" width="400">
+                                   </div>
+                               </div>
+                           </article>
+                           <!--                // Upload Grid End    -->
+
+                           <div class="accordion-wrap pd-mt30" style="width: 955px;">
+                               <div class="accordion-head">
+                                   <strong>코드 보기</strong>
+                               </div>
+                               <div class="accordion-body">
+                                   <div class="g-code-box">
+                                       <pre data-src="code/table_04.html"></pre>
+                                   </div>
+                               </div>
+                           </div>
+                           <!--                        //    -->
+                       </div>
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <!--    모바일용 START   -->
+    <script id="mobileTemplate" type="text/x-kendo-template">
+        <tr>
+            <td>
+                <div class="grid-td">
+                    <div class="pd-flex- pd-align-center pd-gap6">
+                        <a href="javascript: void(0);" class="pd-clamp-">
+                            #=BOARD_TITLE#
+
+                            # if(brdType != "1") { #
+                            [#=REPCOUNT#]
+                            # } #
+                        </a>
+                        # if(data.NEW_POST_YN == "Y") { #
+                        <span class="new">N</span>
+                        # } #
+                    </div>
+                    <ul>
+                        <li>#=NAME#</li>
+                        <li>#=CREATETIME#</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </script>
+    <!--    모바일용 END    -->
+
+    <script>
+        var now = new Date();
+        var mon = "";
+        var day = "";
+        if ((now.getMonth() + 1) < 10) {
+            mon = "0" + (now.getMonth() + 1);
+        } else {
+            mon = now.getMonth() + 1;
+        }
+        if ((now.getDate()) < 10) {
+            day = "0" + (now.getDate());
+        } else {
+            day = now.getDate();
+        }
+        var nowDay = now.getFullYear() + "-" + mon + "-" + day;
+
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $(".tableLi .liGrid a").addClass("active");
+
+            kendoGridDraw();
+
+            var html = "";
+            var guidData = [
+                { classNm: "front-table-", cont: "테이블 기본 class"},
+                { classNm: "front-table-01", cont: "border-top 2px class"},
+                { classNm: "front-table-02", cont: "border-top 1px class"},
+                { classNm: "pd-text-center", cont: "텍스트 가운데 정렬 class"},
+                { classNm: "td-title", cont: "제목에 해당하는 td class"},
+                { classNm: "title", cont: "제목을 감싸는 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+
+        function kendoGridDraw() {
+            var data = [
+                { ROWNUMBER: 1, BOARD_TITLE: "게시물 제목입니다.", CREATETIME: "2024-08-20", NAME: "홍길동", VIEW_CNT: 9999}
+            ];
+
+            $("#grid").empty();
+            $("#grid").kendoGrid({
+                dataSource: data,
+                columns: [
+                    {
+                        field:"ROWNUMBER",
+                        title: "번호",
+                        filterable: false,
+                        width:40,
+                        headerAttribuftes:{"class":"table-header-cell", style:"text-align:center"},
+                        attributes:{"class":"table-cell", style:"text-align:center"}
+                    },
+                    {
+                        field: "BOARD_TITLE",
+                        title: "제목",
+                        width:260,
+                        headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                        attributes:{"class":"table-cell td-title", style:"text-align:left;"} ,
+                        template: function (dataItem) {
+                            var recount = "";
+
+                            return "<div class='title'>" +
+                                "<a href='javascript:void();' style='text-decoration: underline;' >"+dataItem.BOARD_TITLE+" "+recount+"</a>" +
+                                "</div>";
+                        }
+                    },
+                    {
+                        field: "CREATETIME",
+                        title: "등록일",
+                        width:100,
+                        headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                        attributes:{"class":"table-cell", style:"text-align:center"},
+
+                    },
+                    {
+                        field: "NAME",
+                        title: "등록자",
+                        width:80,
+                        headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                        attributes:{"class":"table-cell", style:"text-align:center"}
+                    },
+                    {
+                        field: "VIEW_CNT",
+                        title: "조회수",
+                        filterable: false,
+                        width:60,
+                        headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                        attributes:{"class":"table-cell", style:"text-align:center"}
+                    }
+                ],
+                height: 400,
+                groupable: false,
+                filterable:{
+                    extra : false,
+                    messages : {
+                        filter : "필터",
+                        clear : "초기화"
+                    },
+                    operators : {
+                        string : {
+                            contains : "포함",
+                            startswith : "시작문자",
+                            eq : "동일단어"
+                        },
+                        number : {
+                            eq : "같음",
+                            gte : "이상",
+                            lte : "이하"
+                        }
+                    }
+                },
+                sortable: true,
+                pageable : true,
+                resizable: true,
+                reorderable: true,
+                selectable: "row",
+                pageable : {
+                    refresh : false,
+                    pageSizes : [10,20,30],
+                    buttonCount : 5
+                }
+
+            });
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<div id="grid2"></div>
+
+<script>
+    $("#grid2").kendoGrid({
+        dataSource: {
+            transport: {
+                read: {
+                    url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/operator/sbjct/sbjct_list.do",
+                    type: "POST"
+                },
+                parameterMap: function (options, operation) {
+                    var sortField = "";
+                    var sortDir = "";
+
+                    if (options.sort && options.sort.length > 0) {
+                        sortField = options.sort[0].field;
+                        sortDir = options.sort[0].dir;
+                    }
+                    return {
+                        startIndex: options.skip,
+                        pageSize: options.pageSize,
+                        sortField: sortField,
+                        sortDir: sortDir,
+                        filter: JSON.stringify(options.filter)
+                    };
+                }
+            },
+            schema: {
+                total: "totalCount",
+                data: "items",
+                model: {
+                    id: "SUBJECT_NUM",
+                    fields: {
+                        SUBJECT_NUM: {type: "string"},
+                        SUBJECT_NAME: {type: "string"},
+                        TRAINING_CODE: {type: "string"},
+                        TRAINING_STRING: {type: "string"},
+                        ALW_STD_NM1: {type: "string"},
+                        ALW_STD_NM2: {type: "string"},
+                        ALW_STD_NM: {type: "string"},
+                        CREATETIME: {type: "string"},
+                        MODIFYTIME: {type: "string"},
+                        USEFLAG: {type: "string"}
+                    }
+                },
+                parse: function(response) {
+                    var obj = response.items;
+                    var rtnArr = [];
+                    if(obj != null) {
+                        for (var i = 0; i < obj.length; i++) {
+                            var row = {};
+                            $.each(obj[i], function(key,val){
+                                row[key] = unescapeHtml(val);
+                            });
+
+                            rtnArr.push(row);
+                        }
+                    }
+                    return {items:rtnArr,totalCount:response.totalCount};
+                },
+            },
+            pageSize: 30,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true
+        },
+        columns: [
+            {
+                field: "SUBJECT_NUM",
+                title: "<div class='check-box'><input type='checkbox' id='allSelect' class='all-selection'>" +
+                    "<label for='allSelect'><i class='icon check'></i></label>"+
+                    "</div>",
+                width: 80,
+                filterable: false,
+                sortable: false,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template: "<div class='check-box'><input type='checkbox' id=\"chkSel_#:ID#\" name='subject_mng_id' value='#:ID#' >" +
+                    "<label for=\"chkSel_#:ID#\"><i class='icon check'></i></label>"+
+                    "</div>"
+
+            },
+            {
+                field: "TRAINING_STRING",
+                title: "학습유형",
+                width: 80,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                filterable: {
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/data/common/filter_code_list.do",
+                                type:"POST",
+                                dataType: "json"
+                            },
+                            parameterMap: function (options, operation){
+                                return {STANDARDCODE : 'BA03', FIELDNAME : 'TRAINING_STRING'};
+                            }
+                        },
+                        schema : {
+                            data :"items"
+                        }
+                    },
+                    multi: true,
+                    messages: {
+                        selectedItemsFormat: "{0}개 선택",
+                        checkAll: "전체 선택"
+                    },
+                }
+            },
+            {
+                field: "ALW_STD_NM",
+                title: "과정분류",
+                width: 100,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:left"}
+            },
+            {
+                field: "SUBJECT_NAME",
+                title: "과정명",
+                width: 250,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:left;text-decoration: underline;"},
+                template: function (data) {
+                    var subjectName = data.SUBJECT_NAME;
+                    if (data.USEFLAG == 'N') {
+                        subjectName = "<span style=\"color : #ff0000\">" + data.SUBJECT_NAME + "</span>";
+                    }
+                    return "<a href='javascript: fn_detailView(" + data.SUBJECT_NUM + ");'>" + subjectName + "</a>";
+                }
+            },
+            {
+                field : "RADIOFLAG",
+                title: "라디오 버튼",
+                width: 100,
+                filterable: false,
+                sortable: false,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<div class='radio-box justify-center'><input type=\"radio\" id='radioChk_#: ROWNUMBER #' name=\"radioChk\" value=\"#: ID #\" />" +
+                    "<label for='radioChk_#: ROWNUMBER #'><i class='icon radio'></i></label> </div>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "버튼",
+                width: 160,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<div class='grid-btn-box'><button type='button' class='btn_inner k-button'>btn_inner_table</button>" +
+                    "<button type='button' class='btn_inner k-button' disabled>btn_inner_table</button></div>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "inputBox",
+                width: 100,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<input type='text' class='k-textbox'>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "select",
+                width: 100,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<select id=\"select_#: ROWNUMBER #\" style=\"width: 99 %;\"></select>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "inputBox+button",
+                width: 160,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<div class='input-box'>" +
+                    "<input type='text' class='k-textbox'>" +
+                    "<button type='button' class='btn_inner k-button'>btn_inner_table</button>" +
+                    "</div>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "다운로드",
+                width: 60,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<button type='button' class='btn-default btn-s'><i class='icon-download-black'></i></button>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "DatePicker",
+                width: 100,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<input type='text' id='datePicker_#: ROWNUMBER #' class='k-textbox'>"
+            },
+            {
+                field: "INSTITUTE_NAME",
+                title: "Numeric",
+                width: 100,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                template : "<input type='text' id='Numeric_#: ROWNUMBER #' class='k-textbox'>"
+            },
+            {
+                field: "USEFLAG",
+                title: "상태",
+                width: 100,
+                headerAttributes: {"class": "table-header-cell", style: "text-align:center"},
+                attributes: {"class": "table-cell", style: "text-align:center"},
+                filterable: {
+                    dataSource: [ { USEFLAG: "사용" }, { USEFLAG: "미사용" } ],
+                    multi: true,
+                    messages: {
+                        selectedItemsFormat: "{0}개 선택",
+                        checkAll: "전체 선택"
+                    },
+                }
+            }
+        ],
+        filterable: {
+            extra: false,
+            messages: {
+                filter: "필터",
+                clear: "초기화"
+            },
+            operators: {
+                string: {
+                    contains: "포함",
+                    startswith: "시작문자",
+                    eq: "동일단어"
+                },
+                number: {
+                    eq: "같음",
+                    gte: "이상",
+                    lte: "이하"
+                }
+            }
+        },
+        sortable: true,
+        resizable: true,
+        reorderable: true,
+        selectable: "row",
+        pageable: {
+            refresh: false,
+            pageSizes: [10, 20, 30],
+            buttonCount: 5
+        },
+        dataBound: function(e) {
+            if($("#SUBJECT_NUM").val() != null && $("#SUBJECT_NUM").val() != "") {
+                var sbjct = $("#SUBJECT_NUM").val();
+                $("#grid").data("kendoGrid").clearSelection(); //기 선택된 selected 초기화
+                var gridUid = "";
+                if($("#grid").data("kendoGrid").dataSource.get(sbjct)!=null){
+                    $('[data-uid='+$("#grid").data("kendoGrid").dataSource.get(sbjct).uid+']').addClass('k-state-selected'); //선택한 데이터 selected 마크 처리
+                }
+            }
+
+            var gridData = $("#grid2").data("kendoGrid").dataSource.data();
+
+            var dropDownData = [
+                { TEXT: "Select 1", VALUE: 1}
+            ];
+
+            $.each(gridData, function (i, val) {
+
+                // dropdownlist
+                $("#select_"+val.ROWNUMBER).kendoDropDownList({
+                    dataTextField: "TEXT",
+                    dataValueField: "VALUE",
+                    dataSource: dropDownData
+                });
+
+                // datepicker
+                $("#datePicker_"+val.ROWNUMBER).kendoDatePicker({
+                    format: "yyyy-MM-dd",
+                    change: function (e) {
+                    }
+                });
+
+                // numericTextbox
+                $("#Numeric_"+val.ROWNUMBER).kendoNumericTextBox({
+                    format: "",
+                    min: 0,
+                    max: 9999,
+                    step: 1
+                });
+            });
+        }
+    });
+</script>

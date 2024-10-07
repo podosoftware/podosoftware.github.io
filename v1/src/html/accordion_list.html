@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>아코디언 강의목차</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>아코디언 강의목차</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>아코디언 강의목차</h2>
+
+                    <div class="flex-group">
+                        <!--                Tips START    -->
+                        <article id="tips" class="article-">
+                            <h3 class="title"># 아코디언 강의목차</h3>
+                            <div class="sec-cont">
+                                <p class="p-circle"><i class="circle"></i>온라인</p>
+                                <!--                        온라인 START    -->
+                                <ul class="std-list-A">
+                                    <li class="pd-flex-">
+                                        <strong>1차시</strong>
+                                        <div class="pd-flex- list-cont">
+                                            <div class="left">
+                                                <p>강의 제목</p>
+                                                <ul class="pd-flex-">
+                                                    <li class="pd-flex-">
+                                                        <span>강의시간</span>
+                                                        <strong>99시간</strong>
+                                                    </li>
+                                                    <li class="pd-flex-">
+                                                        <span>진도율</span>
+                                                        <strong>100%</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="btnBox">
+                                                <!--                                            <a href="javascript: void(0);" class="btn-point">학습하기 <i class="icon-play"></i></a>-->
+                                                <button type="button" class="pd-flex- btn-point">학습하기 <i class="icon-play"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!--                        온라인 END    -->
+
+                                <div class="g-code-box">
+                                    <pre data-src="code/accordion_02.html"></pre>
+                                </div>
+
+                                <p class="p-circle mt10"><i class="circle"></i>집합</p>
+                                <!--                        집합 START    -->
+                                <ul class="pd-flex- std-list-B accordion-wrap">
+                                    <li class="pd-flex-">
+                                        <div class="pd-flex- accordion-head">
+                                            <strong>08.19</strong>
+                                            <i class="icon-accrodion-minus-plus"></i>
+                                        </div>
+                                        <div class="accordion-body">
+                                            <ul class="std-child-list">
+                                                <li class="pd-flex-">
+                                                    <strong>1교시</strong>
+                                                    <div class="pd-flex- list-cont">
+                                                        <div class="left">
+                                                            <p>강의 제목</p>
+                                                            <ul class="pd-flex-">
+                                                                <li class="pd-flex-">
+                                                                    <span>강사</span>
+                                                                    <strong>홍길동</strong>
+                                                                </li>
+                                                                <li class="pd-flex-">
+                                                                    <span>시간</span>
+                                                                    <strong>09:00 ~ 11:00</strong>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!--                        집합 END    -->
+
+                                <div class="g-code-box">
+                                    <pre data-src="code/accordion_03.html"></pre>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                Tips END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                    // if(currentPath.includes('util')){
+                    // }
+                }
+            });
+        });
+
+        $(function () {
+            setTimeout(function () {
+                $(".accordion .liAccoList a").addClass("active");
+
+            }, 500);
+
+            var html = "";
+            var guidData = [
+                { classNm: "accordion-wrap", cont: "아코디언 전체 감싸는 class"},
+                { classNm: "std-list-A", cont: "교육유형 온라인 강의목차 전체 class"},
+                { classNm: "list-cont", cont: "강의목차 내용 class"},
+                { classNm: "left", cont: "강의목차 내용의 왼쪽 박스 class"},
+                { classNm: "btnBox", cont: "강의목차 내용의 오른쪽 버튼 영역 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+
+            //toggle event
+            // $(".std-list-B .accordion-head").on("click", function () {
+            //     $(this).toggleClass('active');
+            //     $(this).next().slideToggle();
+            // });
+
+        });
+    </script>
+</body>
+</html>

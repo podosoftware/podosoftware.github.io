@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header class="header">
+    <section class="header-top pc">
+        <div class="container">
+            <nav class="header-top-nav">
+                <ul>
+                    <li><a href="/"><i class="icon-settings-check"></i>관리자</a></li>
+                    <li><a href="/">로그인</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <section class="container">
+        <h1 class="logo">
+            <a href="/"><img src="" alt="로고"></a>
+        </h1>
+        <nav class="pc header-menu-wrap">
+            <ul>
+                <li>
+                    <a href="/">UTIL</a>
+                    <ol>
+                        <li><a href="/">font</a></li>
+                        <li><a href="/">margin/padding</a></li>
+                        <li><a href="/">color</a></li>
+                        <li><a href="/">clamp</a></li>
+                        <li><a href="/">flex</a></li>
+                        <li><a href="/">input/select</a></li>
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="right-box pc">
+            <img src="/" alt="프로필 사진">
+            <p><strong>홍길동</strong>님 환영합니다.</p>
+        </div>
+
+        <!--            Mobile START    -->
+        <button type="button" class="mobile menu-btn" onclick="mobileGnbOpen();">
+            <i class="icon-menu"></i>
+            <span class="blind">메뉴 열기</span>
+        </button>
+        <!--            Mobile END    -->
+    </section>
+
+    <!--          Mobile START  -->
+    <div class="mobile mobile-menu-wrap">
+        <div class="mobile-menu-top">
+            <div class="left">
+                <div class="flex align-center gap10">
+                    <p><strong>홍길동</strong></p>
+                    <button type="button" onclick="mobileInfoToggle(this);"><i class="icon-mobile-down"></i></button>
+                    <ul class="mobile-top-info" style="display: none;">
+                        <li><a href="/" >로그아웃</a></li>
+                        <li><a href="#fn_change_password_popup" onclick="fn_change_password_popup();" >비밀번호 변경</a></li>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="menu-btn" onclick="mobileGnbClose();">
+                <i class="icon-close"></i>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="javascript: void(0);" class="mobile tab">UTIL <i class="icon-"></i></a>
+                    <ol>
+                        <li><a href="/">font</a></li>
+                        <li><a href="/">margin/padding</a></li>
+                        <li><a href="/">color</a></li>
+                        <li><a href="/">clamp</a></li>
+                        <li><a href="/">flex</a></li>
+                        <li><a href="/">input/select</a></li>
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!--          Mobile END  -->
+</header>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="star-list big"><span style="width: 30%;"></span></div>
+<div class="star-list smail"><span style="width: 100%;"></span></div>
+
+<style>
+    .star-list { display: flex; align-items: center; gap: 3px; position: relative; width: 73px; height: 13px;
+        background: url("../images/common/b2b_x.svg") no-repeat 0 0; background-size: contain;}
+    .star-list > span { position: absolute; top: 0; left: 0; width: 0; height: 100%;
+        background: url("../images/common/b2b_o.svg") no-repeat 0 0; background-size: cover;}
+    .star-list.big { width: 222px; height: 40px;}
+</style>
+
+<script>
+    var avgPointArr = new Array(data.SCORE1, data.SCORE2, data.SCORE3, data.SCORE4, data.SCORE5);
+    var avgPointMax = Math.max.apply(null, avgPointArr);	//평점 최대점수
+    var avgPointMaxIdx = avgPointArr.indexOf(avgPointMax, 0);	//평점 최대점수 index
+    $("#avgPoint").text(data.AVG_POINT);
+    var avgPointW = (data.AVG_POINT / 5) * 100; // 별점 width 값
+</script>

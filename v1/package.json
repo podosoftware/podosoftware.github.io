@@ -1,0 +1,21 @@
+{
+  "name": "uiux",
+  "version": "1.0.0",
+  "description": "1. https://tailwindcss.com/docs/overflow\r 2. https://www.material-tailwind.com/docs/html/fonts\r 3. 프레임워크보단 가이드에 가까움 자주사용하는것만 작성",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "admin": "gulp --gulpfile gulpfile-admin.js",
+    "html": "gulp --gulpfile gulpfile-html.js",
+    "kendo": "gulp --gulpfile gulpfile-kendo.js",
+    "podo": "gulp --gulpfile gulpfile-podosw.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-prettier": "^6.0.0"
+  }
+}

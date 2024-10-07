@@ -1,0 +1,21 @@
+<div id="pager" class="k-pager-wrap"></div>
+
+<script>
+    var pager_dataSource = new kendo.data.DataSource({
+        data: [
+            { productName: "Tea", category: "Beverages" },
+            { productName: "Coffee", category: "Beverages" },
+            { productName: "Ham", category: "Food" },
+            { productName: "Bread", category: "Food" }
+        ],
+        pageSize: 2
+    });
+
+    $("#pager").kendoPager({
+        dataSource: pager_dataSource,
+        refresh : false,
+        responsive: false,
+        buttonCount: 5,
+        pageSizes : [10,20,30,1000],
+    });
+</script>

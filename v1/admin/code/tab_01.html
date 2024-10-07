@@ -1,0 +1,33 @@
+<div class="popup-content">
+    <div id="tabstrip">
+        <ul>
+            <li class="k-state-active tab-1">Tab Label</li>
+            <li class="">Tab Label2</li>
+            <li class="">Tab Label3</li>
+            <li class="">Tab Label4</li>
+            <li class="">Tab Label5</li>
+        </ul>
+
+        <!--  Tab Label Start  -->
+        <div></div>
+        <!--  Tab Label End  -->
+    </div>
+</div>
+
+<script>
+    $(function () {
+        //탭 생성
+        $("#tabstrip").kendoTabStrip({
+            animation: {
+                open: {effects: "fadeIn"}
+            },
+            activate: function(e) {
+                var tabStrip = $("#tabstrip").data("kendoTabStrip");
+
+                $(window).resize();
+
+                var tabTitle = e.item.innerText;
+            }
+        }).data("kendoTabStrip");
+    });
+</script>

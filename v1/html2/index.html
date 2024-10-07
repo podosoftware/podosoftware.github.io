@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- 여기에 head.html을 인클루드 -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#8C63E7" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link rel="shortcut icon" href="" />
+        <link rel="apple-touch-icon" href="" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel="icon" href="" type="image/x-icon" />
+
+        <meta name="Description" content="" />
+        <meta name="Keywords" content="" />
+        <meta name="Copyright" content="" />
+        <meta content="" property="og:title" />
+        <meta content="" property="og:description" />
+        <meta content="" property="og:url" />
+        <meta content="" property="og:site-name" />
+
+        <link rel="stylesheet" href="../css/reset2.css" />
+        <link rel="stylesheet" href="../css/root.css" />
+        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/util.css" />
+        <link rel="stylesheet" href="../css/style2.css" />
+        <link rel="stylesheet" href="../css/guide.css" />
+        <link rel="stylesheet" href="../css/media2.css" />
+
+        <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
+        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+        <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
+        <script src="../js/common2.js"></script>
+        <script src="../js/front.js"></script>
+
+        <link rel="stylesheet" href="../js/prism.css" />
+        <script src="../js/prism.js"></script>
+
+        <title>홈</title>
+    </head>
+    <body>
+        <!-- 자동완성 방지용  -->
+        <input type="text" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <input type="password" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <!-- 자동완성 방지용  -->
+
+        <div class="wrap">
+            <!--    Header START    -->
+            <!-- 여기에 Header.html을 인클루드 -->
+            <header class="left-header">
+                <div class="left-header-top">
+                    <h1 class="logo">
+                        <a href="index.html"><img src="../images/logo.png" alt="로고" /></a>
+                    </h1>
+                </div>
+                <nav class="left-header-menu-wrap">
+                    <ul>
+                        <li class="first util">
+                            <a href="javascript: void(0);" class="tab">UTIL</a>
+                            <ol>
+                                <li class="liFont"><a href="util.html" data-hash="#font">font</a></li>
+                                <li class="liMgPd"><a href="util_mgPd.html" data-hash="#mgPd">margin/padding</a></li>
+                                <!--                    <li class="liColor"><a href="util_color.html" data-hash="#color">color</a></li>-->
+                                <li class="liClamp"><a href="util_clamp.html" data-hash="#clamp">줄임표</a></li>
+                                <li class="liFlex"><a href="util_flex.html" data-hash="#flex">flex</a></li>
+                                <li class="liHide"><a href="util_hide.html" data-hash="#hide">hide</a></li>
+                                <li class="liNoData"><a href="util_noData.html" data-hash="#noData">No Data</a></li>
+                                <li class="liEtc"><a href="util_etc.html">Etc</a></li>
+                                <!--                    <li><a href="util.html#skeleton">Skeleton</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="color">
+                            <a href="javascript: void(0);" class="tab">COLOR</a>
+                            <ol>
+                                <li class="liColorPrimary"><a href="color_primary.html">Primary(theme)</a></li>
+                                <li class="liColorText"><a href="color_text.html">Text</a></li>
+                                <li class="liColorBg"><a href="color_bg.html">Background&Line</a></li>
+                                <li class="liColorBadge"><a href="color_badge.html">badge</a></li>
+                                <li class="liColorEtc"><a href="color_etc.html">etc</a></li>
+                            </ol>
+                        </li>
+                        <li class="four button">
+                            <a href="javascript: void(0);" class="tab">BUTTON</a>
+                            <ol>
+                                <li class="liBtn"><a href="Button.html" data-hash="#size">size</a></li>
+                                <li class="liPopupBtn"><a href="Button_popupBtn.html" data-hash="#popup">popup</a></li>
+                                <li class="liTableBtn"><a href="Button_tableBtn.html" data-hash="#tableBtn">table button</a></li>
+                            </ol>
+                        </li>
+                        <li class="input">
+                            <a href="javascript: void(0);" class="tab">Input/Select</a>
+                            <ol>
+                                <li class="liInput"><a href="input.html" data-hash="#input">Input box</a></li>
+                                <li class="liSelect"><a href="input_select.html" data-hash="#select">Select</a></li>
+                                <li class="liRadioChk"><a href="input_radioChk.html" data-hash="#radioCheck">Checkbox/Radio</a></li>
+                                <li class="liTextBox"><a href="input_textBox.html" data-hash="#textareaBox">Textarea box</a></li>
+                                <li class="liSize"><a href="input_size.html" data-hash="#inputSize">input Size</a></li>
+                                <li class="liSearch"><a href="input_search.html" data-hash="#inputSearch">input Search</a></li>
+                            </ol>
+                        </li>
+                        <li class="five popup">
+                            <a href="javascript: void(0);" class="tab">Popup</a>
+                            <ol>
+                                <li class="liPopup"><a href="popup.html" data-hash="#style">Style</a></li>
+                                <li class="liPopupTable"><a href="popup_popupTable.html">Popup in table</a></li>
+                            </ol>
+                        </li>
+                        <li class="two breakpointTab">
+                            <a href="javascript: void(0);" class="tab">Breakpoint</a>
+                            <ol>
+                                <li class="liBreakpoint"><a href="breakpoint.html">Breakpoint</a></li>
+                            </ol>
+                        </li>
+                        <li class="two loginTab">
+                            <a href="javascript: void(0);" class="tab">Login</a>
+                            <ol>
+                                <li class="liLogin"><a href="login.html">Login</a></li>
+                                <!--                    <li class="liLIdPw"><a href="login_idPw.html">아이디찾기/비밀번호찾기</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="tips">
+                            <a href="javascript: void(0);" class="tab">Tip</a>
+                            <ol>
+                                <li class="liTip"><a href="tips.html" data-hash="#tip">Tips</a></li>
+                            </ol>
+                        </li>
+                        <li class="three star">
+                            <a href="javascript: void(0);" class="tab">별점</a>
+                            <ol>
+                                <li class="liStar"><a href="star.html" data-hash="#star">별점</a></li>
+                            </ol>
+                        </li>
+
+                        <li class="five tabLi">
+                            <a href="javascript: void(0);" class="tab">TAB</a>
+                            <ol>
+                                <li class="liTab"><a href="tab.html" data-hash="#tabStyle">Tab</a></li>
+                                <li class="liTabKendo"><a href="tab_kendoTab.html" data-hash="#tabKendo">Kendo Tab</a></li>
+                                <li class="liFilterTab"><a href="tab_filter.html" data-hash="#filter">Filter</a></li>
+                                <li class="liFilterTabApply"><a href="tab_filterEduList.html" data-hash="#filterEduList">Filter 교육신청</a></li>
+                            </ol>
+                        </li>
+                        <li class="six tableLi">
+                            <a href="javascript: void(0);" class="tab">테이블</a>
+                            <ol>
+                                <li class="liTable"><a href="table.html">table</a></li>
+                                <!--                    <li class="liTable2"><a href="table_theme2.html">table Theme2</a></li>-->
+                                <!--                    <li class="liTable3"><a href="table_theme3.html">table Theme3</a></li>-->
+                                <li class="liGrid"><a href="table_grid.html">Kendo Grid</a></li>
+                            </ol>
+                        </li>
+                        <li class="seven list">
+                            <a href="javascript: void(0);" class="tab">리스트</a>
+                            <ol>
+                                <li class="liEdu"><a href="edu.html" data-hash="#main">메인</a></li>
+                                <li class="liEduApply"><a href="edu_eduApply.html" data-hash="#eduApply">교육신청</a></li>
+                                <li class="liMyClassIng"><a href="edu_myClassIng.html" data-hash="#myClassIng">나의강의실 수강중</a></li>
+                                <li class="liMyClassEnd"><a href="edu_myClassEnd.html" data-hash="#myClassEnd">나의강의실 종료</a></li>
+                                <li class="liMyCdp"><a href="edu_myCdp.html" data-hash="#myCdp">교육계획 현황</a></li>
+                            </ol>
+                        </li>
+                        <li class="eight accordion">
+                            <a href="javascript: void(0);" class="tab">아코디언</a>
+                            <ol>
+                                <li class="liAcco"><a href="accordion.html" data-hash="#accordion">서브페이지</a></li>
+                                <li class="liAccoList"><a href="accordion_list.html" data-hash="#accordion2">강의목차</a></li>
+                            </ol>
+                        </li>
+                        <li class="nine chart">
+                            <a href="javascript: void(0);" class="tab">Chart</a>
+                            <ol>
+                                <li class="liBullet"><a href="chartBullet.html">bullet</a></li>
+                                <li class="liColumn"><a href="chartColumn.html">column</a></li>
+                                <li class="liDonut"><a href="chartDonut.html">donut</a></li>
+                                <li class="liDonutHalf"><a href="chartDonutHalf.html">donut half</a></li>
+                                <li class="liRadarArea"><a href="chartRadarArea.html">radarArea</a></li>
+                                <!--                    <li class="liLine"><a href="chartLine.html">line</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="badge-">
+                            <a href="javascript: void(0);" class="tab">Badge</a>
+                            <ol>
+                                <li class="liBadge"><a href="badge.html">Badge</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!--        <div id="header" data-include-path="header.html"></div>-->
+            <!--    Header END    -->
+
+            <!--    본문영역 START    -->
+            <main class="body-container">
+                <!--        breadcrumb START        -->
+                <section class="breadcrumb">
+                    <div class="container">
+                        <ul class="menu">
+                            <li>
+                                <a href="index.html"><i class="icon-home"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!--        breadcrumb END        -->
+
+                <section class="sec-">
+                    <div class="container">
+                        <h2>머리말</h2>
+
+                        <article class="sec-">
+                            <div class="tip-box">
+                                <span>SCSS</span>
+
+                                <ul>
+                                    <li>
+                                        <strong>util.css / util.scss</strong>
+                                        <ol class="list-disc">
+                                            <li>util.css 만 전처리기 scss로 작업이 되어있기에, 수정을 하고자 하시면 sass를 우선 설치합니다.</li>
+                                            <li>sass를 설치하기 위해선 nodo.js기반의 패키지 관리자 npm을 사용하여 할 수 있습니다.</li>
+                                            <li>터미널에서 명령어 npm install -g sass</li>
+                                            <li>css 폴더로 이동하여 컴파일 하여 css를 생성합니다. 그 css를 불러오면 됩니다.</li>
+                                            <li>sass -util.scss util.css</li>
+                                            <li>scss파일이 변경될때마다 자동으로 컴파일 하고자 하신다면 sass --warch util.scss:util.css 명령어를 사용하시면 자동 컴파일이 됩니다.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tip-box">
+                                <span>info</span>
+                                <ul>
+                                    <li>valuemark 프로젝트 2024.07 기준입니다.</li>
+                                    <li>custom, style 을 제외한 모든 class 앞에 pd- 를 붙입니다.</li>
+                                    <li>
+                                        <strong>reset.css</strong>
+                                        <ol class="list-disc">
+                                            <li>브라우저 초기화 css</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>root.css</strong>
+                                        <ol class="list-disc">
+                                            <li>css 변수들이 모여있다.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>util.css</strong>
+                                        <ol class="list-disc">
+                                            <li>
+                                                Font, Form, Align, pc,mobile, Color, Line clamp, List, Space clamp, Object, display, Width, Height, Size, Space Between, Flex, Margin / Padding, Border,
+                                                Table, Etc 등 스타일과 공통요소를 제외한 유틸요소들 집합
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>common.css</strong>
+                                        <ol class="list-disc">
+                                            <li>스타일과 유틸을 제외한 공통요소들. 스타일과 겹쳐지기도 한다.</li>
+                                            <li>input, select 기본 모양</li>
+                                            <li>checkbox, radiobox 스타일</li>
+                                            <li>button 스타일</li>
+                                            <li>Badge 스타일</li>
+                                            <li>Icons 스타일</li>
+                                            <li>이외가 스타일에 해당한다.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>style.css</strong>
+                                        <ol class="list-disc">
+                                            <li>디자인 입혀진 복잡한 스타일들은 여기있다. 순서를 제일 아래, mobile.css보다는 위 내려보낸다.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>mobile.css</strong>
+                                        <ol class="list-disc">
+                                            <li>반응형 css 집합. 순서를 제일 아래로 내려보낸다.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+
+                                <h3 class="mt30 font-bold">Kendo Ui 사용시 필요한</h3>
+                                <ul class="mt20">
+                                    <li>
+                                        <strong>/css/kendo/2022.1.119/kendo.common.min.css</strong>
+                                        <ol class="list-disc">
+                                            <li>kendo 기본 형태 css</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>/js/kendo/2022.1.119/kendo.all.min.js</strong>
+                                        <ol class="list-disc">
+                                            <li>kendo 라이브러리 js</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>/js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js</strong>
+                                        <ol class="list-disc">
+                                            <li>kendo 달력 한글 js</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>/js/kendo.extension/kendo.ko_KR.js</strong>
+                                        <ol class="list-disc">
+                                            <li>kendo 메세지 한글 js</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tip-box">
+                                <span>빌드 방법</span>
+
+                                <ul>
+                                    <li>
+                                        <strong>Html Include</strong>
+                                        <p>Node.js 가 필요합니다.</p>
+                                        <pre>
+# npm 초기화
+npm init -y
+
+# gulp 설치
+npm install gulp --save-dev
+
+# gulp-file-include 설치
+npm install gulp-file-include --save-dev
+                                    </pre
+                                        >
+
+                                        <pre>
+project/
+│
+├── src/
+│   ├── html/
+│       ├── header.html
+│       └── index.html
+├── html2/
+│   └── code/
+├── gulpfile-html.js
+└── package.json
+                                    </pre
+                                        >
+                                        <ol class="list-disc">
+                                            <li>
+                                                <span class="tag">src/</span>
+                                                폴더: 소스 파일을 저장하는 폴더
+                                            </li>
+                                            <li>
+                                                <span class="tag">html2/</span>
+                                                폴더: 빌드된 파일이 생성되는 폴더
+                                            </li>
+                                            <li>
+                                                <span class="tag">gulpfile-html.js</span>
+                                                gulp html 설정 파일
+                                            </li>
+                                            <li>
+                                                <span class="tag">code</span>
+                                                코드를 볼 수 있게 만들어놓은 code 파일들 폴더
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <strong>src/index.html</strong>
+                                        <div>gulp-file-include를 사용하여 header.html 인클루드</div>
+                                    </li>
+                                    <li>
+                                        <strong>gulpfile-html.js 설정</strong>
+                                        <pre>
+const gulp = require('gulp');
+const fileInclude = require('gulp-file-include');
+
+// prettier 모듈을 동적으로 import
+// HTML 파일 병합 작업
+async function fileIncludeTask() {
+    const prettier = (await import('gulp-prettier')).default;
+
+    return gulp.src(['src/html/*.html', '!src/partials/**']) // header.html 제외
+        .pipe(fileInclude({
+            prefix: '@@', // 인클루드 명령어의 접두사 설정
+            basepath: '@file' // 인클루드 파일의 경로 설정
+        }))
+        .pipe(prettier({ // HTML 코드 포맷팅 설정
+            parser: 'html', // HTML 파서 사용
+            tabWidth: 4, // 들여쓰기 크기 (2칸)
+            useTabs: false, // 탭 대신 스페이스 사용
+            singleQuote: true, // 속성값을 single quote로 사용
+            htmlWhitespaceSensitivity: 'ignore', // 공백 민감도 무시
+            endOfLine: 'auto', // 운영체제에 맞는 줄바꿈 설정
+            printWidth: 200 // 줄 바꿈 할 폭 길이
+        }))
+        .pipe(gulp.dest('html2')); // 병합된 파일을 dist 폴더에 저장
+}
+
+// 기본 작업 설정
+exports.default = gulp.series(fileIncludeTask);
+
+                                            </pre
+                                        >
+                                    </li>
+                                    <li>
+                                        원래라면 gulp 으로만 실행 가능하지만, 분류마다 따로 선언해줘야 되서 package.json에 따로 설정해준다.
+                                        <pre>
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "admin": "gulp --gulpfile gulpfile-admin.js",
+    "html": "gulp --gulpfile gulpfile-html.js",
+    "podo": "gulp --gulpfile gulpfile-podosw.js"
+  },
+                                            </pre
+                                        >
+                                        이러면 npm run html 으로 실행된다.
+                                    </li>
+                                    <li>
+                                        gulp 에러 발생 시 최신버전 설치
+                                        <pre>
+# 기존 gulp 전역 설치 버전 제거
+npm uninstall -g gulp
+
+# 기존 gulp와 관련된 로컬 패키지 제거
+npm uninstall gulp --save-dev
+
+# gulp 최신 버전 전역 설치
+npm install -g gulp-cli
+
+# gulp 최신 버전 로컬 설치
+npm install gulp --save-dev
+                                            </pre
+                                        >
+                                    </li>
+                                    <li>
+                                        <strong>Gulp 코드 포맷팅 설정</strong>
+                                        <pre>
+# Prettier는 코드 스타일을 일관되게 유지해주는 코드 포맷터입니다.
+npm install --save-dev prettier gulp-prettier
+
+# ESLint는 코드의 품질과 스타일을 점검해주는 도구로, 포맷팅도 가능합니다.
+npm install --save-dev eslint gulp-eslint
+
+                                    </pre
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </main>
+            <!--    본문영역 END    -->
+
+            <!--    Footer START    -->
+            <footer class="footer">
+                <div class="container">
+                    <ul class="footer-nav">
+                        <li><a href="/" class="infoPopup">이용약관</a></li>
+                        <li><a href="/" class="infoPopup bold">개인정보취급방침</a></li>
+                        <li class="last mobile">
+                            <div class="img-box">
+                                <img src="/" alt="로고" />
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="footer-addr">
+                        <div class="img-box pc">
+                            <img src="/" alt="LOGO" />
+                        </div>
+                        <div class="addr-box">
+                            <ul>
+                                <li><span id="COMPANYNAME"></span></li>
+                                <li>
+                                    대표 :
+                                    <span id="CEO_NAME"></span>
+                                </li>
+                                <li>
+                                    사업자등록번호 :
+                                    <span id="RGST_NO"></span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="ADDR">
+                                    주소 :
+                                    <address id="ADDR"></address>
+                                </li>
+                                <li>
+                                    대표번호 :
+                                    <span id="CEO_CELLPHONE"></span>
+                                </li>
+                                <li>
+                                    이메일 :
+                                    <span id="CEO_EMAIL"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--    Footer END    -->
+        </div>
+
+        <script>
+            var currentPath = window.location.pathname;
+            var currentHash = window.location.hash;
+
+            $(function () {});
+        </script>
+    </body>
+</html>

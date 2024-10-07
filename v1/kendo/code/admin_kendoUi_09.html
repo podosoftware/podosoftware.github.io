@@ -1,0 +1,112 @@
+<div class="flex-col gap15">
+    <div>
+        <p class="p-circle"><i class="circle"></i>개별</p>
+        <input type="text" id="dateTimePicker_only" class="input-default txt-center width100">
+    </div>
+
+    <div>
+        <p class="p-circle"><i class="circle"></i>일반적으로 쓰이는 / 스플리터 안 테이블 내 td에 들어가는 input</p>
+        <div class="date-box-wrap">
+            <div class="date-box">
+                <input type="text" id="dateTimePicker_start" class="input-default txt-center width100">
+            </div>
+            <span class="label_text">~</span>
+            <div class="date-box">
+                <input type="text" id="dateTimePicker_end" class="input-default txt-center width100">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function dateTimePickerDraw() {
+        $("#dateTimePicker_only").kendoDatePicker({
+            format: "yyyy-MM-dd",
+            value: now
+        });
+
+        var start = $("#dateTimePicker_start").kendoDateTimePicker({
+            //format: "yyyy/MM/dd hh:mm",
+            value: now,
+            change: function(e) {
+                var startDate = start.value(),
+                    endDate = end.value();
+
+                if (startDate) {
+                    startDate = new Date(startDate);
+                    startDate.setDate(startDate.getDate());
+                    end.min(startDate);
+                } else if (endDate) {
+                    start.max(new Date(endDate));
+                } else {
+                    endDate = new Date();
+                    start.max(endDate);
+                    end.min(endDate);
+                }
+            }
+        }).data("kendoDateTimePicker");
+
+
+        var end = $("#dateTimePicker_end").kendoDateTimePicker({
+            //format: "yyyy/MM/dd hh:mm",
+            //timeFormat: "HH:mm",
+            //format: "yyyy-MM-dd HH:mm",
+            // value: now,
+            change: function(e) {
+                var endDate = end.value(),
+                    startDate = start.value();
+
+                if (endDate) {
+                    endDate = new Date(endDate);
+                    endDate.setDate(endDate.getDate());
+                    start.max(endDate);
+                } else if (startDate) {
+                    end.min(new Date(startDate));
+                } else {
+                    endDate = new Date();
+                    start.max(endDate);
+                    end.min(endDate);
+                }
+
+                //사용자가 직접 오전12:00 클릭시 입력가능
+                var d = this.value();
+
+                var month = d.getMonth()+1;
+                var day = d.getDate();
+                var hour = d.getHours();
+                var min = d.getMinutes();
+
+                var output = d.getFullYear() + '-' +
+                    (month<10 ? '0' : '') + month + '-' +
+                    (day<10 ? '0' : '') + day;
+
+                $("#dateTimePicker_end_timeview > li:eq(0)").click(function(){
+                    $("#dateTimePicker_end").val(output + " 오전 12:00");
+                });
+            }
+        }).data("kendoDateTimePicker");
+
+        //날짜 선택시 디폴트값(오전 12:00) 변경 => 오후 11:59
+
+        end.bind("change", function(){
+            var d = this.value();
+
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+            var hour = d.getHours();
+            var min = d.getMinutes();
+
+            var output = d.getFullYear() + '-' +
+                (month<10 ? '0' : '') + month + '-' +
+                (day<10 ? '0' : '') + day;
+
+            if( hour == "00" && min == "00"){
+                $("#dateTimePicker_end").val(output + " 오후 11:59");
+            }
+        });
+
+        start.max(end.value());
+        end.min(start.value());
+
+    }
+</script>

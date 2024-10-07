@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Button || Table</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>Button</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>Button</h2>
+
+                    <div class="flex-group">
+    <!--                popup START    -->
+                        <article id="popup" class="article-">
+                            <h3 class="title"># Table Button</h3>
+                            <p>테이블 버튼 추가, 긍정, 기능 버튼의 스타일은 btn-point-white class 이다.</p>
+                            <p>테이블 버튼 부정, 취소 버튼 스타일은 btn-default class 이다.</p>
+
+                            <div class="sec-cont mt30">
+                                <table class="front-table-02">
+                                    <thead>
+                                    <tr>
+                                        <th>버튼</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="pd-text-center">
+                                            <button type="button" class="btn-point-white">추가, 기능, 눈에 띄어야 하는 경우</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pd-text-center">
+                                            <button type="button" class="btn-default">삭제, 기본</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="accordion-wrap mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/button_03.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+    <!--                popup END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            $(".button .liTableBtn a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "text-center", cont: "가운데 정렬"},
+                { classNm: "btn-point-white", cont: "흰배경에 main color 버튼 class"},
+                { classNm: "btn-default", cont: "기본 버튼 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+    </script>
+</body>
+</html>

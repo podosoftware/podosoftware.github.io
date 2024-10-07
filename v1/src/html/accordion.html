@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>아코디언 서브페이지</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>서브페이지</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>서브페이지</h2>
+
+                    <div class="flex-group">
+                        <!--                Tips START    -->
+                        <article id="tips" class="article-">
+                            <h3 class="title"># 서브페이지</h3>
+                            <div class="sec-cont">
+                                <div class="pd-flex- accordion-wrap my-class">
+                                    <div class="accordion-box">
+                                        <div id="dtlView" class="pd-flex- accordion-head">
+                                            <h3 class="pd-flex-">
+                                                <strong id="name">홍길동</strong>님의 교육제도 이수현황
+                                            </h3>
+                                            <i class="icon-plus2"></i>
+                                        </div>
+                                        <!--                                // 아코디언 헤드    -->
+
+                                        <div class="accordion-body">
+                                            CONTENTS
+                                        </div>
+                                    </div>
+                                    <!--                            //    -->
+
+                                    <div class="accordion-box">
+                                        <div class="pd-flex- accordion-head">
+                                            <h3 class="pd-flex-">
+                                                <strong >홍길동</strong>님의 계획 대비 실행율
+                                            </h3>
+                                            <i class="icon-accrodion_chevron-up"></i>
+                                        </div>
+                                        <!--                                // 아코디언 헤드    -->
+
+                                        <div class="accordion-body">
+                                            CONTENTS
+                                        </div>
+                                    </div>
+                                    <!--                            //    -->
+                                </div>
+
+                                <div class="g-code-box">
+                                    <pre data-src="code/accordion_01.html"></pre>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                Tips END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            $(".accordion .liAcco a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "accordion-wrap", cont: "아코디언 전체 감싸는 class"},
+                { classNm: "my-class", cont: "나의강의실 용 class"},
+                { classNm: "accordion-box", cont: "아코디언 헤더와 바디를 묶은 class"},
+                { classNm: "accordion-head", cont: "아코디언 헤더 class"},
+                { classNm: "icon-plus2", cont: "플러스 아이콘 이미지 class"},
+                { classNm: "accordion-body", cont: "아코디언 몸통 class"},
+                { classNm: "icon-accrodion_chevron-up", cont: "아코디언 화살표 이미지 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+
+            //이수현황 toggle event
+            $('.accordion-head').click(function () {
+                if($(this).hasClass('active')){
+                    // $(this).removeClass('active');
+                    // $(this).next().slideUp();
+                    $(this).find(".icon-accrodion_chevron-up").css({
+                        "transform":"rotate(180deg)"
+                    });
+                    return false;
+                }else{
+                    // $(this).addClass('active');
+                    // $(this).next().slideDown();
+                    $(this).find(".icon-accrodion_chevron-up").css({
+                        "transform":"rotate(0deg)"
+                    });
+                    return false;
+                }
+
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

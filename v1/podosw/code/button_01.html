@@ -1,0 +1,105 @@
+<style>
+    <!-- 공통 값 -->
+    [class*="btn-"] { display: flex; align-items: center; justify-content: center; cursor: pointer;
+        transition: background .3s, border-color .3s ease, color .3s ease;}
+    [class*="btn-"]:disabled { border: 1px solid var(--btn-disabled-border-color);
+        background: var(--btn-disabled-bg-color); color: var(--btn-disabled-font-color); cursor: default !important;}
+    /* size */
+    [class*="btn-"].size-b { height: 60px; padding: 0 25px; font-size: 17px; font-weight: bold; letter-spacing: -0.34px;}
+    [class*="btn-"].size-m { height: 50px; padding: 0 25px; font-size: 16px; font-weight: bold; letter-spacing: -0.32px;}
+    [class*="btn-"].size- { height: 40px; padding: 0 25px; font-size: 13px; font-weight: 500; letter-spacing: -0.26px;}
+    [class*="btn-"].size-s { height: 36px; padding: 0 10px; font-size: 12px; font-weight: 500; letter-spacing: -0.24px;}
+
+    /* round */
+    .round0 { border-radius: 0;}
+    .round-2 { border-radius: 2px;}
+    .round-4 { border-radius: 4px;}
+    .round-6 { border-radius: 6px;}
+    .round-8 { border-radius: 8px;}
+    .round-10 { border-radius: 10px;}
+    .round-12 { border-radius: 12px;}
+    .round-14 { border-radius: 14px;}
+    .round-16 { border-radius: 16px;}
+    .round-18 { border-radius: 18px;}
+    .round-20 { border-radius: 20px;}
+    .round-100 { border-radius: 100px;}
+    .round-full { border-radius: 9999px;}
+
+    /* 기본 */
+    .btn-default { padding: 0 20px; border: 1px solid var(--btn-default-border-color); background: #FFFFFF;
+        font-family: var(--font); color: var(--btn-default-font-color); cursor: pointer;}
+    .btn-default:not(:disabled):hover,
+    .btn-default:active { background: #FFFFFF; color: var(--theme-color);}
+    .btn-default:focus,
+    .btn-default:active:focus { border: 1px solid #555555; background: #FFFFFF;}
+    /* 저장, 승인 등 긍정형 */
+    .btn-point { border: 1px solid var(--theme-color); background: var(--theme-color); color: #FFFFFF;}
+    .btn-point:focus { border: 1px solid var(--theme-color); background: #FFFFFF; color: var(--theme-color);}
+    .btn-point:active,
+    .btn-point:not(:disabled):hover { border: 1px solid var(--theme-color); background: var(--theme-color);
+        color: #FFFFFF;}
+    /* 긍정형 보단 아래 */
+    .btn-point-white { border: 1px solid var(--theme-color); background: #fff; color: var(--theme-color);}
+    .btn-point-white:focus { border: 1px solid var(--theme-color); background: #FFFFFF; color: var(--theme-color);}
+    .btn-point-white:active,
+    .btn-point-white:not(:disabled):hover { border: 1px solid var(--theme-color); background: var(--theme-color);
+        color: #FFFFFF;}
+    /* 그리드 상단 버튼 */
+    .btn-top { border: 1px solid var(--theme-color); background: #fff; color: var(--theme-color);}
+    .btn-top:focus { border: 1px solid var(--theme-color); background: #FFFFFF; color: var(--theme-color);}
+    .btn-top:active,
+    .btn-top:not(:disabled):hover { border: 1px solid var(--theme-color); background: var(--theme-color);
+        color: #FFFFFF;}
+    /* 검은색 */
+    .btn-submit { border: 1px solid var(--b2c-bg07); background: var(--b2c-bg07); color: #fff;}
+    .btn-submit:not(:disabled):hover,
+    .btn-submit:active { }
+    .btn-submit:disabled { }
+    /* 아이콘 버튼 */
+    .btn-plus { width: 40px; height: 40px; padding: 0; border-radius: 4px; font-size: 20px; font-weight: bold;}
+
+    /* 버튼 모음 부모 */
+    .btnBox-wrap { display: flex; justify-content: center; align-items: center; gap: 7px;}
+    .btnBox-bottom { justify-content: flex-end; padding-top: 30px;}
+    .btnBox-bottom [class*="btn-"] { min-width: 111px; height: 60px; padding: 0; border-radius: 8px; font-size: 18px;
+        font-weight: 500;}
+    .btnBox-bottom .btn-point { font-weight: bold;}
+    .btnBox-bottom > div { display: flex; align-items: center; gap: 7px;}
+
+    /* 그리드 위의 버튼 일 경우 */
+    .grid-top-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px;}
+    .grid-top-box.flex-end { justify-content: flex-end;}
+    .grid-top-box > div { display: flex; align-items: center; gap: 7px; width: 100%;}
+    .grid-top-box .k-dropdown { height: 48px;}
+    .grid-top-box .k-dropdown .k-input-inner { padding-left: 20px;}
+    .grid-top-box .date-box-wrap { width: auto;}
+    .grid-top-box .date-box-wrap .date-box { width: 160px;}
+    .grid-top-box .k-datepicker input.k-input-inner { height: 46px; font-size: 16px;}
+    .grid-top-box [class*="btn-"] { height: 48px; font-weight: bold;}
+    .grid-top-box .btn-default { color: #222;}
+
+    /* 인풋이랑 같이 쓰는 버튼 */
+    .input-box [class*="btn-"] { height: 40px; border-radius: 4px; padding: 0 20px; font-size: 14px; font-weight: 500;}
+
+    .grid-btnBox { display: flex; justify-content: flex-start; gap: 7px;}
+
+
+    /* 교육신청 더보기 */
+    .btn-edu-more { display: flex; justify-content: center; align-items: center; gap: 4px; width: 200px; height: 48px;
+        margin-bottom: 80px; border: 1px solid #c0c0c0; border-radius: 50px; background: #fff; font-size: 15px;
+        font-weight: bold; color: #212529; letter-spacing: -0.3px;}
+    .btn-edu-more span { margin-top: -3px; font-size: 24px; font-weight: normal; color: var(--theme-color);}
+
+    /* popup 내부 button */
+    .popup-content .k-grid-toolbar .k-button { padding: 9px 16px;}
+    .popup-content .k-grid-toolbar .k-button:hover { border: 1px solid #4549AB;}
+    .popup-btn { display: flex; justify-content: center; align-items: center; min-width: 124px; height: 50px;
+        border: 1px solid var(--theme-color); border-radius: 8px; background: var(--theme-color); font-size: 16px;
+        font-weight: bold; color: #FFFFFF; line-height: normal; letter-spacing: -0.34px; cursor: pointer;}
+    .popup-btn:hover { color: #ffffff;}
+    .popup-btn.btn-default { border: 1px solid #c2c2c2; background: #FFFFFF; color: #212529;}
+    .popup-btn.btn-default:hover,
+    .popup-btn.btn-default:active { border: 1px solid var(--theme-color); background: #FFFFFF; font-weight: bold;
+        color: var(--theme-color);}
+    .popup-content .cont-tip-box .icon { vertical-align: middle;}
+</style>

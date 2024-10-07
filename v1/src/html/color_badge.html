@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Color - Primary(theme) || 관리자</title>
+
+</head>
+<body>
+    <!-- 자동완성 방지용  -->
+    <input type="text" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <input type="password" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <!-- 자동완성 방지용  -->
+
+    <div class="wrap">
+<!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+<!--    Header END    -->
+
+<!--    본문영역 START    -->
+        <main class="body-container">
+<!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>COLOR</li>
+                    </ul>
+                </div>
+            </section>
+<!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <div class="top-title-box">
+                        <h2>COLOR</h2>
+                    </div>
+
+                    <div class="flex-group">
+                        <article id="input" class="article-">
+                            <h3 class="title"># Badge</h3>
+                            <p>해당 컬러는 각 css 에 var(); 넣어주세요.</p>
+
+                            <div class="sec-cont">
+                                <div class="">
+                                    <div class="pd-flex-col pd-gap30">
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--online-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#3851aa</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--offline-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#aa64c2</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--blended-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#8e8a21</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--burn-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#1792ea</span>
+                                                </div>
+    <!--                                            // END    -->
+                                            </div>
+                                        </div>
+                                        <div class="g-code-box">
+                                            <pre class="line-numbers"><code class="language-css">
+    --online-400: #3851aa;     /* 온라인 연하게 */
+    --online-500: #3851aa;     /* 온라인 기본 */
+    --online-600: #3851aa;     /* 온라인 진하게 */
+
+    --offline-400: #aa64c2;     /* 집합 연하게 */
+    --offline-500: #aa64c2;     /* 집합 기본 */
+    --offline-600: #aa64c2;     /* 집합 진하게 */
+
+    --blended-400: #8e8a21;     /* 블랜디드 연하게 */
+    --blended-500: #8e8a21;     /* 블랜디드 기본 */
+    --blended-600: #8e8a21;     /* 블랜디드 진하게 */
+
+    --burn-400: #1792ea;     /* 화상 연하게 */
+    --burn-500: #1792ea;     /* 화상 기본 */
+    --burn-600: #1792ea;     /* 화상 진하게 */
+                                </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--attClass-400);"></div>
+                                                    <p>500</p>
+                                                    <span>#00a524</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--comp-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#0e8e8e</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--notSel-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#565656</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--appl-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#f15e1f</span>
+                                                </div>
+<!--                                            // END    -->
+                                            </div>
+                                        </div>
+                                        <div class="g-code-box">
+                                            <pre class="line-numbers"><code class="language-css">
+    --attClass-400: #00a524;     /* 수강 연하게 */
+    --attClass-500: #00a524;     /* 수강 기본 */
+    --attClass-600: #00a524;     /* 수강 진하게 */
+
+    --comp-400: #0e8e8e;     /* 수료 연하게 */
+    --comp-500: #0e8e8e;     /* 수료 기본 */
+    --comp-600: #0e8e8e;     /* 수료 진하게 */
+
+    --notSel-400: #565656;     /* 미선정 연하게 */
+    --notSel-500: #565656;     /* 미선정 기본 */
+    --notSel-600: #565656;     /* 미선정 진하게 */
+
+    --appl-400: #f15e1f;     /* 신청 연하게 */
+    --appl-500: #f15e1f;     /* 신청 기본 */
+    --appl-600: #f15e1f;     /* 신청 진하게 */
+                                </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--ess-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#22a0c8</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--sel-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#f5a201</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--pass-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#0395ff</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--fail-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#aa3c3c</span>
+                                                </div>
+<!--                                            // END    -->
+                                            </div>
+                                        </div>
+                                        <div class="g-code-box">
+                                            <pre class="line-numbers"><code class="language-css">
+    --ess-400: #22a0c8;     /* 필수 연하게 */
+    --ess-500: #22a0c8;     /* 필수 기본 */
+    --ess-600: #22a0c8;     /* 필수 진하게 */
+
+    --sel-400: #f5a201;     /* 선택 연하게 */
+    --sel-500: #f5a201;     /* 선택 기본 */
+    --sel-600: #f5a201;     /* 선택 진하게 */
+
+    --pass-400: #0395ff;     /* pass 연하게 */
+    --pass-500: #0395ff;     /* pass 기본 */
+    --pass-600: #0395ff;     /* pass 진하게 */
+
+    --fail-400: #aa3c3c;     /* fail 연하게 */
+    --fail-500: #aa3c3c;     /* fail 기본 */
+    --fail-600: #aa3c3c;     /* fail 진하게 */
+                                </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--hw-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#6b24b1</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--test-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#2461d8</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--attend-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#fa6e42</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--comp-crit-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#177e78</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--notComp-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#db414a</span>
+                                                </div>
+<!--                                            // END    -->
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--rate-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#e72599</span>
+                                                </div>
+<!--                                            // END    -->
+                                            </div>
+                                        </div>
+                                        <div class="g-code-box">
+                                            <pre class="line-numbers"><code class="language-css">
+    --hw-400: #6b24b1;     /* 과제 연하게 */
+    --hw-500: #6b24b1;     /* 과제 기본 */
+    --hw-600: #6b24b1;     /* 과제 진하게 */
+
+    --test-400: #2461d8;     /* 시험 연하게 */
+    --test-500: #2461d8;     /* 시험 기본 */
+    --test-600: #2461d8;     /* 시험 진하게 */
+
+    --attend-400: #fa6e42;     /* 출석 연하게 */
+    --attend-500: #fa6e42;     /* 출석 기본 */
+    --attend-600: #fa6e42;     /* 출석 진하게 */
+
+    --comp-crit-400: #177e78;     /* 수료 연하게 */
+    --comp-crit-500: #177e78;     /* 수료 기본 */
+    --comp-crit-600: #177e78;     /* 수료 진하게 */
+
+    --notComp-400: #db414a;     /* 미수료 연하게 */
+    --notComp-500: #db414a;     /* 미수료 기본 */
+    --notComp-600: #db414a;     /* 미수료 진하게 */
+
+    --rate-400: #e72599;     /* 진도 연하게 */
+    --rate-500: #e72599;     /* 진도 기본 */
+    --rate-600: #e72599;     /* 진도 진하게 */
+                                </code></pre>
+                                        </div>
+<!--                                    // END   -->
+                                    </div>
+                                </div>
+
+                                <!--                        //    -->
+                            </div>
+                        </article>
+                        <!--                // Input End    -->
+
+<!--                        <div class="guid-table-box">-->
+<!--                            <div class="guid-table-fixed">-->
+<!--                                <strong>Class</strong>-->
+<!--                                <strong>내용</strong>-->
+<!--                            </div>-->
+<!--                            <ul id="guidClass"></ul>-->
+<!--                        </div>-->
+                    </div>
+
+                </div>
+            </section>
+        </main>
+<!--    본문영역 END    -->
+
+<!--    Footer START    -->
+<!--    Footer END    -->
+
+        <script>
+            var now = new Date();
+            var mon = "";
+            var day = "";
+            if ((now.getMonth() + 1) < 10) {
+                mon = "0" + (now.getMonth() + 1);
+            } else {
+                mon = now.getMonth() + 1;
+            }
+            if ((now.getDate()) < 10) {
+                day = "0" + (now.getDate());
+            } else {
+                day = now.getDate();
+            }
+            var nowDay = now.getFullYear() + "-" + mon + "-" + day;
+
+            var currentPath = window.location.pathname;
+            var currentHash = window.location.hash;
+
+            $(function () {
+                kendo.culture("ko-KR");
+
+                $(".color .liColorBadge a").addClass("active");
+
+                var html = "";
+                var guidData = [
+                    { classNm: "input-box", cont: "input를 감싸는 class. 주로 input 옆에 다른게 붙을 시 사용된다."},
+                ];
+
+                for(var i=0; i < guidData.length; i++) {
+                    html += "<li>";
+                    html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                    html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                    html += "</li>";
+                }
+
+                $("#guidClass").html(html);
+
+            });
+
+        </script>
+    </div>
+</body>
+</html>

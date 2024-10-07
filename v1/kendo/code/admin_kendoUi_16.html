@@ -1,0 +1,42 @@
+<div id="treeview" style="width: 100%; height: 350px; "></div>
+
+<script>
+    $("#treeview").kendoTreeView({
+        dataTextField: ["TEXT"],
+        dataSource: new kendo.data.HierarchicalDataSource({
+            data: [
+                { text: "Furniture", items: [
+                        { text: "Tables & Chairs" },
+                        { text: "Sofas" },
+                        { text: "Occasional Furniture" }
+                    ] },
+                { text: "Decor", items: [
+                        { text: "Bed Linen" },
+                        { text: "Curtains & Blinds" },
+                        { text: "Carpets" }
+                    ] }
+            ]
+            // transport: {
+            //     read: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/operator/ba/ba_dept_list.do", type:"POST", dataType: 'json' },
+            //     parameterMap: function (options, operation){
+            //         return {  USEFLAG : "Y" };
+            //     }
+            // },
+            // schema: {
+            //     data: "items",
+            //     model: {
+            //         fields: {
+            //             DIVISIONID : { type: "String" },
+            //             DVS_NAME : { type: "String" },
+            //             HIGH_DVSID : { type: "String" },
+            //             items : { DIVISIONID : { type: "String" }, DVS_NAME : { type: "String" }, HIGH_DVSID : { type: "String"} }
+            //         },
+            //         children: "items"
+            //     }
+            // },
+            // serverFiltering: false,
+            // serverSorting: false
+        }),
+        loadOnDemand: false
+    });
+</script>

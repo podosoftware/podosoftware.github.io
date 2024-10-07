@@ -1,0 +1,23 @@
+<div id="popup_window" class="privacy-popup demo-popup1" style="display: none;">
+    <div class="popup-content">
+        <div class="content-box">
+            <button type="button" class="popup-close" onclick="popupClose(1);"><i class="icon-demo-close"></i></button>
+            개인정보 수집 및 이용목적용 팝업입니다.
+        </div>
+    </div>
+</div>
+
+<script>
+    function popupOpen(src) {
+        var winWidth = $(window).width();
+
+        $(".demo-popup"+src).fadeIn();
+        $("body").css("overflow", "hidden");
+    }
+
+    function popupClose(src) {
+        var winWidth = $(window).width();
+
+        $(".demo-popup"+src).fadeOut();
+        $("body").css("overflow", "auto");
+    }t>

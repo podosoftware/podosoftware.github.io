@@ -1,0 +1,51 @@
+<select id="user_group_select" multiple="multiple" data-placeholder="Select attendees..."></select>
+
+<script>
+    $(function () {
+        // 상세영역 그룹멀티셀렉터 선택
+        $("#user_group_select").kendoMultiSelect({
+            placeholder: "그룹을 선택하세요.",
+            dataTextField: "TEXT", dataValueField: "VALUE",
+            autoBind: false,
+            dataSource: {
+                serverFiltering: true,
+                transport: {
+                    read: { url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/operator/baUser/get_groups.do", type:"POST", dataType: 'json' }
+                },
+                schema: {
+                    total: "totalCount",
+                    data: "items",
+                    model: {
+                        id : "VALUE",
+                        fields: { TEXT : { type: "string" }, VALUE : { type: "number" } }
+                    },
+                    parse: function(response) {
+                        var obj = response.items;
+                        var rtnArr = [];
+                        if(obj != null) {
+                            for (var i = 0; i < obj.length; i++) {
+                                var row = {};
+                                $.each(obj[i], function(key,val){
+                                    row[key] = unescapeHtml(val);
+                                });
+
+                                rtnArr.push(row);
+                            }
+                        }
+                        return {items:rtnArr,totalCount:response.totalCount};
+                    }
+                }
+            },
+            change : function(e) {
+
+                var multiSelect = $("#user-group-select").data("kendoMultiSelect");
+                var flag = false;
+                $.each(multiSelect.value(), function(index, row){
+
+                    var item =  multiSelect.dataSource.get(row);
+                });
+
+            }
+        });
+    });
+</script>

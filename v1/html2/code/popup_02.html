@@ -1,0 +1,159 @@
+<div id="popup_window2" style="display: none;">
+    <div class="popup-content">
+        <div id="sbjctGrid2"></div>
+    </div>
+
+    <div class="popup-foot">
+        <button class="popup-btn btn-default">취소</button>
+        <button class="popup-btn">신청</button>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        sbjctGrid(2);
+    });
+
+    function popupOpen() {
+        if(!$("#popup_window2").data("kendoWindow")) {
+            $("#popup_window2").kendoWindow({
+                width:"1284px",
+                height :"850px",
+                resizable : false,
+                title : "Table Popup",
+                modal : true,
+                visible : false
+            });
+        }
+
+        $("#popup_window2").data("kendoWindow").center();
+        $("#popup_window2").data("kendoWindow").open();
+
+    }
+
+    function sbjctGrid(num){
+        var data = [
+            { SUBJECT_NAME: "td", TRAINING_NM: "온라인", ALW_STD_NM: "연구개발>기초연구", CREDIT: 10}
+        ];
+
+        if(num == null) {
+            num = "";
+        }
+
+        $("#sbjctGrid"+num).empty();
+        $("#sbjctGrid"+num).kendoGrid({
+            dataSource: {
+                transport: {
+                    read: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>" +
+                            "/service/cdp/get_subject_list.do", type:"POST", dataType: 'json' },
+                    parameterMap: function (options, operation){
+                        var sortField = "";
+                        var sortDir = "";
+                        if (options.sort && options.sort.length>0) {
+                            sortField = options.sort[0].field;
+                            sortDir = options.sort[0].dir;
+                        }
+                        return {
+                            startIndex: options.skip, pageSize: options.pageSize,
+                            sortField: sortField, sortDir: sortDir, filter: JSON.stringify(options.filter),
+                            rn:$("#rn").val()
+                        };
+                    }
+                },
+                schema: {
+                    total : "totalCount",
+                    data: "items",
+                    model: {
+                        fields: {
+                            SUBJECT_NUM : { type: "number" },
+                            SUBJECT_NAME : { type: "string" },
+                            TRAINING_NM: { type:"string"},
+                            ALW_STD_NM: { type:"string"},
+                            RQOP_CLSF_NM: { type: "string"},
+                            CREDIT: { type: "number" }
+                        }
+                    },
+                    parse: function(response) {
+                        var obj = response.items;
+                        var rtnArr = [];
+                        if(obj != null) {
+                            for (var i = 0; i < obj.length; i++) {
+                                var row = {};
+                                $.each(obj[i], function(key,val){
+                                    row[key] = unescapeHtml(val);
+                                });
+
+                                rtnArr.push(row);
+                            }
+                        }
+
+                        return {items:rtnArr,totalCount:response.totalCount};
+                    }
+
+                },
+                pageSize : 30,
+                serverPaging: true, serverFiltering: true, serverSorting: true
+            },
+            columns : [
+                {
+                    field: "SUBJECT_NAME",
+                    title: "과정명",
+                    width:"250px",
+                    headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                    attributes : { "class" : "table-cell",
+                        style : "text-align:left; text-decoration: underline; cursor: pointer;" },
+                    template: function(data){
+                        var subjectName = data.SUBJECT_NAME;
+                        return "<a onclick='' >"+subjectName+"</a>";
+                    }
+                }, {
+                    field: "TRAINING_NM",
+                    title: "학습유형",
+                    width:"80px",
+                    headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                    attributes : { "class" : "table-cell", style : "text-align:center;" }
+                }, {
+                    field: "ALW_STD_NM",
+                    title: "과정분류",
+                    width:"150px",
+                    headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                    attributes : { "class" : "table-cell", style : "text-align:left;" }
+                }, {
+                    field: "CREDIT",
+                    title: "학점",
+                    width:"80px",
+                    headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                    attributes : { "class" : "table-cell", style : "text-align:center;" }
+                }, {
+                    title : "추가",
+                    width: "80px",
+                    headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                    attributes : { "class" : "table-cell", style : "text-align:center;" },
+                    template: function(dataItem){
+                        return '<button class="btn-point-white btn-s"><span>추가</span></button>';
+                    }
+                }],
+            filterable: true,
+            filterable: {
+                extra : false,
+                messages : {filter : "필터", clear : "초기화"},
+                operators : {
+                    string : { contains : "포함", startswith : "시작문자", eq : "동일단어" },
+                    number : { eq : "같음", gte : "이상", lte : "이하"}
+                }
+            },
+            height: 450,
+            groupable: false,
+            sortable: "row",
+            resizable: false,
+            reorderable: true,
+            pageable: true,
+            pageable : {
+                refresh : false,
+                pageSizes : [10,20,30],
+                buttonCount: 5
+            }
+        }).data("kendoGrid");
+    }
+</script>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Color - Background || 관리자</title>
+
+</head>
+<body>
+    <!-- 자동완성 방지용  -->
+    <input type="text" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <input type="password" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <!-- 자동완성 방지용  -->
+
+    <div class="wrap">
+<!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+<!--    Header END    -->
+
+<!--    본문영역 START    -->
+        <main class="body-container">
+<!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>COLOR</li>
+                    </ul>
+                </div>
+            </section>
+<!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <div class="top-title-box">
+                        <h2>COLOR</h2>
+                    </div>
+
+                    <div class="flex-group">
+                        <article id="input" class="article-">
+                            <h3 class="title"># Background & Line</h3>
+                            <p>해당 컬러는 각 css 에 var(); 넣어주세요.</p>
+
+                            <div class="sec-cont">
+                                <div class="">
+                                    <div class="pd-flex-col pd-gap30">
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-">
+                                                    <div style="background-color: var(--white);"></div>
+                                                    <p>0</p>
+                                                    <span>#ffffff</span>
+                                                </div>
+                                                <div class="color-box-50">
+                                                    <div style="background-color: var(--white-50);"></div>
+                                                    <p>50</p>
+                                                    <span>#FCFCFC</span>
+                                                </div>
+
+                                                <div class="color-box-50">
+                                                    <div style="background-color: var(--white-100);"></div>
+                                                    <p>100</p>
+                                                    <span>#fafafa</span>
+                                                </div>
+
+                                                <div class="color-box-150">
+                                                    <div style="background-color: var(--white-130);"></div>
+                                                    <p>130</p>
+                                                    <span>#f9f9f9</span>
+                                                </div>
+
+                                                <div class="color-box-150">
+                                                    <div style="background-color: var(--white-150);"></div>
+                                                    <p>150</p>
+                                                    <span>#F8F6FB</span>
+                                                </div>
+
+                                                <div class="color-box-300">
+                                                    <div style="background-color: var(--white-300);"></div>
+                                                    <p>300</p>
+                                                    <span>#F5F5F5</span>
+                                                </div>
+                                                <div class="color-box-400">
+                                                    <div style="background-color: var(--white-400);"></div>
+                                                    <p>400</p>
+                                                    <span>#F1F1F1</span>
+                                                </div>
+
+                                                <div class="color-box-400">
+                                                    <div style="background-color: var(--white-450);"></div>
+                                                    <p>450</p>
+                                                    <span>#E8E8E8</span>
+                                                </div>
+
+                                                <div class="color-box-500">
+                                                    <div style="background-color: var(--white-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#eaeaea</span>
+                                                </div>
+                                                <div class="color-box-600">
+                                                    <div style="background-color: var(--white-600);"></div>
+                                                    <p>600</p>
+                                                    <span>#DDDDDD</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--white: #ffffff;
+--white-50: #FCFCFC;
+--white-100: #fafafa;
+--white-130: #f9f9f9;
+--white-150: #F8F8F8;
+--white-300: #F5F5F5;
+--white-400: #f1f1f1;
+--white-450: #E8E8E8;
+--white-500: #eaeaea;
+--white-600: #DDDDDD;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--dark-gray-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#5c5c5c</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--dark-gray-600);"></div>
+                                                    <p>600</p>
+                                                    <span>#3e3e3e</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--dark-gray-500: #5c5c5c;
+--dark-gray-600: #3e3e3e;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--black-op-900);"></div>
+                                                    <p>900</p>
+                                                    <span>rgba(0,0,0,0.5)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--black-op-900: rgba(0,0,0,0.5);
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--white-450);"></div>
+                                                    <p>450</p>
+                                                    <span>#E8E8E8</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--white-600);"></div>
+                                                    <p>600</p>
+                                                    <span>#DDDDDD</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--gray-80);"></div>
+                                                    <p>80</p>
+                                                    <span>#c8c8c8</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--gray-90);"></div>
+                                                    <p>90</p>
+                                                    <span>#c2c2c2</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--gray-450);"></div>
+                                                    <p>450</p>
+                                                    <span>#6b6b6b</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--gray-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#4a4a4a</span>
+                                                </div>
+
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--gray-750);"></div>
+                                                    <p>750</p>
+                                                    <span>#414146</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--white-450: #E8E8E8;
+--white-600: #DDDDDD;
+
+--gray-80: #c8c8c8;
+--gray-90: #c2c2c2;
+--gray-450: #6b6b6b;
+--gray-500: #4a4a4a;
+--gray-750: #414146;
+
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--purple-gray-50);"></div>
+                                                    <p>50</p>
+                                                    <span>#f4f2fa</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--purple-gray-50: #f4f2fa;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-50">
+                                                    <div style="background-color: var(--sky-blue-50);"></div>
+                                                    <p>50</p>
+                                                    <span>#f2f8ff</span>
+                                                </div>
+<!--                                            // END    -->
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--sky-blue-50: #f2f8ff;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-500">
+                                                    <div style="background-color: var(--bora-50);"></div>
+                                                    <p>50</p>
+                                                    <span>#f4f2fa</span>
+                                                </div>
+                                                <!--                                            // END    -->
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--bora-50: #f4f2fa;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-500">
+                                                    <div style="background-color: var(--orange-50);"></div>
+                                                    <p>50</p>
+                                                    <span>#fcf4f4</span>
+                                                </div>
+                                                <!--                                            // END    -->
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--orange-50: #fcf4f4;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-500">
+                                                    <div style="background-color: var(--green-50);"></div>
+                                                    <p>50</p>
+                                                    <span>#e9f4f3</span>
+                                                </div>
+                                                <!--                                            // END    -->
+
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--green-50: #e9f4f3;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-500">
+                                                    <div style="background-color: var(--indigo-800);"></div>
+                                                    <p>800</p>
+                                                    <span>#071c3a</span>
+                                                </div>
+                                                <!--                                            // END    -->
+
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--indigo-800: #071c3a;
+                            </code></pre>
+                                        </div>
+    <!--                                    // END   -->
+
+                                        <div>
+                                            <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                <div class="pd-flex- color-box-500">
+                                                    <div style="background-color: var(--slate-blue-500);"></div>
+                                                    <p>500</p>
+                                                    <span>#5C61D4</span>
+                                                </div>
+                                                <!--                                            // END    -->
+
+                                            </div>
+                                        </div>
+
+                                        <div class="g-code-box">
+                                        <pre class="line-numbers"><code class="language-css">
+--slate-blue-500: #5C61D4;
+                            </code></pre>
+                                        </div>
+<!--                                    // END   -->
+
+
+
+                                    </div>
+                                </div>
+                                <!--                        //    -->
+                            </div>
+                        </article>
+                        <!--                // Input End    -->
+
+<!--                        <div class="guid-table-box">-->
+<!--                            <div class="guid-table-fixed">-->
+<!--                                <strong>Class</strong>-->
+<!--                                <strong>내용</strong>-->
+<!--                            </div>-->
+<!--                            <ul id="guidClass"></ul>-->
+<!--                        </div>-->
+                    </div>
+
+                </div>
+            </section>
+        </main>
+<!--    본문영역 END    -->
+
+<!--    Footer START    -->
+<!--    Footer END    -->
+
+        <script>
+            var now = new Date();
+            var mon = "";
+            var day = "";
+            if ((now.getMonth() + 1) < 10) {
+                mon = "0" + (now.getMonth() + 1);
+            } else {
+                mon = now.getMonth() + 1;
+            }
+            if ((now.getDate()) < 10) {
+                day = "0" + (now.getDate());
+            } else {
+                day = now.getDate();
+            }
+            var nowDay = now.getFullYear() + "-" + mon + "-" + day;
+
+            var currentPath = window.location.pathname;
+            var currentHash = window.location.hash;
+
+            $(function () {
+                kendo.culture("ko-KR");
+
+                $(".color .liColorBg a").addClass("active");
+
+                var html = "";
+                var guidData = [
+                    { classNm: "input-box", cont: "input를 감싸는 class. 주로 input 옆에 다른게 붙을 시 사용된다."},
+                ];
+
+                for(var i=0; i < guidData.length; i++) {
+                    html += "<li>";
+                    html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                    html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                    html += "</li>";
+                }
+
+                $("#guidClass").html(html);
+
+            });
+
+        </script>
+    </div>
+</body>
+</html>

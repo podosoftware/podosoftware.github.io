@@ -1,0 +1,8 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">
+<path fill="#F44336" d="M39.7,40L36.4,8.6c-0.2-2-1.9-3.6-4-3.6H15.6c-2,0-3.8,1.5-4,3.6L8.3,40H39.7z"></path>
+<path fill="#B71C1C" d="M28.4,8.6L31.7,40h8L36.4,8.6c-0.2-2-1.9-3.6-4-3.6h-8C26.4,5,28.2,6.5,28.4,8.6z"></path>
+<path fill="#607D8B" d="M41,43l-0.5-5.1c-0.1-0.5-0.5-0.9-1-0.9H8.5c-0.5,0-0.9,0.4-1,0.9L7,43H41z"></path>
+<circle fill="#F44336" cx="24" cy="23" r="10"></circle>
+<circle fill="#FF7E56" cx="24" cy="23" r="6"></circle>
+<circle fill="#FFCCBC" cx="24" cy="23" r="2"></circle>
+</svg>

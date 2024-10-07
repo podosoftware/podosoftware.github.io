@@ -1,0 +1,61 @@
+<select name="" id="dropDownList_01" class="input-default"></select>
+<select name="" id="dropDownList_02" class="input-default" disabled></select>
+
+<p class="p-circle"><i class="circle"></i>한줄에 여러개 일때</p>
+<ul class="inputs-wrap">
+    <li>
+        <select name="" id="dropDownList_03" class="input-default k-sel-center"></select>
+    </li>
+    <li>
+        <select name="" id="dropDownList_04" class="input-default k-sel-center"></select>
+    </li>
+</ul>
+
+<script>
+    $("#dropDownList_01").kendoDropDownList({
+        width: 100,
+        dataTextField: "TEXT",
+        dataValueField: "VALUE",
+        optionLabel: "==선택==",
+        dataSource: dropDownData,
+        // dataSource: {
+        //     transport: {
+        //         read: {
+        //             url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/data/common/code_list.do",
+        //             type: "POST", dataType: 'json'
+        //         },
+        //         parameterMap: function (options, operation) {
+        //             return {STANDARDCODE: "BA03", TITLE: "=== 선택 ==="};
+        //         }
+        //     },
+        //     schema: {
+        //         data: "items", model: {
+        //             fields: {
+        //                 VALUE: {type: "String"},
+        //                 TEXT: {type: "String"}
+        //             }
+        //         },
+        //         parse: function(response) {
+        //             var obj = response.items;
+        //             var rtnArr = [];
+        //             if(obj != null){
+        //                 for (var i = 0; i < obj.length; i++) {
+        //                     var selectRow = {};
+        //                     $.each(obj[i], function(key,val){
+        //                         selectRow.VALUE = unescapeHtml(obj[i].VALUE);
+        //                         selectRow.TEXT = unescapeHtml(obj[i].TEXT);
+        //                     });
+        //
+        //                     rtnArr.push(selectRow);
+        //                 }
+        //             }
+        //
+        //             return {items:rtnArr};
+        //         }
+        //     },
+        //     serverFiltering: false,
+        //     serverSorting: false
+        // },
+        suggest: true
+    });
+</script>

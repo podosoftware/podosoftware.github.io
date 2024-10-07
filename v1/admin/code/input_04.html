@@ -1,0 +1,21 @@
+<h2>input type="number"의 사용을 자제하며 사용시에는 kendo를 사용한다.</h2>
+<h2>kendo 사용 안할시 input type="text"에 class명 [k-textbox] 와
+    onkeyup=chkNull(this); chkNum(this); 반드시 넣는다.</h2>
+
+<div class="input-box">
+    <input type="text" id="" name="" class="k-textbox width100"
+           onkeyup="chkNull(this); chkNum(this);" />
+    <span class="txt">일</span>
+</div>
+
+<script>
+    $(function () {
+        // kendo 일 시
+        $("#numericTextBox_mm").kendoNumericTextBox({
+            format: "",
+            min: 0,
+            max: 9999,
+            step: 1
+        });
+    });
+</script>

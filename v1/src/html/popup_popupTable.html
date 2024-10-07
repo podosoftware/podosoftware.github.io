@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Popup In Table</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>Popup</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>Popup</h2>
+
+                    <div class="flex-group">
+                        <div>
+                            <!--                Table START    -->
+                            <article id="popupTable" class="article-">
+                                <h3 class="title"># Table</h3>
+                                <p>사용자 팝업창의 버튼영역은 가운데 정렬</p>
+                                <p>팝업 내용영역 패딩 25px 30px</p>
+                                <p>팝업 버튼영역 패딩 20px 0</p>
+                                <p>팝업 버튼영역의 긍정 버튼의 색은 메인색</p>
+
+                                <div class="sec-cont pd-mt30">
+                                    <div class="k-window" style="width: 100%; position: relative;">
+                                        <div class="popup-content">
+                                            <table class="table popup-table">
+                                                <tbody>
+                                                <tr>
+                                                    <th style="width: 120px;">1차 승인자 결재</th>
+                                                    <td>홍길동</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>처리상태</th>
+                                                    <td>처리중</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>처리일시</th>
+                                                    <td>2024-05-10 14:27</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="popup-foot">
+                                            <button class="popup-btn btn-default" id="cancelBtn">취소</button>
+                                            <button class="popup-btn" id="saveBtn">신청</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button type="button" class="btn-point size-m pd-round-4" onclick="popupOpen();">팝업 버튼</button>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-wrap mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/popup_02.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!--                Table END    -->
+
+                            <!--                Table2 START    -->
+                            <article id="popupTable2" class="article-">
+                                <h3 class="title"># 세로 Table</h3>
+                                <p>사용자 팝업창의 버튼영역은 가운데 정렬</p>
+                                <p>팝업 내용영역 패딩 25px 30px</p>
+                                <p>팝업 버튼영역 패딩 20px 0</p>
+                                <p>팝업 버튼영역의 긍정 버튼의 색은 메인색</p>
+
+                                <div class="sec-cont pd-mt30">
+                                    <div class="k-window" style="width: 100%; position: relative;">
+                                        <div class="popup-content">
+                                            <div id="sbjctGrid"></div>
+                                        </div>
+
+                                        <div class="popup-foot">
+                                            <button class="popup-btn btn-default">취소</button>
+                                            <button class="popup-btn">신청</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button type="button" class="btn-point size-m pd-round-4" onclick="popupOpen(2);">팝업 버튼</button>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-wrap pd-mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/popup_02.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!--                Table2 END    -->
+                        </div>
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    <!--  table popup START  -->
+        <div id="popup_window" class="" style="display: none;">
+            <div class="popup-content">
+                <table class="table popup-table">
+                    <tbody>
+                    <tr>
+                        <th style="width: 120px;">1차 승인자 결재</th>
+                        <td>홍길동</td>
+                    </tr>
+                    <tr>
+                        <th>처리상태</th>
+                        <td>처리중</td>
+                    </tr>
+                    <tr>
+                        <th>처리일시</th>
+                        <td>2024-05-10 14:27</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="popup-foot">
+                <button class="popup-btn btn-default">취소</button>
+                <button class="popup-btn">신청</button>
+            </div>
+        </div>
+    <!--  // table popup END  -->
+
+    <!--  table popup START  -->
+        <div id="popup_window2" class="" style="display: none;">
+            <div class="popup-content">
+                <div id="sbjctGrid2"></div>
+            </div>
+
+            <div class="popup-foot">
+                <button class="popup-btn btn-default">취소</button>
+                <button class="popup-btn">신청</button>
+            </div>
+        </div>
+    <!--  // table popup END  -->
+    </div>
+
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $(".popup .liPopupTable a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                // { classNm: "k-window", cont: "팝업 전체감싸는 class"},
+                { classNm: "popup-content", cont: "팝업 콘텐츠"},
+                { classNm: "popup-foot", cont: "팝업 하단 버튼 영역"},
+                { classNm: "popup-btn", cont: "팝업 버튼"},
+                { classNm: "btn-default", cont: "긍정 외 버튼들 기본 모양(삭제, 취소, 닫기)"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+
+            sbjctGrid();
+            sbjctGrid(2);
+        });
+
+        function popupOpen(type) {
+
+            if(!$("#popup_window").data("kendoWindow")) {
+                $("#popup_window").kendoWindow({
+                    width : "460px",
+                    resizable : false,
+                    title : "Table Popup",
+                    modal : true,
+                    visible : false
+                });
+            }
+
+            if(!$("#popup_window2").data("kendoWindow")) {
+                $("#popup_window2").kendoWindow({
+                    width:"1284px",
+                    height :"850px",
+                    resizable : false,
+                    title : "Table Popup",
+                    modal : true,
+                    visible : false
+                });
+            }
+
+            if(type == 2) {
+                $("#popup_window2").data("kendoWindow").center();
+                $("#popup_window2").data("kendoWindow").open();
+            } else {
+                $("#popup_window").data("kendoWindow").center();
+                $("#popup_window").data("kendoWindow").open();
+            }
+
+
+
+        }
+
+        function sbjctGrid(num){
+            var data = [
+                { SUBJECT_NAME: "td", TRAINING_NM: "온라인", ALW_STD_NM: "연구개발>기초연구", CREDIT: 10}
+            ];
+
+            if(num == null) {
+                num = "";
+            }
+
+            $("#sbjctGrid"+num).empty();
+            $("#sbjctGrid"+num).kendoGrid({
+                dataSource: data,
+                columns : [
+                    {
+                        field: "SUBJECT_NAME",
+                        title: "과정명",
+                        width:"250px",
+                        headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                        attributes : { "class" : "table-cell", style : "text-align:left; text-decoration: underline; cursor: pointer;" },
+                        template: function(data){
+                            var subjectName = data.SUBJECT_NAME;
+                            return "<a onclick='' >"+subjectName+"</a>";
+                        }
+                    }, {
+                        field: "TRAINING_NM",
+                        title: "학습유형",
+                        width:"80px",
+                        headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                        attributes : { "class" : "table-cell", style : "text-align:center;" }
+                    }, {
+                        field: "ALW_STD_NM",
+                        title: "과정분류",
+                        width:"150px",
+                        headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                        attributes : { "class" : "table-cell", style : "text-align:left;" }
+                    }, {
+                        field: "CREDIT",
+                        title: "학점",
+                        width:"80px",
+                        headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                        attributes : { "class" : "table-cell", style : "text-align:center;" }
+                    }, {
+                        title : "추가",
+                        width: "80px",
+                        headerAttributes : { "class" : "table-header-cell", style : "text-align:center;"  },
+                        attributes : { "class" : "table-cell", style : "text-align:center;" },
+                        template: function(dataItem){
+                            return '<button class="btn-point-white btn-s"><span>추가</span></button>';
+                        }
+                    }],
+                filterable: true,
+                filterable: {
+                    extra : false,
+                    messages : {filter : "필터", clear : "초기화"},
+                    operators : {
+                        string : { contains : "포함", startswith : "시작문자", eq : "동일단어" },
+                        number : { eq : "같음", gte : "이상", lte : "이하"}
+                    }
+                },
+                height: 450,
+                groupable: false,
+                sortable: "row",
+                resizable: false,
+                reorderable: true,
+                pageable: true,
+                pageable : {
+                    refresh : false,
+                    pageSizes : [10,20,30],
+                    buttonCount: 5
+                }
+            }).data("kendoGrid");
+        }
+    </script>
+</body>
+</html>

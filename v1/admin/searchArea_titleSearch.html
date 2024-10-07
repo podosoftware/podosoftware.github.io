@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- 여기에 head.html을 인클루드 -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#8C63E7" />
+
+        <link rel="shortcut icon" href="" />
+        <link rel="apple-touch-icon" href="" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel="icon" href="" type="image/x-icon" />
+
+        <meta name="Description" content="" />
+        <meta name="Keywords" content="" />
+        <meta name="Copyright" content="" />
+        <meta content="" property="og:title" />
+        <meta content="" property="og:description" />
+        <meta content="" property="og:url" />
+        <meta content="" property="og:site-name" />
+
+        <link rel="stylesheet" href="../css/reset2.css" />
+        <link rel="stylesheet" href="../css/admin/root_admin.css" />
+        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/util.css" />
+        <!--    <link rel="stylesheet" href="../css/style2.css">-->
+        <link rel="stylesheet" href="../css/admin/admin.css" />
+        <link rel="stylesheet" href="../css/guide.css" />
+        <link rel="stylesheet" href="../css/media2.css" />
+
+        <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
+        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+        <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
+        <script src="../js/common2.js"></script>
+        <script src="../js/front.js"></script>
+
+        <link rel="stylesheet" href="../js/prism.css" />
+        <script src="../js/prism.js"></script>
+
+        <title>Search Area - 관리자</title>
+    </head>
+    <body>
+        <!-- 자동완성 방지용  -->
+        <input type="text" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <input type="password" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <!-- 자동완성 방지용  -->
+
+        <div class="wrap">
+            <!--    Header START    -->
+            <!-- 여기에 Header.html을 인클루드 -->
+            <header class="left-header">
+                <div class="left-header-top">
+                    <h1 class="logo">
+                        <a href="index.html"><img src="../images/logo.png" alt="로고" /></a>
+                    </h1>
+                </div>
+                <nav class="left-header-menu-wrap">
+                    <ul>
+                        <!--            <li class="first css">-->
+                        <!--                <a href="javascript: void(0);" class="tab">CSS</a>-->
+                        <!--                <ol>-->
+                        <!--                    <li class="liCss"><a href="css.html">Index</a></li>-->
+                        <!--                </ol>-->
+                        <!--            </li>-->
+                        <li class="two util">
+                            <a href="javascript: void(0);" class="tab">UTIL</a>
+                            <ol>
+                                <li class="liFont"><a href="util.html" data-hash="#font">font</a></li>
+                                <li class="liMgPd"><a href="util_mgPd.html" data-hash="#mgPd">margin/padding</a></li>
+                                <!--                    <li class="liColor"><a href="util_color.html" data-hash="#color">color</a></li>-->
+                                <li class="liClamp"><a href="util_clamp.html" data-hash="#clamp">줄임표</a></li>
+                                <li class="liFlex"><a href="util_flex.html" data-hash="#flex">flex</a></li>
+                                <li class="liHide"><a href="util_hide.html" data-hash="#hide">hide</a></li>
+                                <li class="liNoData"><a href="util_noData.html" data-hash="#noData">No Data</a></li>
+                                <li class="liEtc"><a href="util_etc.html">Etc</a></li>
+                                <!--                    <li><a href="util.html#skeleton">Skeleton</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="color">
+                            <a href="javascript: void(0);" class="tab">COLOR</a>
+                            <ol>
+                                <li class="liColorPrimary"><a href="color_primary.html">Primary(theme)</a></li>
+                                <li class="liColorText"><a href="color_text.html">Text</a></li>
+                                <li class="liColorBg"><a href="color_bg.html">Background&Line</a></li>
+                                <!--                    <li class="liColorBadge"><a href="color_badge.html">badge</a></li>-->
+                                <!--                    <li class="liColorEtc"><a href="color_etc.html">etc</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="three button">
+                            <a href="javascript: void(0);" class="tab">BUTTON</a>
+                            <ol>
+                                <li class="liContents"><a href="button.html" data-hash="#contents">Contents Buttons</a></li>
+                                <li class="liSpliterContents"><a href="button_spliterCont.html" data-hash="#spliterRightContents">Spliter-Right Contents Buttons</a></li>
+                            </ol>
+                        </li>
+                        <li class="input">
+                            <a href="javascript: void(0);" class="tab">Input</a>
+                            <ol>
+                                <li class="liInput"><a href="input.html" data-hash="#input">Input box</a></li>
+                                <li class="liInputNum"><a href="input_number.html" data-hash="#input">Input Number box</a></li>
+                                <li class="liTextBox"><a href="input_textBox.html" data-hash="#textareaBox">Textarea box</a></li>
+                                <li class="liChkRadio"><a href="input_checkRadio.html" data-hash="#checkRadio">Checkbox/Radio</a></li>
+                            </ol>
+                        </li>
+                        <li class="four tab">
+                            <a href="javascript: void(0);" class="tab">Tab</a>
+                            <ol>
+                                <li class="liTab"><a href="tab.html" data-hash="#popupTab">Popup Tab Style</a></li>
+                                <li class="liSpliterTab"><a href="tab_spliterTab.html" data-hash="#spliterTab">Spliter-Right Tab Style</a></li>
+                            </ol>
+                        </li>
+                        <li class="five popup">
+                            <a href="javascript: void(0);" class="tab">Popup</a>
+                            <ol>
+                                <li class="liPopup"><a href="popup.html" data-hash="#style">Style</a></li>
+                            </ol>
+                        </li>
+                        <li class="spliterRight">
+                            <a href="javascript: void(0);" class="tab">Spliter-Right</a>
+                            <ol>
+                                <li class="liTitle"><a href="spliterRight.html" data-hash="#title">Title</a></li>
+                                <li class="liTable"><a href="spliterRight_table.html#table" data-hash="#table">Contents Inner Table</a></li>
+                                <!--                    <li class="liContInner"><a href="spliterRight_contInner.html#contentsInner" data-hash="#contentsInner">Contents Inner</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="searchArea">
+                            <a href="javascript: void(0);" class="tab">Search Area</a>
+                            <ol>
+                                <li class="liArea"><a href="searchArea.html" data-hash="#area">Area</a></li>
+                                <li class="liAreaBtn"><a href="searchArea_areaBtn.html" data-hash="#areaButtonBottom">검색버튼 영역 아래</a></li>
+                                <li class="liTitleSearch"><a href="searchArea_titleSearch.html" data-hash="#titleSearch">Title Search</a></li>
+                            </ol>
+                        </li>
+                        <li class="badge-">
+                            <a href="javascript: void(0);" class="tab">Badge</a>
+                            <ol>
+                                <li class="liBadge"><a href="badge.html" data-hash="#badge">Badge</a></li>
+                                <li class="liCurrent"><a href="badge_current.html" data-hash="#currentSituation">Current Situation</a></li>
+                            </ol>
+                        </li>
+                        <li class="etc">
+                            <a href="javascript: void(0);" class="tab">기타</a>
+                            <ol>
+                                <li class="liPay"><a href="etc.html" data-hash="#pay">결제관리</a></li>
+                            </ol>
+                        </li>
+                        <li class="tips">
+                            <a href="javascript: void(0);" class="tab">Tips</a>
+                            <ol>
+                                <li class="liTip"><a href="tips.html" data-hash="#tip">Tips</a></li>
+                                <li class="liTip2"><a href="tips_tip2.html" data-hash="#tip2">운영관리 Tip</a></li>
+                                <li class="liContTip"><a href="tips_contTip.html" data-hash="#contentsTip">선택항목 tip</a></li>
+                                <li class="liTooltip"><a href="tips_tooltip.html" data-hash="#tooltip">Tooltip</a></li>
+                                <li class="liContTip2"><a href="tips_contTip2.html" data-hash="#contTip">팝업 콘텐츠 Tip</a></li>
+                            </ol>
+                        </li>
+                        <!--            <li class="kendoUi">-->
+                        <!--                <a href="javascript: void(0);" class="tab">Kendo UI</a>-->
+                        <!--                <ol>-->
+                        <!--                    <li class="liUpload"><a href="admin_kendoUi.html" data-hash="#upload">Upload</a></li>-->
+                        <!--                    <li class="liMulti"><a href="kendoUi_multi.html" data-hash="#multiselect">MultiSelect</a></li>-->
+                        <!--                    <li class="liGrid"><a href="kendoUi_grid.html" data-hash="#gridFilterTooltip">Grid</a></li>-->
+                        <!--                    <li class="liIcons"><a href="kendoUi_icons.html" data-hash="#icons">Icons</a></li>-->
+                        <!--                    <li class="liDatePicker"><a href="admin_kendoUi_date.html" data-hash="#datePicker">DatePicker</a></li>-->
+                        <!--                    <li class="liTime"><a href="kendoUi_time.html" data-hash="#dateTimePicker">DateTimePicker</a></li>-->
+                        <!--                    <li class="liRange"><a href="kendoUi_range.html" data-hash="#dateRangePicker">DateRangePicker</a></li>-->
+                        <!--&lt;!&ndash;                    <li class="liCalendar"><a href="kendoUi_calendar.html" data-hash="#calendar">Calendar</a></li>&ndash;&gt;-->
+                        <!--                    <li class="liNumeric"><a href="kendoUi_numeric.html" data-hash="#numericTextBox">NumericTextBox</a></li>-->
+                        <!--                    <li class="liDropDown"><a href="kendoUi_dropDown.html" data-hash="#dropDownList">DropDownList</a></li>-->
+                        <!--                    <li class="liPaging"><a href="kendoUi_paging.html" data-hash="#paging">Paging</a></li>-->
+                        <!--                    <li class="liEditor"><a href="kendoUi_editor.html" data-hash="#editor">Editor</a></li>-->
+                        <!--                    <li class="liTree"><a href="kendoUi_tree.html" data-hash="#kendoTree">Kendo Tree</a></li>-->
+                        <!--                </ol>-->
+                        <!--            </li>-->
+                    </ul>
+                </nav>
+            </header>
+
+            <!--        <div id="header" data-include-path="header.html"></div>-->
+            <!--    Header END    -->
+
+            <!--    본문영역 START    -->
+            <main class="body-container">
+                <!--        breadcrumb START        -->
+                <section class="breadcrumb">
+                    <div class="container">
+                        <ul class="menu">
+                            <li>
+                                <a href="index.html"><i class="icon-home"></i></a>
+                            </li>
+                            <li>Search Area</li>
+                        </ul>
+                    </div>
+                </section>
+                <!--        breadcrumb END        -->
+
+                <section class="sec-">
+                    <div class="container">
+                        <div class="top-title-box">
+                            <h2>Search Area</h2>
+                        </div>
+
+                        <div class="flex-group">
+                            <article id="titleSearch" class="article-">
+                                <h3 class="title"># Title Search</h3>
+                                <p>타이틀 옆 검색</p>
+
+                                <div class="sec-cont">
+                                    <div class="">
+                                        <div class="cont_body-top">
+                                            <ul class="search-wrap">
+                                                <li>
+                                                    <select name="" id="titleSearchSelect" style="width: 120px"></select>
+                                                </li>
+                                                <li class="last pd-flex- pd-gap7">
+                                                    <div class="date-box-wrap">
+                                                        <div class="date-box">
+                                                            <input type="text" id="titleSearchSt" />
+                                                        </div>
+                                                        <span class="label_text"></span>
+                                                        <div class="date-box">
+                                                            <input type="text" id="titleSearchEd" />
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn_search">
+                                                        <i class="icon icon-search"></i>
+                                                        <span class="blind">검색</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="accordion-wrap mt30">
+                                            <div class="accordion-head">
+                                                <strong>코드 보기</strong>
+                                            </div>
+                                            <div class="accordion-body">
+                                                <div class="g-code-box">
+                                                    <pre data-src="code/searchArea_03.html"></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--                        //    -->
+                                </div>
+                            </article>
+                            <!--                // titleSearch End    -->
+
+                            <div class="guid-table-box">
+                                <div class="guid-table-fixed">
+                                    <strong>Class</strong>
+                                    <strong>내용</strong>
+                                </div>
+                                <ul id="guidClass"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!--    본문영역 END    -->
+
+            <!--    Footer START    -->
+            <!--    Footer END    -->
+
+            <script>
+                var now = new Date();
+                var mon = '';
+                var day = '';
+                if (now.getMonth() + 1 < 10) {
+                    mon = '0' + (now.getMonth() + 1);
+                } else {
+                    mon = now.getMonth() + 1;
+                }
+                if (now.getDate() < 10) {
+                    day = '0' + now.getDate();
+                } else {
+                    day = now.getDate();
+                }
+                var nowDay = now.getFullYear() + '-' + mon + '-' + day;
+
+                var currentPath = window.location.pathname;
+                var currentHash = window.location.hash;
+
+                $(function () {
+                    kendo.culture('ko-KR');
+
+                    $('.searchArea .liTitleSearch a').addClass('active');
+
+                    settingSearchDraw();
+
+                    settingSearchDraw2();
+
+                    var html = '';
+                    var guidData = [
+                        { classNm: 'cont_body-top', cont: '페이지 상단 타이틀 영역' },
+                        { classNm: 'search-wrap', cont: '검색영역' },
+                        { classNm: 'last', cont: '여기선 마지막 요소이기에 넓이가 넓게 책정되어있다.' },
+                        { classNm: 'btn_search', cont: '검색 버튼' },
+                        { classNm: 'icon', cont: '아이콘 이미지를 불러온다.' },
+                        { classNm: 'icon-search', cont: '검색 아이콘' },
+                        { classNm: 'blind', cont: '접근성 텍스트 감춤' },
+                    ];
+
+                    for (var i = 0; i < guidData.length; i++) {
+                        html += '<li>';
+                        html += "   <p class='left'>" + guidData[i].classNm + '</p>';
+                        html += "   <p class='right'>" + guidData[i].cont + '</p>';
+                        html += '</li>';
+                    }
+
+                    $('#guidClass').html(html);
+                });
+
+                function settingSearchDraw() {
+                    // 시작 등록일
+                    $('#searchCreat_start_date')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 0, 1),
+                            change: function (e) {
+                                var startDate = this.value();
+                                if (startDate != null) {
+                                    startDate = new Date(startDate);
+                                    startDate.setDate(startDate.getDate());
+                                    $('#searchCreat_end_date').data('kendoDataPicker').min(startDate);
+                                } else if ($('#searchCreat_end_date').data('kendoDataPicker').value() != null) {
+                                    $('#searchCreat_end_date')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#searchCreat_end_date')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 종료 등록일
+                    $('#searchCreat_end_date')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 11 + 1, 0),
+                            change: function (e) {
+                                var endDate = this.value();
+                                if (endDate) {
+                                    endDate = new Date(endDate);
+                                    endDate.setDate(endDate.getDate());
+                                    $('#searchCreat_start_date').data('kendoDataPicker').max(endDate);
+                                } else if ($('#searchCreat_start_date').data('kendoDataPicker').value() == null) {
+                                    $('#searchCreat_start_date')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#searchCreat_start_date')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 다운로드 기간 시작일
+                    $('#start_date')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 0, 1),
+                            change: function (e) {
+                                var startDate = this.value();
+                                if (startDate != null) {
+                                    startDate = new Date(startDate);
+                                    startDate.setDate(startDate.getDate());
+                                    $('#end_date').data('kendoDataPicker').min(startDate);
+                                } else if ($('#end_date').data('kendoDataPicker').value() != null) {
+                                    $('#end_date')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#end_date')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 다운로드 기간 종료일
+                    $('#end_date')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 11 + 1, 0),
+                            change: function (e) {
+                                var endDate = this.value();
+                                if (endDate) {
+                                    endDate = new Date(endDate);
+                                    endDate.setDate(endDate.getDate());
+                                    $('#start_date').data('kendoDataPicker').max(endDate);
+                                } else if ($('#start_date').data('kendoDataPicker').value() == null) {
+                                    $('#start_date')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#start_date')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 다운로드 기간 선택
+                    $('#searchDownloadDate').kendoDropDownList({
+                        // dataSource: dsTrainingCode,
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        change: function (e) {
+                            var val = this.value();
+                        },
+                    });
+
+                    // 콘텐츠유형
+                    $('#CONTS_TYPE').kendoDropDownList({
+                        // dataSource: dsTrainingCode,
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        optionLabel: '== 전체 ==',
+                        change: function (e) {
+                            var val = this.value();
+                        },
+                    });
+
+                    // 파일유형
+                    $('#FILE_TYPE').kendoDropDownList({
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        optionLabel: '== 전체 ==',
+                    });
+
+                    // 상태
+                    $('#STATE_CODE').kendoDropDownList({
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        optionLabel: '== 전체 ==',
+                    });
+
+                    // 시작 등록일
+                    $('#searchCreat_start_date2')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 0, 1),
+                            change: function (e) {
+                                var startDate = this.value();
+                                if (startDate != null) {
+                                    startDate = new Date(startDate);
+                                    startDate.setDate(startDate.getDate());
+                                    $('#searchCreat_end_date2').data('kendoDataPicker').min(startDate);
+                                } else if ($('#searchCreat_end_date2').data('kendoDataPicker').value() != null) {
+                                    $('#searchCreat_end_date2')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#searchCreat_end_date2')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 종료 등록일
+                    $('#searchCreat_end_date2')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 11 + 1, 0),
+                            change: function (e) {
+                                var endDate = this.value();
+                                if (endDate) {
+                                    endDate = new Date(endDate);
+                                    endDate.setDate(endDate.getDate());
+                                    $('#searchCreat_start_date2').data('kendoDataPicker').max(endDate);
+                                } else if ($('#searchCreat_start_date2').data('kendoDataPicker').value() == null) {
+                                    $('#searchCreat_start_date2')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#searchCreat_start_date2')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 다운로드 기간 시작일
+                    $('#start_date2')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 0, 1),
+                            change: function (e) {
+                                var startDate = this.value();
+                                if (startDate != null) {
+                                    startDate = new Date(startDate);
+                                    startDate.setDate(startDate.getDate());
+                                    $('#end_date2').data('kendoDataPicker').min(startDate);
+                                } else if ($('#end_date2').data('kendoDataPicker').value() != null) {
+                                    $('#end_date2')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#end_date2')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 다운로드 기간 종료일
+                    $('#end_date2')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 11 + 1, 0),
+                            change: function (e) {
+                                var endDate = this.value();
+                                if (endDate) {
+                                    endDate = new Date(endDate);
+                                    endDate.setDate(endDate.getDate());
+                                    $('#start_date2').data('kendoDataPicker').max(endDate);
+                                } else if ($('#start_date2').data('kendoDataPicker').value() == null) {
+                                    $('#start_date2')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#start_date2')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 다운로드 기간 선택
+                    $('#searchDownloadDate2').kendoDropDownList({
+                        // dataSource: dsTrainingCode,
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        change: function (e) {
+                            var val = this.value();
+                        },
+                    });
+
+                    // 콘텐츠유형
+                    $('#CONTS_TYPE2').kendoDropDownList({
+                        // dataSource: dsTrainingCode,
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        optionLabel: '== 전체 ==',
+                        change: function (e) {
+                            var val = this.value();
+                        },
+                    });
+
+                    // 파일유형
+                    $('#FILE_TYPE2').kendoDropDownList({
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        optionLabel: '== 전체 ==',
+                    });
+
+                    // 상태
+                    $('#STATE_CODE2').kendoDropDownList({
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        optionLabel: '== 전체 ==',
+                    });
+                }
+
+                function settingSearchDraw2() {
+                    $('#titleSearchSelect').kendoDropDownList({
+                        // dataSource: dsTrainingCode,
+                        dataTextField: 'TEXT',
+                        dataValueField: 'VALUE',
+                        change: function (e) {
+                            var val = this.value();
+                        },
+                    });
+
+                    // 시작 등록일
+                    $('#titleSearchSt')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 0, 1),
+                            change: function (e) {
+                                var startDate = this.value();
+                                if (startDate != null) {
+                                    startDate = new Date(startDate);
+                                    startDate.setDate(startDate.getDate());
+                                    $('#titleSearchEd').data('kendoDataPicker').min(startDate);
+                                } else if ($('#titleSearchEd').data('kendoDataPicker').value() != null) {
+                                    $('#titleSearchEd')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#titleSearchEd')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+
+                    // 종료 등록일
+                    $('#titleSearchEd')
+                        .kendoDatePicker({
+                            format: 'yyyy-MM-dd',
+                            value: new Date(now.getFullYear(), 11 + 1, 0),
+                            change: function (e) {
+                                var endDate = this.value();
+                                if (endDate) {
+                                    endDate = new Date(endDate);
+                                    endDate.setDate(endDate.getDate());
+                                    $('#titleSearchSt').data('kendoDataPicker').max(endDate);
+                                } else if ($('#titleSearchSt').data('kendoDataPicker').value() == null) {
+                                    $('#titleSearchSt')
+                                        .data('kendoDataPicker')
+                                        .min(new Date(1900, 0, 1));
+                                    $('#titleSearchSt')
+                                        .data('kendoDataPicker')
+                                        .max(new Date(2099, 11, 31));
+                                    this.min(new Date(1900, 0, 1));
+                                    this.max(new Date(2099, 11, 31));
+                                }
+                            },
+                        })
+                        .data('kendoDatePicker');
+                }
+            </script>
+        </div>
+    </body>
+</html>

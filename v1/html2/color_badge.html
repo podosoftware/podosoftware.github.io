@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- 여기에 head.html을 인클루드 -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#8C63E7" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link rel="shortcut icon" href="" />
+        <link rel="apple-touch-icon" href="" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel="icon" href="" type="image/x-icon" />
+
+        <meta name="Description" content="" />
+        <meta name="Keywords" content="" />
+        <meta name="Copyright" content="" />
+        <meta content="" property="og:title" />
+        <meta content="" property="og:description" />
+        <meta content="" property="og:url" />
+        <meta content="" property="og:site-name" />
+
+        <link rel="stylesheet" href="../css/reset2.css" />
+        <link rel="stylesheet" href="../css/root.css" />
+        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/util.css" />
+        <link rel="stylesheet" href="../css/style2.css" />
+        <link rel="stylesheet" href="../css/guide.css" />
+        <link rel="stylesheet" href="../css/media2.css" />
+
+        <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
+        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+        <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
+        <script src="../js/common2.js"></script>
+        <script src="../js/front.js"></script>
+
+        <link rel="stylesheet" href="../js/prism.css" />
+        <script src="../js/prism.js"></script>
+
+        <title>Color - Primary(theme) || 관리자</title>
+    </head>
+    <body>
+        <!-- 자동완성 방지용  -->
+        <input type="text" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <input type="password" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <!-- 자동완성 방지용  -->
+
+        <div class="wrap">
+            <!--    Header START    -->
+            <!-- 여기에 Header.html을 인클루드 -->
+            <header class="left-header">
+                <div class="left-header-top">
+                    <h1 class="logo">
+                        <a href="index.html"><img src="../images/logo.png" alt="로고" /></a>
+                    </h1>
+                </div>
+                <nav class="left-header-menu-wrap">
+                    <ul>
+                        <li class="first util">
+                            <a href="javascript: void(0);" class="tab">UTIL</a>
+                            <ol>
+                                <li class="liFont"><a href="util.html" data-hash="#font">font</a></li>
+                                <li class="liMgPd"><a href="util_mgPd.html" data-hash="#mgPd">margin/padding</a></li>
+                                <!--                    <li class="liColor"><a href="util_color.html" data-hash="#color">color</a></li>-->
+                                <li class="liClamp"><a href="util_clamp.html" data-hash="#clamp">줄임표</a></li>
+                                <li class="liFlex"><a href="util_flex.html" data-hash="#flex">flex</a></li>
+                                <li class="liHide"><a href="util_hide.html" data-hash="#hide">hide</a></li>
+                                <li class="liNoData"><a href="util_noData.html" data-hash="#noData">No Data</a></li>
+                                <li class="liEtc"><a href="util_etc.html">Etc</a></li>
+                                <!--                    <li><a href="util.html#skeleton">Skeleton</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="color">
+                            <a href="javascript: void(0);" class="tab">COLOR</a>
+                            <ol>
+                                <li class="liColorPrimary"><a href="color_primary.html">Primary(theme)</a></li>
+                                <li class="liColorText"><a href="color_text.html">Text</a></li>
+                                <li class="liColorBg"><a href="color_bg.html">Background&Line</a></li>
+                                <li class="liColorBadge"><a href="color_badge.html">badge</a></li>
+                                <li class="liColorEtc"><a href="color_etc.html">etc</a></li>
+                            </ol>
+                        </li>
+                        <li class="four button">
+                            <a href="javascript: void(0);" class="tab">BUTTON</a>
+                            <ol>
+                                <li class="liBtn"><a href="Button.html" data-hash="#size">size</a></li>
+                                <li class="liPopupBtn"><a href="Button_popupBtn.html" data-hash="#popup">popup</a></li>
+                                <li class="liTableBtn"><a href="Button_tableBtn.html" data-hash="#tableBtn">table button</a></li>
+                            </ol>
+                        </li>
+                        <li class="input">
+                            <a href="javascript: void(0);" class="tab">Input/Select</a>
+                            <ol>
+                                <li class="liInput"><a href="input.html" data-hash="#input">Input box</a></li>
+                                <li class="liSelect"><a href="input_select.html" data-hash="#select">Select</a></li>
+                                <li class="liRadioChk"><a href="input_radioChk.html" data-hash="#radioCheck">Checkbox/Radio</a></li>
+                                <li class="liTextBox"><a href="input_textBox.html" data-hash="#textareaBox">Textarea box</a></li>
+                                <li class="liSize"><a href="input_size.html" data-hash="#inputSize">input Size</a></li>
+                                <li class="liSearch"><a href="input_search.html" data-hash="#inputSearch">input Search</a></li>
+                            </ol>
+                        </li>
+                        <li class="five popup">
+                            <a href="javascript: void(0);" class="tab">Popup</a>
+                            <ol>
+                                <li class="liPopup"><a href="popup.html" data-hash="#style">Style</a></li>
+                                <li class="liPopupTable"><a href="popup_popupTable.html">Popup in table</a></li>
+                            </ol>
+                        </li>
+                        <li class="two breakpointTab">
+                            <a href="javascript: void(0);" class="tab">Breakpoint</a>
+                            <ol>
+                                <li class="liBreakpoint"><a href="breakpoint.html">Breakpoint</a></li>
+                            </ol>
+                        </li>
+                        <li class="two loginTab">
+                            <a href="javascript: void(0);" class="tab">Login</a>
+                            <ol>
+                                <li class="liLogin"><a href="login.html">Login</a></li>
+                                <!--                    <li class="liLIdPw"><a href="login_idPw.html">아이디찾기/비밀번호찾기</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="tips">
+                            <a href="javascript: void(0);" class="tab">Tip</a>
+                            <ol>
+                                <li class="liTip"><a href="tips.html" data-hash="#tip">Tips</a></li>
+                            </ol>
+                        </li>
+                        <li class="three star">
+                            <a href="javascript: void(0);" class="tab">별점</a>
+                            <ol>
+                                <li class="liStar"><a href="star.html" data-hash="#star">별점</a></li>
+                            </ol>
+                        </li>
+
+                        <li class="five tabLi">
+                            <a href="javascript: void(0);" class="tab">TAB</a>
+                            <ol>
+                                <li class="liTab"><a href="tab.html" data-hash="#tabStyle">Tab</a></li>
+                                <li class="liTabKendo"><a href="tab_kendoTab.html" data-hash="#tabKendo">Kendo Tab</a></li>
+                                <li class="liFilterTab"><a href="tab_filter.html" data-hash="#filter">Filter</a></li>
+                                <li class="liFilterTabApply"><a href="tab_filterEduList.html" data-hash="#filterEduList">Filter 교육신청</a></li>
+                            </ol>
+                        </li>
+                        <li class="six tableLi">
+                            <a href="javascript: void(0);" class="tab">테이블</a>
+                            <ol>
+                                <li class="liTable"><a href="table.html">table</a></li>
+                                <!--                    <li class="liTable2"><a href="table_theme2.html">table Theme2</a></li>-->
+                                <!--                    <li class="liTable3"><a href="table_theme3.html">table Theme3</a></li>-->
+                                <li class="liGrid"><a href="table_grid.html">Kendo Grid</a></li>
+                            </ol>
+                        </li>
+                        <li class="seven list">
+                            <a href="javascript: void(0);" class="tab">리스트</a>
+                            <ol>
+                                <li class="liEdu"><a href="edu.html" data-hash="#main">메인</a></li>
+                                <li class="liEduApply"><a href="edu_eduApply.html" data-hash="#eduApply">교육신청</a></li>
+                                <li class="liMyClassIng"><a href="edu_myClassIng.html" data-hash="#myClassIng">나의강의실 수강중</a></li>
+                                <li class="liMyClassEnd"><a href="edu_myClassEnd.html" data-hash="#myClassEnd">나의강의실 종료</a></li>
+                                <li class="liMyCdp"><a href="edu_myCdp.html" data-hash="#myCdp">교육계획 현황</a></li>
+                            </ol>
+                        </li>
+                        <li class="eight accordion">
+                            <a href="javascript: void(0);" class="tab">아코디언</a>
+                            <ol>
+                                <li class="liAcco"><a href="accordion.html" data-hash="#accordion">서브페이지</a></li>
+                                <li class="liAccoList"><a href="accordion_list.html" data-hash="#accordion2">강의목차</a></li>
+                            </ol>
+                        </li>
+                        <li class="nine chart">
+                            <a href="javascript: void(0);" class="tab">Chart</a>
+                            <ol>
+                                <li class="liBullet"><a href="chartBullet.html">bullet</a></li>
+                                <li class="liColumn"><a href="chartColumn.html">column</a></li>
+                                <li class="liDonut"><a href="chartDonut.html">donut</a></li>
+                                <li class="liDonutHalf"><a href="chartDonutHalf.html">donut half</a></li>
+                                <li class="liRadarArea"><a href="chartRadarArea.html">radarArea</a></li>
+                                <!--                    <li class="liLine"><a href="chartLine.html">line</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="badge-">
+                            <a href="javascript: void(0);" class="tab">Badge</a>
+                            <ol>
+                                <li class="liBadge"><a href="badge.html">Badge</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!--        <div id="header" data-include-path="header.html"></div>-->
+            <!--    Header END    -->
+
+            <!--    본문영역 START    -->
+            <main class="body-container">
+                <!--        breadcrumb START        -->
+                <section class="breadcrumb">
+                    <div class="container">
+                        <ul class="menu">
+                            <li>
+                                <a href="index.html"><i class="icon-home"></i></a>
+                            </li>
+                            <li>COLOR</li>
+                        </ul>
+                    </div>
+                </section>
+                <!--        breadcrumb END        -->
+
+                <section class="sec-">
+                    <div class="container">
+                        <div class="top-title-box">
+                            <h2>COLOR</h2>
+                        </div>
+
+                        <div class="flex-group">
+                            <article id="input" class="article-">
+                                <h3 class="title"># Badge</h3>
+                                <p>해당 컬러는 각 css 에 var(); 넣어주세요.</p>
+
+                                <div class="sec-cont">
+                                    <div class="">
+                                        <div class="pd-flex-col pd-gap30">
+                                            <div>
+                                                <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--online-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#3851aa</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--offline-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#aa64c2</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--blended-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#8e8a21</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--burn-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#1792ea</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+                                                </div>
+                                            </div>
+                                            <div class="g-code-box">
+                                                <pre class="line-numbers"><code class="language-css">
+    --online-400: #3851aa;     /* 온라인 연하게 */
+    --online-500: #3851aa;     /* 온라인 기본 */
+    --online-600: #3851aa;     /* 온라인 진하게 */
+
+    --offline-400: #aa64c2;     /* 집합 연하게 */
+    --offline-500: #aa64c2;     /* 집합 기본 */
+    --offline-600: #aa64c2;     /* 집합 진하게 */
+
+    --blended-400: #8e8a21;     /* 블랜디드 연하게 */
+    --blended-500: #8e8a21;     /* 블랜디드 기본 */
+    --blended-600: #8e8a21;     /* 블랜디드 진하게 */
+
+    --burn-400: #1792ea;     /* 화상 연하게 */
+    --burn-500: #1792ea;     /* 화상 기본 */
+    --burn-600: #1792ea;     /* 화상 진하게 */
+                                </code></pre>
+                                            </div>
+                                            <!--                                    // END   -->
+
+                                            <div>
+                                                <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--attClass-400)"></div>
+                                                        <p>500</p>
+                                                        <span>#00a524</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--comp-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#0e8e8e</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--notSel-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#565656</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--appl-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#f15e1f</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+                                                </div>
+                                            </div>
+                                            <div class="g-code-box">
+                                                <pre class="line-numbers"><code class="language-css">
+    --attClass-400: #00a524;     /* 수강 연하게 */
+    --attClass-500: #00a524;     /* 수강 기본 */
+    --attClass-600: #00a524;     /* 수강 진하게 */
+
+    --comp-400: #0e8e8e;     /* 수료 연하게 */
+    --comp-500: #0e8e8e;     /* 수료 기본 */
+    --comp-600: #0e8e8e;     /* 수료 진하게 */
+
+    --notSel-400: #565656;     /* 미선정 연하게 */
+    --notSel-500: #565656;     /* 미선정 기본 */
+    --notSel-600: #565656;     /* 미선정 진하게 */
+
+    --appl-400: #f15e1f;     /* 신청 연하게 */
+    --appl-500: #f15e1f;     /* 신청 기본 */
+    --appl-600: #f15e1f;     /* 신청 진하게 */
+                                </code></pre>
+                                            </div>
+                                            <!--                                    // END   -->
+
+                                            <div>
+                                                <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--ess-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#22a0c8</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--sel-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#f5a201</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--pass-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#0395ff</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--fail-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#aa3c3c</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+                                                </div>
+                                            </div>
+                                            <div class="g-code-box">
+                                                <pre class="line-numbers"><code class="language-css">
+    --ess-400: #22a0c8;     /* 필수 연하게 */
+    --ess-500: #22a0c8;     /* 필수 기본 */
+    --ess-600: #22a0c8;     /* 필수 진하게 */
+
+    --sel-400: #f5a201;     /* 선택 연하게 */
+    --sel-500: #f5a201;     /* 선택 기본 */
+    --sel-600: #f5a201;     /* 선택 진하게 */
+
+    --pass-400: #0395ff;     /* pass 연하게 */
+    --pass-500: #0395ff;     /* pass 기본 */
+    --pass-600: #0395ff;     /* pass 진하게 */
+
+    --fail-400: #aa3c3c;     /* fail 연하게 */
+    --fail-500: #aa3c3c;     /* fail 기본 */
+    --fail-600: #aa3c3c;     /* fail 진하게 */
+                                </code></pre>
+                                            </div>
+                                            <!--                                    // END   -->
+
+                                            <div>
+                                                <div class="pd-flex- pd-gap7 pd-flex-wrap pd-mt10">
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--hw-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#6b24b1</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--test-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#2461d8</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--attend-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#fa6e42</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--comp-crit-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#177e78</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--notComp-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#db414a</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+
+                                                    <div class="pd-flex- color-box-50">
+                                                        <div style="background-color: var(--rate-500)"></div>
+                                                        <p>500</p>
+                                                        <span>#e72599</span>
+                                                    </div>
+                                                    <!--                                            // END    -->
+                                                </div>
+                                            </div>
+                                            <div class="g-code-box">
+                                                <pre class="line-numbers"><code class="language-css">
+    --hw-400: #6b24b1;     /* 과제 연하게 */
+    --hw-500: #6b24b1;     /* 과제 기본 */
+    --hw-600: #6b24b1;     /* 과제 진하게 */
+
+    --test-400: #2461d8;     /* 시험 연하게 */
+    --test-500: #2461d8;     /* 시험 기본 */
+    --test-600: #2461d8;     /* 시험 진하게 */
+
+    --attend-400: #fa6e42;     /* 출석 연하게 */
+    --attend-500: #fa6e42;     /* 출석 기본 */
+    --attend-600: #fa6e42;     /* 출석 진하게 */
+
+    --comp-crit-400: #177e78;     /* 수료 연하게 */
+    --comp-crit-500: #177e78;     /* 수료 기본 */
+    --comp-crit-600: #177e78;     /* 수료 진하게 */
+
+    --notComp-400: #db414a;     /* 미수료 연하게 */
+    --notComp-500: #db414a;     /* 미수료 기본 */
+    --notComp-600: #db414a;     /* 미수료 진하게 */
+
+    --rate-400: #e72599;     /* 진도 연하게 */
+    --rate-500: #e72599;     /* 진도 기본 */
+    --rate-600: #e72599;     /* 진도 진하게 */
+                                </code></pre>
+                                            </div>
+                                            <!--                                    // END   -->
+                                        </div>
+                                    </div>
+
+                                    <!--                        //    -->
+                                </div>
+                            </article>
+                            <!--                // Input End    -->
+
+                            <!--                        <div class="guid-table-box">-->
+                            <!--                            <div class="guid-table-fixed">-->
+                            <!--                                <strong>Class</strong>-->
+                            <!--                                <strong>내용</strong>-->
+                            <!--                            </div>-->
+                            <!--                            <ul id="guidClass"></ul>-->
+                            <!--                        </div>-->
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!--    본문영역 END    -->
+
+            <!--    Footer START    -->
+            <!--    Footer END    -->
+
+            <script>
+                var now = new Date();
+                var mon = '';
+                var day = '';
+                if (now.getMonth() + 1 < 10) {
+                    mon = '0' + (now.getMonth() + 1);
+                } else {
+                    mon = now.getMonth() + 1;
+                }
+                if (now.getDate() < 10) {
+                    day = '0' + now.getDate();
+                } else {
+                    day = now.getDate();
+                }
+                var nowDay = now.getFullYear() + '-' + mon + '-' + day;
+
+                var currentPath = window.location.pathname;
+                var currentHash = window.location.hash;
+
+                $(function () {
+                    kendo.culture('ko-KR');
+
+                    $('.color .liColorBadge a').addClass('active');
+
+                    var html = '';
+                    var guidData = [{ classNm: 'input-box', cont: 'input를 감싸는 class. 주로 input 옆에 다른게 붙을 시 사용된다.' }];
+
+                    for (var i = 0; i < guidData.length; i++) {
+                        html += '<li>';
+                        html += "   <p class='left'>" + guidData[i].classNm + '</p>';
+                        html += "   <p class='right'>" + guidData[i].cont + '</p>';
+                        html += '</li>';
+                    }
+
+                    $('#guidClass').html(html);
+                });
+            </script>
+        </div>
+    </body>
+</html>

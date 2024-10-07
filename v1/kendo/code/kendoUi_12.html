@@ -1,0 +1,41 @@
+<div>
+    <input type="text" id="numericTextBox_only" class="input-default txt-center" style="width: 138px;">
+</div>
+
+<div>
+    <p class="p-circle"><i class="circle"></i>옆에 단위가 붙었을 경우</p>
+    <ul class="eduHour-box-wrap">
+        <li>
+            <input type="text" id="numericTextBox_time" class="input-default txt-center" style="width: 138px;">
+            <span class="label_text">시간</span>
+        </li>
+        <li>
+            <input type="text" id="numericTextBox_mm" class="input-default txt-center" style="width: 138px;">
+            <span class="label_text">분</span>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    $("#numericTextBox_only").kendoNumericTextBox({
+        format: "",
+        min: 0,
+        max: 9999,
+        step: 1
+    });
+
+    $("#numericTextBox_time").kendoNumericTextBox({
+        format: "",
+        min: 0,
+        max: 9999,
+        step: 1
+    });
+
+    $("#numericTextBox_mm").kendoNumericTextBox({
+        format: "",
+        min: 0,
+        max: 9999,
+        step: 1
+    });
+</script>

@@ -1,0 +1,918 @@
+@charset "utf-8";
+// SCSS 설정
+@use "sass:math";
+
+// SCSS 변수로 브레이크포인트 설정
+$breakpoints: (
+    'small': 480px,
+    'medium': 820px,
+    'large': 1024px,
+    'xlarge': 1279px
+);
+
+// px -> vw 변환
+// 뷰포트 기준을 설정합니다.
+$viewport-width: 1920; // 뷰포트 너비 (기준)
+// 미디어 쿼리별 뷰포트 너비 설정
+$viewport-width-xlarge: 1279;  // 큰 화면 기준 뷰포트 너비
+$viewport-width-large: 1024;  // 큰 화면 기준 뷰포트 너비
+$viewport-width-medium: 820;  // 중간 화면 기준 뷰포트 너비
+$viewport-width-small: 480;   // 작은 화면 기준 뷰포트 너비
+
+// 미디어 쿼리용 믹스인 정의
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == 'small' {
+        @media (max-width: 480px) { @content; }
+    } @else if $breakpoint == 'medium' {
+        @media (max-width: 820px) { @content; }
+    } @else if $breakpoint == 'large' {
+        @media (max-width: 1024px) { @content; }
+    } @else if $breakpoint == 'xlarge' {
+        @media (max-width: 1279px) { @content; }
+    }
+}
+
+// px를 vw로 변환하는 함수
+//@function px-to-vw($px, $viewport-width) {
+//    // 변환 값 계산
+//    $vw-value: ($px / $viewport-width) * 100;
+//
+//    // 소수점 2자리까지만 반올림 후 반환
+//    @return #{math.round($vw-value * 100) / 100}vw;
+//}
+
+/*
+*--------------------------------------------*
+|                   Font                     |
+*--------------------------------------------*
+*/
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+/*@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");*/
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/lato@5.0.18/index.min.css");
+@import url("https://cdn.jsdelivr.net/npm/noto-sans-kr-font@0.0.6/noto-sans-kr.min.css");
+@import url("https://cdn.jsdelivr.net/npm/@noonnu/gmarketsansbold@0.0.1/index.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css");
+@import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+.pd-pretendard { font-family: var(--Pretendard);}
+.pd-suit { font-family: var(--SUIT);}
+.pd-notosansKr { font-family: var(--notosansKr);}
+.pd-poppins { font-family: var(--Poppins);}
+.pd-spoqaHanSansNeo { font-family: var(--spoqaHanSansNeo);}
+.pd-pretendardVariable { font-family: var(--pretendardVariable);}
+.pd-saira { font-family: var(--Saira);}
+.pd-GmarketSansBold { font-family: var(--GmarketSansBold);}
+.pd-GmarketSansLight { font-family: var(--GmarketSansLight);}
+
+.pd-text-xs { font-size: 12px;}
+.pd-text-sm { font-size: 14px;}
+.pd-text-base { font-size: 16px;}
+.pd-text-lg { font-size: 18px;}
+.pd-text-xl { font-size: 20px;}
+.pd-text-2xl { font-size: 24px;}
+.pd-text-3xl { font-size: 30px;}
+.pd-text-4xl { font-size: 36px;}
+.pd-text-5xl { font-size: 48px;}
+.pd-text-6xl { font-size: 60px;}
+
+.pd-italic { font-style: italic;}
+.pd-not-italic { font-style: normal;}
+
+.pd-font-thin { font-weight: 100;}
+.pd-font-extralight { font-weight: 200;}
+.pd-font-light { font-weight: 300;}
+.pd-font-normal { font-weight: 400;}
+.pd-font-medium { font-weight: 500;}
+.pd-font-semibold { font-weight: 600;}
+.pd-font-bold { font-weight: 700;}
+.pd-font-extrabold { font-weight: 800;}
+.pd-font-black { font-weight: 900;}
+
+/*
+*--------------------------------------------*
+|                   Form                     |
+*--------------------------------------------*
+*/
+select,
+button, textarea, input { appearance:none; padding:0; background:none; border:none; font-family:var(--font); font-size:inherit; font-weight:inherit; letter-spacing:var(--font-let-spc); color:inherit; outline:0;}
+/*input[type="text"], input[type="password"]*/
+
+input[type="text"],
+input[type="password"], input[type="date"], input[type="search"], input[type="number"],
+input[type="time"], input[type="color"], input[type="datetime-local"], input[type="email"],
+input[type="month"], input[type="range"], input[type="url"], input[type="week"],
+select,
+textarea { width: 100%; caret-color: var(--theme-color);}
+.pd-textarea { padding: 15px;}
+
+input[type="text"], input[type="password"],
+*::placeholder { color: inherit;}
+
+button,
+select,
+input[type="color"],
+input[type="range"],
+input[type="reset"],
+input[type="submit"],
+input[type="button"],
+::-webkit-calendar-picker-indicator {cursor:pointer;}
+input[type=range]::-webkit-slider-thumb {appearance:none; border-radius:50%;}
+label {display:inline-flex;}
+
+legend, caption {position:fixed; left:-100vw;}
+
+table {table-layout:fixed; width:100%;}
+
+/* 네이버 카페 페이지에서 쓰이는 건너뛰기 */
+a.skip {
+    position: absolute;
+    left: 0;
+    top: -30px;
+    border: 1px solid #4ec53d;
+    color: #fff;
+    text-decoration: none;
+    padding: 2px 6px 0;
+    line-height: 24px;
+    font-size: 12px;
+    background-color: #000;
+    z-index: 1200;
+    -webkit-transition: .3s;
+}
+a.skip:active, a.skip:focus {
+    top: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*
+*--------------------------------------------*
+|                   Align                    |
+*--------------------------------------------*
+*/
+.pd-text-center { text-align: center;}
+.pd-text-right { text-align: right;}
+.pd-text-left { text-align: left;}
+.pd-pos-ct { position:absolute; left:50%; top:50%; transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);}
+.pd-k-sel-center{ text-align: center !important;}
+
+/*
+*--------------------------------------------*
+|                   Breakpoint               |
+*--------------------------------------------*
+*/
+.mobile { display: none !important;}
+
+/*
+*--------------------------------------------*
+|                   Color                    |
+*--------------------------------------------*
+*/
+/* Background */
+.col-red { color: var(--red-500) !important;}
+.col-green { color: var(--color-green);}
+.col-blue { color: var(--color-blue);}
+.col-orange { color: var(--color-orange);}
+
+/* Font */
+
+/*
+*--------------------------------------------*
+|                   Line clamp               |
+*--------------------------------------------*
+*/
+[class*="pd-clamp-"] { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:1; word-break:break-all;}
+.pd-clamp-02 { -webkit-line-clamp: 2;}
+.pd-clamp-03 { -webkit-line-clamp: 3;}
+.pd-clamp-04 { -webkit-line-clamp: 4;}
+.pd-clamp-none { overflow: visible; display: block; -webkit-box-orient: horizontal; -webkit-line-clamp: none;}
+
+
+/*
+*--------------------------------------------*
+|                   List                     |
+*--------------------------------------------*
+*/
+.pd-list-disc { list-style-type: disc; list-style-position: inside;}
+.pd-list-decimal { list-style-type: decimal; list-style-position: inside;}
+.pd-line-list { display: flex; align-items: center;}
+.pd-line-list li { position: relative; padding: 0 10px;}
+.pd-line-list li:after { content: ''; display: block; position: absolute; top: 3px; left: 0; width: 1px; height: 15px; background: #dcdcdc;}
+.pd-line-list li:first-child:after { display: none;}
+
+/*
+*--------------------------------------------*
+|                   Space clamp              |
+*--------------------------------------------*
+*/
+[class*="pd-text-space-"] { display: flex; align-items: center; justify-content: space-between;}
+
+
+/*
+*--------------------------------------------*
+|                   Etc                      |
+*--------------------------------------------*
+*/
+/* blind */
+.blind{ position: absolute; left: -3721em;}
+
+.hide { display: none;}
+.not-hover { cursor: default;}
+
+.pd-text_break {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap !important;
+    white-space: -o-pre-wrap !important;
+}
+
+/* span */
+.pd-span-info-txt { font-size: 14px; color: #6c757d; letter-spacing: -0.28px;}
+
+/* text decoration */
+.pd-underline { text-decoration: underline;}
+.pd-line-through { text-decoration: line-through;}
+.pd-no-underline { text-decoration: none;}
+.pd-underline-offset-1 { text-underline-offset: 1px;}
+.pd-underline-offset-2 { text-underline-offset: 2px;}
+.pd-underline-offset-4 { text-underline-offset: 4px;}
+.pd-underline-offset-8 { text-underline-offset: 8px;}
+
+/* text transform */
+.pd-uppercase { text-transform: uppercase;}
+.pd-normal-case { text-transform: none;}
+
+/* cursor */
+.pd-cursor-auto { cursor: auto;}
+.pd-cursor-default { cursor: default;}
+.pd-cursor-pointer { cursor: pointer;}
+.pd-cursor-move { cursor: move;}
+.pd-cursor-not-allowed { cursor: not-allowed;}
+
+/* scroll */
+.pd-scroll-auto { scroll-behavior: auto;}
+.pd-scroll-smooth { scroll-behavior: smooth;}
+
+/* box sizing */
+.pd-box-border { box-sizing: border-box;}
+.pd-box-content { box-sizing: content-box;}
+
+/* floats */
+.pd-fl { float: left;}
+.pd-fr { float: right;}
+.pd-float-none { float: none;}
+
+/* overflow */
+.pd-overflow-auto { overflow: auto;}
+.pd-overflow-hidden { overflow: hidden;}
+.pd-overflow-visible { overflow: visible;}
+.pd-overflow-scroll { overflow: scroll;}
+
+.pd-overflow-x-auto { overflow-x: auto;}
+.pd-overflow-x-hidden { overflow-x: hidden;}
+.pd-overflow-x-visible { overflow-x: visible;}
+.pd-overflow-x-scroll { overflow-x: scroll;}
+
+.pd-overflow-y-auto { overflow-x: auto;}
+.pd-overflow-y-hidden { overflow-y: hidden;}
+.pd-overflow-y-visible { overflow-y: visible;}
+.pd-overflow-y-scroll { overflow-y: scroll;}
+
+/*
+*--------------------------------------------*
+|                   Object                   |
+*--------------------------------------------*
+*/
+/* object fit */
+.pd-object-contain { object-fit: contain;}
+.pd-object-cover { object-fit: cover;}
+
+/* position */
+.pd-object-center { object-position: center;}
+
+/*
+*--------------------------------------------*
+|                   display                  |
+*--------------------------------------------*
+*/
+.block { display: block;}
+.inline-block { display: inline-block;}
+.dis-table { display: table;}
+
+
+/*
+*--------------------------------------------*
+|                   Width                    |
+*--------------------------------------------*
+*/
+.pd-w-all,
+.pd-w-full { width: 100% !important;}
+.pd-w-auto { width: auto;}
+.pd-w-screen { width: 100vw;}
+
+.pd-w-28 { width: 28%;}
+.pd-w-33 { width: 33%;}
+.pd-w-50 { width: 50%;}
+.pd-w-80 { width: 80%;}
+
+@for $i from 1 through 300 {
+    .pd-width#{$i * 10} {
+        width: #{$i * 10}px;
+    }
+}
+
+/*
+*--------------------------------------------*
+|                   Height                   |
+*--------------------------------------------*
+*/
+.pd-h-full { height: 100%;}
+.pd-h-auto { height: auto;}
+.pd-h-screen { height: 100vh;}
+.pd-h-dvh { height: 100dvh;}
+
+@for $i from 10 through 300 {
+    .pd-height#{$i * 1} {
+        height: #{$i * 1}px;
+    }
+}
+
+/*
+*--------------------------------------------*
+|                   Size                     |
+*--------------------------------------------*
+*/
+.pd-size-full { width: 100%; height: 100%;}
+
+/*
+*--------------------------------------------*
+|              Space Between                 |
+*--------------------------------------------*
+*/
+/* text gap */
+.pd-text-gap-2 { display: flex; justify-content: space-between; align-items: center;}
+
+/*
+*--------------------------------------------*
+|                   Flex                     |
+*--------------------------------------------*
+*/
+[class*="pd-flex-"] { display: flex; max-width: 100%; word-break: keep-all;}
+.pd-flex-inline { display: inline-flex;}
+.pd-flex-col { flex-direction: column;}
+.pd-flex-col-reverse { flex-direction: column-reverse;}
+.pd-flex-row { flex-direction: row !important;}
+.pd-flex-row-reverse { flex-direction: row-reverse;}
+.pd-flex-fix { flex: 0 0 fit-content;}
+.pd-flex-1 { flex: 1 1 0%;}
+.pd-flex-auto { flex: 0 0 auto;}
+.pd-flex-wrap { flex-wrap: wrap;}
+.pd-flex-wrap-reverse { flex-wrap: wrap-reverse;}
+.pd-flex-nowrap { flex-wrap: nowrap;}
+.pd-flex-none { flex: none;}
+/* Justify Content */
+.pd-space-between { justify-content: space-between;}
+.pd-space-around { justify-content: space-around;}
+.pd-justify-center { justify-content: center;}
+.pd-flex-end { justify-content: flex-end;}
+.pd-flex-start { justify-content: flex-start;}
+
+/* align Content */
+.pd-align-content-center { align-content: center;}
+.pd-align-content-start { align-content: flex-start;}
+.pd-align-content-end { align-content: flex-end;}
+.pd-align-content-between { align-content: space-between;}
+.pd-align-content-around { align-content: space-around;}
+
+/* align items */
+.pd-align-center { align-items: center;}
+.pd-align-end { align-items: flex-end;}
+.pd-align-start { align-items: flex-start;}
+
+.pd-flex-all-center { justify-content: center; align-items: center; text-align: center;}
+
+.pd-flex-shrink-0 { flex-shrink: 0 !important;}
+
+.pd-flex-show { display: flex;}
+.pd-flex-inline-show { display: inline-flex;}
+
+/* Gap */
+@for $i from 1 through 100 {
+    .pd-gap#{$i * 1} {
+        gap: #{$i * 1}px;
+    }
+}
+
+/* width */
+.pd-w-all { width: 100% !important;}
+.pd-w-auto { width: auto;}
+
+/*
+*--------------------------------------------*
+|                   Margin                   |
+*--------------------------------------------*
+*/
+.pd-m-auto { margin: 0 auto;}
+.pd-margin0 { margin: 0 !important;}
+
+.pd-my0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-my#{$i * 1} {
+        margin-top: #{$i * 1}px;
+        margin-bottom: #{$i * 1}px;
+        //
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-mx0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-mx#{$i * 1} {
+        margin-left: #{$i * 1}px;
+        margin-right: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-mt0 {
+    margin-top: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-mt#{$i * 1} {
+        margin-top: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+@for $i from 1 through 100 {
+    .pd--mt#{$i * 1} {
+        margin-top: -#{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-ml0 {
+    margin-left: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-ml#{$i * 1} {
+        margin-left: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-mr0 {
+    margin-right: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-mr#{$i * 1} {
+        margin-right: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-mb0 {
+    margin-bottom: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-mb#{$i * 1} {
+        margin-bottom: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+
+/*
+*--------------------------------------------*
+|                   Padding                  |
+*--------------------------------------------*
+*/
+.pd-padding0 { padding: 0 !important;}
+@for $i from 1 through 100 {
+    .pd-padding#{$i * 1} {
+        padding: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-py0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-py#{$i * 1} {
+        padding-top: #{$i * 1}px;
+        padding-bottom: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-px0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-px#{$i * 1} {
+        padding-left: #{$i * 1}px;
+        padding-right: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-pt0 {
+    padding-top: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-pt#{$i * 1} {
+        padding-top: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-pl0 {
+    padding-left: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-pl#{$i * 1} {
+        padding-left: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-pr0 {
+    padding-right: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-pr#{$i * 1} {
+        padding-right: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+.pd-pb0 {
+    padding-bottom: 0 !important;
+}
+@for $i from 1 through 100 {
+    .pd-pb#{$i * 1} {
+        padding-bottom: #{$i * 1}px;
+
+        //// 미디어 쿼리를 활용한 반응형 스타일
+        //@include respond-to('xlarge') {
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
+        //}
+        //
+        //@include respond-to('large') {
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
+        //}
+        //
+        //@include respond-to('medium') {
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
+        //}
+        //
+        //@include respond-to('small') {
+        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
+        //}
+    }
+}
+
+/*
+*--------------------------------------------*
+|                   Clear class              |
+*--------------------------------------------*
+*/
+.clfix:after {content:'.'; display:block; height:0; clear:both; visibility:hidden;}
+.clfix {display:inline-block;}
+.clfix {display:block;}
+* html .clfix {height:1%;} /* hides from ie-mac */
+.clfix {zoom:1;} /*for ie 5.5-7*/
+
+/* --Clearfix */
+.cf:before,
+.cf:after {content:""; display:table;}
+.cf:after {clear:both;}
+.cf {zoom:1;}
+.clearfix{*zoom:1}
+.clearfix:before,
+.clearfix:after{display:table;line-height:0;content:""}
+.clearfix:after{clear:both}
+
+/*
+*--------------------------------------------*
+|                   Border                   |
+*--------------------------------------------*
+*/
+.pd-border-t-0 { border-top: 0 !important;}
+.pd-border-l-0 { border-left: 0 !important;}
+.pd-border-r-0 { border-right: 0 !important;}
+.pd-border-b-0 { border-bottom: 0 !important;}
+
+/*.divide-x > :not([hidden])~:not([hidden]) { border-right-width: 0; border-left-width: 0;}*/
+
+
+/* round */
+.pd-round0 { border-radius: 0;}
+.pd-round-2 { border-radius: 2px;}
+.pd-round-4 { border-radius: 4px;}
+.pd-round-6 { border-radius: 6px;}
+.pd-round-8 { border-radius: 8px;}
+.pd-round-10 { border-radius: 10px;}
+.pd-round-12 { border-radius: 12px;}
+.pd-round-14 { border-radius: 14px;}
+.pd-round-16 { border-radius: 16px;}
+.pd-round-18 { border-radius: 18px;}
+.pd-round-20 { border-radius: 20px;}
+.pd-round-100 { border-radius: 100px;}
+.pd-round-full { border-radius: 9999px;}
+
+
+/*
+*--------------------------------------------*
+|                   Table                    |
+*--------------------------------------------*
+*/
+.pd-border-collapse { border-collapse: collapse;}
+.pd-border-separate { border-collapse: separate;}
+.pd-caption-top { caption-side: top;}
+.pd-caption-bottom { caption-side: bottom;}
+
+
+/*
+*--------------------------------------------*
+|                   Skeleton                 |
+*--------------------------------------------*
+*/
+.pd-animate-skeleton { animation: pd-skeleton 2s cubic-bezier(0.4,0,0.6,1) infinite;}
+
+@keyframes pd-skeleton {
+    0%, 100% { opacity: 1;}
+    50% { opacity: .5;}
+}
+
+.pd-animate-bounce { animation: pd-bounce 1s infinite;}
+
+@keyframes pd-bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+
+/*
+*--------------------------------------------*
+|                   Break After              |
+*--------------------------------------------*
+*/
+.pd-break-after-auto { break-after: auto;}
+.pd-break-after-avoid { break-after: avoid;}
+.pd-break-after-all { break-after: all;}
+.pd-break-after-avoid-page { break-after: avoid-page;}
+.pd-break-after-page { break-after: page;}
+
+/*
+*--------------------------------------------*
+|                   Break Before             |
+*--------------------------------------------*
+*/
+.pd-break-before-auto { break-before: auto;}
+.pd-break-before-avoid { break-before: avoid;}
+.pd-break-before-all { break-before: all;}
+.pd-break-before-avoid-page { break-before: avoid-page;}
+.pd-break-before-page { break-before: page;}
+
+

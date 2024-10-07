@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Kendo Chart</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>Kendo Chart</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>Kendo Chart</h2>
+
+                    <div class="flex-group">
+                       <div>
+                           <article id="uploadPage" class="article-">
+                               <h3 class="title"># Line</h3>
+                               <p>메인 포틀렛 역량진단 라인 차트</p>
+
+                               <div class="sec-cont mt30">
+                                   <div class="chart-box">
+                                       <div id="lineChart"></div>
+                                   </div>
+                               </div>
+                           </article>
+                           <!--                // Upload Grid End    -->
+
+                           <div class="accordion-wrap mt30" style="width: 955px;">
+                               <div class="accordion-head">
+                                   <strong>코드 보기</strong>
+                               </div>
+                               <div class="accordion-body">
+                                   <div class="g-code-box">
+                                       <pre data-src="code/chart_06.html"></pre>
+                                   </div>
+                               </div>
+                           </div>
+                           <!--                        //    -->
+                       </div>
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var now = new Date();
+        var mon = "";
+        var day = "";
+        if ((now.getMonth() + 1) < 10) {
+            mon = "0" + (now.getMonth() + 1);
+        } else {
+            mon = now.getMonth() + 1;
+        }
+        if ((now.getDate()) < 10) {
+            day = "0" + (now.getDate());
+        } else {
+            day = now.getDate();
+        }
+        var nowDay = now.getFullYear() + "-" + mon + "-" + day;
+
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $(".chart .liLine a").addClass("active");
+
+            cmpGrpDataSourceFetch();
+
+            var html = "";
+            var guidData = [
+                { classNm: "chart-box", cont: "차트를 감싸는 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+
+        var cmpGrpDataSource = {
+            items: [
+                {
+                    "COMPANYID": 117,
+                    "CMPGROUP": "1",
+                    "CMPGROUPNM": "공통역량",
+                    "RANK_R": 1,
+                    "SCORE": 73,
+                    "SCORE_A": 77,
+                    "SCORE_J": 77,
+                    "SCORE_L": 83,
+                    "GAP_A": -4
+                },
+                {
+                    "COMPANYID": 117,
+                    "CMPGROUP": "3",
+                    "CMPGROUPNM": "직무역량",
+                    "RANK_R": 2,
+                    "SCORE": 80,
+                    "SCORE_A": 75,
+                    "SCORE_J": 75,
+                    "SCORE_L": 90,
+                    "GAP_A": 5
+                },
+                {
+                    "COMPANYID": 117,
+                    "CMPGROUP": "2",
+                    "CMPGROUPNM": "리더십역량",
+                    "RANK_R": 3,
+                    "SCORE": 100,
+                    "SCORE_A": 100,
+                    "SCORE_J": 100,
+                    "SCORE_L": 100,
+                    "GAP_A": 0
+                }
+            ]
+        };
+        var cmpGrpList = []; 		//역량군목록
+        var myscoreGrpList = []; 	//내점수
+        var ascoreGrpList = []; 	//전사
+        var lscoreGrpList = []; 	//동일리더십
+        var jscoreGrpList = []; 	//동일리더십
+
+        //	역량군 fetch
+        function cmpGrpDataSourceFetch(){
+            cmpGrpList = [];
+            myscoreGrpList = [];
+            ascoreGrpList = [];
+            lscoreGrpList = [];
+            jscoreGrpList = [];
+
+            var view = cmpGrpDataSource.items;
+            var rankCnt = 0;
+            if(view.length>0){
+                var weak1="", weak2="";
+                var weak1Cnt = 0;
+                for(var i=0; i<view.length; i++){
+                    var item = view[i];
+                    //제일강한 역량군과 제일 약한 역량군
+
+                    if(parseInt(item.RANK_R) == 1){
+                        if(weak1==""){
+                            weak1 = item.CMPGROUPNM;
+                        }else{
+                            weak1 = weak1+", "+item.CMPGROUPNM;
+                        }
+
+                        weak1Cnt++;
+                    }else{
+                        if(parseInt(item.RANK_R) > rankCnt ){
+                            weak2 = item.CMPGROUPNM;
+                        }
+                    }
+                    rankCnt = parseInt(item.RANK_R);
+                    //레이더 차트 데이터 세팅..
+                    cmpGrpList.push(item.CMPGROUPNM);
+                    myscoreGrpList.push(item.SCORE);
+                    ascoreGrpList.push(item.SCORE_A);
+                    lscoreGrpList.push(item.SCORE_L);
+                    jscoreGrpList.push(item.SCORE_J);
+                }
+                if(view.length >= 2){
+                    if(view.length==weak1Cnt){
+                        $("#r_weak_cmpt_grp").html("진단자가 보유한 각 역량군이 모두 동일점수로 도출되었습니다. 그리고");
+                    }else{
+                        $("#r_weak_cmpt_grp").html("진단자가 보유한 각 역량군 중에서 <span>"+weak2+"</span>이(가) 강하며, <span>"+weak1+"</span>이(가) 약한것으로 도출되었습니다. 그리고");
+                    }
+                }else{
+                    //역량군이 1개일 경우 역량군별 결과 안보이게 처리
+                    $("#cmpgrpTitle").hide();
+                    $("#graph_list0").hide();
+
+                }
+            }else{
+                //역량진단 - 역량별 분석 결과 데이터가 존재 하지 않음...
+                alert("역량진단 분석결과가 존재하지 않습니다.");
+            }
+
+            lineChart();
+        }
+
+        //	역량군 차트
+        function lineChart(){
+            $("#lineChart").empty();
+            $("#lineChart").kendoChart({
+                theme:"bootstrap",
+                chartArea: {
+                    height: 226,
+                    background: ''
+                },
+                dataSource : cmpGrpDataSource,
+                legend: {
+                    position: "left",
+                    font: "15px sans-serif"
+                },
+                seriesDefaults: {
+                    type: "radarArea"
+                },
+                series: [{
+                    name: "전사",
+                    data: ascoreGrpList,
+                    opacity: 0.3,
+                    color : "#4e75f3"
+                }, {
+                    name: "내점수",
+                    data: myscoreGrpList,
+                    opacity: 0.3,
+                    color : "#f27935"
+                } ],
+                categoryAxis: {
+                    categories: cmpGrpList,
+                    majorGridLines: {
+                        visible: true
+                    },
+                    labels: {
+                        font: "12px Pretendard",
+                        color: "#767676"
+                    },
+                },
+                valueAxis: {
+                    // max: 100,
+                    min: 0,
+                    labels: {
+                        format: "{0}",
+                        font: "12px Pretendard",
+                        color: "#767676"
+                    },
+                    line: {
+                        visible: false
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    format: "{0}"
+                }
+            });
+
+            $("#barchartGrp").kendoChart({
+                theme:"bootstrap",
+                chartArea: {
+                    width: 1160,
+                    height: 440
+                },
+                dataSource : cmpGrpDataSource,
+                legend: {
+                    position : "top",
+                    labels : {
+                        font: "15px sans-serif"
+                    }
+                },
+                seriesDefaults: {
+                    type: "column"  //bar, column
+                },
+                series : [
+                    {
+                        labels: {
+                            visible: true,
+                            background: "white"
+                        },
+                        field: "SCORE_A",
+                        name: "전사"//,
+                        //color : "yellow"
+                    },
+                    {
+                        labels: {
+                            visible: true,
+                            background: "white"//,
+                            //template: "#= series.name #: #= value #"
+                        },
+                        field: "SCORE_L",
+                        name: "동일리더십"
+                    },
+                    {
+                        labels: {
+                            visible: true,
+                            background: "white"
+                        },
+                        field: "SCORE_J",
+                        name: "동일직무"
+                    },
+                    {
+                        labels: {
+                            visible: true,
+                            background: "white"
+                        },
+                        field: "SCORE",
+                        name: "내점수"//,
+                        //color : "blue"
+                    }
+                ],
+                valueAxis: {
+                    max: 100,
+                    min: 0,
+                    line: {
+                        visible: false
+                    },
+                    minorGridLines: {
+                        visible: false
+                    },
+                    axisCrossingValue: 0
+                },
+                categoryAxis: {
+                    field: "CMPGROUPNM",
+                    majorGridLines: {
+                        visible: false
+                    },
+                    line: {
+                        visible: true
+                    },
+                    labels:{
+                        rotation: -10
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    template: "#= series.name #: #= value #"
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

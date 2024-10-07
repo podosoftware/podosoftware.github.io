@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>리스트</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>리스트</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>리스트</h2>
+
+                    <div class="flex-group">
+                        <!--                메인 START    -->
+                        <article id="main" class="article-">
+                            <h3 class="title"># Main</h3>
+                            <p>edu-list-wrap 를 기준으로 잡는다.</p>
+
+                            <div class="sec-cont pd-mt30">
+                                <ul class="pd-flex- edu-list-wrap">
+                                    <li class="edu-box">
+                                        <div class="img-box">
+                                            <span class="pd-flex- tag tag-training-A">온라인</span>
+                                            <a href="#" >
+                                                <img src="../images/273.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="edu-info">
+                                            <ul class="pd-flex- top">
+                                                <li>이러닝</li>
+                                                <li>HRM</li>
+                                            </ul>
+                                            <a href="" class="pd-clamp-02">[온라인/유료/기간/부서장 승인] it 취업을 위한 알고리즘 문제풀이 입문 (with C/C++) : 코딩테스트 대비</a>
+                                            <p>2024-07-23 ~ 2024-08-02</p>
+                                            <div class="pd-flex- edu-foot">
+                                                <div class="pd-flex- edu-star">
+                                                    <i class="icon-star"></i>
+                                                    <strong>5</strong>
+                                                    <span>(1)</span>
+                                                </div>
+                                                <p class="edu-cost">
+                                                    <strong>9,999,999</strong>
+                                                    <span>원</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="edu-box">
+                                        <div class="img-box">
+                                            <span class="pd-flex- tag tag-training-A">온라인</span>
+                                            <a href="#" >
+                                                <img src="../images/273.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="edu-info">
+                                            <ul class="pd-flex- top">
+                                                <li>이러닝</li>
+                                                <li>HRM</li>
+                                            </ul>
+                                            <a href="" class="pd-clamp-02">[온라인/유료/기간/부서장 승인] it 취업을 위한 알고리즘 문제풀이 입문 (with C/C++) : 코딩테스트 대비</a>
+                                            <p>2024-07-23 ~ 2024-08-02</p>
+                                            <div class="pd-flex- edu-foot">
+                                                <div class="pd-flex- edu-star">
+                                                    <i class="icon-star"></i>
+                                                    <strong>4.9</strong>
+                                                    <span>(9999)</span>
+                                                </div>
+                                                <p class="edu-cost">
+                                                    <strong>무료</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="accordion-wrap mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/edu_01.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                메인 END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            $(".list .liEdu a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "edu-list-wrap", cont: "list들을 감싸는 wrap class"},
+                { classNm: "edu-box", cont: "list box class"},
+                { classNm: "img-box", cont: "이미지를 감싼 박스 class"},
+                { classNm: "tag", cont: "과정을 구분하는 태그 class"},
+                { classNm: "tag-training-A", cont: "온라인 태그 class"},
+                { classNm: "tag-training-B", cont: "집합 태그 class"},
+                { classNm: "tag-training-D", cont: "블라인드 태그 class"},
+                { classNm: "tag-training-G", cont: "화상 태그 class"},
+                { classNm: "edu-info", cont: "리스트 정보를 감싼 박스 class"},
+                { classNm: "top", cont: "위 영역(교육분류) class"},
+                { classNm: "edu-foot", cont: "아래 영역 class"},
+                { classNm: "edu-star", cont: "별점 영역 class"},
+                { classNm: "icon-star", cont: "별점 한개 class"},
+                { classNm: "edu-cost", cont: "금액 영역 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div id="tabstrip" class="pd-flex-">
+    <ul class="tab_menu">
+        <li class="on k-state-active">경력목표수립</li>
+        <li class="">교육계획수립</li>
+    </ul>
+
+    <div></div>
+    <!--                                // 경력목표수립    -->
+
+    <div></div>
+    <!--                                // 교육계획수립    -->
+</div>
+
+<script>
+    $(function () {
+        //탭 생성
+        $("#tabstrip").kendoTabStrip({
+            animation: {
+                open: {effects: "fadeIn"}
+            },
+            activate: function(e) {
+                var tabStrip = $("#tabstrip").data("kendoTabStrip");
+
+                $(window).resize();
+
+                var tabTitle = e.item.innerText;
+            }
+        }).data("kendoTabStrip");
+    });
+</script>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>TAB</title>
+
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>TAB</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>TAB</h2>
+
+                    <div class="flex-group">
+                        <!--                kendo 탭 스타일 START    -->
+                        <article id="tabKendo" class="article-">
+                            <h3 class="title"># Kendo Tab</h3>
+                            <div class="sec-cont">
+                                <div>
+                                    <div id="tabstrip" class="pd-flex-">
+                                        <ul class="tab_menu">
+                                            <li class="on k-state-active">경력목표수립</li>
+                                            <li class="">교육계획수립</li>
+                                        </ul>
+
+                                        <div></div>
+                                        <!--                                // 경력목표수립    -->
+
+                                        <div></div>
+                                        <!--                                // 교육계획수립    -->
+                                    </div>
+                                </div>
+
+                                <div class="accordion-wrap mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/tab_02.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                kendo 탭 스타일 END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $("li.tabLi .liTabKendo a").addClass("active");
+
+            //탭 생성
+            $("#tabstrip").kendoTabStrip({
+                animation: {
+                    open: {effects: "fadeIn"}
+                },
+                activate: function(e) {
+                    var tabStrip = $("#tabstrip").data("kendoTabStrip");
+
+                    $(window).resize();
+
+                    var tabTitle = e.item.innerText;
+                }
+            }).data("kendoTabStrip");
+
+            var html = "";
+            var guidData = [
+                { classNm: "tab_menu", cont: "kendo tab menu에 사용되는 class"},
+                { classNm: "k-state-active", cont: "tab btn 액션일때 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+    </script>
+</body>
+</html>

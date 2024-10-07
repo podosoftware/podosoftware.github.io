@@ -1,0 +1,175 @@
+<div class="kendo-box">
+    <div class="portlet_data">
+        <div id="bar3DChart"></div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        kendo.culture("ko-KR");
+
+        bar3DChart(25, 10, 15);
+    });
+
+    function bar3DChart(STD_PROMOTION_SCR, ACQ_PROMOTION_SCR_AVG, ACQ_PROMOTION_SCR) {
+        if(STD_PROMOTION_SCR == null || STD_PROMOTION_SCR == undefined || STD_PROMOTION_SCR == ""){ //승진 의무 이수 시간이 없는 경우 25로 초기화 하여 표현
+            STD_PROMOTION_SCR = 25;
+        }else if(ACQ_PROMOTION_SCR_AVG == null || ACQ_PROMOTION_SCR_AVG == undefined || ACQ_PROMOTION_SCR_AVG == ""){
+            ACQ_PROMOTION_SCR_AVG = 0;
+        }else if(ACQ_PROMOTION_SCR == null || ACQ_PROMOTION_SCR == undefined || ACQ_PROMOTION_SCR == ""){
+            ACQ_PROMOTION_SCR = 0;
+        }
+
+        $("#bar3DChart").kendoChart({
+            legend: {
+                visible: true,
+                position: "bottom",
+                font: "13px Pretendard",
+                color: "#666666",
+                item: {
+                    visual: function (e) {
+                        // get color of current marker and label
+                        var color = e.options.markers.background;
+                        var labelColor = e.options.labels.color;
+                        var rect = new kendo.geometry.Rect([0, 0], [100, 50]);
+                        var layout = new kendo.drawing.Layout(rect, {
+                            spacing: 5,
+                            alignItems: "center"
+                        });
+                        // create a circle geometry centered at x=10, y=5, with a radius of 5
+                        var CircGeometry = new kendo.geometry.Circle([10, 5], 5);
+                        // draw the circle using the geometry and set the color (could have no stroke)
+                        var MarkerCircle = new kendo.drawing.Circle(CircGeometry, {
+                            stroke: {color: color, width: 1},
+                            fill: {color: color}
+                        });
+                        //Create the text label
+                        var label = new kendo.drawing.Text(e.series.name, [0, 0], {
+                            fill: {
+                                color: labelColor
+                            }
+                        });
+
+                        //Add circle and label to layout object
+                        layout.append(MarkerCircle, label);
+                        layout.reflow()
+
+                        return layout;
+                    }
+                }
+            },
+            seriesDefaults: {
+                type: "bullet",
+                size:10,
+                visual: function (e) {
+                    return createBullet(e.rect, e.options.color);
+                },
+                target: {
+                    line: {
+                        width: 1
+                    }
+                },
+            },
+            series: [{
+                name: "동일직급평균",
+                type: "bullet",
+                data: [[ACQ_PROMOTION_SCR_AVG, STD_PROMOTION_SCR]],
+                gap: 10,
+                color: "#fd599e",
+            },{
+                name: "나의학점",
+                type: "bullet",
+                data: [[ACQ_PROMOTION_SCR, STD_PROMOTION_SCR]],
+                gap: 10,
+                color: "#4e75f3",
+            }],
+            chartArea: {
+                height: 290,
+                margin: {
+                    left: 0
+                },
+                background: ''
+            },
+            categoryAxis: {
+                majorGridLines: {
+                    visible: false
+                },
+                majorTicks: {
+                    visible: true
+                }
+            },
+            valueAxis: [{
+                plotBands: [{
+                    from: 0, to: STD_PROMOTION_SCR*0.5, color: "#fff", opacity: .2
+                }, {
+                    from: STD_PROMOTION_SCR*0.5, to: STD_PROMOTION_SCR, color: "#fff", opacity: .1
+                }],
+                majorGridLines: {
+                    visible: false
+                },
+                min: 0,
+                max: STD_PROMOTION_SCR*1.1,
+                minorTicks: {
+                    visible: false
+                },
+                labels: {
+                    font: "12px Pretendard",
+                    color: "#767676"
+                },
+            }],
+            tooltip: {
+                visible: true,
+                template: "승진필요학점: #= value.target # <br /> #= series.name #: #= value.current #학점"
+            },
+        });
+    }
+
+    function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+        var angleInRadians = (angleInDegrees) * Math.PI / 180.0;
+
+        return {
+            x: centerX + (radius * Math.cos(angleInRadians)),
+            y: centerY + (radius * Math.sin(angleInRadians))
+        };
+    }
+
+    //create chart 3dbar custom
+    function createBullet(rect, color) {
+        var draw = kendo.drawing;
+        var geom = kendo.geometry;
+
+        var origin = rect.origin;
+        var center = rect.center();
+
+        var x = rect.origin.x;
+        var y = rect.origin.y;
+        var bottomRight = rect.bottomRight();
+        var radiusX = rect.width() / 2;
+        var radiusY = radiusX / 1;
+        var group = new kendo.drawing.Group();
+
+        var path = new kendo.drawing.Path({
+            fill: {
+                color: color
+            },
+            stroke: {
+                color: color
+            }
+        }).moveTo(origin.x, origin.y)
+            .lineTo(origin.x, bottomRight.y)
+            .arc(180, 0, radiusX, radiusY, true)
+            .lineTo(bottomRight.x, origin.y)
+            .arc(0, 180, radiusX, radiusY, true)
+            .close();
+
+        var topArcGeometry = new kendo.geometry.Arc([center.x, origin.y], {
+            // startAngle: 0,
+            // endAngle: 360,
+            // radiusX: radiusX,
+            // radiusY: radiusY
+        });
+
+        group.append(path);
+        return group;
+    }
+</script>

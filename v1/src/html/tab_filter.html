@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>TAB</title>
+
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>TAB</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>TAB</h2>
+
+                    <div class="flex-group">
+                        <!--                filter 탭 스타일 START    -->
+                        <article id="filter" class="article-">
+                            <h3 class="title"># Filter Tab</h3>
+                            <p>나의 강의실 필터</p>
+
+                            <div class="sec-cont pd-mt30">
+                                <div class="my-tab-cont-wrap">
+                                    <div class="pd-flex- filter-tab-box ">
+                                        <ul class="pd-flex- flex-box">
+                                            <li class="filter-item">
+                                                <a href="javascript:;" class="pd-flex- training- active" title="전체"> <span>전체</span>
+                                                </a></li>
+                                            <li class="filter-item">
+                                                <a href="javascript:;" class="pd-flex- training-study"> <span>수료</span>
+                                                </a></li>
+                                            <li class="filter-item">
+                                                <a href="javascript:;" class="pd-flex- training-fail"> <span>미수료</span></a>
+                                            </li>
+                                            <li class="filter-item">
+                                                <a href="javascript:;" class="pd-flex- training-A"> <span>온라인</span></a>
+                                            </li>
+                                            <li class="filter-item">
+                                                <a href="javascript:;" class="pd-flex- training-B"> <span>짐합</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-wrap pd-mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/tab_03.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                filter 탭 스타일 END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $("li.tabLi .liFilterTab a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "my-tab-cont-wrap", cont: "나의 강의실 필터 탭 스타일 class"},
+                { classNm: "filter-tab-box", cont: "탭 위치선정 용 class"},
+                { classNm: "flex-box", cont: "flex class"},
+                { classNm: "filter-item", cont: "탭 요소를 잡기 위한 class"},
+                { classNm: "training-", cont: "탭버튼 색 전체를 나타내며 기본 class"},
+                { classNm: "training-study", cont: "수료 class"},
+                { classNm: "training-fail", cont: "미수료 class"},
+                { classNm: "training-A", cont: "온라인 class"},
+                { classNm: "training-B", cont: "집합 class"},
+                { classNm: "active", cont: "탭버튼 활성화 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<form name="frm" id="frm" method="post">
+    <div class="pd-flex- grid-search-area conts-search-area">
+        <div class="pd-flex- pd-flex-line pd-gap15">
+            <div class="pd-flex- pd-gap15 width100" style="width: 80%;">
+                <div class="left pd-flex-shrink-0">
+                    <span class="col-red">*</span>
+                    등록일<br />(년/월/일)
+                </div>
+                <div class="right">
+                    <div class="input-box">
+                        <label for="searchCreat_start_date" class="blind">등록일</label>
+                        <div class="date-box-wrap date-box-wrap2">
+                            <div class="date-box">
+                                <label for="start_date" class="blind">시작일</label>
+                                <input type="text" id="searchCreat_start_date" class="k-sel-center" placeholder="YYYY-MM-DD" />
+                            </div>
+                            <span class="label_text">~</span>
+                            <div class="date-box">
+                                <input type="text" id="searchCreat_end_date" class="width100 k-sel-center" placeholder="YYYY-MM-DD" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pd-flex- pd-gap15 width100">
+                <div class="left pd-flex-shrink-0">
+                    <span class="col-red">*</span>
+                    다운로드기간<br />(년/월/일)
+                </div>
+                <div class="right">
+                    <div class="date-box-wrap date-box-wrap2">
+                        <select id="searchDownloadDate" class="k-sel-center">
+                            <option value="start">시작일</option>
+                        </select>
+                        <div class="date-box">
+                            <label for="start_date" class="blind">시작일</label>
+                            <input type="text" id="start_date" class="k-sel-center" placeholder="YYYY-MM-DD" />
+                        </div>
+                        <span class="label_text">~</span>
+                        <div class="date-box">
+                            <input type="text" id="end_date" class="width100" placeholder="YYYY-MM-DD" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pd-flex- pd-gap15 last">
+                <div class="left pd-flex-shrink-0">
+                    <span class="col-red">*</span>콘텐츠유형
+                </div>
+                <div class="right">
+                    <select class="width100 k-sel-center" id="CONTS_TYPE" name="CONTS_TYPE"></select>
+                </div>
+            </div>
+            <div class="pd-flex- pd-gap15 last">
+                <div class="left pd-flex-shrink-0">
+                    <span class="col-red">*</span>상태
+                </div>
+                <div class="right">
+                    <select class="width100 k-sel-center" id="STATE_CODE" name="STATE_CODE"></select>
+                </div>
+            </div>
+        </div>
+        <div class="pd-flex pd-flex-line pd-gap15">
+            <div class="pd-flex- pd-gap15 width100" style="width: 58%;">
+                <div class="left pd-flex-shrink-0">
+                    <span class="col-red">*</span>파일유형
+                </div>
+                <div class="right">
+                    <select class="width100 k-sel-center" id="FILE_TYPE" name="FILE_TYPE" ></select>
+                </div>
+            </div>
+            <div class="pd-flex- pd-gap15 width100">
+                <div class="left pd-flex-shrink-0">
+                    <span class="col-red">*</span>콘텐츠제목
+                </div>
+                <div class="right pd-flex pd-gap7 ">
+                    <input type="text" class="k-textbox w-all" id="searchContNm" name="CONTS_TITLE"
+                           placeholder="콘텐츠 제목을 입력해 주세요." />
+                </div>
+            </div>
+            <div class="pd-flex- pd-gap7 last pd-flex-end">
+                <button id="resetBtn" class="btn-default"><span>초기화</span></button>
+                <button id="searchBtn" class="btn-default btn-point"><span>검색</span></button>
+            </div>
+        </div>
+    </div>
+</form>

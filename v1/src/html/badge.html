@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Badge</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>Badge</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>Badge</h2>
+
+                    <div class="flex-group">
+                        <!--                B2C START    -->
+                        <article id="badge" class="article-">
+                            <h3 class="title"># Badge</h3>
+                            <div class="sec-cont pd-mt30">
+                                <div>
+                                    <h4 class="title-title">B2C</h4>
+
+                                    <div class="pd-flex-wrap pd-gap7 pd-mt10 badge-wrap">
+                                        <span class="pd-flex- b2c-badge-A b2c-badge">온라인</span>
+                                        <span class="pd-flex- b2c-badge-B b2c-badge">집합</span>
+                                        <span class="pd-flex- badge-reply b2c-badge">답변대기</span>
+                                        <span class="pd-flex- badge-reply answer b2c-badge">답변완료</span>
+                                        <div class="pd-flex- badge-group">
+                                            <span class="pd-flex- badge-fail3 b2c-badge">미수료</span>
+                                            <span class="pd-flex- badge-study2 b2c-badge">수료</span>
+                                            <span class="pd-flex- badge-study b2c-badge">수강</span>
+                                            <span class="pd-flex- badge-fail b2c-badge">미선정</span>
+                                            <span class="pd-flex- badge-apply b2c-badge">신청</span>
+                                            <span class="pd-flex- badge-rq b2c-badge">필수</span>
+                                            <span class="pd-flex- badge-op b2c-badge">선택</span>
+                                            <span class="pd-flex- badge-pass b2c-badge">Pass</span>
+                                            <span class="pd-flex- badge-rqop-fail b2c-badge">Fail</span>
+                                        </div>
+
+                                        <div class="pd-flex- b2c-cmplt-standard">
+                                            <span class="pd-flex- cmplt-score cmplt-999">수료 80점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-3">시험 60점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-5">과제 60점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-2">진도 100점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-1">출석 99점</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 class="title-title mt30">B2B</h4>
+                                    <div class="pd-flex-wrap pd-gap7 pd-mt10 badge-wrap">
+                                        <span class="pd-flex- badge-A b2b-badge">온라인</span>
+                                        <span class="pd-flex- badge-B b2b-badge">집합</span>
+                                        <span class="pd-flex- badge-D b2b-badge">블랜디드</span>
+                                        <span class="pd-flex- badge-G b2b-badge">화상</span>
+                                        <span class="pd-flex- badge-M b2b-badge">마이크로러닝</span>
+                                        <span class="pd-flex- badge-day b2b-badge">기간</span>
+                                        <span class="pd-flex- badge-always b2b-badge">상시</span>
+
+                                        <div class="pd-flex- badge-group">
+                                            <span class="pd-flex- badge-fail3 b2b-badge">미수료</span>
+                                            <span class="pd-flex- badge-study2 b2b-badge">수료</span>
+                                            <span class="pd-flex- badge-study b2b-badge">수강</span>
+                                            <span class="pd-flex- badge-fail b2b-badge">미선정</span>
+                                            <span class="pd-flex- badge-apply b2b-badge">신청</span>
+                                            <span class="pd-flex- badge-rq b2b-badge">필수</span>
+                                            <span class="pd-flex- badge-op b2b-badge">선택</span>
+                                            <span class="pd-flex- badge-pass b2b-badge">Pass</span>
+                                            <span class="pd-flex- badge-rqop-fail b2b-badge">Fail</span>
+                                        </div>
+
+                                        <div class="pd-flex- -cmplt-standard">
+                                            <span class="pd-flex- cmplt-score cmplt-999">수료 80점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-3">시험 60점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-5">과제 60점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-2">진도 100점</span>
+                                            <span class="pd-flex- cmplt-score cmplt-1">출석 99점</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-wrap mt30">
+                                <div class="accordion-head">
+                                    <strong>코드 보기</strong>
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="g-code-box">
+                                        <pre data-src="code/badge_01.html"></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                B2C END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            $(".badge- .liBadge a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "b2b-badge", cont: "b2b 뱃지 교육유형 css"},
+                { classNm: "b2c-badge", cont: "b2c 뱃지 교육유형 class"},
+                { classNm: "badge-A", cont: "온라인 뱃지 class"},
+                { classNm: "badge-B", cont: "집합 뱃지 class"},
+                { classNm: "badge-D", cont: "블랜디드 뱃지 class"},
+                { classNm: "badge-G", cont: "화상 뱃지 class"},
+                { classNm: "badge-M", cont: "마이크로러닝 class"},
+                { classNm: "badge-day", cont: "기간 class"},
+                { classNm: "badge-always", cont: "상시 class"},
+                { classNm: "badge-group", cont: "2개 이상 쓰일때 사용되는 class"},
+                { classNm: "badge-fail3", cont: "미수료 class"},
+                { classNm: "badge-study2", cont: "수료 class"},
+                { classNm: "badge-study", cont: "수강 class"},
+                { classNm: "badge-fail", cont: "미선정 class"},
+                { classNm: "badge-apply", cont: "신청 class"},
+                { classNm: "badge-rq", cont: "필수 class"},
+                { classNm: "badge-op", cont: "선택 class"},
+                { classNm: "badge-pass", cont: "PASS class"},
+                { classNm: "badge-rqop-fail", cont: "Fail class"},
+                { classNm: "-cmplt-standard", cont: "수료점수 기준, 맨앞에 b2b,b2c 붙여서 사용 class"},
+                { classNm: "cmplt-score", cont: "기본 모양 class"},
+                { classNm: "cmplt-999", cont: "수료 class"},
+                { classNm: "cmplt-3", cont: "시험 class"},
+                { classNm: "cmplt-5", cont: "과제 class"},
+                { classNm: "cmplt-2", cont: "진도 class"},
+                { classNm: "cmplt-1", cont: "출석 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+    </script>
+</body>
+</html>

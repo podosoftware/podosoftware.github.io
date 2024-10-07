@@ -1,0 +1,27 @@
+<p class="p-circle"><i class="circle"></i>작은 버전</p>
+<input type="text" id="sm_datePicker" class="txt-center width100">
+
+<p class="p-circle"><i class="circle"></i>일반적으로 쓰이는 / 스플리터 안 테이블 내 td에 들어가는 input</p>
+<input type="text" id="default_datePicker" class="txt-center width100">
+
+<p class="p-circle"><i class="circle"></i>높이 42px / 대타이틀 옆 상단 검색 기능</p>
+<input type="text" id="search_datePicker" class="txt-center width100">
+
+<script>
+    function datePickerDraw() {
+        $("#sm_datePicker").kendoDatePicker({
+            format: "yyyy-MM-dd",
+            value: now
+        });
+
+        $("#default_datePicker").kendoDatePicker({
+            format: "yyyy-MM-dd",
+            value: now
+        });
+
+        $("#search_datePicker").kendoDatePicker({
+            format: "yyyy-MM-dd",
+            value: now
+        });
+    }
+</script>

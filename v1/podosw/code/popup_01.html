@@ -1,0 +1,22 @@
+<div id="popup_window" class="demo-popup1" style="display: none;">
+    <button type="button" class="popup-close" onclick="popupClose(1);"><i class="icon-demo-close"></i></button>
+    <div class="popup-content">
+        팝업 내용
+    </div>
+</div>
+
+<script>
+    function popupOpen(src) {
+        var winWidth = $(window).width();
+
+        $(".demo-popup"+src).fadeIn();
+        $("body").css("overflow", "hidden");
+    }
+
+    function popupClose(src) {
+        var winWidth = $(window).width();
+
+        $(".demo-popup"+src).fadeOut();
+        $("body").css("overflow", "auto");
+    }
+</script>

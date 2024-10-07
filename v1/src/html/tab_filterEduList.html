@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>TAB</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>TAB</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>TAB</h2>
+
+                    <div class="flex-group">
+                        <!--                filter edu list 탭 스타일 START    -->
+                        <article id="filterEduList" class="article-">
+                            <h3 class="title"># Filter Tab 교육신청</h3>
+                            <p>유연성 있게 항목이 늘어나도 깨지지 않게 되어 있다.</p>
+
+                            <div class="sec-cont pd-mt30">
+                                <ul id="filterBox" class="pd-flex- tab-filter-wrap">
+                                    <li>
+                                        <button type="button" class="pd-flex- btn- active" data-pg="0">전체</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="pd-flex- btn-" data-pg="1">온라인</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="pd-flex- btn-" data-pg="2">집합</button>
+                                    </li>
+                                </ul>
+
+                                <div class="accordion-wrap mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/tab_04.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                filter edu list 탭 스타일 END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $("li.tabLi .liFilterTabApply a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "tab-filter-wrap", cont: "교육신청 필터 탭 스타일 class"},
+                { classNm: "btn-", cont: "교육신청 탭 버튼 스타일 class"},
+                { classNm: "active", cont: "탭 버튼 활성화 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+    </script>
+</body>
+</html>

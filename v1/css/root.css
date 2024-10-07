@@ -1,0 +1,408 @@
+/*
+*--------------------------------------------*
+|                   Root                     |
+*--------------------------------------------*
+*/
+:root {
+    --layout-width: 1280px;                     /* 레이아웃 넓이 */
+    --layout-padding: 5.13vw;                   /* 모바일 안쪽 여백 (20px) */
+    --Pretendard: "Pretendard", sans-self;                              /* 폰트체 */
+    --SUIT: "SUIT", sans-self;                                          /* 폰트체2 */
+    --notosansKr: "Noto Sans KR", sans-self;                            /* 폰트체3 */
+    --Poppins: "Poppins", sans-self;                                    /* 폰트체4 */
+    --spoqaHanSansNeo: "Spoqa Han Sans Neo", sans-self;                 /* 폰트체5 */
+    --pretendardVariable: "Pretendard Variable", sans-self;             /* 폰트체6 */
+    --Saira: "Saira", sans-self;                                        /* 폰트체7 */
+    --GmarketSansBold: "GmarketSansBold", sans-self;                    /* 폰트체8 */
+    --GmarketSansLight: "GmarketSansLight", sans-self;                  /* 폰트체9 */
+    --font-size: 16px;                          /* 폰트 크기 */
+    --font-let-spc: -0.02em;                    /* 자간 */
+    --line-height: 1.5;                         /* 행간 */
+    --default-font-color: #46464F;              /* 기본 폰트 컬러 */
+    --disabled-color: #e7e7e7;                  /* disabled 컬러 */
+
+    --notch: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);     /* 아이폰 노치 대응 */
+
+    /* Color */
+    /*  Primary(theme)  */
+    --primary-50: #F8F9FD;
+    --primary-100: #F2F2FC;
+    --primary-200: #EBEBFA;
+    --primary-300: #999CE4;
+    --primary-400: #7A7EE8;
+    --primary-500: #5C61D4;
+    --primary-600: #4549AB;
+    --primary-700: #37396D;
+    --primary-800: #0A0B25;
+
+    --black-900: #000000;
+    --black-800: #121212;
+    --black-750: #222222;
+    --black-700: #303030;
+    --black-650: #3d3d3d;
+    --black-600: #404040;
+    --black-500: #555555;
+    --black-400: #8E8E8E;
+    --black-300: #B8B8B8;
+
+    --black-op-900: rgba(0,0,0,0.5);
+
+    --gray-80: #c8c8c8;
+    --gray-90: #c2c2c2;
+    --gray-100: #a9acac;
+    --gray-200: #929292;
+    --gray-250: #8e8e8e;
+    --gray-300: #8d96a5;
+    --gray-350: #757575;
+    --gray-400: #565656;
+    --gray-450: #6b6b6b;
+    --gray-500: #4a4a4a;
+    --gray-750: #414146;
+    --gray-800: #444748;
+
+    --dark-gray-500: #5c5c5c;
+    --dark-gray-600: #3e3e3e;
+
+    --white: #ffffff;
+    --white-50: #FCFCFC;
+    --white-100: #fafafa;
+    --white-130: #f9f9f9;
+    --white-150: #F8F8F8;
+    --white-300: #F5F5F5;
+    --white-400: #f1f1f1;
+    --white-450: #E8E8E8;
+    --white-500: #eaeaea;
+    --white-600: #DDDDDD;
+
+    --purple-gray-50: #f4f2fa;
+
+    --blue-gray-50: #EBECF0;
+    --blue-gray-100: #DFE3E9;
+
+    --sky-blue-50: #f2f8ff;
+
+    --bora-50: #f4f2fa;
+    --bora-500: #8B5CD4;
+
+    --orange-50: #fcf4f4;
+    --orange-500: #FA7C35;
+    --orange-600: #F86A0E;
+
+    --blue-500: #2269D1;
+
+    --indigo-800: #071c3a;
+
+    --slate-blue-500: #5C61D4;
+
+    --green-50: #e9f4f3;
+    --green-500: #80B430;
+
+    --red-500: #E43E3E;
+
+    --online-400: #3851aa;     /* 온라인 연하게 */
+    --online-500: #3851aa;     /* 온라인 기본 */
+    --online-600: #3851aa;     /* 온라인 진하게 */
+
+    --offline-400: #aa64c2;     /* 집합 연하게 */
+    --offline-500: #aa64c2;     /* 집합 기본 */
+    --offline-600: #aa64c2;     /* 집합 진하게 */
+
+    --blended-400: #8e8a21;     /* 블랜디드 연하게 */
+    --blended-500: #8e8a21;     /* 블랜디드 기본 */
+    --blended-600: #8e8a21;     /* 블랜디드 진하게 */
+
+    --burn-400: #1792ea;     /* 화상 연하게 */
+    --burn-500: #1792ea;     /* 화상 기본 */
+    --burn-600: #1792ea;     /* 화상 진하게 */
+
+    --attClass-400: #00a524;     /* 수강 연하게 */
+    --attClass-500: #00a524;     /* 수강 기본 */
+    --attClass-600: #00a524;     /* 수강 진하게 */
+
+    --comp-400: #0e8e8e;     /* 수료 연하게 */
+    --comp-500: #0e8e8e;     /* 수료 기본 */
+    --comp-600: #0e8e8e;     /* 수료 진하게 */
+
+    --notSel-400: #565656;     /* 미선정 연하게 */
+    --notSel-500: #565656;     /* 미선정 기본 */
+    --notSel-600: #565656;     /* 미선정 진하게 */
+
+    --appl-400: #f15e1f;     /* 신청 연하게 */
+    --appl-500: #f15e1f;     /* 신청 기본 */
+    --appl-600: #f15e1f;     /* 신청 진하게 */
+
+    --ess-400: #22a0c8;     /* 필수 연하게 */
+    --ess-500: #22a0c8;     /* 필수 기본 */
+    --ess-600: #22a0c8;     /* 필수 진하게 */
+
+    --sel-400: #f5a201;     /* 선택 연하게 */
+    --sel-500: #f5a201;     /* 선택 기본 */
+    --sel-600: #f5a201;     /* 선택 진하게 */
+
+    --pass-400: #0395ff;     /* pass 연하게 */
+    --pass-500: #0395ff;     /* pass 기본 */
+    --pass-600: #0395ff;     /* pass 진하게 */
+
+    --fail-400: #aa3c3c;     /* fail 연하게 */
+    --fail-500: #aa3c3c;     /* fail 기본 */
+    --fail-600: #aa3c3c;     /* fail 진하게 */
+
+    --hw-400: #6b24b1;     /* 과제 연하게 */
+    --hw-500: #6b24b1;     /* 과제 기본 */
+    --hw-600: #6b24b1;     /* 과제 진하게 */
+
+    --test-400: #2461d8;     /* 시험 연하게 */
+    --test-500: #2461d8;     /* 시험 기본 */
+    --test-600: #2461d8;     /* 시험 진하게 */
+
+    --attend-400: #fa6e42;     /* 출석 연하게 */
+    --attend-500: #fa6e42;     /* 출석 기본 */
+    --attend-600: #fa6e42;     /* 출석 진하게 */
+
+    --comp-crit-400: #177e78;     /* 수료 연하게 */
+    --comp-crit-500: #177e78;     /* 수료 기본 */
+    --comp-crit-600: #177e78;     /* 수료 진하게 */
+
+    --notComp-400: #db414a;     /* 미수료 연하게 */
+    --notComp-500: #db414a;     /* 미수료 기본 */
+    --notComp-600: #db414a;     /* 미수료 진하게 */
+
+    --rate-400: #e72599;     /* 진도 연하게 */
+    --rate-500: #e72599;     /* 진도 기본 */
+    --rate-600: #e72599;     /* 진도 진하게 */
+
+    /*  UI/UX  */
+    --uiux-theme-color: #4549AB;
+    --uiux-theme-dark-color: #37396D;
+    --uiux-theme-dark-color02: #0A0B25;
+    --uiux-theme-color02: #5C61D4;
+    --uiux-theme-light-color: #7A7EE8;
+    --uiux-theme-light-color02: #999CE4;
+    --uiux-theme-light-color03: #EBEBFA;
+    --uiux-theme-light-color04: #F2F2FC;
+    --uiux-theme-light-color05: #F8F9FD;
+
+    --theme-color: #1460d2;                     /* B2B 테마 */
+    --theme-color-hover: #0f3773;               /* B2B 테마 hover */
+    --theme-blue: #0c62e3;                      /* blue */
+    --theme-orange: #ff5c00;                    /* orange */
+    --theme-green: #2cc64e;                     /* green */
+    --theme-review: #ffbe0b;                    /* 과정후기 progress bar color */
+    --theme-black: #000000;                     /* black */
+    --theme-userNm: #2b49b6;                    /* header top name */
+    --theme-white: #ffffff;                    /* white */
+    --theme-b2c: #ff5c00;                       /* B2C 테마 */
+    --theme-b2c-hover: #cd3b1b;                /* B2C 테마 hover */
+    --theme-red: #d23325;                       /* 중요 */
+
+    /* badge */
+    --badge-study: #00a524;                         /* 수강 */
+    --badge-A: #3866aa;                             /* 온라인 */
+    --badge-B: #aa64c2;                             /* 집합 */
+    --badge-D: #8e8a21;                             /* 블랜디드 */
+    --badge-G: #D23325;                             /* 화상 */
+    --badge-M: #121212;                             /* 마이크로러닝 */
+    --badge-study2: #0e8e8e;                        /* 수료 */
+    --badge-fail: #565656;                          /* 미선정 */
+    --badge-apply2: #f15e1f;                        /* 신청 */
+    --badge-rq: #22a0c8;                            /* 필수 */
+    --badge-op: #f5a201;                            /* 선택 */
+    --badge-pass: #0395ff;                          /* pass */
+    --badge-fail2: #aa3c3c;                         /* fail */
+    --badge-hw: #6b24b1;                            /* 과제 */
+    --badge-hw-bg: #f1ecf6;                         /* B2B 과제 bg */
+    --badge-test: #2461d8;                          /* 시험 */
+    --badge-test-bg: #e5eefa;                       /* B2B 시험 bg */
+    --badge-attend: #fa6e42;                        /* 출석 */
+    --badge-attend-bg: #ffebe4;                     /* B2B 출석 bg */
+    --badge-study3: #177e78;                        /* 수료 */
+    --badge-study3-bg: #ebf5f4;                     /* B2B 수료 bg */
+    --badge-fail3: #db414a;                         /* 미수료 */
+    --badge-rate: #e72599;                          /* 진도 */
+    --badge-rate-bg: #ffecf7;                       /* B2B 진도 bg */
+    --badge-day: #714DBD;                           /* 기간 */
+    --badge-always: #098725;                        /* 상시 */
+
+    /* primary */
+    --primary: #1b67d8;
+    --primary02: #3c80e7;
+    --primary03: #185abc;
+    --primary04: #144c9f;
+    --primary05: #0f3773;
+    --primary06: #0b2957;
+    --primary07: #071c3a;
+
+    /* secondary */
+    --secondary: #926ad9;
+    --secondary02: #815ed3;
+    --secondary03: #533ca1;
+    --secondary04: #d23325;
+    --secondary05: #f17400;
+    --secondary06: #008575;
+    --secondary07: #ee4132;
+    --secondary08: #ffbe0b;
+
+    /* B2C */
+    /* b2c Stroke */
+    --b2c-stroke: #e5e5e5;
+    --b2c-stroke02: #f0f0f0;
+    --b2c-stroke03: #dcdcdc;
+    --b2c-stroke04: #cccccc;
+    --b2c-stroke05: #c7c7c7;
+    --b2c-stroke06: #adb5bd;
+    --b2c-stroke07: #a7a7a7;
+    --b2c-stroke08: #979797;
+    --b2c-stroke09: #616161;
+    --b2c-stroke10: #222222;
+    --b2c-stroke11: #252525;
+
+    /* b2c text */
+    --b2c-text-color: #9797b2;
+    --b2c-text-color02: #9d9d9d;
+    --b2c-text-color03: #8f8f8f;
+    --b2c-text-color04: #828282;
+    --b2c-text-color05: #717171;
+    --b2c-text-color06: #707070;
+    --b2c-text-color07: #7c8296;
+    --b2c-text-color08: #6c757d;
+    --b2c-text-color09: #565656;
+    --b2c-text-color10: #444444;
+    --b2c-text-color11: #343a40;
+    --b2c-text-color12: #212529;
+    --b2c-text-color13: #222222;
+    --b2c-text-color14: #202020;
+    --b2c-text-color15: #101010;
+    --b2c-text-color16: #c0c0c0;
+    --b2c-text-red: #d23325;
+
+    /* b2c background */
+    --b2c-bg: #f7f7f7;
+    --b2c-bg02: #f5f5f5;
+    --b2c-bg03: #f2f2f2;
+    --b2c-bg04: #f1f1f1;
+    --b2c-bg05: #efefef;
+    --b2c-bg06: #adb5bd;
+    --b2c-bg07: #0e0d0d;
+
+    /* b2c badge */
+    --b2c-badge-B: #db414a;
+    --b2c-badge-A: #0e8e8e;
+
+    /* line */
+    --line: #EBEBEB;
+
+    /* text */
+    --text-dark: #0D0914;
+    --text-dark02: #262527;
+    --text-dark03: #404040;
+    --text-gray: #555555;
+    --text-gray02: #8E8E8E;
+    --text-gray03: #B8B8B8;
+    --text-light-gray: #D6D6D6;
+    --text-light-dark-gray: #757580;
+
+    --btn-default-border-color: #ddd;               /* button default border color */
+    --btn-default-font-color: #404040;               /* button default font color */
+    --btn-disabled-border-color: #ddd;              /* button disabled border color */
+    --btn-disabled-bg-color: #f9f9f9;               /* button disabled background color */
+    --btn-disabled-font-color: #8d96a5;             /* button disabled font color */
+
+    --color-green: #007a31;                         /* green */
+    --color-blue: #256fff;                          /* blue */
+    --color-orange: #ff6b00;                        /* orange */
+    --color-myClass: #4973d2;                   /* 나의 강의실 직급/직무 */
+    --bg-myClass-accro: #F9F9F9;                /* 나의 강의실 accrodion */
+    --color-passFail-eisu: #4e75f3;             /* pass fail 이수과정 */
+    --color-passFail-all: #11a99a;              /* pass fail 총 */
+    --color-passFail-myclass: #ff9d33;          /* pass fail 나의 강의실 이수과정 */
+    --color-chart: #4e75f3;                     /* 연간 의무학점현황 text */
+    --color-plan: #11a99a;                      /* 계획대비 실행율 text */
+    --color-credit: #4e75f3;                    /* 계획대비 실행율 text */
+    --color-training-A: #3851aa;                /* 온라인 */
+    --color-training-B: #0e8e8e;                /* 집합 */
+    --color-myClass-training-A: #3851aa;        /* 나의 상의실 수강중인과정 온라인, 학습하기 lnb */
+    --color-myClass-training-B: #aa64c2;        /* 나의 상의실 수강중인과정 집합, 학습하기 lnb */
+    --color-myClass-training-D: #8e8a21;        /* 나의 상의실 수강중인과정 블렌디드 */
+    --color-myClass-training-G: #1792ea;        /* 나의 상의실 수강중인과정 화상 */
+
+    --color-edu-list-tag-A: #3851aa;            /* 온라인 */
+    --color-edu-list-border-A: #3851aa;         /* 온라인 */
+    --color-edu-list-tag-B: #db414a;            /* 집합 */
+    --color-edu-list-border-B: rgba(219, 65, 74, 0.5);     /* 집합 */
+    --color-edu-list-tag-D: #aa41db;                        /* 블렌디드 */
+    --color-edu-list-border-D: #aa41db;                     /* 블렌디드 */
+    --color-edu-list-tag-G: #1792ea;                        /* 화상 */
+    --color-edu-list-border-G: #1792ea;                     /* 화상 */
+
+    --grid-training-A: #3851aa;                 /* grid 내 학습유형 color 온라인 */
+    --grid-training-B: #db414a;                 /* grid 내 학습유형 color 집합 */
+
+    --tag-rq: #22a0c8;                          /* 교육신청 태그 필수 */
+    --tag-apply2: #f15e1f;                          /* 교육신청 태그 신청 */
+    --tag-op: #ff800b;                          /* 교육신청 태그 선택 */
+    --tag-pass: #0395ff;                        /* 교육신청 태그 PASS */
+    --tag-fail4: #922323;                        /* 교육신청 태그 Fail */
+    --tag-study: #00a524;                       /* 나의강의실 태그 수강 */
+    --tag-apply: #141bd0;                       /* 나의강의실 태그 신청, 선정 */
+    --tag-fail: #565656;                        /* 나의강의실 태그 대상미선정 */
+    --tag-fail2: #e4535c;                        /* 나의강의실 태그 fail */
+    --tag-study2: #0e8e8e;                       /* 나의강의실 태그 수료 */
+    --tag-fail3: #db414a;                        /* 나의강의실 태그 미수료 */
+    --tag-training-B: #db414a;                  /* 상세 교육유형 태그 집합 */
+    --tag-training-B2: rgba(219,65,74,0.5);     /* 상세 교육유형 태그 집합 */
+    --tag-training-A: #db414a;                  /* 상세 교육유형 태그 온라인 */
+    --tag-training-A2: rgba(219,65,74,0.5);     /* 상세 교육유형 태그 온라인 */
+
+    --cmplt-cmplt-border: rgba(107, 36, 177, 0.5);     /* 상세 수료기준 수료 border */
+    --cmplt-cmplt-color: #6b24b1;                      /* 상세 수료기준 수료 text */
+    --cmplt-cmplt-bg: #f1ecf6;                         /* 상세 수료기준 수료 bg */
+    --cmplt-cmplt-border1: rgba(250, 66, 176, 0.5);     /* 상세 수료기준 출석 border */
+    --cmplt-cmplt-color1: #fd63bf;                      /* 상세 수료기준 출석 text */
+    --cmplt-cmplt-bg1: #ffdff2;                         /* 상세 수료기준 출석 bg */
+    --cmplt-cmplt-border3: rgba(19, 82, 205, 0.5);     /* 상세 수료기준 시험 border */
+    --cmplt-cmplt-color3: #1352cd;                     /* 상세 수료기준 시험 text */
+    --cmplt-cmplt-bg3: #e5eefa;                        /* 상세 수료기준 시험험 bg*/
+    --cmplt-cmplt-border2: rgba(23, 133, 120, 0.5);    /* 상세 수료기준 진도 border */
+    --cmplt-cmplt-color2: #178578;                     /* 상세 수료기준 진도 text */
+    --cmplt-cmplt-bg2: #ebf5f4;                        /* 상세 수료기준 진도 bg*/
+    --cmplt-cmplt-border5: rgba(250, 110, 66, 0.5);    /* 상세 수료기준 과제 border */
+    --cmplt-cmplt-color5: #fa6e42;                     /* 상세 수료기준 과제 text */
+    --cmplt-cmplt-bg5: #ffebe4;                         /* 상세 수료기준 과제 bg*/
+    --apply-btn-bg: #0e0d0d;                            /* 상세 수강신청 버튼 bg */
+
+    --tag-test-color: #6b24b1;                                /* 학습하기 시험 태그 color */
+    --tag-test-bg: #f4f2fa;                                     /* 학습하기 시험 태그 bg */
+    --tag-hw-color: #d23325;                                    /* 학습하기 과제 태그 color */
+    --tag-hw-bg: #fcf4f4;                                       /* 학습하기 과제 태그 bg */
+
+
+
+    --grey--light: #fafaff;
+    --grey--light2: #efefef;
+    --white: #ffffff;
+
+    --text-ios-color: #000;     /* IOS 기준 텍스트 컬러 강조, 제목, 기본 */
+    --text-ios-color02: #8e8e93;     /* IOS 기준 텍스트 컬러 연하게 */
+
+    --scroll-width: 10px;   /* 스크롤 바 넓이 */
+    --scroll-bg: transparent;   /* 스크롤 바 배경 */
+    --scroll-thumb-bg: #C4C7C7; /* 스크롤 배경 */
+
+    /*--icon: url("../images/common/icon.png") no-repeat;  !* 일반 아이콘 이미지 경로 *!*/
+    /*--icon-size: 300px;    !* 아이콘 이미지 크기(가로x세로) *!*/
+
+    /* footer */
+    --footer-top-brd: #4a4a4a;
+    --footer-bg: #3e3e3e;
+
+    /*  skeleton  */
+    /*    --skeleton-bg: #e2e8f0;*/
+    --skeleton-bg: linear-gradient(90deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 50%, #e5e5e5 48%);
+    --skeleton-bgPos: -100% 0;
+    --skeleton-bg50: #cbd5e1;
+
+    /*  accordion  */
+    --acc-round: 10px;  /* 아코디언 라운드 */
+
+
+}

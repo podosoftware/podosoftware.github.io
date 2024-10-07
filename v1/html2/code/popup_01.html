@@ -1,0 +1,30 @@
+<div id="popup_window" class="" style="display: none;">
+    <div class="popup-content">
+        팝업 내용
+    </div>
+
+    <div class="popup-foot">
+        <button class="popup-btn btn-default">취소</button>
+        <button class="popup-btn">신청</button>
+    </div>
+
+</div>
+
+<script>
+    function popupOpen() {
+        if(!$("#popup_window").data("kendoWindow")) {
+            $("#popup_window").kendoWindow({
+                width : "800px",
+                height: "370px",
+                resizable : false,
+                title : "Popup",
+                modal : true,
+                visible : false
+            });
+        }
+
+        $("#popup_window").data("kendoWindow").center();
+        $("#popup_window").data("kendoWindow").open();
+
+    }
+</script>

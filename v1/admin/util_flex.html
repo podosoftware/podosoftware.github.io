@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- 여기에 head.html을 인클루드 -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#8C63E7" />
+
+        <link rel="shortcut icon" href="" />
+        <link rel="apple-touch-icon" href="" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel="icon" href="" type="image/x-icon" />
+
+        <meta name="Description" content="" />
+        <meta name="Keywords" content="" />
+        <meta name="Copyright" content="" />
+        <meta content="" property="og:title" />
+        <meta content="" property="og:description" />
+        <meta content="" property="og:url" />
+        <meta content="" property="og:site-name" />
+
+        <link rel="stylesheet" href="../css/reset2.css" />
+        <link rel="stylesheet" href="../css/admin/root_admin.css" />
+        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/util.css" />
+        <!--    <link rel="stylesheet" href="../css/style2.css">-->
+        <link rel="stylesheet" href="../css/admin/admin.css" />
+        <link rel="stylesheet" href="../css/guide.css" />
+        <link rel="stylesheet" href="../css/media2.css" />
+
+        <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
+        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+        <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
+        <script src="../js/common2.js"></script>
+        <script src="../js/front.js"></script>
+
+        <link rel="stylesheet" href="../js/prism.css" />
+        <script src="../js/prism.js"></script>
+
+        <title>Util | Contents - 관리자</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <!--    Header START    -->
+            <!-- 여기에 Header.html을 인클루드 -->
+            <header class="left-header">
+                <div class="left-header-top">
+                    <h1 class="logo">
+                        <a href="index.html"><img src="../images/logo.png" alt="로고" /></a>
+                    </h1>
+                </div>
+                <nav class="left-header-menu-wrap">
+                    <ul>
+                        <!--            <li class="first css">-->
+                        <!--                <a href="javascript: void(0);" class="tab">CSS</a>-->
+                        <!--                <ol>-->
+                        <!--                    <li class="liCss"><a href="css.html">Index</a></li>-->
+                        <!--                </ol>-->
+                        <!--            </li>-->
+                        <li class="two util">
+                            <a href="javascript: void(0);" class="tab">UTIL</a>
+                            <ol>
+                                <li class="liFont"><a href="util.html" data-hash="#font">font</a></li>
+                                <li class="liMgPd"><a href="util_mgPd.html" data-hash="#mgPd">margin/padding</a></li>
+                                <!--                    <li class="liColor"><a href="util_color.html" data-hash="#color">color</a></li>-->
+                                <li class="liClamp"><a href="util_clamp.html" data-hash="#clamp">줄임표</a></li>
+                                <li class="liFlex"><a href="util_flex.html" data-hash="#flex">flex</a></li>
+                                <li class="liHide"><a href="util_hide.html" data-hash="#hide">hide</a></li>
+                                <li class="liNoData"><a href="util_noData.html" data-hash="#noData">No Data</a></li>
+                                <li class="liEtc"><a href="util_etc.html">Etc</a></li>
+                                <!--                    <li><a href="util.html#skeleton">Skeleton</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="color">
+                            <a href="javascript: void(0);" class="tab">COLOR</a>
+                            <ol>
+                                <li class="liColorPrimary"><a href="color_primary.html">Primary(theme)</a></li>
+                                <li class="liColorText"><a href="color_text.html">Text</a></li>
+                                <li class="liColorBg"><a href="color_bg.html">Background&Line</a></li>
+                                <!--                    <li class="liColorBadge"><a href="color_badge.html">badge</a></li>-->
+                                <!--                    <li class="liColorEtc"><a href="color_etc.html">etc</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="three button">
+                            <a href="javascript: void(0);" class="tab">BUTTON</a>
+                            <ol>
+                                <li class="liContents"><a href="button.html" data-hash="#contents">Contents Buttons</a></li>
+                                <li class="liSpliterContents"><a href="button_spliterCont.html" data-hash="#spliterRightContents">Spliter-Right Contents Buttons</a></li>
+                            </ol>
+                        </li>
+                        <li class="input">
+                            <a href="javascript: void(0);" class="tab">Input</a>
+                            <ol>
+                                <li class="liInput"><a href="input.html" data-hash="#input">Input box</a></li>
+                                <li class="liInputNum"><a href="input_number.html" data-hash="#input">Input Number box</a></li>
+                                <li class="liTextBox"><a href="input_textBox.html" data-hash="#textareaBox">Textarea box</a></li>
+                                <li class="liChkRadio"><a href="input_checkRadio.html" data-hash="#checkRadio">Checkbox/Radio</a></li>
+                            </ol>
+                        </li>
+                        <li class="four tab">
+                            <a href="javascript: void(0);" class="tab">Tab</a>
+                            <ol>
+                                <li class="liTab"><a href="tab.html" data-hash="#popupTab">Popup Tab Style</a></li>
+                                <li class="liSpliterTab"><a href="tab_spliterTab.html" data-hash="#spliterTab">Spliter-Right Tab Style</a></li>
+                            </ol>
+                        </li>
+                        <li class="five popup">
+                            <a href="javascript: void(0);" class="tab">Popup</a>
+                            <ol>
+                                <li class="liPopup"><a href="popup.html" data-hash="#style">Style</a></li>
+                            </ol>
+                        </li>
+                        <li class="spliterRight">
+                            <a href="javascript: void(0);" class="tab">Spliter-Right</a>
+                            <ol>
+                                <li class="liTitle"><a href="spliterRight.html" data-hash="#title">Title</a></li>
+                                <li class="liTable"><a href="spliterRight_table.html#table" data-hash="#table">Contents Inner Table</a></li>
+                                <!--                    <li class="liContInner"><a href="spliterRight_contInner.html#contentsInner" data-hash="#contentsInner">Contents Inner</a></li>-->
+                            </ol>
+                        </li>
+                        <li class="searchArea">
+                            <a href="javascript: void(0);" class="tab">Search Area</a>
+                            <ol>
+                                <li class="liArea"><a href="searchArea.html" data-hash="#area">Area</a></li>
+                                <li class="liAreaBtn"><a href="searchArea_areaBtn.html" data-hash="#areaButtonBottom">검색버튼 영역 아래</a></li>
+                                <li class="liTitleSearch"><a href="searchArea_titleSearch.html" data-hash="#titleSearch">Title Search</a></li>
+                            </ol>
+                        </li>
+                        <li class="badge-">
+                            <a href="javascript: void(0);" class="tab">Badge</a>
+                            <ol>
+                                <li class="liBadge"><a href="badge.html" data-hash="#badge">Badge</a></li>
+                                <li class="liCurrent"><a href="badge_current.html" data-hash="#currentSituation">Current Situation</a></li>
+                            </ol>
+                        </li>
+                        <li class="etc">
+                            <a href="javascript: void(0);" class="tab">기타</a>
+                            <ol>
+                                <li class="liPay"><a href="etc.html" data-hash="#pay">결제관리</a></li>
+                            </ol>
+                        </li>
+                        <li class="tips">
+                            <a href="javascript: void(0);" class="tab">Tips</a>
+                            <ol>
+                                <li class="liTip"><a href="tips.html" data-hash="#tip">Tips</a></li>
+                                <li class="liTip2"><a href="tips_tip2.html" data-hash="#tip2">운영관리 Tip</a></li>
+                                <li class="liContTip"><a href="tips_contTip.html" data-hash="#contentsTip">선택항목 tip</a></li>
+                                <li class="liTooltip"><a href="tips_tooltip.html" data-hash="#tooltip">Tooltip</a></li>
+                                <li class="liContTip2"><a href="tips_contTip2.html" data-hash="#contTip">팝업 콘텐츠 Tip</a></li>
+                            </ol>
+                        </li>
+                        <!--            <li class="kendoUi">-->
+                        <!--                <a href="javascript: void(0);" class="tab">Kendo UI</a>-->
+                        <!--                <ol>-->
+                        <!--                    <li class="liUpload"><a href="admin_kendoUi.html" data-hash="#upload">Upload</a></li>-->
+                        <!--                    <li class="liMulti"><a href="kendoUi_multi.html" data-hash="#multiselect">MultiSelect</a></li>-->
+                        <!--                    <li class="liGrid"><a href="kendoUi_grid.html" data-hash="#gridFilterTooltip">Grid</a></li>-->
+                        <!--                    <li class="liIcons"><a href="kendoUi_icons.html" data-hash="#icons">Icons</a></li>-->
+                        <!--                    <li class="liDatePicker"><a href="admin_kendoUi_date.html" data-hash="#datePicker">DatePicker</a></li>-->
+                        <!--                    <li class="liTime"><a href="kendoUi_time.html" data-hash="#dateTimePicker">DateTimePicker</a></li>-->
+                        <!--                    <li class="liRange"><a href="kendoUi_range.html" data-hash="#dateRangePicker">DateRangePicker</a></li>-->
+                        <!--&lt;!&ndash;                    <li class="liCalendar"><a href="kendoUi_calendar.html" data-hash="#calendar">Calendar</a></li>&ndash;&gt;-->
+                        <!--                    <li class="liNumeric"><a href="kendoUi_numeric.html" data-hash="#numericTextBox">NumericTextBox</a></li>-->
+                        <!--                    <li class="liDropDown"><a href="kendoUi_dropDown.html" data-hash="#dropDownList">DropDownList</a></li>-->
+                        <!--                    <li class="liPaging"><a href="kendoUi_paging.html" data-hash="#paging">Paging</a></li>-->
+                        <!--                    <li class="liEditor"><a href="kendoUi_editor.html" data-hash="#editor">Editor</a></li>-->
+                        <!--                    <li class="liTree"><a href="kendoUi_tree.html" data-hash="#kendoTree">Kendo Tree</a></li>-->
+                        <!--                </ol>-->
+                        <!--            </li>-->
+                    </ul>
+                </nav>
+            </header>
+
+            <!--        <div id="header" data-include-path="header.html"></div>-->
+
+            <!--    Header END    -->
+
+            <!--    본문영역 START    -->
+            <main class="body-container">
+                <!--        breadcrumb START        -->
+                <section class="breadcrumb">
+                    <div class="container">
+                        <ul class="menu">
+                            <li>
+                                <a href="index.html"><i class="icon-home"></i></a>
+                            </li>
+                            <li>UTIL</li>
+                        </ul>
+                    </div>
+                </section>
+                <!--        breadcrumb END        -->
+
+                <section class="sec-">
+                    <div class="container">
+                        <div class="top-title-box">
+                            <h2>UTIL</h2>
+                            <p></p>
+                        </div>
+
+                        <div class="flex-group">
+                            <!--                Flex Start    -->
+                            <article id="flex" class="article-">
+                                <h3 class="title"># Flex</h3>
+                                <p>주로 많이 쓰이는 css위주, 반드시 css 하기엔 작은 것에 사용</p>
+                                <p>컨테이너의 교차 축을 따라 flex 항목이 배치되는 방식을 제어하는 유틸리티입니다.</p>
+
+                                <h4 class="pd-font-bold pd-mt30 pd-text-2xl">flex 주의사항</h4>
+                                <div>
+                                    flex 를 사용한 경우 반드시 class 에 pd-flex- 를 넣어서 누가봐도 이 마크업엔 flex가 들어갔다는걸 상기시켜주세요.
+                                    <br />
+                                    flex 가 들어간 요소에 show/hide 스크립트를 하면 block 으로 인라인 스타일이
+                                    <br />
+                                    들어가 깨지므로 flex 요소 밖을 한번더 감쌉니다.
+                                    <br />
+                                    show/hide 될것을 감안해서 퍼블리싱 합니다.
+                                    <br />
+                                    class명으로 숨기고자 하면 hide, 보이고자 하면 hide를 지우시거나,
+                                    <br />
+                                    inline-flex 일 경우 flex-inline-show 를 붙입니다.
+                                </div>
+
+                                <div class="sec-cont">
+                                    <pre class="line-numbers"><code class="language-css">
+[class*="pd-flex-"] { display: flex; max-width: 100%; word-break: keep-all;}
+.pd-flex-inline { display: inline-flex;}
+.pd-flex-col { flex-direction: column;}
+.pd-flex-col-reverse { flex-direction: column-reverse;}
+.pd-flex-row { flex-direction: row !important;}
+.pd-flex-row-reverse { flex-direction: row-reverse;}
+.pd-flex-fix { flex: 0 0 fit-content;}
+.pd-flex-1 { flex: 1 1 0%;}
+.pd-flex-auto { flex: 0 0 auto;}
+.pd-flex-wrap { flex-wrap: wrap;}
+.pd-flex-wrap-reverse { flex-wrap: wrap-reverse;}
+.pd-flex-nowrap { flex-wrap: nowrap;}
+.pd-flex-none { flex: none;}
+/* Justify Content */
+.pd-space-between { justify-content: space-between;}
+.pd-space-around { justify-content: space-around;}
+.pd-justify-center { justify-content: center;}
+.pd-flex-end { justify-content: flex-end;}
+.pd-flex-start { justify-content: flex-start;}
+
+/* align Content */
+.pd-align-content-center { align-content: center;}
+.pd-align-content-start { align-content: flex-start;}
+.pd-align-content-end { align-content: flex-end;}
+.pd-align-content-between { align-content: space-between;}
+.pd-align-content-around { align-content: space-around;}
+
+/* align items */
+.pd-align-center { align-items: center;}
+.pd-align-end { align-items: flex-end;}
+.pd-align-start { align-items: flex-start;}
+
+.pd-flex-all-center { justify-content: center; align-items: center; text-align: center;}
+
+.pd-flex-shrink-0 { flex-shrink: 0 !important;}
+
+/* Gap */
+.pd-gap1 { gap: 1px;}
+    ... 1 ~ 100px 까지 되어 있다.
+
+.pd-flex-show { display: flex;}
+.pd-flex-inline-show { display: inline-flex;}
+                            </code></pre>
+                                </div>
+                            </article>
+                            <!--                Flex End    -->
+
+                            <div class="guid-table-box">
+                                <div class="guid-table-fixed">
+                                    <strong>Class</strong>
+                                    <strong>내용</strong>
+                                </div>
+                                <ul id="guidClass"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!--    본문영역 END    -->
+
+            <footer></footer>
+        </div>
+
+        <script>
+            var currentPath = window.location.pathname;
+            var currentHash = window.location.hash;
+
+            $(function () {
+                $('.util .liFlex a').addClass('active');
+
+                var html = '';
+                var guidData = [
+                    { classNm: 'pd-flex-', cont: 'flex 기본 속성' },
+                    { classNm: 'pd-flex-inline', cont: 'inline-flex' },
+                    { classNm: 'pd-flex-col', cont: 'column 속성' },
+                    { classNm: 'pd-flex-col-reverse', cont: 'column 순서 거꾸로 속성' },
+                    { classNm: 'pd-flex-row', cont: 'row 속성' },
+                    { classNm: 'pd-flex-row-reverse', cont: 'row 순서 거꾸로 속성' },
+                    { classNm: 'pd-flex-fix', cont: 'flex 0 0 fit-content 속성' },
+                    { classNm: 'pd-flex-1', cont: '크기 알맞게' },
+                    { classNm: 'pd-flex-auto', cont: '자동' },
+                    { classNm: 'pd-flex-wrap', cont: '자동 줄바꿈' },
+                    { classNm: 'pd-flex-wrap-reverse', cont: '자동 줄바꿈 하면서 순서 거꾸로' },
+                    { classNm: 'pd-flex-nowrap', cont: '줄바꿈 막기' },
+                    { classNm: 'pd-flex-none', cont: 'flex 없애기' },
+                    { classNm: 'pd-space-between', cont: '콘텐츠 정렬 양끝' },
+                    { classNm: 'pd-space-around', cont: '콘텐츠 정렬 양끝에서 조금 띄움' },
+                    { classNm: 'pd-justify-center', cont: '콘텐츠 정렬 가운데' },
+                    { classNm: 'pd-flex-end', cont: '콘텐츠 정렬 오른쪽 끝에서부터' },
+                    { classNm: 'pd-flex-start', cont: '콘텐츠 정렬 왼쪽 끝에서부터' },
+                    { classNm: 'pd-align-content-center', cont: '콘텐츠 y 정렬 가운데' },
+                    { classNm: 'pd-align-content-start', cont: '콘텐츠 y 정렬 위에서부터 시작' },
+                    { classNm: 'pd-align-content-end', cont: '콘텐츠 y 정렬 아래부터 시작' },
+                    { classNm: 'pd-align-content-between', cont: '콘텐츠 y 정렬 위 아래 끝' },
+                    { classNm: 'pd-align-content-around', cont: '콘텐츠 y 정렬 위 아래 끝이면서 조금 띄움' },
+                    { classNm: 'pd-align-center', cont: '아이템 y 정렬 위 아래 가운데' },
+                    { classNm: 'pd-align-end', cont: '아이템 y 정렬 아래서부터 시작' },
+                    { classNm: 'pd-align-start', cont: '아이템 y 정렬 위에서부터 시작' },
+                    { classNm: 'pd-flex-all-center', cont: '콘텐츠 yx 가운데 정렬' },
+                    { classNm: 'pd-flex-shrink-0', cont: 'flex 자식요소의 크기를 유지' },
+                    { classNm: 'pd-gap3', cont: 'flex를 사용한 콘텐츠의 자식들 간격 3px' },
+                    { classNm: 'pd-gap7', cont: 'flex를 사용한 콘텐츠의 자식들 간격 7px' },
+                    { classNm: 'pd-gap8', cont: 'flex를 사용한 콘텐츠의 자식들 간격 8px' },
+                    { classNm: 'pd-gap10', cont: 'flex를 사용한 콘텐츠의 자식들 간격 10px' },
+                    { classNm: 'pd-gap15', cont: 'flex를 사용한 콘텐츠의 자식들 간격 15px' },
+                    { classNm: 'pd-gap30', cont: 'flex를 사용한 콘텐츠의 자식들 간격 30px' },
+                ];
+
+                for (var i = 0; i < guidData.length; i++) {
+                    html += '<li>';
+                    html += "   <p class='left'>" + guidData[i].classNm + '</p>';
+                    html += "   <p class='right'>" + guidData[i].cont + '</p>';
+                    html += '</li>';
+                }
+
+                $('#guidClass').html(html);
+            });
+        </script>
+    </body>
+</html>

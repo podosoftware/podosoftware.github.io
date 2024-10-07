@@ -1,0 +1,23 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.896 3.578h10.541z" fill="#fff"/>
+    <path d="M6.896 3.578h10.541" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.896 10h10.541z" fill="#fff"/>
+    <path d="M6.896 10h10.541" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.896 16.422h10.541z" fill="#fff"/>
+    <path d="M6.896 16.422h10.541" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <mask id="6mbirm993a" fill="#fff">
+        <ellipse cx="2.546" cy="16.267" rx=".811" ry=".851"/>
+    </mask>
+    <ellipse cx="2.546" cy="16.267" rx=".811" ry=".851" fill="#fff"/>
+    <path d="M2.357 16.267a.13.13 0 0 1 .039-.088.211.211 0 0 1 .15-.06v2c1.045 0 1.811-.876 1.811-1.852h-2zm.19-.149c.067 0 .121.03.15.061a.13.13 0 0 1 .038.088h-2c0 .976.766 1.851 1.811 1.851v-2zm.188.15a.13.13 0 0 1-.038.087.211.211 0 0 1-.15.061v-2c-1.046 0-1.812.875-1.812 1.851h2zm-.189.148a.211.211 0 0 1-.15-.06.13.13 0 0 1-.039-.089h2c0-.976-.766-1.851-1.81-1.851v2z" fill="#fff" mask="url(#6mbirm993a)"/>
+    <mask id="vx9tq62i6b" fill="#fff">
+        <ellipse cx="2.546" cy="9.923" rx=".811" ry=".851"/>
+    </mask>
+    <ellipse cx="2.546" cy="9.923" rx=".811" ry=".851" fill="#fff"/>
+    <path d="M2.357 9.923a.13.13 0 0 1 .039-.088.211.211 0 0 1 .15-.06v2c1.045 0 1.811-.876 1.811-1.852h-2zm.19-.149c.067 0 .121.031.15.061a.13.13 0 0 1 .038.088h-2c0 .976.766 1.851 1.811 1.851v-2zm.188.15c0 .025-.01.058-.038.087a.211.211 0 0 1-.15.061v-2C1.5 8.072.734 8.947.734 9.923h2zm-.189.148a.211.211 0 0 1-.15-.06.131.131 0 0 1-.039-.089h2c0-.976-.766-1.85-1.81-1.85v2z" fill="#fff" mask="url(#vx9tq62i6b)"/>
+    <mask id="n086xiglvc" fill="#fff">
+        <ellipse cx="2.546" cy="3.579" rx=".811" ry=".851"/>
+    </mask>
+    <ellipse cx="2.546" cy="3.579" rx=".811" ry=".851" fill="#fff"/>
+    <path d="M2.357 3.579a.13.13 0 0 1 .039-.088.211.211 0 0 1 .15-.061v2c1.045 0 1.811-.875 1.811-1.851h-2zm.19-.15c.067 0 .121.031.15.062a.13.13 0 0 1 .038.088h-2c0 .976.766 1.85 1.811 1.85v-2zm.188.15a.13.13 0 0 1-.038.088.211.211 0 0 1-.15.06v-2C1.5 1.728.734 2.603.734 3.58h2zm-.189.149a.211.211 0 0 1-.15-.061.13.13 0 0 1-.039-.088h2c0-.977-.766-1.851-1.81-1.851v2z" fill="#fff" mask="url(#n086xiglvc)"/>
+</svg>

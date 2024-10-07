@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Kendo Chart</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>Kendo Chart</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>Kendo Chart</h2>
+
+                    <div class="flex-group">
+                       <div>
+                           <article id="uploadPage" class="article-">
+                               <h3 class="title"># Bullet</h3>
+
+                               <div class="sec-cont">
+                                   <div class="kendo-box">
+                                       <div class="portlet_data">
+                                           <div id="bar3DChart"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </article>
+                           <!--                // Upload Grid End    -->
+
+                           <div class="accordion-wrap mt30" style="width: 955px;">
+                               <div class="accordion-head">
+                                   <strong>코드 보기</strong>
+                               </div>
+                               <div class="accordion-body">
+                                   <div class="g-code-box">
+                                       <pre data-src="code/chart_01.html"></pre>
+                                   </div>
+                               </div>
+                           </div>
+                           <!--                        //    -->
+                       </div>
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var now = new Date();
+        var mon = "";
+        var day = "";
+        if ((now.getMonth() + 1) < 10) {
+            mon = "0" + (now.getMonth() + 1);
+        } else {
+            mon = now.getMonth() + 1;
+        }
+        if ((now.getDate()) < 10) {
+            day = "0" + (now.getDate());
+        } else {
+            day = now.getDate();
+        }
+        var nowDay = now.getFullYear() + "-" + mon + "-" + day;
+
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $(".chart .liBullet a").addClass("active");
+
+            bar3DChart(25, 10, 15);
+
+            var html = "";
+            var guidData = [
+                { classNm: "kendo-box", cont: "차트를 감싸는 box class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+
+        function bar3DChart(STD_PROMOTION_SCR, ACQ_PROMOTION_SCR_AVG, ACQ_PROMOTION_SCR) {
+            if(STD_PROMOTION_SCR == null || STD_PROMOTION_SCR == undefined || STD_PROMOTION_SCR == ""){ //승진 의무 이수 시간이 없는 경우 25로 초기화 하여 표현
+                STD_PROMOTION_SCR = 25;
+            }else if(ACQ_PROMOTION_SCR_AVG == null || ACQ_PROMOTION_SCR_AVG == undefined || ACQ_PROMOTION_SCR_AVG == ""){
+                ACQ_PROMOTION_SCR_AVG = 0;
+            }else if(ACQ_PROMOTION_SCR == null || ACQ_PROMOTION_SCR == undefined || ACQ_PROMOTION_SCR == ""){
+                ACQ_PROMOTION_SCR = 0;
+            }
+
+            $("#bar3DChart").kendoChart({
+                legend: {
+                    visible: true,
+                    position: "bottom",
+                    font: "13px Pretendard",
+                    color: "#666666",
+                    item: {
+                        visual: function (e) {
+                            // get color of current marker and label
+                            var color = e.options.markers.background;
+                            var labelColor = e.options.labels.color;
+                            var rect = new kendo.geometry.Rect([0, 0], [100, 50]);
+                            var layout = new kendo.drawing.Layout(rect, {
+                                spacing: 5,
+                                alignItems: "center"
+                            });
+                            // create a circle geometry centered at x=10, y=5, with a radius of 5
+                            var CircGeometry = new kendo.geometry.Circle([10, 5], 5);
+                            // draw the circle using the geometry and set the color (could have no stroke)
+                            var MarkerCircle = new kendo.drawing.Circle(CircGeometry, {
+                                stroke: {color: color, width: 1},
+                                fill: {color: color}
+                            });
+                            //Create the text label
+                            var label = new kendo.drawing.Text(e.series.name, [0, 0], {
+                                fill: {
+                                    color: labelColor
+                                }
+                            });
+
+                            //Add circle and label to layout object
+                            layout.append(MarkerCircle, label);
+                            layout.reflow()
+
+                            return layout;
+                        }
+                    }
+                },
+                seriesDefaults: {
+                    type: "bullet",
+                    size:10,
+                    visual: function (e) {
+                        return createBullet(e.rect, e.options.color);
+                    },
+                    target: {
+                        line: {
+                            width: 1
+                        }
+                    },
+                },
+                series: [{
+                    name: "동일직급평균",
+                    type: "bullet",
+                    data: [[ACQ_PROMOTION_SCR_AVG, STD_PROMOTION_SCR]],
+                    gap: 10,
+                    color: "#fd599e",
+                },{
+                    name: "나의학점",
+                    type: "bullet",
+                    data: [[ACQ_PROMOTION_SCR, STD_PROMOTION_SCR]],
+                    gap: 10,
+                    color: "#4e75f3",
+                }],
+                chartArea: {
+                    height: 290,
+                    margin: {
+                        left: 0
+                    },
+                    background: ''
+                },
+                categoryAxis: {
+                    majorGridLines: {
+                        visible: false
+                    },
+                    majorTicks: {
+                        visible: true
+                    }
+                },
+                valueAxis: [{
+                    plotBands: [{
+                        from: 0, to: STD_PROMOTION_SCR*0.5, color: "#fff", opacity: .2
+                    }, {
+                        from: STD_PROMOTION_SCR*0.5, to: STD_PROMOTION_SCR, color: "#fff", opacity: .1
+                    }],
+                    majorGridLines: {
+                        visible: false
+                    },
+                    min: 0,
+                    max: STD_PROMOTION_SCR*1.1,
+                    minorTicks: {
+                        visible: false
+                    },
+                    labels: {
+                        font: "12px Pretendard",
+                        color: "#767676"
+                    },
+                }],
+                tooltip: {
+                    visible: true,
+                    template: "승진필요학점: #= value.target # <br /> #= series.name #: #= value.current #학점"
+                },
+            });
+        }
+
+        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+            var angleInRadians = (angleInDegrees) * Math.PI / 180.0;
+
+            return {
+                x: centerX + (radius * Math.cos(angleInRadians)),
+                y: centerY + (radius * Math.sin(angleInRadians))
+            };
+        }
+
+        //create chart 3dbar custom
+        function createBullet(rect, color) {
+            var draw = kendo.drawing;
+            var geom = kendo.geometry;
+
+            var origin = rect.origin;
+            var center = rect.center();
+
+            var x = rect.origin.x;
+            var y = rect.origin.y;
+            var bottomRight = rect.bottomRight();
+            var radiusX = rect.width() / 2;
+            var radiusY = radiusX / 1;
+            var group = new kendo.drawing.Group();
+
+            var path = new kendo.drawing.Path({
+                fill: {
+                    color: color
+                },
+                stroke: {
+                    color: color
+                }
+            }).moveTo(origin.x, origin.y)
+                .lineTo(origin.x, bottomRight.y)
+                .arc(180, 0, radiusX, radiusY, true)
+                .lineTo(bottomRight.x, origin.y)
+                .arc(0, 180, radiusX, radiusY, true)
+                .close();
+
+            var topArcGeometry = new kendo.geometry.Arc([center.x, origin.y], {
+                // startAngle: 0,
+                // endAngle: 360,
+                // radiusX: radiusX,
+                // radiusY: radiusY
+            });
+
+            group.append(path);
+            return group;
+        }
+
+    </script>
+</body>
+</html>

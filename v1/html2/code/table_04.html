@@ -1,0 +1,162 @@
+<div id="grid" class="front-table-02"></div>
+
+<script>
+    function kendoGridDraw() {
+        $("#grid").empty();
+        $("#grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/service/ca/brd_list.do", type:"POST", dataType: 'json' },
+                    parameterMap: function (options, operation){
+                        var sortField = "";
+                        var sortDir = "";
+                        if (options.sort && options.sort.length>0) {
+                            sortField = options.sort[0].field;
+                            sortDir = options.sort[0].dir;
+                        }
+                        return {
+                            startIndex: options.skip, pageSize: options.pageSize, sortField: sortField, sortDir: sortDir, filter: JSON.stringify(options.filter),
+                            COMPANY_ID : companyId ,
+                            search : $("#searchInput").val(),
+                            B2C_YN : "<%=b2cYN%>",
+                            BRD_CD : "<%=brdType%>"
+                        };
+                    }
+                },
+                schema: {
+                    total: "totalCount",
+                    data: "items",
+                    model: {
+                        fields: {
+                            ROWNUMBER : { type: "number" },
+                            BOARD_CODE : { type: "string" },
+                            BOARD_NUM : { type: "number" },
+                            BOARD_TITLE : { type: "string" },
+                            BOARD_CONTENT : { type: "string" },
+                            NAME : { type: "string" },
+                            VIEW_CNT : { type: "number" },
+                            CREATETIME : { type: "string" }
+
+                        }
+                    },
+                    parse: function(response) {
+                        var obj = response.items;
+                        var rtnArr = [];
+                        if(obj != null) {
+                            for (var i = 0; i < obj.length; i++) {
+                                var row = {};
+                                $.each(obj[i], function(key,val){
+                                    row[key] = unescapeHtml(val);
+                                });
+
+                                rtnArr.push(row);
+                            }
+                        }
+
+                        return {items:rtnArr,totalCount:response.totalCount};
+                    }
+                },
+                pageSize: 30, serverPaging: true, serverFiltering: true, serverSorting: true
+            },
+            columns: [
+                {
+                    field:"ROWNUMBER",
+                    title: "번호",
+                    filterable: false,
+                    width:40,
+                    headerAttribuftes:{"class":"table-header-cell", style:"text-align:center"},
+                    attributes:{"class":"table-cell", style:"text-align:center"}
+                },
+                {
+                    field: "BOARD_TITLE",
+                    title: "제목",
+                    width:260,
+                    headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                    attributes:{"class":"table-cell td-title", style:"text-align:left;"} ,
+                    template: function (dataItem) {
+                        var recount = "";
+
+                        if(brdType != "1") {
+                            recount = "["+dataItem.REPCOUNT+"]";
+                        }
+
+                        if(dataItem.NEW_POST_YN == "Y"){
+                            if(dataItem.UP_BRD_NUM==null || dataItem.UP_BRD_NUM==""){
+                                return "<div class='title'><a href='javascript:void();' onclick='fn_detailView("+dataItem.BOARD_CODE+", "+dataItem.BOARD_NUM+");' style='text-decoration: underline;' >"+dataItem.BOARD_TITLE+" "+recount+"</a>" +
+                                    "<span class='new'>N</span>" +
+                                    "</div>";
+                            }else{
+                                return "<div class='title'><a href='javascript:void();' onclick='fn_detailView("+dataItem.BOARD_CODE+", "+dataItem.BOARD_NUM+");' style='text-decoration: underline;' >"+dataItem.BOARD_TITLE+" "+recount+"</a>" +
+                                    "<span class='new'>N</span>" +
+                                    "</div>";
+                            }
+                        }else{
+                            if(dataItem.UP_BRD_NUM==null || dataItem.UP_BRD_NUM==""){
+                                return "<a href='javascript:void();' onclick='fn_detailView("+dataItem.BOARD_CODE+", "+dataItem.BOARD_NUM+");' style='text-decoration: underline;' >"+dataItem.BOARD_TITLE+" "+recount+"</a>";
+                            }else{
+                                return "<a href='javascript:void();' onclick='fn_detailView("+dataItem.BOARD_CODE+", "+dataItem.BOARD_NUM+");' style='text-decoration: underline;' >"+dataItem.BOARD_TITLE+" "+recount+"</a>";
+                            }
+                        }
+
+
+                    }
+                },
+                {
+                    field: "CREATETIME",
+                    title: "등록일",
+                    width:100,
+                    headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                    attributes:{"class":"table-cell", style:"text-align:center"},
+
+                },
+                {
+                    field: "NAME",
+                    title: "등록자",
+                    width:80,
+                    headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                    attributes:{"class":"table-cell", style:"text-align:center"}
+                },
+                {
+                    field: "VIEW_CNT",
+                    title: "조회수",
+                    filterable: false,
+                    width:60,
+                    headerAttributes:{"class":"table-header-cell", style:"text-align:center"},
+                    attributes:{"class":"table-cell", style:"text-align:center"}
+                }
+            ],
+            height: 550,
+            groupable: false,
+            filterable:{
+                extra : false,
+                messages : {
+                    filter : "필터",
+                    clear : "초기화"
+                },
+                operators : {
+                    string : {
+                        contains : "포함",
+                        startswith : "시작문자",
+                        eq : "동일단어"
+                    },
+                    number : {
+                        eq : "같음",
+                        gte : "이상",
+                        lte : "이하"
+                    }
+                }
+            },
+            sortable: true,
+            pageable : true,
+            resizable: true,
+            reorderable: true,
+            selectable: "row",
+            pageable : {
+                refresh : false,
+                pageSizes : [10,20,30],
+                buttonCount : 5
+            }
+
+        });
+    }
+</script>

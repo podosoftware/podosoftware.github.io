@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>TAB</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>TAB</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>TAB</h2>
+
+                    <div class="flex-group">
+                        <!--                탭 스타일 START    -->
+                        <article id="tab" class="article-">
+                            <h3 class="title"># Tab Style</h3>
+                            <div class="sec-cont">
+                                <div>
+                                    <ul class="pd-flex- tab-nav-wrap2">
+                                        <li class="tab-btn on">역량별 분석</li>
+                                        <li><a href="javascript: void(0);" class="tab-btn">역량성장도</a></li>
+                                        <li><a href="javascript: void(0);" class="tab-btn">추천 교육</a></li>
+                                        <li><a href="javascript: void(0);" class="tab-btn">코멘트</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="accordion-wrap pd-flex-mt30">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/tab_01.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <!--                탭 스타일 END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $("li.tabLi .liTab a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "tab-nav-wrap2", cont: "tab nav 스타일 2 class"},
+                { classNm: "tab-btn", cont: "tab btn 기본 class"},
+                { classNm: "on", cont: "tab btn 액션일때 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+
+        });
+    </script>
+</body>
+</html>

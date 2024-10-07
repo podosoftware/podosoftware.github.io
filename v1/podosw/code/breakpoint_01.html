@@ -1,0 +1,34 @@
+<style>
+    /*** 방법은 두가지가 있으며 아무거나 사용해도 무방 ***/
+    /** 브라우저 크기로 잡는 경우 **/
+    @media all and (max-width:1279px) {
+        /* 1280px가 기본일 경우 최대 1279px 로 잡고,
+            모바일 디자인의 넓이에 따라 http://publishing.kr/vw/ vw 계산기로 이용해서 잡는다.  */
+        /* 예를 들어 모바일 디자인이 390px 일 경우 390을 기준으로 잡고 계산한다. 소수점은 2아래로. */
+    }
+
+    /*** 일반적 반응형 잡는 방법 ***/
+    /* xl */
+    @media (max-width: 1480px) {}
+    @media (max-width: 1280px) {
+        /* 주로 여기까지 태블릿 */
+    }
+
+    /* lg */
+    @media (max-width: 1024px) {}
+
+    /* md */
+    @media (max-width: 820px) {
+        /* 여기까지 모바일로 생각한다.
+            점점 작아질수록 깨질경우 밑의 미디어를 사용한다. */
+    }
+
+    /* sm */
+    @media (max-width: 640px) {}
+
+    /* 모바일 */
+    @media (max-width: 462px) {}
+
+    /* 작은 모바일 */
+    @media (max-width: 390px) {}
+</style>

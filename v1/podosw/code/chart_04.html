@@ -1,0 +1,75 @@
+<div class="cdp-box">
+    <div class="box">
+        <div class="chart-box">
+            <div class="gauge" id="gauge"></div>
+            <div class='gauge-note'>
+                계획대비 실행율
+            </div>
+        </div>
+        <div class="passFail-box">
+            <div class='passFail-cont'>
+                <div class='line first'>
+                    <p>계획</p>
+                    <p class='count'>
+                        <strong id='stdPassCnt'>100</strong>
+                        학점
+                    </p>
+                </div>
+                <div class='line'>
+                    <p>실행</p>
+                    <p class='count'>
+                        <strong id='passCnt'>-</strong>
+                        학점
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        kendo.culture("ko-KR");
+
+        var obj = [
+            { RATE: 48, PLAN_CREDIT: 100, CREDIT: null}
+        ];
+
+        createGauge(obj[0]);
+    });
+
+    function createGauge(obj) {
+        var percent = 0;
+        if(obj.RATE != undefined && obj.RATE > 0){
+            if(0 < obj.RATE && obj.RATE <= 20) percent = 20;
+            else if(20 < obj.RATE && obj.RATE <= 40) percent = 40;
+            else if(40 < obj.RATE && obj.RATE <= 60) percent = 60;
+            else if(60 < obj.RATE && obj.RATE <= 80) percent = 80;
+            else if(80 < obj.RATE && obj.RATE <= 100) percent = 100;
+        }
+
+        $("#gauge").empty();
+        $("#gauge").kendoArcGauge({
+            value: obj.RATE,
+            color: "#4e75f3",
+            scale: {
+                rangeSize: 30
+            },
+            centerTemplate: '<strong>#: value #</strong>%'
+        });
+
+        // 계획
+        $("#stdPassCnt").text(((obj.PLAN_CREDIT == undefined) ? "0" : obj.PLAN_CREDIT));
+        // 실행
+        $("#passCnt").text(((obj.CREDIT == undefined) ? "0" : obj.CREDIT));
+    }
+
+    function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+        var angleInRadians = (angleInDegrees) * Math.PI / 180.0;
+
+        return {
+            x: centerX + (radius * Math.cos(angleInRadians)),
+            y: centerY + (radius * Math.sin(angleInRadians))
+        };
+    }
+</script>

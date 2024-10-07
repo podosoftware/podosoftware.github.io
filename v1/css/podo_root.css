@@ -1,0 +1,141 @@
+/*
+*--------------------------------------------*
+|                   Root                     |
+*--------------------------------------------*
+*/
+:root {
+    --layout-width: 1280px;                     /* 레이아웃 넓이 */
+    --layout-padding: 5.13vw;                   /* 모바일 안쪽 여백 (20px) */
+    --font: "Pretendard", sans-self;            /* 폰트체 */
+    --font2: "SUIT", sans-self;                 /* 폰트체2 */
+    --font3: "Noto Sans KR", sans-self;         /* 폰트체3 */
+    --font4: "Poppins", sans-self;              /* 폰트체4 */
+    --font5: "Spoqa Han Sans Neo", sans-self;   /* 폰트체5 */
+    --font6: "Pretendard Variable", sans-self;  /* 폰트체6 */
+    --font7: "Saira", sans-self;                /* 폰트체7 */
+    --font-size: 16px;                          /* 폰트 크기 */
+    --font-let-spc: -0.02em;                    /* 자간 */
+    --line-height: 1.5;                         /* 행간 */
+    --default-font-color: #46464F;              /* 기본 폰트 컬러 */
+    --disabled-color: #e7e7e7;                  /* disabled 컬러 */
+
+    --notch: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);     /* 아이폰 노치 대응 */
+
+    /*  UI/UX  */
+    --uiux-theme-color: #4549AB;
+    --uiux-theme-dark-color: #37396D;
+    --uiux-theme-dark-color02: #0A0B25;
+    --uiux-theme-color02: #5C61D4;
+    --uiux-theme-light-color: #7A7EE8;
+    --uiux-theme-light-color02: #999CE4;
+    --uiux-theme-light-color03: #EBEBFA;
+    --uiux-theme-light-color04: #F2F2FC;
+    --uiux-theme-light-color05: #F8F9FD;
+
+    --theme-color: #6942bd;                     /* B2B 테마 */
+    --theme-color-hover: #6942bd;               /* B2B 테마 hover */
+    --theme-blue: #0c62e3;                      /* blue */
+    --theme-orange: #ff5c00;                    /* orange */
+    --theme-green: #2cc64e;                     /* green */
+    --theme-review: #ffbe0b;                    /* 과정후기 progress bar color */
+    --theme-black: #000000;                     /* black */
+    --theme-userNm: #2b49b6;                    /* header top name */
+    --theme-white: #ffffff;                    /* white */
+    --theme-b2c: #ff5c00;                       /* B2C 테마 */
+    --theme-b2c-hover: #cd3b1b;                /* B2C 테마 hover */
+    --theme-red: #d23325;                       /* 중요 */
+
+    /* background */
+    --bg: #f9f9f9;
+    --bg02: #f8f8f8;
+    --bg03: #f5f5f5;
+    --bg04: #eaeaea;
+    --bg05: #cecece;
+    --bg06: #5c5c5c;
+    --bg07: #3e3e3e;
+    --bg08: #f2f8ff;
+    --bg09: #f4f2fa;
+    --bg10: #fcf4f4;
+    --bg11: #f1f1f1;
+    --bg12: #e9f4f3;
+    --bg13: #071c3a;
+    --bg-subTitle: rgba(0,0,0,0.5);
+    --bg14: #fafafa;
+    --bg15: #f3f3ff;
+    --bg16: #3c3c3c;
+    --bg17: #fbfaff;
+
+    /* stroke */
+    --stroke: #8f67e5;
+    --stroke02: #6942bd;
+    --stroke03: #4a4a4a;
+    --stroke04: #dddddd;
+    --stroke05: #c2c2c2;
+    --stroke06: #6b6b6b;
+    --stroke07: #414146;
+
+    /* text */
+    --text-color: #8f67e5;
+    --text-color02: #6942bd;
+    --text-color03: #222222;
+    --text-color04: #757575;
+    --text-color05: #262626;
+    --text-color06: #9f9f9f;
+    --text-color07: #c8c8c8;
+    --text-color08: #303030;
+    --text-color09: #666666;
+    --text-color10: #121212;
+    --text-color11: #8e8e8e;
+
+    /* line */
+    --line: #EBEBEB;
+
+    /* text */
+    --text-dark: #0D0914;
+    --text-dark02: #262527;
+    --text-dark03: #404040;
+    --text-gray: #555555;
+    --text-gray02: #8E8E8E;
+    --text-gray03: #B8B8B8;
+    --text-light-gray: #D6D6D6;
+    --text-light-dark-gray: #757580;
+
+    --btn-default-border-color: #6942bd;               /* button default border color */
+    --btn-default-font-color: #6942bd;               /* button default font color */
+    --btn-disabled-border-color: #ddd;              /* button disabled border color */
+    --btn-disabled-bg-color: #f9f9f9;               /* button disabled background color */
+    --btn-disabled-font-color: #8d96a5;             /* button disabled font color */
+
+    --color-green: #007a31;                         /* green */
+    --color-blue: #256fff;                          /* blue */
+    --color-orange: #ff6b00;                        /* orange */
+
+    --grey--light: #fafaff;
+    --grey--light2: #efefef;
+    --white: #ffffff;
+
+    --text-ios-color: #000;     /* IOS 기준 텍스트 컬러 강조, 제목, 기본 */
+    --text-ios-color02: #8e8e93;     /* IOS 기준 텍스트 컬러 연하게 */
+
+    --scroll-width: 10px;   /* 스크롤 바 넓이 */
+    --scroll-bg: transparent;   /* 스크롤 바 배경 */
+    --scroll-thumb-bg: #C4C7C7; /* 스크롤 배경 */
+
+    /*--icon: url("../images/common/icon.png") no-repeat;  !* 일반 아이콘 이미지 경로 *!*/
+    /*--icon-size: 300px;    !* 아이콘 이미지 크기(가로x세로) *!*/
+
+    /* footer */
+    --footer-top-brd: #4a4a4a;
+    --footer-bg: #3e3e3e;
+
+    /*  skeleton  */
+    /*    --skeleton-bg: #e2e8f0;*/
+    --skeleton-bg: linear-gradient(90deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 50%, #e5e5e5 48%);
+    --skeleton-bgPos: -100% 0;
+    --skeleton-bg50: #cbd5e1;
+
+    /*  accordion  */
+    --acc-round: 10px;  /* 아코디언 라운드 */
+
+
+}

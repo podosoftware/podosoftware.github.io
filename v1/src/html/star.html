@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>별점</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+<!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <main class="body-container">
+            <!--        breadcrumb START        -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="menu">
+                        <li><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li>별점</li>
+                    </ul>
+                </div>
+            </section>
+            <!--        breadcrumb END        -->
+
+            <section class="sec-">
+                <div class="container">
+                    <h2>별점</h2>
+
+                    <div class="flex-group">
+                        <!--                큰별 START    -->
+                        <article id="star" class="article-">
+                            <h3 class="title"># Big Star</h3>
+                            <p>큰별은 big class를 붙입니다. 작은별엔 smail class를 붙입니다.</p>
+                            <p>width 값은 따로 계산해야 합니다. 만약 5점 만점일경우 5점이 100%라고 생각하여 계산하시고 100점이 만점일경우 그대로 넣어도 될것입니다.</p>
+
+                            <div class="sec-cont mt30">
+                                <div class="star-list big"><span style="width: 30%;"></span></div>
+                                <div class="star-list smail"><span style="width: 100%;"></span></div>
+
+                                <div class="g-code-box">
+                                    <pre data-src="code/star_01.html"></pre>
+                                </div>
+                            </div>
+                        </article>
+                        <!--                큰별 END    -->
+
+                        <div class="guid-table-box">
+                            <div class="guid-table-fixed">
+                                <strong>Class</strong>
+                                <strong>내용</strong>
+                            </div>
+                            <ul id="guidClass"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+
+        $(function () {
+            $(".star .liStar a").addClass("active");
+
+            var html = "";
+            var guidData = [
+                { classNm: "star-list", cont: "별 이미지 class"},
+                { classNm: "big", cont: "큰 별 class"},
+                { classNm: "smail", cont: "작은 별 class"},
+            ];
+
+            for(var i=0; i < guidData.length; i++) {
+                html += "<li>";
+                html += "   <p class='left'>"+guidData[i].classNm+"</p>";
+                html += "   <p class='right'>"+guidData[i].cont+"</p>";
+                html += "</li>";
+            }
+
+            $("#guidClass").html(html);
+        });
+    </script>
+</body>
+</html>
