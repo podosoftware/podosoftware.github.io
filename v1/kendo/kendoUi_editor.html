@@ -24,9 +24,10 @@
 
         <link rel="stylesheet" href="../css/reset2.css" />
         <link rel="stylesheet" href="../css/admin/root_admin.css" />
-        <link rel="stylesheet" href="../css/root.css" />
+        <!--<link rel="stylesheet" href="../css/root.css">-->
         <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
         <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/pd_kendo.css" />
         <link rel="stylesheet" href="../css/common.css" />
         <link rel="stylesheet" href="../css/util.css" />
         <!--    <link rel="stylesheet" href="../css/style2.css">-->
@@ -146,7 +147,7 @@ delete defaultTools["insertParagraph"].options;
                             <div class="sec-cont pd-mt30">
                                 <div class="">
                                     <div class="pd-flex-col pd-gap15">
-                                        <textarea name="" id="kendo_editor" class="width100"></textarea>
+                                        <textarea name="" id="kendo_editor" class="pd-w-full"></textarea>
                                     </div>
 
                                     <div class="accordion-wrap pd-mt30">
@@ -207,7 +208,7 @@ delete defaultTools["insertParagraph"].options;
                             </li>
                             <li>
                                 <label for="imgTxt">대체텍스트</label>
-                                <textarea name="imgTxt" id="imgTxt" class="k-textbox width100" data-bind="value:imageText" style="height: 90px"></textarea>
+                                <textarea name="imgTxt" id="imgTxt" class="k-textbox pd-w-full" data-bind="value:imageText" style="height: 90px"></textarea>
                             </li>
                         </ul>
                         <div class="bottom_btn"><button id="urlUpload" class="popup-btn" data-bind="click:apply">업로드</button></div>
@@ -234,7 +235,7 @@ delete defaultTools["insertParagraph"].options;
                             </li>
                             <li>
                                 <label for="fileImgTxt">대체텍스트</label>
-                                <textarea name="fileImgTxt" id="fileImgTxt" class="k-textbox width100" data-bind="value:imageFileText" style="height: 90px"></textarea>
+                                <textarea name="fileImgTxt" id="fileImgTxt" class="k-textbox pd-w-full" data-bind="value:imageFileText" style="height: 90px"></textarea>
                             </li>
                         </ul>
                         <div class="bottom_btn"><button class="popup-btn" data-bind="click:apply2">업로드</button></div>

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'NanumGothicLight';
+  src: url('NanumGothicLight.eot');
+  src: url('NanumGothicLight.eot?#iefix') format('embedded-opentype'),
+       url('NanumGothicLight.woff') format('woff'),
+       url('NanumGothicLight.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

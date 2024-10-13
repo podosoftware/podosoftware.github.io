@@ -23,16 +23,6 @@
 
     --notch: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);     /* 아이폰 노치 대응 */
 
-    --theme-color: #4549AB;
-    --theme-dark-color: #37396D;
-    --theme-dark-color02: #0A0B25;
-    --theme-color02: #5C61D4;
-    --theme-light-color: #7A7EE8;
-    --theme-light-color02: #999CE4;
-    --theme-light-color03: #EBEBFA;
-    --theme-light-color04: #F2F2FC;
-    --theme-light-color05: #F8F9FD;
-
     /* Color */
     /*  Primary(theme)  */
     --primary-50: #F8F9FD;
@@ -102,7 +92,6 @@
 
     --grey--light: #fafaff;
     --grey--light2: #efefef;
-    --white: #ffffff;
 
     --text-color: #000;     /* IOS 기준 텍스트 컬러 강조, 제목, 기본 */
     --text-color02: #8e8e93;     /* IOS 기준 텍스트 컬러 연하게 */

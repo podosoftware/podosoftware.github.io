@@ -11,6 +11,7 @@ strong { font-weight: 700;}
 small { font-size: 80%;}
 img { max-width: 100%;}
 em { color: var(--red-500);}
+img { max-width: 100%;}
 
 /* Scroll */
 /**::-webkit-scrollbar {background: transparent; width: 10px; height: 10px; border-radius: 10px;}*/
@@ -75,10 +76,10 @@ input.k-textbox { height: 40px; border-radius: 4px;}
 input.k-textbox,
 input.k-input-inner { padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; background: #ffffff; font-size: 14px; font-weight: normal; color: #404040; text-align: left; line-height: 10px;}
 input.k-textbox:hover,
-input.k-input-inner:hover { border: 1px solid #5C61D4;}
+input.k-input-inner:hover { border: 1px solid var(--primary-500);}
 .k-timepicker input.k-input-inner:hover { border: 0;}
 input.k-textbox:focus,
-input.k-input-inner:focus, .k-numerictextbox:focus { border: 1px solid #5C61D4;}
+input.k-input-inner:focus, .k-numerictextbox:focus { border: 1px solid var(--primary-500);}
 input.k-textbox:disabled,
 input.k-input-inner:disabled { background: #F8F8F8; color: #404040;}
 input.k-textbox:read-only,
@@ -86,7 +87,7 @@ input.k-input-inner:read-only { background: #F8F8F8; color: #404040;}
 input.k-textbox[readonly='readonly'],
 input.k-input-inner[readonly='readonly'] { background: #F8F8F8; color: #404040;}
 textarea.k-textbox { height: 190px; padding: 10px; border: 1px solid #ddd; border-radius: 3px; background: #fff; font-size: 14px; font-weight: 500; color: #404040; line-height: 19px; resize: none;}
-textarea.k-textbox:focus { border: 1px solid #000;}
+textarea.k-textbox:focus { border: 1px solid var(--primary-500);}
 textarea.k-textbox:disabled { border: 1px solid #bbb; background: #f5f5f5; font-weight: 400; color: #757575;}
 textarea.k-textbox[disabled] { border: 1px solid #bbb; background: #f5f5f5; font-weight: 400; color: #757575;}
 textarea.k-textbox:read-only { border: 1px solid #bbb; background: #f5f5f5; font-weight: 400; color: #757575;}
@@ -127,7 +128,7 @@ textarea.k-textbox::placeholder { font-weight: 400; color: #828282;}
 label.check-box { align-items: center; gap: 10px; position: relative; cursor: pointer;}
 .check-box .check { display: flex; flex-shrink: 0; justify-content: center; align-items: center; width: 24px; height: 24px; border-radius: 4px; border: 1px solid #dbdbdb; background: #fff; transition: background .3s, border-color .3s ease;}
 .check-box input[type="checkbox"]:checked + label .check,
-.check-box input[type="checkbox"]:checked + .check { border: 1px solid var(--theme-color); background-image: url("../images/common/check.svg"); background-position: center center; background-color: var(--theme-color); background-size: contain;}
+.check-box input[type="checkbox"]:checked + .check { border: 1px solid var(--primary-500); background-image: url("../images/common/check.svg"); background-position: center center; background-color: var(--primary-500); background-size: contain;}
 .check-box input[type="checkbox"]:disabled + label .check,
 .check-box input[type="checkbox"]:disabled + .check { border-color: #ccc; background: #fafafa;}
 .check-box input[type="checkbox"]:disabled:checked + label .check { }
@@ -163,7 +164,7 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 */
 .k-grid-content [class*="btn-"],
 .k-grid .k-grid-content table tr td a[class*="btn-"],
-[class*="front-table-"] tr td [class*="btn-"] { display: inline-flex; min-width: 81px; height: 37px; padding: 0 16px;
+[class*="front-table-"] tr td [class*="btn-"] { display: inline-flex; height: 37px; padding: 0 16px;
     border-radius: 3px; font-size: 14px; font-weight: bold; line-height: 1; letter-spacing: -0.28px;
     text-decoration: none; cursor: pointer;}
 .k-grid-content [class*="btn-"]:disabled,
@@ -171,7 +172,7 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 [class*="front-table-"] tr td [class*="btn-"]:disabled { border: 1px solid var(--btn-disabled-border-color); background: var(--btn-disabled-bg-color); color: var(--btn-disabled-font-color); cursor: default !important;}
 
 .k-grid-content .btn-default { min-width: auto; padding: 0 16px; border: 1px solid var(--btn-default-border-color); border-radius: 3px; background: #fff; font-weight: 500; color: #222; line-height: 0.93;}
-.k-grid-content .btn-default:hover{ border: 1px solid var(--theme-blue); background: #ffffff; color: var(--theme-blue);}
+.k-grid-content .btn-default:hover{ border: 1px solid var(--blue-600); background: #ffffff; color: var(--blue-600);}
 .k-grid-content .btn-s { min-width: auto; padding: 0 16px; font-weight: 500;}
 
 /* hegiht: 60, radius: 8 / 50, 6 / 40, 4 */
@@ -186,26 +187,26 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 /* 기본 */
 .btn-default { padding: 0 20px; border: 1px solid var(--btn-default-border-color); background: #FFFFFF; font-family: var(--Pretendard); color: var(--btn-default-font-color); cursor: pointer;}
 .btn-default:not(:disabled):hover,
-.btn-default:active { background: #FFFFFF; color: var(--theme-color);}
+.btn-default:active { border: 1px solid var(--primary-500); background: #FFFFFF; color: var(--primary-500);}
 .btn-default:focus,
 .btn-default:active:focus { border: 1px solid #555555; background: #FFFFFF;}
 /* 저장, 승인 등 긍정형 */
-.btn-point { border: 1px solid var(--theme-color); background: var(--theme-color); color: #FFFFFF;}
-.btn-point:focus { border: 1px solid var(--theme-color); background: #FFFFFF; color: var(--theme-color);}
+.btn-point { border: 1px solid var(--primary-500); background: var(--primary-500); color: #FFFFFF;}
+.btn-point:focus { border: 1px solid var(--primary-500); background: #FFFFFF; color: var(--primary-500);}
 .btn-point:active,
-.btn-point:not(:disabled):hover { border: 1px solid var(--theme-color-hover); background: var(--theme-color-hover); color: #FFFFFF;}
+.btn-point:not(:disabled):hover { border: 1px solid var(--primary-600); background: var(--primary-600); color: #FFFFFF;}
 /* 긍정형 보단 아래 */
-.btn-point-white { border: 1px solid var(--theme-color); background: #fff; color: var(--theme-color);}
-.btn-point-white:focus { border: 1px solid var(--theme-color); background: #FFFFFF; color: var(--theme-color);}
+.btn-point-white { border: 1px solid var(--primary-500); background: #fff; color: var(--primary-500);}
+.btn-point-white:focus { border: 1px solid var(--primary-500); background: #FFFFFF; color: var(--primary-500);}
 .btn-point-white:active,
-.btn-point-white:not(:disabled):hover { border: 1px solid var(--theme-color); background: var(--theme-color); color: #FFFFFF;}
+.btn-point-white:not(:disabled):hover { border: 1px solid var(--primary-500); background: var(--primary-500); color: #FFFFFF;}
 /* 그리드 상단 버튼 */
-.btn-top { border: 1px solid var(--theme-color); background: #fff; color: var(--theme-color);}
-.btn-top:focus { border: 1px solid var(--theme-color); background: #FFFFFF; color: var(--theme-color);}
+.btn-top { border: 1px solid var(--primary-500); background: #fff; color: var(--primary-500);}
+.btn-top:focus { border: 1px solid var(--primary-500); background: #FFFFFF; color: var(--primary-500);}
 .btn-top:active,
-.btn-top:not(:disabled):hover { border: 1px solid var(--theme-color); background: var(--theme-color); color: #FFFFFF;}
+.btn-top:not(:disabled):hover { border: 1px solid var(--primary-500); background: var(--primary-500); color: #FFFFFF;}
 /* 검은색 */
-.btn-submit { border: 1px solid var(--b2c-bg07); background: var(--b2c-bg07); color: #fff;}
+.btn-submit { border: 1px solid var(--apply-btn-bg); background: var(--apply-btn-bg); color: #fff;}
 .btn-submit:not(:disabled):hover,
 .btn-submit:active { }
 .btn-submit:disabled { }
@@ -226,7 +227,7 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 .grid-top-box .date-box-wrap { width: auto;}
 .grid-top-box .date-box-wrap .date-box { width: 160px;}
 .grid-top-box .k-datepicker input.k-input-inner { height: 46px; font-size: 16px;}
-.grid-top-box [class*="btn-"] { height: 48px; font-weight: bold;}
+.grid-top-box [class*="btn-"] { height: 48px; padding: 0 20px; font-weight: bold;}
 .grid-top-box .btn-default { color: #222;}
 
 .input-box [class*="btn-"] { height: 40px; border-radius: 4px; padding: 0 20px; font-size: 14px; font-weight: 500;}
@@ -236,16 +237,17 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 
 /* 교육신청 더보기 */
 .btn-edu-more { display: flex; justify-content: center; align-items: center; gap: 4px; width: 200px; height: 48px; margin-bottom: 80px; border: 1px solid #c0c0c0; border-radius: 50px; background: #fff; font-size: 15px; font-weight: bold; color: #212529; letter-spacing: -0.3px;}
-.btn-edu-more span { margin-top: -3px; font-size: 24px; font-weight: normal; color: var(--theme-color);}
+.btn-edu-more span { margin-top: -3px; font-size: 24px; font-weight: normal; color: var(--primary-500);}
 
 /* popup 내부 button */
+.k-window .popup-btn { min-width: 124px;}
 .popup-content .k-grid-toolbar .k-button { padding: 9px 16px;}
 .popup-content .k-grid-toolbar .k-button:hover { border: 1px solid #4549AB;}
-.popup-btn { display: flex; justify-content: center; align-items: center; min-width: 124px; height: 50px; border: 1px solid var(--theme-color); border-radius: 8px; background: var(--theme-color); font-size: 16px; font-weight: bold; color: #FFFFFF; line-height: normal; letter-spacing: -0.34px; cursor: pointer; transition: background .3s, border-color .3s ease, color .3s ease;}
-.popup-btn:hover { border-color: var(--theme-color-hover); background: var(--theme-color-hover); color: #ffffff;}
-.popup-btn.btn-default { border: 1px solid #c2c2c2; background: #FFFFFF; color: #212529;}
+.popup-btn { display: inline-flex; justify-content: center; align-items: center; min-width: 124px; height: 50px; border: 1px solid var(--primary-500); border-radius: 8px; background: var(--primary-500); font-size: 16px; font-weight: bold; color: #FFFFFF; line-height: normal; letter-spacing: -0.34px; cursor: pointer; transition: background .3s, border-color .3s ease, color .3s ease;}
+.popup-btn:hover { border-color: var(--primary-600); background: var(--primary-600); color: #ffffff;}
+.popup-btn.btn-default { min-width: 124px; border: 1px solid #c2c2c2; background: #FFFFFF; font-size: 16px; font-weight: bold; color: #212529;}
 .popup-btn.btn-default:hover,
-.popup-btn.btn-default:active { border: 1px solid var(--theme-color); background: #FFFFFF; font-weight: bold; color: var(--theme-color);}
+.popup-btn.btn-default:active { border: 1px solid var(--primary-500); background: #FFFFFF; font-weight: bold; color: var(--primary-500);}
 .popup-content .cont-tip-box .icon { vertical-align: middle;}
 
 
@@ -255,13 +257,13 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 *--------------------------------------------*
 */
 /* grid 내부 color */
-.grid-training-A { font-weight: 600; color: var(--grid-training-A);}
-.grid-training-B { font-weight: 600; color: var(--grid-training-B);}
+.grid-training-A { font-weight: 600; color: var(--online-500);}
+.grid-training-B { font-weight: 600; color: var(--tag-training-B);}
 
-.tag .tag-training-A { border: 1px solid var(--color-edu-list-tag-A); color: var(--color-edu-list-tag-A);}
-.tag .tag-training-B { border: 1px solid var(--color-edu-list-tag-B); color: var(--color-edu-list-tag-B);}
+.tag .tag-training-A { border: 1px solid var(--online-500); color: var(--online-500);}
+.tag .tag-training-B { border: 1px solid var(--tag-training-B); color: var(--tag-training-B);}
 .tag .tag-training-D { border: 1px solid var(--color-edu-list-tag-D); color: var(--color-edu-list-tag-D);}
-.tag .tag-training-G { border: 1px solid var(--color-edu-list-tag-G); color: var(--color-edu-list-tag-G);}
+.tag .tag-training-G { border: 1px solid var(--color-myClass-training-G); color: var(--color-myClass-training-G);}
 
 /*
 *--------------------------------------------*
@@ -274,12 +276,13 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 
 .circle { width: 3px; height: 3px; border-radius: 1000px; background: var(--default-font-color);}
 
-.icon-passyn { width: 40px; height: 40px;}
-.icon-home { width: 20px; height: 20px; background: url("../images/common/icon_home.svg") no-repeat center center;}
-.icon-arrow-down,
-.k-select .k-i-arrow-s { width: 18px; height: 18px; background: url("../images/common/chevron-down.svg") no-repeat center center;}
-.icon-search { width: 24px; height: 24px; background: url("../images/common/search.svg") no-repeat center center;}
-
+/* main */
+[class*="main-data-"].icon- { width: 40px; height: 40px; background-repeat: no-repeat; background-size: auto;}
+.main-data-01 { background-image: url("../images/main/vuesax_linear_security-time.svg");}
+.main-data-02 { background-image: url("../images/main/vuesax_linear_calendar-edit.svg");}
+.main-data-03 { background-image: url("../images/main/vuesax_linear_award.svg");}
+.main-data-04 { background-image: url("../images/main/vuesax_linear_calendar-tick.svg");}
+.main-data-05 { background-image: url("../images/main/vuesax_linear_ranking.svg");}
 .icon-star { width: 16px; height: 16px; background-image: url("../images/common/star.svg"); background-repeat: no-repeat; background-size: contain;}
 .icon-chevron-right { width: 16px; height: 16px; background: var(--icon); background-size: var(--icon-size); background-position: -26px 4px;}
 
@@ -336,5 +339,7 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 .icon-review { width: 16px; height: 16px; background: url("../images/sub/result_star.svg") no-repeat center; background-size: contain;}
 .icon-surv { width: 16px; height: 16px; background: url("../images/sub/pencil.svg") no-repeat center; background-size: contain;}
 
+
+
 /* kendo */
-/*.k-select .k-i-arrow-s:before { content: '';}*/
+.k-select .k-i-arrow-s:before { content: '';}

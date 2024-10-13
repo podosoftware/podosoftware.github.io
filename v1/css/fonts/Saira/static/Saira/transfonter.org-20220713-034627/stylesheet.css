@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Saira';
+    src: url('Saira-Medium.eot');
+    src: url('Saira-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Saira-Medium.woff2') format('woff2'),
+        url('Saira-Medium.woff') format('woff'),
+        url('Saira-Medium.svg#Saira-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('Saira-Thin.eot');
+    src: url('Saira-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Saira-Thin.woff2') format('woff2'),
+        url('Saira-Thin.woff') format('woff'),
+        url('Saira-Thin.svg#Saira-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('Saira-SemiBold.eot');
+    src: url('Saira-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Saira-SemiBold.woff2') format('woff2'),
+        url('Saira-SemiBold.woff') format('woff'),
+        url('Saira-SemiBold.svg#Saira-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('Saira-Light.eot');
+    src: url('Saira-Light.eot?#iefix') format('embedded-opentype'),
+        url('Saira-Light.woff2') format('woff2'),
+        url('Saira-Light.woff') format('woff'),
+        url('Saira-Light.svg#Saira-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

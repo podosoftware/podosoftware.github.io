@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/*
+*--------------------------------------------*
+|                   20240618                 |
+*--------------------------------------------*
+*/
+html { overflow-x: hidden; width: 100%; height: 100vh; padding: var(--notch); scroll-behavior: smooth;}
+body { display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; height: 100%; background: #f8f8f8; font-family:var(--Pretendard); font-weight: normal; font-size:var(--font-size); color:var(--default-font-color); line-height:var(--line-height); letter-spacing:var(--font-let-spc);}
+b { font-weight: 500;}
+strong { font-weight: 700;}
+small { font-size: 80%;}
+img { max-width: 100%;}
+* { margin: 0; padding: 0; box-sizing: border-box;}
+.wrap {}
+
+*::placeholder { color: #828282;}
+
+.login_wrap { overflow: auto; width: 590px; max-height: calc(100vh - 1); padding: 50px; border-radius: 15px; background: #ffffff;}
+.login_wrap .login { padding-top: 45px;}
+.login_wrap .logo { text-align: center;}
+.login_wrap .id_enter { display: flex; flex-direction: column; gap: 10px;}
+.login_wrap .login_keep { margin: 30px 0 50px;}
+.login_wrap .login_keep.check-box .check { width: 20px; height: 20px;}
+.login_wrap .login_keep.check-box label { font-weight: 500; color: #5e5e5e;}
+.login_wrap .login_btn { display: flex; justify-content: center; align-items: center; width: 100%; height: 68px; font-size: 20px; font-weight: bold; letter-spacing: -0.4px;}
+input[type="text"],
+input[type="password"] { width: 100%; height: 60px; padding: 18px 20px; border-radius: 8px; border: 1px solid #ddd; background: #fff; font-size: 18px; letter-spacing: -0.36px;}
+input[type="text"]:focus,
+input[type="password"]:focus { border-color: var(--primary-500);}
+.wrong_message { display: none; font-weight: 500; line-height: 1.2; letter-spacing: -0.32px; color: var(--red-500);}
+.login_wrap .other_link { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 45px;}
+.login_wrap .other_link a { font-weight: 500; line-height: 1.07; letter-spacing: -0.32px; color: #5e5e5e;}
+.login_wrap .other_link .line { color: #dcdcdc;}
+
+/* 아이디/비번 찾기 */
+.login_wrap.login_wrap2 { padding: 0;}
+.login_wrap ul.main_tab { display: flex; gap: 25px; width: 100%; border-bottom: 1px solid #dddddd;}
+.login_wrap ul.main_tab li { width: 100%; height: 80px;}
+.login_wrap ul.main_tab li a { display: flex; justify-content: center; align-items: center; position: relative; width: 100%; height: 100%; font-size: 18px; line-height: 1.33; letter-spacing: -0.54px; color: #757575; transition: color .23s ease-in-out;}
+.login_wrap ul.main_tab li a:before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0; background: var(--primary-500); transition: height .23s ease-in-out;}
+.login_wrap ul.main_tab li a:hover,
+.login_wrap ul.main_tab li.on a { font-weight: bold; color: var(--primary-500);}
+.login_wrap ul.main_tab li a:hover:before,
+.login_wrap ul.main_tab li.on a:before { height: 2px;}
+.id_pw_find .find_enter { padding: 50px;}
+
+.id_find_result,
+.pw_find_result { padding: 50px;}
+.id_find_result .result_text { display: flex; flex-direction: column; align-items: center; margin-bottom: 35px; font-size: 25px; font-weight: bold; line-height: 1.5; letter-spacing: -0.5px; color: #222;}
+.id_find_result .result_text .user_id_text,
+.pw_find_result_result strong span { color: var(--primary-500);}
+
+.pw_find_result .result_data { display: flex; flex-direction: column; gap: 30px;}
+.login_wrap .pw_find_result .result_data .login_btn { margin-bottom: 0;}
+.pw_find_result_result .result_text { display: flex; flex-direction: column; align-items: center; margin-bottom: 45px;}
+.pw_find_result_result strong { font-size: 25px; font-weight: bold; line-height: 1.5; letter-spacing: -0.5px; color: #222; text-align: center;}
+
+.find_method { display: flex; flex-direction: column; gap: 30px;}
+.line { display: flex; flex-direction: column; gap: 15px;}
+.line-cont { display: flex; flex-direction: column; gap: 12px;}
+.line-cont .size-b.btn-submit { width: 100%;}
+.line-cont .wrong_message { margin-top: 5px;}
+.line-cont .input-box .btn-submit { flex-shrink: 0; width: 130px; font-size: 17px; font-weight: bold;}
+
+#runningTimer4 { display: inline-block; margin-left: 10px; color: var(--red-500);}
+
+/* 회사찾기 */
+.compony-login-box .login_enter { display: flex; flex-direction: column; gap: 45px;}
+.compony-login-box .login_enter .info_text { font-size: 25px; font-weight: bold; line-height: 1.5; letter-spacing: -0.5px; text-align: center; color: #222;}
+.login_wrap .compony-login-box .login_btn { margin-bottom: 0;}
+
+/* 총괄관리자 */
+.admin_login_wrap .btn-point { margin-top: 45px;}
+
+[class*="btn-"] { box-shadow: none;}
+.bottom_btn { display: flex; gap: 7px; width: 100%;}
+.bottom_btn [class*="btn-"] { width: 100%; margin-bottom: 0;}
+
+/* md */
+@media (max-width: 768px) {
+    .login_wrap { width: 100%; padding: 0 30px; background: transparent;}
+    .login_wrap.login_wrap2 { padding: 0 30px;}
+    .login_wrap .login_keep { margin: 22px 0 40px;}
+    .login_wrap .login_keep.check-box label { font-size: 15px;}
+    .login_wrap .login_btn { height: 50px; border-radius: 6px; font-size: 16px;}
+    .login_wrap .other_link { margin-top: 40px;}
+    .login_wrap .other_link a { font-size: 14px;}
+
+    .login_wrap ul.main_tab li a { font-size: 16px;}
+    .id_pw_find .find_enter { padding: 45px 0 50px;}
+    .line .line-title { font-size: 14px;}
+    .id_find_result .result_text { font-size: 20px;}
+    .id_find_result,
+    .pw_find_result { padding: 45px 0 50px;}
+
+    .line-cont .size-b.btn-submit { height: 44px; border-radius: 6px; font-size: 13px; font-weight: 500;}
+
+    input[type="text"], input[type="password"] { height: 44px; border-radius: 6px; font-size: 14px;}
+}

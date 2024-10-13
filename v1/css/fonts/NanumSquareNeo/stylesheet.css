@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'NanumSquare Neo';
+    src: url('NanumSquareNeoTTF-bRg.eot');
+    src: url('NanumSquareNeoTTF-bRg.eot?#iefix') format('embedded-opentype'),
+        url('NanumSquareNeoTTF-bRg.woff2') format('woff2'),
+        url('NanumSquareNeoTTF-bRg.woff') format('woff'),
+        url('NanumSquareNeoTTF-bRg.ttf') format('truetype'),
+        url('NanumSquareNeoTTF-bRg.svg#NanumSquareNeoTTF-bRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquare Neo';
+    src: url('NanumSquareNeoTTF-cBd.eot');
+    src: url('NanumSquareNeoTTF-cBd.eot?#iefix') format('embedded-opentype'),
+        url('NanumSquareNeoTTF-cBd.woff2') format('woff2'),
+        url('NanumSquareNeoTTF-cBd.woff') format('woff'),
+        url('NanumSquareNeoTTF-cBd.ttf') format('truetype'),
+        url('NanumSquareNeoTTF-cBd.svg#NanumSquareNeoTTF-cBd') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquare Neo';
+    src: url('NanumSquareNeoTTF-aLt.eot');
+    src: url('NanumSquareNeoTTF-aLt.eot?#iefix') format('embedded-opentype'),
+        url('NanumSquareNeoTTF-aLt.woff2') format('woff2'),
+        url('NanumSquareNeoTTF-aLt.woff') format('woff'),
+        url('NanumSquareNeoTTF-aLt.ttf') format('truetype'),
+        url('NanumSquareNeoTTF-aLt.svg#NanumSquareNeoTTF-aLt') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquare Neo';
+    src: url('NanumSquareNeoTTF-eHv.eot');
+    src: url('NanumSquareNeoTTF-eHv.eot?#iefix') format('embedded-opentype'),
+        url('NanumSquareNeoTTF-eHv.woff2') format('woff2'),
+        url('NanumSquareNeoTTF-eHv.woff') format('woff'),
+        url('NanumSquareNeoTTF-eHv.ttf') format('truetype'),
+        url('NanumSquareNeoTTF-eHv.svg#NanumSquareNeoTTF-eHv') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquare Neo';
+    src: url('NanumSquareNeoTTF-dEb.eot');
+    src: url('NanumSquareNeoTTF-dEb.eot?#iefix') format('embedded-opentype'),
+        url('NanumSquareNeoTTF-dEb.woff2') format('woff2'),
+        url('NanumSquareNeoTTF-dEb.woff') format('woff'),
+        url('NanumSquareNeoTTF-dEb.ttf') format('truetype'),
+        url('NanumSquareNeoTTF-dEb.svg#NanumSquareNeoTTF-dEb') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-ExtraBold.eot');
+    src: url('Pretendard-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-ExtraBold.woff2') format('woff2'),
+        url('Pretendard-ExtraBold.woff') format('woff'),
+        url('Pretendard-ExtraBold.ttf') format('truetype'),
+        url('Pretendard-ExtraBold.svg#Pretendard-ExtraBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-Bold.eot');
+    src: url('Pretendard-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-Bold.woff2') format('woff2'),
+        url('Pretendard-Bold.woff') format('woff'),
+        url('Pretendard-Bold.ttf') format('truetype'),
+        url('Pretendard-Bold.svg#Pretendard-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-Black.eot');
+    src: url('Pretendard-Black.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-Black.woff2') format('woff2'),
+        url('Pretendard-Black.woff') format('woff'),
+        url('Pretendard-Black.ttf') format('truetype'),
+        url('Pretendard-Black.svg#Pretendard-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-ExtraLight.eot');
+    src: url('Pretendard-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-ExtraLight.woff2') format('woff2'),
+        url('Pretendard-ExtraLight.woff') format('woff'),
+        url('Pretendard-ExtraLight.ttf') format('truetype'),
+        url('Pretendard-ExtraLight.svg#Pretendard-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-Medium.eot');
+    src: url('Pretendard-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-Medium.woff2') format('woff2'),
+        url('Pretendard-Medium.woff') format('woff'),
+        url('Pretendard-Medium.ttf') format('truetype'),
+        url('Pretendard-Medium.svg#Pretendard-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-Light.eot');
+    src: url('Pretendard-Light.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-Light.woff2') format('woff2'),
+        url('Pretendard-Light.woff') format('woff'),
+        url('Pretendard-Light.ttf') format('truetype'),
+        url('Pretendard-Light.svg#Pretendard-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-SemiBold.eot');
+    src: url('Pretendard-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-SemiBold.woff2') format('woff2'),
+        url('Pretendard-SemiBold.woff') format('woff'),
+        url('Pretendard-SemiBold.ttf') format('truetype'),
+        url('Pretendard-SemiBold.svg#Pretendard-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-Thin.eot');
+    src: url('Pretendard-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-Thin.woff2') format('woff2'),
+        url('Pretendard-Thin.woff') format('woff'),
+        url('Pretendard-Thin.ttf') format('truetype'),
+        url('Pretendard-Thin.svg#Pretendard-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('Pretendard-Regular.eot');
+    src: url('Pretendard-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Pretendard-Regular.woff2') format('woff2'),
+        url('Pretendard-Regular.woff') format('woff'),
+        url('Pretendard-Regular.ttf') format('truetype'),
+        url('Pretendard-Regular.svg#Pretendard-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
