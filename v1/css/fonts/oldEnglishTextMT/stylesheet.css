@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Old English Text MT';
+    src: url('OldEnglishTextMT.eot');
+    src: url('OldEnglishTextMT.eot?#iefix') format('embedded-opentype'),
+        url('OldEnglishTextMT.woff2') format('woff2'),
+        url('OldEnglishTextMT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

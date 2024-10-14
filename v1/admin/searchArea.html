@@ -26,12 +26,12 @@
         <link rel="stylesheet" href="../css/admin/root_admin.css" />
         <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
         <!--    <link rel="stylesheet" href="../css/font.css">-->
-        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/pd_kendo.css" />
+        <link rel="stylesheet" href="../css/admin/common.css" />
         <link rel="stylesheet" href="../css/util.css" />
         <!--    <link rel="stylesheet" href="../css/style2.css">-->
         <link rel="stylesheet" href="../css/admin/admin.css" />
         <link rel="stylesheet" href="../css/guide.css" />
-        <link rel="stylesheet" href="../css/media2.css" />
 
         <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
         <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
@@ -224,7 +224,7 @@
                                         <form name="frm" id="frm" method="post">
                                             <div class="pd-flex- grid-search-area conts-search-area">
                                                 <div class="pd-flex- pd-flex-line pd-gap15">
-                                                    <div class="pd-flex- pd-gap15 width100" style="width: 80%">
+                                                    <div class="pd-flex- pd-gap15 pd-w-full" style="width: 80%">
                                                         <div class="left pd-flex-shrink-0">
                                                             <span class="col-red">*</span>
                                                             등록일
@@ -237,17 +237,17 @@
                                                                 <div class="date-box-wrap date-box-wrap2">
                                                                     <div class="date-box">
                                                                         <label for="start_date" class="blind">시작일</label>
-                                                                        <input type="text" id="searchCreat_start_date" class="k-sel-center" placeholder="YYYY-MM-DD" />
+                                                                        <input type="text" id="searchCreat_start_date" class="pd-k-sel-center" placeholder="YYYY-MM-DD" />
                                                                     </div>
                                                                     <span class="label_text">~</span>
                                                                     <div class="date-box">
-                                                                        <input type="text" id="searchCreat_end_date" class="width100 k-sel-center" placeholder="YYYY-MM-DD" />
+                                                                        <input type="text" id="searchCreat_end_date" class="pd-w-full pd-k-sel-center" placeholder="YYYY-MM-DD" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="pd-flex- pd-gap15 width100">
+                                                    <div class="pd-flex- pd-gap15 pd-w-full">
                                                         <div class="left pd-flex-shrink-0">
                                                             <span class="col-red">*</span>
                                                             다운로드기간
@@ -256,16 +256,16 @@
                                                         </div>
                                                         <div class="right">
                                                             <div class="date-box-wrap date-box-wrap2">
-                                                                <select id="searchDownloadDate" class="k-sel-center">
+                                                                <select id="searchDownloadDate" class="pd-k-sel-center">
                                                                     <option value="start">시작일</option>
                                                                 </select>
                                                                 <div class="date-box">
                                                                     <label for="start_date" class="blind">시작일</label>
-                                                                    <input type="text" id="start_date" class="k-sel-center" placeholder="YYYY-MM-DD" />
+                                                                    <input type="text" id="start_date" class="pd-k-sel-center" placeholder="YYYY-MM-DD" />
                                                                 </div>
                                                                 <span class="label_text">~</span>
                                                                 <div class="date-box">
-                                                                    <input type="text" id="end_date" class="width100" placeholder="YYYY-MM-DD" />
+                                                                    <input type="text" id="end_date" class="pd-w-full" placeholder="YYYY-MM-DD" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -276,7 +276,7 @@
                                                             콘텐츠유형
                                                         </div>
                                                         <div class="right">
-                                                            <select class="width100 k-sel-center" id="CONTS_TYPE" name="CONTS_TYPE"></select>
+                                                            <select class="pd-w-full pd-k-sel-center" id="CONTS_TYPE" name="CONTS_TYPE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="pd-flex- pd-gap15 last">
@@ -285,21 +285,21 @@
                                                             상태
                                                         </div>
                                                         <div class="right">
-                                                            <select class="width100 k-sel-center" id="STATE_CODE" name="STATE_CODE"></select>
+                                                            <select class="pd-w-full pd-k-sel-center" id="STATE_CODE" name="STATE_CODE"></select>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="pd-flex pd-flex-line pd-gap15">
-                                                    <div class="pd-flex- pd-gap15 width100" style="width: 58%">
+                                                    <div class="pd-flex- pd-gap15 pd-w-full" style="width: 58%">
                                                         <div class="left pd-flex-shrink-0">
                                                             <span class="col-red">*</span>
                                                             파일유형
                                                         </div>
                                                         <div class="right">
-                                                            <select class="width100 k-sel-center" id="FILE_TYPE" name="FILE_TYPE"></select>
+                                                            <select class="pd-w-full pd-k-sel-center" id="FILE_TYPE" name="FILE_TYPE"></select>
                                                         </div>
                                                     </div>
-                                                    <div class="pd-flex- pd-gap15 width100">
+                                                    <div class="pd-flex- pd-gap15 pd-w-full">
                                                         <div class="left pd-flex-shrink-0">
                                                             <span class="col-red">*</span>
                                                             콘텐츠제목
@@ -377,7 +377,7 @@
                         { classNm: 'right', cont: '내용' },
                         { classNm: 'date-box-wrap', cont: 'date 형식일 경우 레이아웃' },
                         { classNm: 'date-box-wrap2', cont: 'date-box-wrap 에서 간격이 다를 경우' },
-                        { classNm: 'k-sel-center', cont: 'select 가운데 정렬' },
+                        { classNm: 'pd-k-sel-center', cont: 'select 가운데 정렬' },
                         { classNm: 'label_text', cont: '텍스트' },
                         { classNm: 'last', cont: '마지막 요소' },
                         { classNm: 'btn-default', cont: '버튼 기본 css' },

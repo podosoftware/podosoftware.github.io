@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-Light.eot');
+    src: url('SUIT-Light.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-ExtraBold.eot');
+    src: url('SUIT-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-Bold.eot');
+    src: url('SUIT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-ExtraLight.eot');
+    src: url('SUIT-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-Medium.eot');
+    src: url('SUIT-Medium.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-Heavy.eot');
+    src: url('SUIT-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-Regular.eot');
+    src: url('SUIT-Regular.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-Thin.eot');
+    src: url('SUIT-Thin.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SUIT';
+    src: url('SUIT-SemiBold.eot');
+    src: url('SUIT-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('SUIT-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

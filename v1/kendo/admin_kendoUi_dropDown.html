@@ -24,9 +24,10 @@
 
         <link rel="stylesheet" href="../css/reset2.css" />
         <link rel="stylesheet" href="../css/admin/root_admin.css" />
-        <link rel="stylesheet" href="../css/root.css" />
+        <!--<link rel="stylesheet" href="../css/root.css">-->
         <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
         <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/pd_kendo.css" />
         <link rel="stylesheet" href="../css/common.css" />
         <link rel="stylesheet" href="../css/util.css" />
         <!--    <link rel="stylesheet" href="../css/style2.css">-->
@@ -142,7 +143,7 @@
                                     <br />
                                     input35 / td inner - 스플리터 안 테이블 내 td에 들어가는 input style
                                 </p>
-                                <p>drop down list 가운데 정렬 class는 k-sel-center 를 붙인다.</p>
+                                <p>drop down list 가운데 정렬 class는 pd-k-sel-center 를 붙인다.</p>
 
                                 <div class="sec-cont pd-mt30">
                                     <div class="">
@@ -159,10 +160,10 @@
                                                 </p>
                                                 <ul class="inputs-wrap">
                                                     <li>
-                                                        <select name="" id="dropDownList_03" class="input-search k-sel-center"></select>
+                                                        <select name="" id="dropDownList_03" class="input-search pd-k-sel-center"></select>
                                                     </li>
                                                     <li>
-                                                        <select name="" id="dropDownList_04" class="input-search k-sel-center"></select>
+                                                        <select name="" id="dropDownList_04" class="input-search pd-k-sel-center"></select>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -228,7 +229,7 @@
                     dropDownListDraw();
 
                     var html = '';
-                    var guidData = [{ classNm: 'k-sel-center', cont: 'select 텍스트 가운데 정렬' }];
+                    var guidData = [{ classNm: 'pd-k-sel-center', cont: 'select 텍스트 가운데 정렬' }];
 
                     for (var i = 0; i < guidData.length; i++) {
                         html += '<li>';

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Pretendard Variable';
+    src: url('PretendardVariable-Regular.eot');
+    src: url('PretendardVariable-Regular.eot?#iefix') format('embedded-opentype'),
+        url('PretendardVariable-Regular.woff2') format('woff2'),
+        url('PretendardVariable-Regular.woff') format('woff'),
+        url('PretendardVariable-Regular.ttf') format('truetype'),
+        url('PretendardVariable-Regular.svg#PretendardVariable-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

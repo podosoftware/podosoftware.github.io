@@ -1,0 +1,27 @@
+{
+  "name": "spoqa-han-sans",
+  "version": "3.3.0",
+  "description": "Spoqa Han Sans Neo",
+  "homepage": "https://spoqa.github.io/spoqa-han-sans/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spoqa/spoqa-han-sans.git"
+  },
+  "keywords": [
+    "Spoqa Han Sans",
+    "font"
+  ],
+  "author": {
+    "name": "Spoqa",
+    "email": "visual-design@spoqa.com",
+    "web": "https://spoqa.github.io/spoqa-han-sans/"
+  },
+  "files": [
+    "css/*",
+    "Subset/*"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/spoqa/spoqa-han-sans/issues/"
+  }
+}

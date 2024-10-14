@@ -132,10 +132,32 @@
                                 <h3 class="title mt30"># Border 0</h3>
                                 <p>border 값 0 이고 싶을때 사용하는 class</p>
                                 <pre class="line-numbers"><code class="language-css">
-.pd-border-t-0 { border-top: 0 !important;}            /* 위 */
-.pd-border-l-0 { border-left: 0 !important;}           /* 왼쪽 */
-.pd-border-r-0 { border-right: 0 !important;}          /* 오른쪽 */
-.pd-border-b-0 { border-bottom: 0 !important;}         /* 아래 */
+.pd-border0 { border: 0 !important;}
+.pd-bt-0 { border-top: 0 !important;}            /* 위 */
+.pd-bl-0 { border-left: 0 !important;}           /* 왼쪽 */
+.pd-br-0 { border-right: 0 !important;}          /* 오른쪽 */
+.pd-bb-0 { border-bottom: 0 !important;}         /* 아래 */
+
+.pd-bt-1 { border-top-width: 1px;}
+.pd-bt-2 { border-top-width: 2px;}
+.pd-bt-3 { border-top-width: 3px;}
+.pd-bt-4 { border-top-width: 4px;}
+.pd-bt-5 { border-top-width: 5px;}
+.pd-bl-1 { border-left-width: 1px;}
+.pd-bl-2 { border-left-width: 2px;}
+.pd-bl-3 { border-left-width: 3px;}
+.pd-bl-4 { border-left-width: 4px;}
+.pd-bl-5 { border-left-width: 5px;}
+.pd-br-1 { border-right-width: 1px;}
+.pd-br-2 { border-right-width: 2px;}
+.pd-br-3 { border-right-width: 3px;}
+.pd-br-4 { border-right-width: 4px;}
+.pd-br-5 { border-right-width: 5px;}
+.pd-bb-1 { border-bottom-width: 1px;}
+.pd-bb-2 { border-bottom-width: 2px;}
+.pd-bb-3 { border-bottom-width: 3px;}
+.pd-bb-4 { border-bottom-width: 4px;}
+.pd-bb-5 { border-bottom-width: 5px;}
                                 </code></pre>
                             </div>
                         </article>
@@ -203,10 +225,11 @@
                 { classNm: "block", cont: "블럭 속성"},
                 { classNm: "inline-block", cont: "인라인 블럭 속성"},
                 { classNm: "dis-table", cont: "테이블 속성"},
-                { classNm: "pd-border-t-0", cont: "위 선 없애기"},
-                { classNm: "pd-border-l-0", cont: "왼쪽 선 없애기"},
-                { classNm: "pd-border-r-0", cont: "오른쪽 선 없애기"},
-                { classNm: "pd-border-b-0", cont: "아래 선 없애기"},
+                { classNm: "pd-border0", cont: "선 전부 없애기"},
+                { classNm: "pd-bt-0", cont: "위 선 없애기"},
+                { classNm: "pd-bl-0", cont: "왼쪽 선 없애기"},
+                { classNm: "pd-br-0", cont: "오른쪽 선 없애기"},
+                { classNm: "pd-bb-0", cont: "아래 선 없애기"},
             ];
 
             for(var i=0; i < guidData.length; i++) {

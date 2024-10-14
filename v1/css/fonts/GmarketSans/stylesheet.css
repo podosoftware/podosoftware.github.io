@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Gmarket Sans TTF';
+    src: url('GmarketSansTTFLight.eot');
+    src: url('GmarketSansTTFLight.eot?#iefix') format('embedded-opentype'),
+        url('GmarketSansTTFLight.woff2') format('woff2'),
+        url('GmarketSansTTFLight.woff') format('woff'),
+        url('GmarketSansTTFLight.svg#GmarketSansTTFLight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gmarket Sans TTF';
+    src: url('GmarketSansTTFMedium.eot');
+    src: url('GmarketSansTTFMedium.eot?#iefix') format('embedded-opentype'),
+        url('GmarketSansTTFMedium.woff2') format('woff2'),
+        url('GmarketSansTTFMedium.woff') format('woff'),
+        url('GmarketSansTTFMedium.svg#GmarketSansTTFMedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gmarket Sans TTF';
+    src: url('GmarketSansTTFBold.eot');
+    src: url('GmarketSansTTFBold.eot?#iefix') format('embedded-opentype'),
+        url('GmarketSansTTFBold.woff2') format('woff2'),
+        url('GmarketSansTTFBold.woff') format('woff'),
+        url('GmarketSansTTFBold.svg#GmarketSansTTFBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
