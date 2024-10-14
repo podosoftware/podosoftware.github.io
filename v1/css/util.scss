@@ -133,6 +133,20 @@ $viewport-width-small: 480;   // 작은 화면 기준 뷰포트 너비
     font-style: normal;
 }
 
+/* Malgun Gothic */
+@font-face {
+    font-family: 'Malgun Gothic';
+    src: url('fonts/MalgunGothic/MalgunGothic.eot'); /* IE9 Compat Modes */
+    src: local('Roboto'), local('MalgunGothic'),
+    url('fonts/MalgunGothic/MalgunGothic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/MalgunGothic/MalgunGothicRegular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('fonts/MalgunGothic/MalgunGothicRegular.woff') format('woff'), /* Modern Browsers */
+    url('fonts/MalgunGothic/MalgunGothic.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/MalgunGothic/MalgunGothicRegular.svg#Roboto') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* SpoqaHanSans */
 @font-face {
     /*font-family: 'spoqa_thin';*/

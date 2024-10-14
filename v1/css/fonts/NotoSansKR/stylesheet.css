@@ -1,0 +1,40 @@
+@font-face {
+    font-family: '';
+    src: url('NotoSansKR-Bold-Alphabetic.eot');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '';
+    src: url('NotoSansKR-Light-Alphabetic.eot');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '';
+    src: url('NotoSansKR-Medium-Alphabetic.eot');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '';
+    src: url('NotoSansKR-Regular-Alphabetic.eot');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '';
+    src: url('NotoSansKR-Thin-Alphabetic.eot');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
