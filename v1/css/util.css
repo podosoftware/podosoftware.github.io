@@ -60,6 +60,14 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Malgun Gothic */
+@font-face {
+  font-family: "Malgun Gothic";
+  src: url("fonts/MalgunGothic/MalgunGothic.eot"); /* IE9 Compat Modes */
+  src: local("Roboto"), local("MalgunGothic"), url("fonts/MalgunGothic/MalgunGothic.eot?#iefix") format("embedded-opentype"), url("fonts/MalgunGothic/MalgunGothicRegular.woff2") format("woff2"), url("fonts/MalgunGothic/MalgunGothicRegular.woff") format("woff"), url("fonts/MalgunGothic/MalgunGothic.ttf") format("truetype"), url("fonts/MalgunGothic/MalgunGothicRegular.svg#Roboto") format("svg"); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
 /* SpoqaHanSans */
 @font-face {
   /*font-family: 'spoqa_thin';*/
@@ -626,6 +634,10 @@ a.skip:active, a.skip:focus {
 
 .pd-clamp-04 {
   -webkit-line-clamp: 4;
+}
+
+.pd-clamp-05 {
+  -webkit-line-clamp: 5;
 }
 
 .pd-clamp-none {

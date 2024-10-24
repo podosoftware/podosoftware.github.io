@@ -624,23 +624,6 @@ a.btn_bot{ display: inline-block; line-height: 44px; }
 
 .btn_close_detail{ display: inline-block; width: 33px; height: 33px; border:0; background: url(/images/runway/admin/btn_close_detail.png) no-repeat 50% 50% #fff; cursor: pointer; box-sizing: border-box; position: absolute; top: 10px; right: 10px; }
 
-/* popup 내부 button */
-.popup-content .k-grid-toolbar .k-button { padding: 9px 16px;}
-.popup-content .k-grid-toolbar .k-button:hover { border: 1px solid var(--primary-600);}
-.popup-btn { display: inline-block; height: auto; padding: 13px 24px; border: 1px solid #7A7EE8; border-radius: 4px; background: #7A7EE8; font-size: 13px; font-weight: 500; color: #FFFFFF; line-height: 14px; cursor: pointer;}
-.popup-btn:hover { color: #ffffff;}
-.popup-btn.btn-default { min-width: auto; border: 1px solid #E8E8E8; background: #FFFFFF; font-size: 13px; font-weight: 500; color: #404040;}
-.popup-btn.btn-default:hover,
-.popup-btn.btn-default:active { border: 1px solid #D1D1D1; background: #FFFFFF; font-weight: bold; color: var(--primary-600);}
-.popup-content .cont-tip-box .icon { vertical-align: middle;}
-
-/* 팝업 */
-.admin .popup-btn { display: inline-block; min-width: auto; height: auto; padding: 13px 24px; border: 1px solid #7A7EE8; border-radius: 4px; background: #7A7EE8; font-size: 13px; font-weight: 500; color: #FFFFFF; line-height: 14px; cursor: pointer;}
-.admin .popup-btn:hover { color: #ffffff;}
-.admin .popup-btn.btn-default { min-width: auto; border: 1px solid #E8E8E8; background: #FFFFFF; font-size: 13px; font-weight: 500; color: #404040;}
-.admin .popup-btn.btn-default:hover,
-.admin .popup-btn.btn-default:active { border: 1px solid #D1D1D1; background: #FFFFFF; font-weight: bold; color: var(--primary-600);}
-
 /*Detail*/
 .op_detail_btn{ display: flex; justify-content: flex-end; width: 100%; height: 44px; margin-top: 10px; text-align: right; box-sizing: border-box; }
 .op_position{ position: absolute; bottom: -1px; right: -1px; width: 100.1%; padding-right: 1px;}
@@ -702,7 +685,7 @@ a.btn_bot{ display: inline-block; line-height: 44px; }
 */
 /*운영관리_화상강의 Tip박스*/
 .tip-box{ display: inline-block; width: calc(100% - 40px); height: auto; padding: 18px 20px; margin: 0 0 20px; border: 1px solid var(--white-500); box-sizing: border-box;}
-.tip-box > span{ display: inline-block; float: none; width: 40px; margin-bottom: 10px; padding-bottom: 1px; text-align: center; line-height: 20px; font-size: 11px; color: #fff; font-weight: bold; letter-spacing: -0.02em; border-radius: 30px; background: #7A7EE8;}
+.tip-box > span{ display: inline-block; float: none; width: 40px; margin-bottom: 10px; padding-bottom: 1px; text-align: center; font-size: 11px; color: #fff; font-weight: bold; letter-spacing: -0.02em; border-radius: 30px; background: #7A7EE8;}
 .tip-box > ul{ float: none; /*width: calc(100% - 60px);*/ width: 100%;}
 .tip-box > ul > li{ width: 100%; margin-bottom: 8px; text-align: left; line-height: 20px; font-size: 13px; color: #555555; font-weight: 400; letter-spacing: -0.02em; word-break: keep-all;}
 .tip-box > ul > li:last-child{ margin-bottom: 0;}
@@ -846,7 +829,7 @@ a.btn_bot{ display: inline-block; line-height: 44px; }
 |                   Badge                    |
 *--------------------------------------------*
 */
-.pd-badge-tag { display: inline-block; padding: 5px 10px; border: 1px solid var(--primary-500); border-radius: 3px; background: #FFFFFF; font-size: 13px; font-weight: 500; color: var(--primary-600); line-height: 17px; letter-spacing: -0.02em;}
+.pd-badge-tag { display: inline-block; padding: 5px 10px; border: 1px solid var(--primary-500); border-radius: 3px; background: #FFFFFF; font-size: 13px; font-weight: 500; color: var(--primary-600); letter-spacing: -0.02em;}
 .pd-badge-tag.disabled { border: 1px solid #EBEBEB; background: #EBEBEB; color: #8E8E8E;}
 .pd-badge,
 .pd-badge02 { display: inline-block; padding: 5px 10px 6px; border-right: 3px; background: var(--primary-100); font-size: 12px; font-weight: 500; letter-spacing: -2%; color: var(--primary-600);}
@@ -1134,7 +1117,7 @@ div.table_btn .btnBox-wrap .edss_more { margin-left: 5px;}
 .statistic-box-wrap > ul > li { position: relative; padding-bottom: 25px;}
 .statistic-box-wrap .title-box { display: flex; justify-content: flex-start; align-items: center; margin-bottom: 15px;}
 .statistic-box-wrap .title-box .tit { margin-right: 20px; font-family: 'Spoqa Han Sans Neo', sans-serif; font-size: 20px; font-weight: 500; color: #404040; line-height: 38px; letter-spacing: -0.05em;}
-.statistic-box-wrap .title-box .btn-default { height: auto; padding: 13px 16px; font-family: 'Spoqa Han Sans Neo', sans-serif; font-size: 13px; font-weight: 500; line-height: 13px;}
+.statistic-box-wrap .title-box .btn-default { height: auto; padding: 13px 16px; font-family: 'Spoqa Han Sans Neo', sans-serif; font-size: 13px; font-weight: 500;}
 .statistic-box-wrap .title-box .statistic-sel {}
 .statistic-box-wrap .cont-box { position: relative; display: flex; justify-content: space-between; gap: 25px;}
 .statistic-box-wrap .cont-box.wide-box { flex-direction: column;}
@@ -1298,7 +1281,7 @@ p.sub_tit{ margin-bottom: 5px; line-height: 38px; font-size: 20px; color: #40404
 .pay-cont a { font-size: 25px; font-weight: bold; color: #fff; text-decoration: underline;}
 .pay-cont > p+p { font-size: 22px; font-weight: bold;}
 .pay-cont > p+p span { display: inline-block; margin-left: 10px; font-size: 35px;}
-.payPieNote { position: absolute; top: 41%; left: 0; width: 100%; text-align: center;}
+.payPieNote { position: absolute; top: 34%; left: 0; width: 100%; text-align: center;}
 .payPieNote .pieChart-tit { font-size: 30px; font-weight: bold; color: #fff;}
 .payPieNote .pieChart-subTit { font-size: 13px; color: #fff;}
 .title2 { margin-bottom: 20px; font-size: 18px; font-weight: bold; color: #333; text-align: left;}

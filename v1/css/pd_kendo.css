@@ -143,7 +143,7 @@ table.k-editor .k-editable-area { border-top: 1px solid #E8E8E8;}
 .k-window .k-window-content > form { /*height: 100%;*/}
 .k-window .k-window-content.loading-window { border-radius: 10px;}
 .k-window .popup-content { overflow-x: hidden; height: 100%; padding: 0 30px 20px; /*background: #ffffff;*/}
-.k-window .popup-foot { display: flex; justify-content: flex-end; position: relative; left: 0; right: 0; bottom: 0; width: 100%; padding: 15px 30px; border-top: 1px solid #E8E8E8; border-radius: 0 0 10px 10px; background: #FCFCFC; text-align: right; box-sizing: border-box;}
+.k-window .popup-foot { display: flex; justify-content: flex-end; position: relative; gap: 7px; left: 0; right: 0; bottom: 0; width: 100%; padding: 15px 30px; border-top: 1px solid #E8E8E8; border-radius: 0 0 10px 10px; background: #FCFCFC; text-align: right; box-sizing: border-box;}
 .k-window .popup-foot.flex-between { justify-content: space-between;}
 .k-window .popup-btn { min-width:  auto;}
 .k-window .k-grid .k-grid-header .k-grid-header-wrap table th { padding: 12px 15px; border-top: 0; font-size: 13px; font-weight: 500;}
@@ -151,9 +151,9 @@ table.k-editor .k-editable-area { border-top: 1px solid #E8E8E8;}
 .popup-content .table_list .k-grid2 tr { border-top: 0;}
 .popup-content .k-grid-toolbar .k-button { padding: 9px 16px;}
 .popup-content .k-grid-toolbar .k-button:hover { border: 1px solid var(--primary-600);}
-.popup-btn { display: inline-block; height: auto; padding: 13px 24px; border: 1px solid var(--primary-400); border-radius: 4px; background: var(--primary-400); font-size: 13px; font-weight: 500; color: #FFFFFF; line-height: 14px; cursor: pointer;}
+.popup-btn { display: inline-block; height: auto; padding: 13px 24px; border: 1px solid var(--primary-400); border-radius: 4px; background: var(--primary-400); font-size: 13px; font-weight: 500; color: #FFFFFF; cursor: pointer;}
 .popup-btn:hover { color: #ffffff;}
-.popup-btn.btn-default { min-width: auto; border: 1px solid #E8E8E8; background: #FFFFFF; font-size: 13px; font-weight: 500; color: #404040;}
+.popup-btn.btn-default { min-width: auto; height: auto; padding: 13px 24px; border: 1px solid #E8E8E8; background: #FFFFFF; font-size: 13px; font-weight: 500; color: #404040;}
 .popup-btn.btn-default:hover,
 .popup-btn.btn-default:active { border: 1px solid #D1D1D1; background: #FFFFFF; font-weight: bold; color: var(--primary-600);}
 .popup-content .cont-tip-box .icon { vertical-align: middle;}

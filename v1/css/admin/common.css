@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, form, fieldset, legend, input, textarea, button {margin:0; padding:0; font-weight:normal; letter-spacing: -0.02em;}*/
-body, input, select, div, textarea, table, button {font-size:13px;line-height:22px; font-family: var(--notosansKr); letter-spacing: -0.02em;}
+body, input, select, div, textarea, table, button {font-size:13px; font-family: var(--notosansKr); letter-spacing: -0.02em;}
 /*option {vertical-align:middle;  padding:3px 0;}*/
 /*legend {display:none; visibility:hidden;}*/
 /*img, fieldset, button {vertical-align:middle; border:0;}*/
