@@ -22,25 +22,25 @@
     <meta content="" property="og:url">
     <meta content="" property="og:site-name">
 
-    <link rel="stylesheet" href="../css/reset2.css">
-    <link rel="stylesheet" href="../css/root.css">
-    <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css">
+    <link rel="stylesheet" href="css/reset2.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/kendo/2022.1.119/kendo.common.min.css">
     <!--    <link rel="stylesheet" href="../css/font.css">-->
-    <link rel="stylesheet" href="../css/pd_kendo.css">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/util.css">
-    <link rel="stylesheet" href="../css/style2.css">
-    <link rel="stylesheet" href="../css/guide.css">
+    <link rel="stylesheet" href="css/pd_kendo.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/guide.css">
 
-    <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
-    <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
-    <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
-    <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
-    <script src="../js/common2.js"></script>
-    <script src="../js/front.js"></script>
+    <script src="js/jquery/3.4.1/jquery-3.4.1.js"></script>
+    <script src="js/kendo/2022.1.119/kendo.all.min.js"></script>
+    <script src="js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+    <script src="js/kendo/kendo.messages.ko-KR.js"></script>
+    <script src="js/common2.js"></script>
+    <script src="js/front.js"></script>
 
-    <link rel="stylesheet" href="../js/prism.css">
-    <script src="../js/prism.js"></script>
+    <link rel="stylesheet" href="js/prism.css">
+    <script src="js/prism.js"></script>
 
     <title>PDF로 다른 HTML 저장</title>
 
@@ -60,7 +60,7 @@
     <script>
         document.getElementById('save-pdf').addEventListener('click', function () {
             // fetch API로 외부 HTML 파일 불러오기
-            fetch('/pdfPage.html')  // 여기에 불러오고 싶은 외부 페이지의 URL을 입력합니다
+            fetch('https://podosoftware.github.io/v1/pdfPage.html')  // 여기에 불러오고 싶은 외부 페이지의 URL을 입력합니다
                 .then(response => response.text())
                 .then(html => {
                     // 불러온 HTML을 특정 div에 삽입
