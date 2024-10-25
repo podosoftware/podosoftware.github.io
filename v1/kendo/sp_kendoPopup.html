@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- 여기에 head.html을 인클루드 -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#8C63E7" />
+
+        <link rel="shortcut icon" href="" />
+        <link rel="apple-touch-icon" href="" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel="icon" href="" type="image/x-icon" />
+
+        <meta name="Description" content="" />
+        <meta name="Keywords" content="" />
+        <meta name="Copyright" content="" />
+        <meta content="" property="og:title" />
+        <meta content="" property="og:description" />
+        <meta content="" property="og:url" />
+        <meta content="" property="og:site-name" />
+
+        <link rel="stylesheet" href="../css/reset2.css" />
+        <link rel="stylesheet" href="../css/admin/root_admin.css" />
+        <!--<link rel="stylesheet" href="../css/root.css">-->
+        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/pd_kendo.css" />
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/util.css" />
+        <!--    <link rel="stylesheet" href="../css/style2.css">-->
+        <link rel="stylesheet" href="../css/admin/admin.css" />
+        <link rel="stylesheet" href="../css/guide.css" />
+        <link rel="stylesheet" href="../css/media2.css" />
+
+        <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
+        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+        <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
+        <script src="../js/common2.js"></script>
+        <script src="../js/frontUi.js"></script>
+        <script src="../js/front.js"></script>
+
+        <link rel="stylesheet" href="../js/prism.css" />
+        <script src="../js/prism.js"></script>
+
+        <title>Kendo Ui</title>
+
+        <link rel="stylesheet" href="../css/style2.css" />
+    </head>
+    <body>
+        <div class="wrap">
+            <!--    Header START    -->
+            <!-- 여기에 Header.html을 인클루드 -->
+            <header class="left-header">
+                <div class="left-header-top">
+                    <h1 class="logo">
+                        <a href="index.html"><img src="../guide/logo.png" alt="로고" /></a>
+                    </h1>
+                </div>
+                <nav class="left-header-menu-wrap">
+                    <ul>
+                        <li class="admin-kendoUi">
+                            <a href="javascript: void(0);" class="tab">Admin</a>
+                            <ol>
+                                <li class="admin-liUpload"><a href="admin_kendoUi.html" data-hash="#upload">Upload</a></li>
+                                <li class="admin-liMulti"><a href="admin_kendoUi_multi.html" data-hash="#multiselect">MultiSelect</a></li>
+                                <li class="admin-liGrid"><a href="admin_kendoUi_grid.html" data-hash="#gridFilterTooltip">Grid</a></li>
+                                <li class="admin-liIcons"><a href="admin_kendoUi_icons.html" data-hash="#icons">Icons</a></li>
+                                <li class="admin-liDatePicker"><a href="admin_kendoUi_date.html" data-hash="#datePicker">DatePicker</a></li>
+                                <li class="admin-liTime"><a href="admin_kendoUi_time.html" data-hash="#dateTimePicker">DateTimePicker</a></li>
+                                <li class="admin-liRange"><a href="admin_kendoUi_range.html" data-hash="#dateRangePicker">DateRangePicker</a></li>
+                                <!--                    <li class="liCalendar"><a href="kendoUi_calendar.html" data-hash="#calendar">Calendar</a></li>-->
+                                <li class="admin-liNumeric"><a href="admin_kendoUi_numeric.html" data-hash="#numericTextBox">NumericTextBox</a></li>
+                                <li class="admin-liDropDown"><a href="admin_kendoUi_dropDown.html" data-hash="#dropDownList">DropDownList</a></li>
+                                <li class="admin-liPaging"><a href="admin_kendoUi_paging.html" data-hash="#paging">Paging</a></li>
+                                <li class="admin-liEditor"><a href="admin_kendoUi_editor.html" data-hash="#editor">Editor</a></li>
+                                <li class="admin-liTree"><a href="admin_kendoUi_tree.html" data-hash="#kendoTree">Kendo Tree</a></li>
+                            </ol>
+                        </li>
+                        <li class="eight kendoUi">
+                            <a href="javascript: void(0);" class="tab">사용자</a>
+                            <ol>
+                                <li class="liUpload"><a href="kendoUi.html" data-hash="#upload">Upload</a></li>
+                                <li class="liGrid"><a href="kendoUi_grid.html" data-hash="#gridFilterTooltip">Grid</a></li>
+                                <li class="liIcons"><a href="kendoUi_icons.html" data-hash="#icons">Icons</a></li>
+                                <li class="liDatePicker"><a href="kendoUi_date.html" data-hash="#datePicker">DatePicker</a></li>
+                                <li class="liTime"><a href="kendoUi_time.html" data-hash="#dateTimePicker">DateTimePicker</a></li>
+                                <!--                    <li class="liRange"><a href="kendoUi_range.html" data-hash="#dateRangePicker">DateRangePicker</a></li>-->
+                                <!--                    <li class="liCalendar"><a href="kendoUi_calendar.html" data-hash="#calendar">Calendar</a></li>-->
+                                <li class="liNumeric"><a href="kendoUi_numeric.html" data-hash="#numericTextBox">NumericTextBox</a></li>
+                                <li class="liDropDown"><a href="kendoUi_dropDown.html" data-hash="#dropDownList">DropDownList</a></li>
+                                <li class="liPaging"><a href="kendoUi_paging.html" data-hash="#paging">Paging</a></li>
+                                <li class="liEditor"><a href="kendoUi_editor.html" data-hash="#editor">Editor</a></li>
+                                <li class="liTree"><a href="kendoUi_tree.html" data-hash="#kendoTree">Kendo Tree</a></li>
+                            </ol>
+                        </li>
+                        <!--            <li class="eight sample">-->
+                        <!--                <a href="javascript: void(0);" class="tab">sample</a>-->
+                        <!--                <ol>-->
+                        <!--                    <li class="likendoPopup"><a href="sp_kendoPopup.html">kendo Popup</a></li>-->
+                        <!--                </ol>-->
+                        <!--            </li>-->
+                    </ul>
+                </nav>
+            </header>
+
+            <!--        <div id="header" data-include-path="header.html"></div>-->
+            <!--    Header END    -->
+
+            <!--    본문영역 START    -->
+            <main class="body-container">
+                <!--        breadcrumb START        -->
+                <section class="breadcrumb">
+                    <div class="container">
+                        <ul class="menu">
+                            <li>
+                                <a href="index.html"><i class="icon-home"></i></a>
+                            </li>
+                            <li>kendo Popup</li>
+                        </ul>
+                    </div>
+                </section>
+                <!--        breadcrumb END        -->
+
+                <section class="sec-">
+                    <div class="container">
+                        <h2>Sample</h2>
+
+                        <div class="flex-group">
+                            <div>
+                                <article id="uploadPage" class="article-">
+                                    <h3 class="title"># kendo Popup</h3>
+
+                                    <div class="sec-cont pd-mt30">
+                                        <div class="pd-flex-col pd-gap10">
+                                            <button type="button" class="btn-point-white size-" onclick="kendoPopupClick();">kendo popup</button>
+                                            <button type="button" class="btn-point-white size-" onclick="fn.kendoPopupOpen('kendoPopup');">kendo popup</button>
+                                            <button type="button" class="btn-point-white size-" onclick="fn.kendoPopupOpen('kendoSurveyPopup');">설문</button>
+                                            <button type="button" class="btn-point-white size-" onclick="fn.kendoPopupOpen('kendoTestPopup');">시험</button>
+                                            <button type="button" class="btn-point-white size-" onclick="fn.hwPopup(openNum, hwNum)">과제</button>
+                                            <button type="button" class="btn-point-white size-" onclick="fn.kendoPopupOpen('kendoHwResultPopup');">과제결과조회</button>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!--                // Upload Grid End    -->
+
+                                <div class="accordion-wrap pd-mt30" style="width: 955px">
+                                    <div class="accordion-head">
+                                        <strong>코드 보기</strong>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="g-code-box">
+                                            <pre data-src="code/sp_kendoPopup_01.html"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--                        //    -->
+                            </div>
+
+                            <!--                        <div class="guid-table-box">-->
+                            <!--                            <div class="guid-table-fixed">-->
+                            <!--                                <strong>Class</strong>-->
+                            <!--                                <strong>내용</strong>-->
+                            <!--                            </div>-->
+                            <!--                            <ul id="guidClass"></ul>-->
+                            <!--                        </div>-->
+                        </div>
+                    </div>
+                </section>
+
+                <!--        버튼 한개 팝업 START    -->
+                <div id="kendoOnlyPopup">
+                    <div class="popup-content"></div>
+                    <div class="popup-foot">
+                        <button class="popup-btn btn-default" onclick="fn.kendoPopupClose('kendoOnlyPopup')">취소</button>
+                    </div>
+                </div>
+                <!--        버튼 한개 팝업 END    -->
+
+                <!--        버튼 2개 이상 팝업 START    -->
+                <div id="kendoPopup">
+                    <div class="popup-content"></div>
+                    <div class="popup-foot">
+                        <button class="popup-btn btn-default" onclick="fn.kendoPopupClose('kendoPopup')">취소</button>
+                        <button class="popup-btn" onclick="">저장</button>
+                    </div>
+                </div>
+                <!--        // 버튼 2개 이상 팝업 END    -->
+
+                <!--        과제 팝업 START    -->
+                <div id="kendoHwPopup" class="stare-window stare-task">
+                    <div class="popup-content">
+                        <input type="hidden" id="stare_task_num" />
+                        <input type="hidden" id="stare_task_Rstnum" />
+                        <div id="stare_task_content" class="stare-cont"></div>
+                        <div id="hw_file_upload"></div>
+                        <div id="hw_file_list" class="file-template"></div>
+                    </div>
+                    <div class="popup-foot">
+                        <button class="popup-btn" onclick="fn.submitTask(openNum);">제출하기</button>
+                    </div>
+                </div>
+
+                <script type="text/x-kendo-template" id="hw_fileupload_template">
+                    <input name="hw_upload_file" id="hw_upload_file" type="file"/>
+                </script>
+                <!--        // 과제 팝업 END    -->
+            </main>
+
+            <footer></footer>
+        </div>
+
+        <!-- 파일 템플릿 START -->
+        <script id="hw_fileList" type="text/x-kendo-template">
+            <tr>
+                <td colspan="2">
+                    <div class="file-list">
+                        <a href="\\#downloadFile" class="file-tit" onclick="downloadFile(#:attachmentId#);return false;"><span class="file-icon"></span>#:name#</a>
+                        <span class="file-size">#= commaStr(data.size) #byte</span>
+                        <button class="del-file" onclick="deleteFile(#:attachmentId#, 'hw_file_list')"><span class="blind">삭제</span></button>
+                    </div>
+                </td>
+            </tr>
+        </script>
+        <!-- //파일 템플릿 END -->
+
+        <script>
+            var now = new Date();
+            var mon = '';
+            var day = '';
+            if (now.getMonth() + 1 < 10) {
+                mon = '0' + (now.getMonth() + 1);
+            } else {
+                mon = now.getMonth() + 1;
+            }
+            if (now.getDate() < 10) {
+                day = '0' + now.getDate();
+            } else {
+                day = now.getDate();
+            }
+            var nowDay = now.getFullYear() + '-' + mon + '-' + day;
+
+            var currentPath = window.location.pathname;
+            var currentHash = window.location.hash;
+
+            function dataToHtml(str, ta) {
+                str = replaceAll(str, '\r\n', '<br/>'); //에디터 내용 BR처리
+                if (ta == true) {
+                    str = replaceAll(str, '\n', '<br/>'); //에디터 내용 BR처리
+                }
+                str = replaceAll(str, '&amp;', '&');
+                str = replaceAll(str, 'amp;amp;', '');
+                str = replaceAll(str, '&amp;nbsp;', '');
+                str = replaceAll(str, '&lt;p&gt;', '<br/>'); //에디터 BR처리
+                str = replaceAll(str, '&lt;/p&gt;', '');
+                str = replaceAll(str, '&lt;', '<'); //에디터 태그처리
+                str = replaceAll(str, '&gt;', '>');
+                str = replaceAll(str, '&quot;', '"');
+                str = replaceAll(str, '&middot;', '·');
+                str = replaceAll(str, '&bull;', '•');
+
+                return str;
+            }
+
+            function replaceAll(str, target, replacement) {
+                if (str == null || str == '') {
+                    return '';
+                }
+                return str.split(target).join(replacement);
+            }
+
+            //콤마
+            function commaStr(str) {
+                str = str.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+                return str;
+            }
+
+            $(function () {
+                kendo.culture('ko-KR');
+
+                $('.sample .likendoPopup a').addClass('active');
+
+                fn.kendoPopup('kendoOnlyPopup', '캔두 닫기 버튼만 있는 팝업', '800px', '400px');
+                fn.kendoPopup('kendoPopup', '캔두 팝업', '800px', '400px');
+                fn.kendoPopup('kendoHwPopup', '과제', '920px', '630px');
+
+                var html = '';
+                var guidData = [
+                    { classNm: 'my-file-upload', cont: '파일 업로드 영역 custom class' },
+                    { classNm: 'file-template', cont: '파일 업로드 결과 영역 class' },
+                    { classNm: 'file-list', cont: '파일 한줄 영역' },
+                    { classNm: 'file-tit', cont: '파일 업로드 결과 제목 class' },
+                    { classNm: 'file-tit', cont: '파일 제목 class' },
+                    { classNm: 'file-size', cont: '파일 사이즈 제목 class' },
+                    { classNm: 'del-file', cont: '파일 삭제 버튼 class' },
+                ];
+
+                for (var i = 0; i < guidData.length; i++) {
+                    html += '<li>';
+                    html += "   <p class='left'>" + guidData[i].classNm + '</p>';
+                    html += "   <p class='right'>" + guidData[i].cont + '</p>';
+                    html += '</li>';
+                }
+
+                $('#guidClass').html(html);
+            });
+
+            function kendoPopupClick() {
+                fn.kendoPopupOpen('kendoOnlyPopup');
+            }
+        </script>
+    </body>
+</html>

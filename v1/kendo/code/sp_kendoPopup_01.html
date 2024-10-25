@@ -1,0 +1,29 @@
+<div id="kendoOnlyPopup">
+    <div class="popup-content">
+
+    </div>
+    <div class="popup-foot">
+        <button class="popup-btn btn-default" onclick="fn.kendoPopupClose('kendoOnlyPopup')">취소</button>
+    </div>
+</div>
+
+<div id="kendoPopup">
+    <div class="popup-content">
+
+    </div>
+    <div class="popup-foot">
+        <button class="popup-btn btn-default" onclick="fn.kendoPopupClose('kendoPopup')">취소</button>
+        <button class="popup-btn" onclick="">저장</button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        fn.kendoOnlyPopup('kendoOnlyPopup', '캔두 닫기 버튼만 있는 팝업', '800px', '400px');
+        fn.kendoPopup('kendoPopup', '캔두 팝업', '800px', '400px');
+    });
+
+    function kendoOnlyPopupClick() {
+        fn.kendoPopupOpen('kendoOnlyPopup');
+    }
+</script>
