@@ -1,0 +1,122 @@
+<script>
+    yepnope([{
+        load: [
+            "css!${contextPath}/css/podo.ui/podo.ui.css",
+            "${contextPath}/js/podo.ui/page/kendoComponentUtil.js",
+            "${contextPath}/js/front/grid.js",
+        ],
+        complete: function () {
+            kendo.culture("ko-KR");     // 무조건 최상단에 선언 kendo 한글로
+
+            initPage(); // Window Resize in operator.js     화면에 메인 그리드가 하나일때 사용 무조건 id는 grid.
+            setSpliter("300px", "700px"); // 스플릿터 사이즈 설정
+
+            grid.main();        // 메인 그리드 그리기
+            setComponent.tabStrip();    // 탭 생성
+        }
+    }]);
+
+    setComponent = function(){};
+    layerPopup = function(){};
+    grid = function (){};
+    detail = function (){};
+    events = function (){};
+    valid = function (){};
+
+    setComponent.tabStrip = () => {
+        $("#tabstrip").kendoTabStrip({
+            animation: {
+                open: {effects: "fadeIn"}
+            },
+            activate: function (e) {
+                var tabStrip = $("#tabstrip").data("kendoTabStrip");
+
+                $(window).resize();
+
+                var tabTitle = e.item.innerText;
+            }
+        });
+    };
+
+    // 상세보기
+    detail.detailView = (id, isNew)=> {
+
+        // 상세영역 활성화
+        $("#details").scrollTop(0);
+        var grid = $("#grid").data("kendoGrid");
+        var data = grid.dataSource.data();
+
+        grid.clearSelection(); //기 선택된 selected 초기화
+        $('[data-uid='+grid.dataSource.get(id).uid+']').addClass('k-state-selected'); //선택한 데이터 selected 마크 처리
+
+        $("#detail_pane").show();
+        $('#details').show().html(kendo.template($('#template').html()));
+        $("#splitter").data("kendoSplitter").expand("#detail_pane");
+
+    };
+
+    // events
+    // 상세영역 비활성
+    events.cancelBtnClick = () => {
+        $("#splitter").data("kendoSplitter").toggle("#list_pane", true);
+        $("#splitter").data("kendoSplitter").toggle("#detail_pane", false);
+    };
+</script>
+
+<div id="content">
+    <div class="cont_body">
+        <div class="cont_body-top">
+            <div class="title">견적서</div>
+            <div class="table_btn">
+                <button type="button" id="new_btn" class="btn_top"><span>견적서 등록</span></button>
+            </div><!-- table_btn -->
+        </div>
+        <div class="table_zone">
+            <div class="table_list splitterYes">
+                <div id="splitter" style="width:100%; height: 100%; border:none;">
+                    <div id="list_pane">
+                        <div id="grid"></div>
+                    </div>
+                    <div id="detail_pane" style="display: none">
+                        <div id="details"></div>
+
+                        <div class="op_detail_btn" id="btnZone1" style="display:none;">
+                            <button type="button" id="delBtn" class="btn_bot"><span>삭제</span></button>
+                            <button type="button" class="cancel-btn btn_bot"><span>취소</span></button>
+                            <button type="button" id="save-btn" class="btn_bot"><span>저장</span></button>
+                        </div>
+                        <div class="op_detail_btn" id="btnZone2" style="display:none;">
+                            <button type="button" class="cancel-btn btn_bot"><span>취소</span></button>
+                            <button type="button" id="save-btn2" class="btn_bot"><span>저장</span></button>
+                        </div>
+                        <div class="op_detail_btn" id="btnZone3" style="display:none;">
+                            <button type="button" class="cancel-btn btn_bot"><span>취소</span></button>
+                            <button type="button" id="save-btn3" class="btn_bot"><span>저장</span></button>
+                        </div>
+                        <div class="op_detail_btn" id="btnZone4" style="display:none;">
+                            <button type="button" class="cancel-btn btn_bot"><span>취소</span></button>
+                            <button type="button" id="save-btn4" class="btn_bot"><span>저장</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="template">
+    <div id="tabstrip">
+        <ul>
+            <li class="k-state-active tab-1" onclick="showBtnZone(1);">과정정보</li>
+            <% if("N".equals(b2cYnJava)) { %>
+            <li onclick="showBtnZone(2);">역량매핑</li>
+            <li onclick="showBtnZone(3);">교육제도관리</li>
+            <% } %>
+            <li onclick="showBtnZone(4);">온라인차시관리</li>
+        </ul>
+
+<!--     탭 1 START   -->
+        <div style="overflow-y: auto;"></div>
+<!--     탭 1 END   -->
+    </div>
+</script>
