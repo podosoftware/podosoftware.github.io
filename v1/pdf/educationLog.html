@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <style>
+        /*reset*/
+        body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, form, fieldset, legend, input, textarea, button {margin:0; padding:0; font-weight:normal}
+        table {width:100%; border:0; border-spacing:0; border-collapse:collapse;}
+        /*html:first-child select {padding-right:6px; height:20px;} !* Opera 9 & Below Fix *!*/
+        option {vertical-align:middle;  padding:3px 0;} /* Firefox Fix */
+        legend {display:none; visibility:hidden;}
+        img, fieldset, button {vertical-align:middle; border:0;}
+        ul, ol {list-style:none;}
+        em, address {font-style:normal;}
+        hr {display:none; visibility:hidden;}
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {display:block; margin: 0; padding: 0; }
+        /* 사파리 col width 에러문제로 display 삭제처리함
+        caption  {display:block; height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0;}*/
+        caption  {height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0;}
+        input, textarea, button {vertical-align: middle;}
+        a {text-decoration:none;color:inherit;}
+        a:hover, a:active, a:focus{text-decoration:none;}
+
+        /*h3 { padding: 20px 0; text-align: center;}*/
+        /*table { border-collapse: collapse; border-spacing: 0; }*/
+        /*table thead tr { border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000;}*/
+        /*table thead tr th { padding: 10px; border-right: 1px solid #000; text-align: center; font-size: 14px;}*/
+        /*table tbody tr { border-left: 1px solid #000; border-bottom: 1px solid #000;}*/
+        /*table tbody tr td { padding: 10px; border-right: 1px solid #000; text-align: center; font-size: 14px;}*/
+    </style>
+</head>
+<body>
+    <div id="educationLog" style="margin: 10px;"></div>
+
+    <script>
+        var data = [
+            {
+                id: 1,
+                title: "보건관리자 직무교육 보수과정(7.23-7.26)",
+                total: 2,
+                date: "2024년 7월 23일",
+                dayCount: 5,
+                totalCount: 5,
+                items: [
+                    { type: "A", title: "산업안전보건법령 및 사례", day: 1, name: "홍길동"},
+                    { type: "A", title: "산업안전보건법령 및 사례", day: 2, name: "홍길동"},
+                    { type: "A", title: "산업안전보건법령 및 사례", day: 3, name: "홍길동"},
+                    { type: "B", title: "화학적 유해인자 관리", day: 4, name: "동길홍"},
+                    { type: "B", title: "화학적 유해인자 관리", day: 5, name: "동길홍"}
+                ]
+            },
+            {
+                id: 2,
+                title: "보건관리자 직무교육 보수과정(7.23-7.26)",
+                total: 2,
+                date: "2024년 7월 23일",
+                dayCount: 8,
+                totalCount: 13,
+                items: [
+                    { type: "A", title: "산업안전보건법령 및 사례", day: 1, name: "홍길동"},
+                    { type: "A", title: "산업안전보건법령 및 사례", day: 2, name: "홍길동"},
+                    { type: "A", title: "산업안전보건법령 및 사례", day: 3, name: "홍길동"},
+                    { type: "B", title: "화학적 유해인자 관리", day: 4, name: "동길홍"},
+                    { type: "B", title: "화학적 유해인자 관리", day: 5, name: "동길홍"},
+                    { type: "B", title: "화학적 유해인자 관리", day: 6, name: "동길홍"},
+                    { type: "C", title: "직업병 사례연구", day: 7, name: "아무개"},
+                    { type: "C", title: "직업병 사례연구", day: 8, name: "아무개"},
+                ]
+            }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if(data.length > 0) {
+                const container = document.getElementById('educationLog');
+                container.innerHTML = ''; // 기존 테이블 초기화
+
+                for (let i = 0; i < data.length; i ++) {
+                    // 섹션 생성
+                    const section = document.createElement('div');
+                    section.style.margin = "0 0 30px";
+
+                    // 마지막 섹션이 아니고 항목이 페이지 넘김을 추가
+                    if (i < data.length) {
+                        section.style.breakAfter = "page";
+                    }
+
+                    let sectionHTML = `
+<h2>교육일지</h2>
+    <table>
+        <tbody>
+        <tr>
+            <td>1. 훈련과정: ${data[i].title}</td>
+            <td>
+                <table style="width:180px; border:0; border-spacing:0; margin-bottom: 30px;">
+                    <thead>
+                    <tr>
+                        <th style="padding: 10px; border: 1px solid #000; font-size: 14px;">일련번호</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="padding: 10px; border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">
+                        ${i + 1}/${data[i].total}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>2. 훈련직종: </td>
+            <td>${data[i].date}</td>
+        </tr>
+        </tbody>
+    </table>
+<!--  상단  -->
+
+    <table style="margin: 20px 0; width:100%; border:0; border-spacing:0; border-collapse:collapse;">
+        <tbody>
+        <tr>
+            <th style="width: 100px; padding: 10px; border: 1px solid #000; text-align: center; font-size: 14px;">3. 재적</th>
+            <td style="padding: 10px; border-top: 1px solid #000; border-bottom: 1px solid #000; text-align: right; font-size: 14px;">    명</td>
+            <th style="width: 100px; padding: 10px; border: 1px solid #000; text-align: center; font-size: 14px;">4. 출석</th>
+            <td style="padding: 10px; border-top: 1px solid #000; border-bottom: 1px solid #000; text-align: right; font-size: 14px;">    명</td>
+            <th style="width: 100px; padding: 10px; border: 1px solid #000; text-align: center; font-size: 14px;">5. 결석</th>
+            <td style="padding: 10px; border-top: 1px solid #000; border-bottom: 1px solid #000; text-align: right; font-size: 14px;">    명</td>
+            <th style="width: 100px; padding: 10px; border: 1px solid #000; text-align: center; font-size: 14px;">6. 지각</th>
+            <td style="padding: 10px; border-top: 1px solid #000; border-bottom: 1px solid #000; text-align: right; font-size: 14px;">    명</td>
+            <th style="width: 100px; padding: 10px; border: 1px solid #000; text-align: center; font-size: 14px;">7. 조퇴</th>
+            <td style="padding: 10px; border-top: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: right; font-size: 14px;">    명</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table style="width:100%; border:0; border-spacing:0; border-collapse:collapse;">
+        <tbody>
+        <tr>
+            <th colspan="7" style="padding: 10px; border: 1px solid #000; text-align: center; font-size: 14px;">8. 훈련사항</th>
+        </tr>
+        <tr>
+            <th style="width: 80px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">9. 교시</th>
+            <th style="width: 200px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">10. 훈련과목</th>
+            <th style="width: 150px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">11. 담당교사</th>
+            <th colspan="4" style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">12. 훈련내용</th>
+        </tr>`;
+
+<!-- 여기에 교시 START -->
+                    let currentType = '';
+                    let tableRows = "";
+                    let rowCount = 1;
+
+                    // type별로 항목을 그룹화합니다.
+                    const groupedItems = data[i].items.reduce((acc, item) => {
+                        acc[item.type] = acc[item.type] || [];
+                        acc[item.type].push(item);
+                        return acc;
+                    }, {});
+
+                    for (const type in groupedItems) {
+                        const rowspanCount = groupedItems[type].length;
+                        const firstItem = groupedItems[type][0];
+
+                        // 첫 번째 항목에 rowspan을 적용하여 타이틀과 이름을 표시합니다.
+                        tableRows += `<tr>
+                            <td style="width: 80px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">${rowCount++}</td>
+                            <td rowspan="${rowspanCount}" style="width: 200px; padding: 10px; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">${firstItem.title}</td>
+                            <td rowspan="${rowspanCount}" style="width: 150px; padding: 10px; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">${firstItem.name}</td>
+                            <td rowspan="${rowspanCount}" colspan="4" style="padding: 10px; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;"></td>
+                        </tr>`;
+
+                        // 나머지 항목들은 day 값만 표시합니다.
+                        for (let i = 1; i < groupedItems[type].length; i++) {
+                            tableRows += `<tr><td style="width: 80px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">${rowCount++}</td></tr>`;
+                        }
+                    }
+
+                    sectionHTML += tableRows;
+<!-- 여기에 교시 END -->
+
+        sectionHTML += `
+        <tr>
+            <th rowspan="2" style="width: 80px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">13. 훈련일지</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">14. 일계</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">${data[i].dayCount}</th>
+            <th style="width: 100px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">15. 이론</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000;"></th>
+            <th style="width: 100px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">16. 실기</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;"></th>
+        </tr>
+        <tr>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">17. 누계</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">${data[i].totalCount}</th>
+            <th style="width: 100px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">18. 이론</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000;"></th>
+            <th style="width: 100px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 14px;">19. 실기</th>
+            <th style="padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;"></th>
+        </tr>
+</tbody>
+    </table>
+
+    <table style="width:100%; border:0; border-spacing:0; border-collapse:collapse;">
+    <tbody>
+
+        <tr>
+            <th style="width: 150px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">20. 지시사항</th>
+            <td colspan="5" style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000;"></td>
+        </tr>
+        <tr>
+            <th style="width: 150px; padding: 10px; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 14px;">21. 특기사항 (결석자명단 기재 포함)</th>
+            <td colspan="5" style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000;"></td>
+        </tr>
+        </tbody>
+    </table>
+                    `;
+
+                    section.innerHTML = sectionHTML;
+
+                    container.appendChild(section);
+                }
+
+            }
+        });
+    </script>
+
+
+</body>
+</html>

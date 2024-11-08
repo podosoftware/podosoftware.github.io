@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <style>
+        /*reset*/
+        body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, form, fieldset, legend, input, textarea, button {margin:0; padding:0; font-weight:normal}
+        table {width:100%; border:0; border-spacing:0; border-collapse:collapse;}
+        /*html:first-child select {padding-right:6px; height:20px;} !* Opera 9 & Below Fix *!*/
+        option {vertical-align:middle;  padding:3px 0;} /* Firefox Fix */
+        legend {display:none; visibility:hidden;}
+        img, fieldset, button {vertical-align:middle; border:0;}
+        ul, ol {list-style:none;}
+        em, address {font-style:normal;}
+        hr {display:none; visibility:hidden;}
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {display:block; margin: 0; padding: 0; }
+        /* 사파리 col width 에러문제로 display 삭제처리함
+        caption  {display:block; height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0;}*/
+        caption  {height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0;}
+        input, textarea, button {vertical-align: middle;}
+        a {text-decoration:none;color:inherit;}
+        a:hover, a:active, a:focus{text-decoration:none;}
+
+        /*h3 { padding: 20px 0; text-align: center;}*/
+        /*table { border-collapse: collapse; border-spacing: 0; }*/
+        /*table thead tr { border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000;}*/
+        /*table thead tr th { padding: 10px; border-right: 1px solid #000; text-align: center; font-size: 12px;}*/
+        /*table tbody tr { border-left: 1px solid #000; border-bottom: 1px solid #000;}*/
+        /*table tbody tr td { padding: 10px; border-right: 1px solid #000; text-align: center; font-size: 12px;}*/
+    </style>
+</head>
+<body>
+    <div id="educationLifeGroup" style="margin: 10px;">
+
+    </div>
+
+    <script>
+        var data = [
+            {
+                id: 1,
+                title: "[집체]관리감독자교육 제조업(16시간)과정(10.24~10.25) 교육생명단",
+                y: 46,
+                x: 1,
+                total: 47,
+                items: [
+                    { number: 1, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 2, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 3, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 4, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 5, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 6, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 7, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 8, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 9, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 10, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 11, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 12, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 13, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 14, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 15, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 16, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 17, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 18, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 19, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 20, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 21, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 22, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 23, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 24, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 25, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 26, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 27, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 28, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 29, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 30, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 31, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 32, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 33, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 34, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 35, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 36, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 37, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 38, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 39, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                    { number: 40, name: "홍길동", addr: "홍길동전(주)대한민국", other: ""},
+                ]
+            },
+        ];
+
+        const itemsPerSection = 20;  // 각 섹션 당 항목 수
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if(data.length > 0) {
+                const currentData = data[0];
+                const container = document.getElementById('educationLifeGroup');
+                container.innerHTML = ''; // 기존 테이블 초기화
+
+                // 각 10개씩 항목을 분할하여 섹션으로 추가
+                for (let i = 0; i < currentData.items.length; i += itemsPerSection) {
+                    const sectionItems = currentData.items.slice(i, i + itemsPerSection);
+
+                    // 섹션 생성
+                    const section = document.createElement('div');
+                    section.style.margin = "0 0 30px";
+
+
+                    // 마지막 섹션이 아니고 항목이 20개 이상일 때만 페이지 넘김을 추가
+                    if (i + itemsPerSection < currentData.items.length && currentData.items.length > itemsPerSection) {
+                        section.style.breakAfter = "page";
+                    }
+
+                    // 제목과 고정 헤더 생성
+                    const title = document.createElement('h3');
+                    title.textContent = currentData.title;
+                    title.style = "margin: 30px 0; text-align: center;";
+                    const xText = document.createElement('div');
+                    xText.style = "margin-bottom: 10px; text-align: right;";
+                    xText.innerHTML = `<p style="display: inline-block;"><strong>x:</strong> ${currentData.x}명</p>`;
+                    xText.innerHTML += `<p style="display: inline-block; margin-left: 30px;"><strong>y:</strong> ${currentData.y}명</p>`;
+                    xText.innerHTML += `<p style="display: inline-block; margin-left: 30px;"><strong>총 인원:</strong> ${currentData.total}명</p>`;
+
+                    // 테이블 생성
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th style="width: 80px; padding: 10px; border-left: 1px solid #000; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">순번</th>
+                        <th style="width: 200px; padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">이름</th>
+                        <th style="width: 400px; padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">사업장</th>
+                        <th style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">비고</th>
+                    </tr>
+                </thead>
+            `;
+                    const tableBody = document.createElement('tbody');
+
+                    // 테이블 본문에 항목 추가
+                    sectionItems.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                    <td style="padding: 10px; border-right: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${item.number}</td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${item.name}</td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${item.addr}</td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${item.other}</td>
+                `;
+                        tableBody.appendChild(row);
+                    });
+
+                    table.appendChild(tableBody);
+
+                    // 섹션에 제목, 고정 정보, 테이블 추가
+                    section.appendChild(title);
+                    section.appendChild(xText);
+                    section.appendChild(table);
+
+                    // 섹션을 컨테이너에 추가
+                    container.appendChild(section);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

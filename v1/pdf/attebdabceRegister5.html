@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <style>
+        /*reset*/
+        body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, form, fieldset, legend, input, textarea, button {margin:0; padding:0; font-weight:normal}
+        table {width:100%; border:0; border-spacing:0; border-collapse:collapse;}
+        /*html:first-child select {padding-right:6px; height:20px;} !* Opera 9 & Below Fix *!*/
+        option {vertical-align:middle;  padding:3px 0;} /* Firefox Fix */
+        legend {display:none; visibility:hidden;}
+        img, fieldset, button {vertical-align:middle; border:0;}
+        ul, ol {list-style:none;}
+        em, address {font-style:normal;}
+        hr {display:none; visibility:hidden;}
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {display:block; margin: 0; padding: 0; }
+        /* 사파리 col width 에러문제로 display 삭제처리함
+        caption  {display:block; height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0;}*/
+        caption  {height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0;}
+        input, textarea, button {vertical-align: middle;}
+        a {text-decoration:none;color:inherit;}
+        a:hover, a:active, a:focus{text-decoration:none;}
+
+        /*h3 { padding: 20px 0; text-align: center;}*/
+        /*table { border-collapse: collapse; border-spacing: 0; }*/
+        /*table thead tr { border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000;}*/
+        /*table thead tr th { padding: 10px; border-right: 1px solid #000; text-align: center; font-size: 12px;}*/
+        /*table tbody tr { border-left: 1px solid #000; border-bottom: 1px solid #000;}*/
+        /*table tbody tr td { padding: 10px; border-right: 1px solid #000; text-align: center; font-size: 12px;}*/
+    </style>
+</head>
+<body>
+<div id="educationLifeGroup" style="margin: 10px;">
+
+</div>
+
+<script>
+    var data = [
+        {
+            id: 1,
+            eduInsNm: "포도소프트웨어",
+            title: "보건관리자직무교육 신규과정(7.26-7.30)",
+            date: "2024. 7.26~2024.7.30(5일)",
+            dateItems: [
+                {
+                    dateShrt: "7월 26일",
+                    start: "13:00", end: "18:00",
+                },
+                {
+                    dateShrt: "7월 27일",
+                    start: "9:00", end: "18:00",
+                },
+                {
+                    dateShrt: "7월 28일",
+                    start: "9:00", end: "18:00",
+                },
+                {
+                    dateShrt: "7월 29일",
+                    start: "9:00", end: "18:00",
+                },
+                {
+                    dateShrt: "7월 30일",
+                    start: "9:00", end: "15:00",
+                }
+            ],
+            items: [
+                { number: 1, name: "홍길동"},
+                { number: 2, name: "홍길동"},
+                { number: 3, name: "홍길동"},
+                { number: 4, name: "홍길동"},
+                { number: 5, name: "홍길동"},
+                { number: 6, name: "홍길동"},
+                { number: 7, name: "홍길동"},
+                { number: 8, name: "홍길동"},
+                { number: 9, name: "홍길동"},
+                { number: 10, name: "홍길동"},
+                { number: 11, name: "홍길동"},
+                { number: 12, name: "홍길동"},
+                { number: 13, name: "홍길동"},
+                { number: 14, name: "홍길동"},
+                { number: 15, name: "홍길동"},
+                { number: 16, name: "홍길동"},
+                { number: 17, name: "홍길동"},
+                { number: 18, name: "홍길동"},
+                { number: 19, name: "홍길동"},
+                { number: 20, name: "홍길동"},
+                { number: 21, name: "홍길동"},
+                { number: 22, name: "홍길동"},
+                { number: 23, name: "홍길동"},
+                { number: 24, name: "홍길동"},
+                { number: 25, name: "홍길동"},
+                { number: 26, name: "홍길동"},
+                { number: 27, name: "홍길동"},
+                { number: 28, name: "홍길동"},
+                { number: 29, name: "홍길동"},
+                { number: 30, name: "홍길동"},
+                { number: 31, name: "홍길동"},
+                { number: 32, name: "홍길동"},
+                { number: 33, name: "홍길동"},
+                { number: 34, name: "홍길동"},
+                { number: 35, name: "홍길동"},
+                { number: 36, name: "홍길동"},
+                { number: 37, name: "홍길동"},
+                { number: 38, name: "홍길동"},
+                { number: 39, name: "홍길동"},
+                { number: 40, name: "홍길동"},
+            ]
+        },
+    ];
+
+    const itemsPerSection = 10;  // 각 섹션 당 항목 수
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if(data.length > 0) {
+            const currentData = data[0];
+            const container = document.getElementById('educationLifeGroup');
+            container.innerHTML = ''; // 기존 테이블 초기화
+
+            // 일련번호
+            let pageNumTxt = 0;
+            let pageTotalNum = 0;
+
+            // 페이지 총 갯수를 먼저 계산 (첫 번째 반복)
+            for (let i = 0; i < currentData.items.length; i += itemsPerSection) {
+                pageTotalNum++;
+            }
+
+            // 각 10개씩 항목을 분할하여 섹션으로 추가
+            for (let i = 0; i < currentData.items.length; i += itemsPerSection) {
+                const sectionItems = currentData.items.slice(i, i + itemsPerSection);
+
+                // 섹션 생성
+                const section = document.createElement('div');
+                section.classList = "section";
+                section.style.margin = "0 0 30px";
+
+                // 마지막 섹션이 아니고 항목이 20개 이상일 때만 페이지 넘김을 추가
+                if (i + itemsPerSection < currentData.items.length && currentData.items.length > itemsPerSection) {
+                    section.style.breakAfter = "page";
+                }
+
+                // 현재 페이지 번호 증가
+                pageNumTxt ++;
+
+                // 제목과 고정 헤더 생성
+                const title = document.createElement('h3');
+                title.textContent = "출석부";
+                title.style = "float: left; width: calc(100% - 180px); padding: 30px 0; text-align: center; font-size: 20px; font-weight: bold;";
+                const pageNum = document.createElement('table');
+                pageNum.style = 'width:180px; border:0; border-spacing:0; margin-bottom: 30px;';
+                pageNum.innerHTML = `
+                <thead>
+                <tr>
+                <th style="width: 100px; border: 1px solid #000;">일련번호</th>
+                <th style="width: 100px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000;">부서장</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td class="pageNum" style="border-left: 1px solid #000; border-bottom: 1px solid #000; padding: 10px; text-align: center;">${pageNumTxt}/${pageTotalNum}</td>
+                <td style="border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000; padding: 10px;"></td>
+                </tr>
+                </tbody>
+                `;
+                const xText = document.createElement('p');
+                xText.innerHTML = `<strong>교육기관명 :</strong> ${currentData.eduInsNm}`;
+                xText.style = "display: inline-block; width: calc(100% / 3);";
+                const yText = document.createElement('p');
+                yText.innerHTML = `<strong>교육과정명 :</strong> ${currentData.title}`;
+                yText.style = "display: inline-block; width: calc(100% / 3);";
+                const totalText = document.createElement('p');
+                totalText.innerHTML = `<strong>교육기간:</strong> ${currentData.date}`;
+                totalText.style = "display: inline-block; width: calc(100% / 3);";
+
+                // 테이블 생성
+                const table = document.createElement('table');
+                table.style = 'width:100%; border:0; border-spacing:0; border-collapse:collapse; margin-top: 10px;';
+
+                let tableHtml = `
+                <thead>
+                    <tr>
+                        <th rowspan="4" style="padding: 10px; border-left: 1px solid #000; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">번호</th>
+                        <th style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 12px;">날짜</th>
+                `;
+
+                if(currentData.dateItems.length > 0) {
+                    for (let k = 0; k < currentData.dateItems.length; k++) {
+
+                        tableHtml += `
+                        <th colspan="3" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 12px;">${currentData.dateItems[k].dateShrt}</th>
+                    `;
+                    }
+                }
+
+                tableHtml += `
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">소정출석시간</th>
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">실제출석시간</th>
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">결석</th>
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">지각</th>
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">조퇴</th>
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">외출</th>
+                        <th rowspan="4" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">확인</th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 12px;">결제</th>
+                        `;
+
+                if(currentData.dateItems.length > 0) {
+                    for (let k = 0; k < currentData.dateItems.length; k++) {
+                        tableHtml += `<th colspan="3" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; text-align: center; font-size: 12px;"></th>
+                        `;
+                    }
+                }
+                tableHtml += `
+                    </tr>
+                `;
+
+                tableHtml += `
+                <tr>
+                    <th rowspan="2" style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">성명</th>
+                `;
+
+                if(currentData.dateItems.length > 0) {
+                    for(let k = 0; k < currentData.dateItems.length; k++) {
+                        tableHtml += `
+                            <th style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">시작</th>
+                            <th style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">중간</th>
+                            <th style="padding: 10px; border-top: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">종료</th>
+                            `;
+                    }
+                }
+
+                tableHtml += `
+                </tr>
+                <tr>`;
+
+                if(currentData.dateItems.length > 0) {
+                    for(let k = 0; k < currentData.dateItems.length; k++) {
+                        // 중간시간구하기
+                        // 시작 시간과 종료 시간의 분을 계산
+                        const startMinutes = timeToMinutes(currentData.dateItems[k].start);
+                        const endMinutes = timeToMinutes(currentData.dateItems[k].end);
+
+                        // 중간 시간의 분 계산
+                        const midMinutes = (startMinutes + endMinutes) / 2;
+
+                        // 중간 시간을 반올림
+                        const roundedMidMinutes = Math.round(midMinutes);
+
+                        tableHtml += `
+                            <th style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${currentData.dateItems[k].start}</th>
+                            <th style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${minutesToTime(roundedMidMinutes)}</th>
+                            <th style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${currentData.dateItems[k].end}</th>
+                        `;
+                    }
+                }
+
+                tableHtml += `</tr>
+                </thead>
+            `;
+
+                table.innerHTML = tableHtml;
+
+                const tableBody = document.createElement('tbody');
+
+                // 테이블 본문에 항목 추가
+                sectionItems.forEach(item => {
+                    const row = document.createElement('tr');
+                    let rowHtml = `
+                    <td style="padding: 10px; border-right: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;">${item.number}</td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px; white-space: nowrap;">${item.name}</td>
+                    `;
+
+                    if(currentData.dateItems.length > 0) {
+                        for (let k = 0; k < currentData.dateItems.length; k++) {
+                            rowHtml += `
+                            <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                            <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                            <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                            `;
+                        }
+                    }
+
+                    rowHtml += `
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    <td style="padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center; font-size: 12px;"></td>
+                    `;
+
+                    row.innerHTML = rowHtml;
+                    tableBody.appendChild(row);
+                });
+
+                table.appendChild(tableBody);
+
+                // 섹션에 제목, 고정 정보, 테이블 추가
+                section.appendChild(title);
+                section.appendChild(pageNum);
+                section.appendChild(xText);
+                section.appendChild(yText);
+                section.appendChild(totalText);
+                section.appendChild(table);
+
+                // 섹션을 컨테이너에 추가
+                container.appendChild(section);
+
+            }
+
+        }
+    });
+
+    // 시간을 분 단위로 변환하는 함수
+    function timeToMinutes(time) {
+        const [hours, minutes] = time.split(":").map(Number);
+        return hours * 60 + minutes;
+    }
+
+    // 분을 시간 문자열로 변환하는 함수
+    function minutesToTime(minutes) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        // return `${hours}:${mins < 10 ? "0" : ""}${mins}`;
+        return `${hours}:00`;
+    }
+</script>
+</body>
+</html>

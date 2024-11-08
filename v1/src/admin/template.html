@@ -4,7 +4,11 @@
     <!-- 여기에 head.html을 인클루드 -->
     @@include('head.html')
 
+
+
     <title>Template - 관리자</title>
+
+    <link rel="stylesheet" href="../css/admin/admin.css">
 
 </head>
 <body>
@@ -43,13 +47,27 @@
                         <article id="badge" class="article-">
                             <h3 class="title"># Template</h3>
 
+                            <h4>main grid</h4>
+                            <main-grid></main-grid>
+
+<!--                            <h4 class="pd-mt30">popup</h4>-->
+<!--                            <button type="button" class="btn-default" onclick="openBtnPopup();">kendo popup</button>-->
+
+                            <h4>에디터</h4>
+                            <podo-editor></podo-editor>
+
+                            <h4>업로드</h4>
+                            <input type="hidden" id="objectId1" class="objectId" value="1">
+                            <input type="hidden" id="objectType1" class="objectType" value="56">
+                            <podo-upload></podo-upload>
+
                             <div class="g-code-box">
                                 <pre data-src="code/template_head.html"></pre>
                             </div>
 
-                            <div class="g-code-box pd-mt30">
-                                <pre data-src="code/template.html"></pre>
-                            </div>
+<!--                            <div class="g-code-box pd-mt30">-->
+<!--                                <pre data-src="code/template.html"></pre>-->
+<!--                            </div>-->
                             <!--                        //    -->
                         </article>
                         <!--                // Badge End    -->
@@ -70,51 +88,78 @@
 
 <!--    Footer START    -->
 <!--    Footer END    -->
-
-        <script>
-            var now = new Date();
-            var mon = "";
-            var day = "";
-            if ((now.getMonth() + 1) < 10) {
-                mon = "0" + (now.getMonth() + 1);
-            } else {
-                mon = now.getMonth() + 1;
-            }
-            if ((now.getDate()) < 10) {
-                day = "0" + (now.getDate());
-            } else {
-                day = now.getDate();
-            }
-            var nowDay = now.getFullYear() + "-" + mon + "-" + day;
-
-            var currentPath = window.location.pathname;
-            var currentHash = window.location.hash;
-
-            $(function () {
-                kendo.culture("ko-KR");
-
-                $(".template .li_1 a").addClass("active");
-
-                var html = "";
-                var guidData = [
-                    { classNm: "pd-badge", cont: "뱃지 기본"},
-                    { classNm: "disabled", cont: "비활성화"},
-                    { classNm: "pd-tag", cont: "태그"},
-                    { classNm: "pd-badge02", cont: "뱃지 스타일2"},
-                    { classNm: "end", cont: "종료일 뱃지 스타일"}
-                ];
-
-                for(var i=0; i < guidData.length; i++) {
-                    html += "<li>";
-                    html += "   <p class='left'>"+guidData[i].classNm+"</p>";
-                    html += "   <p class='right'>"+guidData[i].cont+"</p>";
-                    html += "</li>";
-                }
-
-                $("#guidClass").html(html);
-            });
-
-        </script>
     </div>
+
+<!--    <podo-kendo-popup style="display: none;"></podo-kendo-popup>-->
+
+    <script src="../../js/front/grid.js"></script>
+    <script src="../../js/front/editor.js"></script>
+    <script src="../../js/front/upload.js"></script>
+<!--    <script src="../../js/front/popup.js"></script>-->
+    <script>
+        var now = new Date();
+        var mon = "";
+        var day = "";
+        if ((now.getMonth() + 1) < 10) {
+            mon = "0" + (now.getMonth() + 1);
+        } else {
+            mon = now.getMonth() + 1;
+        }
+        if ((now.getDate()) < 10) {
+            day = "0" + (now.getDate());
+        } else {
+            day = now.getDate();
+        }
+        var nowDay = now.getFullYear() + "-" + mon + "-" + day;
+
+        var currentPath = window.location.pathname;
+        var currentHash = window.location.hash;
+        var objectType = 52;
+
+        $(function () {
+            kendo.culture("ko-KR");
+
+            $(".template .li_1 a").addClass("active");
+
+
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const editor1 = document.querySelector("#editor-1");
+            // const editor2 = document.createElement("podo-editor");
+            //
+            // document.body.appendChild(editor1);
+            // document.body.appendChild(editor2);
+            //
+            // // 각 에디터에 개별 내용 설정
+            $(editor1).data("kendoEditor").value("첫 번째 에디터 내용입니다.");
+            // editor2.setContent("두 번째 에디터 내용입니다.");
+            //
+            // // 각 에디터의 내용 가져오기
+            console.log("Editor 1 Content:", $(editor1).data("kendoEditor").value());
+            // console.log("Editor 1 Content:", editor1.getContent());
+            // console.log("Editor 2 Content:", editor2.getContent());
+        });
+
+        // function openBtnPopup() {
+        //     // 팝업 저장 function이 위에
+        //     const savePopup = () => {
+        //         console.log("팝업의 저장 버튼 클릭됨!");
+        //     };
+        //
+        //     // 팝업 버튼
+        //     const popup = document.createElement("podo-kendo-popup");
+        //     popup.buttons = [
+        //         { label: "취소", type: "button", class: "popup-btn btn-default", onclick: () => console.log("취소 버튼 클릭")},
+        //         { label: "확인", type: "button", class: "popup-btn", onclick: savePopup},
+        //     ];
+        //
+        //     // 팝업을 문서에 추가하고 팝업을 엽니다.
+        //     document.body.appendChild(popup);
+        //     popup.openPopup();
+        // }
+
+
+    </script>
 </body>
 </html>

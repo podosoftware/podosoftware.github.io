@@ -408,6 +408,55 @@ var fn = (function () {
                 });
                 $("#imgUpload").removeClass('hide');
             }
+        },
+
+        /* 검색 데이터 피커 */
+        searchDateDraw: function (start, end) {
+            var searchSdate = $("#"+start).kendoDatePicker({
+                format: "yyyy-MM-dd",
+                change: function(e) {
+                    var startDate = searchSdate.value(),
+                        endDate = searchEdate.value();
+
+                    if (startDate) {
+                        startDate = new Date(startDate);
+                        startDate.setDate(startDate.getDate());
+                        searchEdate.min(startDate);
+                    } else if (endDate) {
+                        searchSdate.max(new Date(endDate));
+                    } else {
+                        endDate = new Date();
+                        searchSdate.max(endDate);
+                        searchEdate.min(endDate);
+                    }
+
+                }
+            }).data("kendoDatePicker");
+
+            var searchEdate = $("#"+end).kendoDatePicker({
+                format: "yyyy-MM-dd",
+                change: function(e) {
+                    var endDate = searchEdate.value(),
+                        startDate = searchSdate.value();
+
+                    if (endDate) {
+                        endDate = new Date(endDate);
+                        endDate.setDate(endDate.getDate());
+                        searchSdate.max(endDate);
+                    } else if (startDate) {
+                        searchEdate.min(new Date(startDate));
+                    } else {
+                        endDate = new Date();
+                        searchSdate.max(endDate);
+                        searchEdate.min(endDate);
+                    }
+                }
+            }).data("kendoDatePicker");
+
+            searchSdate.value(new Date(now.getFullYear(), now.getMonth(), 1));
+            searchEdate.value(new Date(now.getFullYear(), now.getMonth()+1, 0));
+            searchSdate.max(searchEdate.value());
+            searchEdate.min(searchSdate.value());
         }
     }
 })();
