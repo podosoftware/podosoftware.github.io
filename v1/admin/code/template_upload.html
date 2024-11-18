@@ -1,0 +1,14 @@
+/**
+*   list 형태의 upload
+*   objectId와 objectType input는 upload 태그와 함께 body에 넣어주세요.
+*   type 속성은 upload 시 조건부를 구별하기 위한 속성으로 반드시 넣어주세요.
+*   type 종류엔 img, file, video 3가지 있습니다.
+*/
+<input type="hidden" id="objectId1" class="objectId" value="1">
+<input type="hidden" id="objectType1" class="objectType" value="56">
+<podo-upload type="img"></podo-upload>
+
+/**
+*   kendo grid 형태의 upload
+*/
+<podo-grid-upload type="file"></podo-grid-upload>

@@ -1,0 +1,24 @@
+/**
+*   id : 태그 아이디
+*   name : input radio name
+*   length : 0 -> 한개 1 -> 1개 이상
+*/
+<podo-radio id="radio1" name="radioGroup1" length="1"></podo-radio>
+
+
+<script>
+    // 라디오
+    // 배열은 title, title2, value, value2, value3 까지 없으면 빈값이나, 지워도 됨.
+    // 이 이상인 경우 따로 만드는걸...
+    // 데이터 설정
+    const radioGroup1 = document.querySelector("podo-radio[name='radioGroup1']");
+    radioGroup1.list = [
+        { title: "Station A", title2: "Station A", value2: "88.1", value3: "88.1", value: "A" },
+        { title: "Station B", title2: "Station B", value2: "89.2", value3: "88.1", value: "B" },
+    ];
+
+    const radioGroup2 = document.querySelector("podo-radio[name='radioGroup2']");
+    radioGroup2.list = [
+        { title: "동의 하시겠습니까?", value: "Y" }
+    ];
+</script>

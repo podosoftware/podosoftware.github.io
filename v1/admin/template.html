@@ -227,32 +227,58 @@
                                 <!--                            <h4 class="pd-mt30">popup</h4>-->
                                 <!--                            <button type="button" class="btn-default" onclick="openBtnPopup();">kendo popup</button>-->
 
-                                <h4>에디터</h4>
+                                <h4 class="pd-mt30">에디터</h4>
                                 <podo-editor></podo-editor>
 
-                                <h4>업로드</h4>
+                                <h4 class="pd-mt30">업로드</h4>
                                 <input type="hidden" id="objectId1" class="objectId" value="1" />
                                 <input type="hidden" id="objectType1" class="objectType" value="56" />
-                                <podo-upload></podo-upload>
+                                <podo-upload type="img"></podo-upload>
 
+                                <h4 class="pd-mt30">그리드 업로드</h4>
+                                <podo-grid-upload type="file"></podo-grid-upload>
+
+                                <div class="g-code-box">
+                                    <pre data-src="code/template_upload.html"></pre>
+                                </div>
+
+                                <h4 class="pd-mt30">썸네일 업로드</h4>
+                                <div class="img-zone-wrap">
+                                    <div class="thumbnail-zone img-zone">
+                                        <div class="img-box" id="thumbnailImg"></div>
+                                        <button class="select-img" onclick="selectImgPop('1', 1);">이미지 선택</button>
+                                    </div>
+                                    <div class="tip-box">
+                                        <span>Tip</span>
+                                        <ul>
+                                            <li>1. 해당 과정의 썸네일 이미지가 있을 경우 아래에서 [파일선택]을 통해 업로드 합니다.</li>
+                                            <li>2. 만일 썸네일 이미지가 없을 경우 이미지선택을 통해 이미지 풀에서 가져다 쓸 수 있습니다.</li>
+                                            <li>3. 이미지 제작에 관해선 헬프데스크(070-7432-2657)로 문의 주시기 바랍니다.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <podo-thumbnail-upload></podo-thumbnail-upload>
+
+                                <h4 class="pd-mt30">라디오 버튼</h4>
+                                <podo-radio id="radio1" name="radioGroup1" length="1"></podo-radio>
+                                <podo-radio id="radio2" name="radioGroup2" length="0"></podo-radio>
+                                <div class="g-code-box">
+                                    <pre data-src="code/template_radio.html"></pre>
+                                </div>
+
+                                <h4 class="pd-mt30">체크박스 버튼</h4>
+                                <podo-checkbox id="checkbox1" name="checkGroup1" length="1"></podo-checkbox>
+                                <podo-checkbox id="checkbox2" name="checkGroup2" length="0"></podo-checkbox>
+                                <div class="g-code-box">
+                                    <pre data-src="code/template_check.html"></pre>
+                                </div>
+
+                                <h4 class="pd-mt30">기본 head 세팅</h4>
                                 <div class="g-code-box">
                                     <pre data-src="code/template_head.html"></pre>
                                 </div>
-
-                                <!--                            <div class="g-code-box pd-mt30">-->
-                                <!--                                <pre data-src="code/template.html"></pre>-->
-                                <!--                            </div>-->
-                                <!--                        //    -->
                             </article>
                             <!--                // Badge End    -->
-
-                            <!--                        <div class="guid-table-box">-->
-                            <!--                            <div class="guid-table-fixed">-->
-                            <!--                                <strong>Class</strong>-->
-                            <!--                                <strong>내용</strong>-->
-                            <!--                            </div>-->
-                            <!--                            <ul id="guidClass"></ul>-->
-                            <!--                        </div>-->
                         </div>
                     </div>
                 </section>
@@ -268,6 +294,7 @@
         <script src="../../js/front/grid.js"></script>
         <script src="../../js/front/editor.js"></script>
         <script src="../../js/front/upload.js"></script>
+        <script src="../../js/front/radioCheck.js"></script>
         <!--    <script src="../../js/front/popup.js"></script>-->
         <script>
             var now = new Date();
@@ -293,6 +320,30 @@
                 kendo.culture('ko-KR');
 
                 $('.template .li_1 a').addClass('active');
+
+                // 라디오
+                // 데이터 설정
+                const radioGroup1 = document.querySelector("podo-radio[name='radioGroup1']");
+                radioGroup1.list = [
+                    { title: 'Station A', title2: 'Station A', value2: '88.1', value3: '88.1', value: 'A' },
+                    { title: 'Station B', title2: 'Station B', value2: '89.2', value3: '88.1', value: 'B' },
+                ];
+
+                const radioGroup2 = document.querySelector("podo-radio[name='radioGroup2']");
+                radioGroup2.list = [{ title: '동의 하시겠습니까?', value: 'Y' }];
+
+                // 체크박스
+                // 데이터 설정
+                const checkGroup1 = document.querySelector("podo-checkbox[name='checkGroup1']");
+                checkGroup1.list = [
+                    { title: 'Station A', title2: 'Station A', value2: '88.1', value3: '88.1', value: 'A' },
+                    { title: 'Station B', title2: 'Station B', value2: '89.2', value3: '88.1', value: 'B' },
+                ];
+
+                // 체크박스
+                // 데이터 설정
+                const checkGroup2 = document.querySelector("podo-checkbox[name='checkGroup2']");
+                checkGroup2.list = [{ title: '동의 하시겠습니까?', value: 'Y' }];
             });
 
             document.addEventListener('DOMContentLoaded', () => {
@@ -311,24 +362,6 @@
                 // console.log("Editor 1 Content:", editor1.getContent());
                 // console.log("Editor 2 Content:", editor2.getContent());
             });
-
-            // function openBtnPopup() {
-            //     // 팝업 저장 function이 위에
-            //     const savePopup = () => {
-            //         console.log("팝업의 저장 버튼 클릭됨!");
-            //     };
-            //
-            //     // 팝업 버튼
-            //     const popup = document.createElement("podo-kendo-popup");
-            //     popup.buttons = [
-            //         { label: "취소", type: "button", class: "popup-btn btn-default", onclick: () => console.log("취소 버튼 클릭")},
-            //         { label: "확인", type: "button", class: "popup-btn", onclick: savePopup},
-            //     ];
-            //
-            //     // 팝업을 문서에 추가하고 팝업을 엽니다.
-            //     document.body.appendChild(popup);
-            //     popup.openPopup();
-            // }
         </script>
     </body>
 </html>

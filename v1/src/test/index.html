@@ -71,6 +71,9 @@
                 <div class="container">
                     <button type="button" class="btn_top" onclick="pdfPrint();"><span>강사료</span></button>
                     <button type="button" class="btn_top" onclick="pdfPrint2();"><span>교육생명단 강사용 - 관리감독자</span></button>
+                    <button type="button" class="btn_top" onclick="pdfPrint21();"><span>교육생명단 강사용 - 직무보수</span></button>
+                    <button type="button" class="btn_top" onclick="pdfPrint22();"><span>교육생명단 연락처 - 관리감독자</span></button>
+                    <button type="button" class="btn_top" onclick="pdfPrint23();"><span>교육생명단 연락처 - 직무보수</span></button>
                     <button type="button" class="btn_top" onclick="pdfPrint3();"><span>교육일지</span></button>
                     <button type="button" class="btn_top" onclick="pdfPrint4();"><span>출석부(1일차)</span></button>
                     <button type="button" class="btn_top" onclick="pdfPrint5();"><span>출석부(5일차)</span></button>
@@ -215,6 +218,99 @@
             };
         }
 
+        function pdfPrint21() {
+            const iframe = document.getElementById('hidden-frame');
+
+            // 자식 HTML URL을 iframe에 로드
+            iframe.src = 'http://localhost:63342/uiux/pdf/educationLifeGroup2.html'; // 자식 HTML의 URL로 변경하세요
+
+            // iframe이 로드된 후 실행
+            iframe.onload = function () {
+                const iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+
+                // 로드가 완전하게 끝났는지 확인하기 위해 지연을 추가
+                setTimeout(function() {
+                    html2pdf().from(iframeContent.body).set({
+                        margin: 1,
+                        filename: 'educationLifeGroup2.pdf',
+                        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' } // A4 가로 설정
+                    }).save();
+                    // html2canvas(iframeContent.body, { useCORS: true }).then(function(canvas) {
+                    //     const imgData = canvas.toDataURL('image/png');
+                    //     const { jsPDF } = window.jspdf;
+                    //     const pdf = new jsPDF();
+                    //
+                    //     pdf.addImage(imgData, 'PNG', 10, 10);
+                    //     pdf.save('InstructorFee.pdf');
+                    // }).catch(function(error) {
+                    //     console.error('html2canvas error:', error);
+                    // });
+                }, 500); // 0.5초 지연
+            };
+        }
+
+        function pdfPrint22() {
+            const iframe = document.getElementById('hidden-frame');
+
+            // 자식 HTML URL을 iframe에 로드
+            iframe.src = 'http://localhost:63342/uiux/pdf/educationLifeGroup3.html'; // 자식 HTML의 URL로 변경하세요
+
+            // iframe이 로드된 후 실행
+            iframe.onload = function () {
+                const iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+
+                // 로드가 완전하게 끝났는지 확인하기 위해 지연을 추가
+                setTimeout(function() {
+                    html2pdf().from(iframeContent.body).set({
+                        margin: 1,
+                        filename: 'educationLifeGroup3.pdf',
+                        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' } // A4 가로 설정
+                    }).save();
+                    // html2canvas(iframeContent.body, { useCORS: true }).then(function(canvas) {
+                    //     const imgData = canvas.toDataURL('image/png');
+                    //     const { jsPDF } = window.jspdf;
+                    //     const pdf = new jsPDF();
+                    //
+                    //     pdf.addImage(imgData, 'PNG', 10, 10);
+                    //     pdf.save('InstructorFee.pdf');
+                    // }).catch(function(error) {
+                    //     console.error('html2canvas error:', error);
+                    // });
+                }, 500); // 0.5초 지연
+            };
+        }
+
+        function pdfPrint23() {
+            const iframe = document.getElementById('hidden-frame');
+
+            // 자식 HTML URL을 iframe에 로드
+            iframe.src = 'http://localhost:63342/uiux/pdf/educationLifeGroup4.html'; // 자식 HTML의 URL로 변경하세요
+
+            // iframe이 로드된 후 실행
+            iframe.onload = function () {
+                const iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+
+                // 로드가 완전하게 끝났는지 확인하기 위해 지연을 추가
+                setTimeout(function() {
+                    html2pdf().from(iframeContent.body).set({
+                        margin: 1,
+                        filename: 'educationLifeGroup4.pdf',
+                        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' } // A4 가로 설정
+                    }).save();
+                    // html2canvas(iframeContent.body, { useCORS: true }).then(function(canvas) {
+                    //     const imgData = canvas.toDataURL('image/png');
+                    //     const { jsPDF } = window.jspdf;
+                    //     const pdf = new jsPDF();
+                    //
+                    //     pdf.addImage(imgData, 'PNG', 10, 10);
+                    //     pdf.save('InstructorFee.pdf');
+                    // }).catch(function(error) {
+                    //     console.error('html2canvas error:', error);
+                    // });
+                }, 500); // 0.5초 지연
+            };
+        }
+
         function pdfPrint3() {
             const iframe = document.getElementById('hidden-frame');
 
@@ -230,6 +326,7 @@
                     html2pdf().from(iframeContent.body).set({
                         margin: 1,
                         filename: 'educationLog.pdf',
+                        html2canvas: { scale: 2 }, // HTML을 캡처할 때 확대 비율 (기본값 1)
                         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' } // A4 세로 설정
                     }).save();
                     // html2canvas(iframeContent.body, { useCORS: true }).then(function(canvas) {

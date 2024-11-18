@@ -151,7 +151,7 @@ html input[disabled]{ background: #F8F8F8; color: #404040;}
 .radio-box input[type="radio"]:checked + label .radio { background: url("../../images/runway/admin/icon_map.png") no-repeat -12px -61px;}
 .radio-box input[type="radio"]:disabled + label .radio { background: url("../../images/runway/admin/icon_map.png") no-repeat -12px -28px;}
 .radio-box input[type="radio"]:disabled:checked + label .radio { background: url("../../images/runway/admin/icon_map.png") no-repeat -80px -98px;}
-.radio-box label { align-items: center; margin-bottom: 0; font-size: 14px; font-weight: normal; color: #404040; line-height: 35px; letter-spacing: -0.02em; cursor: pointer;}
+.radio-box label { align-items: center; margin-bottom: 0; font-size: 14px; font-weight: normal; color: #404040; letter-spacing: -0.02em; cursor: pointer;}
 .radio-box-wrap:after { content: ''; display: block; clear: both;}
 .radio-box-wrap li { display: inline-block; flex-shrink: 0; float: left; padding-left: 20px;}
 .radio-box-wrap li:first-child { padding-left: 0;}
@@ -194,7 +194,7 @@ html input[disabled]{ background: #F8F8F8; color: #404040;}
 .check-box input[type="checkbox"]:checked + .check { background: url("../../images/runway/admin/icon_map.png") no-repeat -47px -61px;}
 .check-box input[type="checkbox"]:disabled + label .check { background: url("../../images/runway/admin/icon_map.png") no-repeat -47px -28px; cursor: default;}
 .check-box input[type="checkbox"]:disabled:checked + label .check { background: url("../../images/runway/admin/icon_map.png") no-repeat -80px -61px; cursor: default;}
-.check-box label { align-items: center; position: relative; z-index: 0; margin-left: 10px;  margin-bottom: 0; font-size: 14px; font-weight: normal; color: #404040; line-height: 35px; letter-spacing: -0.02em; cursor: pointer;}
+.check-box label { align-items: center; position: relative; z-index: 0; margin-bottom: 0; font-size: 14px; font-weight: normal; color: #404040; letter-spacing: -0.02em; cursor: pointer;}
 .check-box-wrap li { display: inline-block; padding-left: 20px;}
 .check-box-wrap li:first-child { padding-left: 0;}
 .check-box-wrap li label { margin-left: 0;}
