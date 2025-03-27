@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="../css/guide.css" />
         <link rel="stylesheet" href="../css/media2.css" />
 
-        <script src="../js/jquery/3.4.1/jquery-3.4.1.js"></script>
+        <script src="../js/jquery/jquery-3.7.1.min.js"></script>
         <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
         <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
         <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
@@ -57,11 +57,21 @@
             <header class="left-header">
                 <div class="left-header-top">
                     <h1 class="logo">
-                        <a href="index.html"><img src="../guide/logo.png" alt="로고" /></a>
+                        <a href="index.html">Kendo UI</a>
                     </h1>
+                    <a href="../../index.html">처음으로</a>
                 </div>
                 <nav class="left-header-menu-wrap">
                     <ul>
+                        <li class="comm">
+                            <span class="tab">불러올 스크립트</span>
+                            <ol>
+                                <li class="comm-scr2018"><a href="comm_scr2018.html">2018</a></li>
+                                <li class="comm-scr2022"><a href="comm_scr2022.html">2022</a></li>
+                                <li class="comm-scr2023"><a href="comm_scr2023.html">2023</a></li>
+                                <li class="comm-scr2025"><a href="comm_scr2025.html">2025</a></li>
+                            </ol>
+                        </li>
                         <li class="admin-kendoUi">
                             <a href="javascript: void(0);" class="tab">Admin</a>
                             <ol>
@@ -144,6 +154,8 @@
                                             <button type="button" class="btn-point-white size-" onclick="fn.kendoPopupOpen('kendoHwResultPopup');">과제결과조회</button>
                                         </div>
                                     </div>
+
+                                    <div class="sec-cont pd-mt30"></div>
                                 </article>
                                 <!--                // Upload Grid End    -->
 
@@ -226,6 +238,28 @@
             </tr>
         </script>
         <!-- //파일 템플릿 END -->
+
+        <script type="text/x-kendo-template" id="fileupload_template">
+            <input name="upload_file" id="upload_file" type="file"/>
+        </script>
+
+        <script type="text/x-kendo-template" id="list_fileupload_template">
+            <input name="list_upload_file" id="list_upload_file" type="file"/>
+        </script>
+
+        <!-- 파일 템플릿 -->
+        <script id="fileList" type="text/x-kendo-template">
+            <tr>
+                <td colspan="2">
+                    <div class="file-list">
+                        <a href="/comm/download_my_attachment.do?attachmentId=#:attachmentId#" class="file-tit"><span class="file-icon"></span>#:name#</a>
+                        <span class="file-size">#= commaStr(data.size) #byte</span>
+                        <button class="del-file" onclick="deleteFile(#:attachmentId#, 'list_file_grid')"></button>
+                    </div>
+                </td>
+            </tr>
+        </script>
+        <!-- //파일 템플릿 -->
 
         <script>
             var now = new Date();

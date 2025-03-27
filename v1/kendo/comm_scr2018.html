@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <!-- 여기에 head.html을 인클루드 -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#8C63E7" />
+
+        <link rel="shortcut icon" href="" />
+        <link rel="apple-touch-icon" href="" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel="icon" href="" type="image/x-icon" />
+
+        <meta name="Description" content="" />
+        <meta name="Keywords" content="" />
+        <meta name="Copyright" content="" />
+        <meta content="" property="og:title" />
+        <meta content="" property="og:description" />
+        <meta content="" property="og:url" />
+        <meta content="" property="og:site-name" />
+
+        <link rel="stylesheet" href="../css/reset2.css" />
+        <link rel="stylesheet" href="../css/admin/root_admin.css" />
+        <!--<link rel="stylesheet" href="../css/root.css">-->
+        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <!--    <link rel="stylesheet" href="../css/font.css">-->
+        <link rel="stylesheet" href="../css/pd_kendo.css" />
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/util.css" />
+        <!--    <link rel="stylesheet" href="../css/style2.css">-->
+        <link rel="stylesheet" href="../css/admin/admin.css" />
+        <link rel="stylesheet" href="../css/guide.css" />
+        <link rel="stylesheet" href="../css/media2.css" />
+
+        <script src="../js/jquery/jquery-3.7.1.min.js"></script>
+        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
+        <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
+        <script src="../js/common2.js"></script>
+        <script src="../js/front/frontUi.js"></script>
+        <script src="../js/front/front.js"></script>
+
+        <link rel="stylesheet" href="../js/prism.css" />
+        <script src="../js/prism.js"></script>
+
+        <title>Kendo Ui</title>
+
+        <link rel="stylesheet" href="../css/style2.css" />
+    </head>
+    <body>
+        <!-- 자동완성 방지용  -->
+        <input type="text" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <input type="password" title="자동완성 방지용" style="width: 0; height: 0; position: absolute" />
+        <!-- 자동완성 방지용  -->
+
+        <div class="wrap">
+            <!--    Header START    -->
+            <!-- 여기에 Header.html을 인클루드 -->
+            <header class="left-header">
+                <div class="left-header-top">
+                    <h1 class="logo">
+                        <a href="index.html">Kendo UI</a>
+                    </h1>
+                    <a href="../../index.html">처음으로</a>
+                </div>
+                <nav class="left-header-menu-wrap">
+                    <ul>
+                        <li class="comm">
+                            <span class="tab">불러올 스크립트</span>
+                            <ol>
+                                <li class="comm-scr2018"><a href="comm_scr2018.html">2018</a></li>
+                                <li class="comm-scr2022"><a href="comm_scr2022.html">2022</a></li>
+                                <li class="comm-scr2023"><a href="comm_scr2023.html">2023</a></li>
+                                <li class="comm-scr2025"><a href="comm_scr2025.html">2025</a></li>
+                            </ol>
+                        </li>
+                        <li class="admin-kendoUi">
+                            <a href="javascript: void(0);" class="tab">Admin</a>
+                            <ol>
+                                <li class="admin-liUpload"><a href="admin_kendoUi.html" data-hash="#upload">Upload</a></li>
+                                <li class="admin-liMulti"><a href="admin_kendoUi_multi.html" data-hash="#multiselect">MultiSelect</a></li>
+                                <li class="admin-liGrid"><a href="admin_kendoUi_grid.html" data-hash="#gridFilterTooltip">Grid</a></li>
+                                <li class="admin-liIcons"><a href="admin_kendoUi_icons.html" data-hash="#icons">Icons</a></li>
+                                <li class="admin-liDatePicker"><a href="admin_kendoUi_date.html" data-hash="#datePicker">DatePicker</a></li>
+                                <li class="admin-liTime"><a href="admin_kendoUi_time.html" data-hash="#dateTimePicker">DateTimePicker</a></li>
+                                <li class="admin-liRange"><a href="admin_kendoUi_range.html" data-hash="#dateRangePicker">DateRangePicker</a></li>
+                                <!--                    <li class="liCalendar"><a href="kendoUi_calendar.html" data-hash="#calendar">Calendar</a></li>-->
+                                <li class="admin-liNumeric"><a href="admin_kendoUi_numeric.html" data-hash="#numericTextBox">NumericTextBox</a></li>
+                                <li class="admin-liDropDown"><a href="admin_kendoUi_dropDown.html" data-hash="#dropDownList">DropDownList</a></li>
+                                <li class="admin-liPaging"><a href="admin_kendoUi_paging.html" data-hash="#paging">Paging</a></li>
+                                <li class="admin-liEditor"><a href="admin_kendoUi_editor.html" data-hash="#editor">Editor</a></li>
+                                <li class="admin-liTree"><a href="admin_kendoUi_tree.html" data-hash="#kendoTree">Kendo Tree</a></li>
+                            </ol>
+                        </li>
+                        <li class="eight kendoUi">
+                            <a href="javascript: void(0);" class="tab">사용자</a>
+                            <ol>
+                                <li class="liUpload"><a href="kendoUi.html" data-hash="#upload">Upload</a></li>
+                                <li class="liGrid"><a href="kendoUi_grid.html" data-hash="#gridFilterTooltip">Grid</a></li>
+                                <li class="liIcons"><a href="kendoUi_icons.html" data-hash="#icons">Icons</a></li>
+                                <li class="liDatePicker"><a href="kendoUi_date.html" data-hash="#datePicker">DatePicker</a></li>
+                                <li class="liTime"><a href="kendoUi_time.html" data-hash="#dateTimePicker">DateTimePicker</a></li>
+                                <!--                    <li class="liRange"><a href="kendoUi_range.html" data-hash="#dateRangePicker">DateRangePicker</a></li>-->
+                                <!--                    <li class="liCalendar"><a href="kendoUi_calendar.html" data-hash="#calendar">Calendar</a></li>-->
+                                <li class="liNumeric"><a href="kendoUi_numeric.html" data-hash="#numericTextBox">NumericTextBox</a></li>
+                                <li class="liDropDown"><a href="kendoUi_dropDown.html" data-hash="#dropDownList">DropDownList</a></li>
+                                <li class="liPaging"><a href="kendoUi_paging.html" data-hash="#paging">Paging</a></li>
+                                <li class="liEditor"><a href="kendoUi_editor.html" data-hash="#editor">Editor</a></li>
+                                <li class="liTree"><a href="kendoUi_tree.html" data-hash="#kendoTree">Kendo Tree</a></li>
+                            </ol>
+                        </li>
+                        <!--            <li class="eight sample">-->
+                        <!--                <a href="javascript: void(0);" class="tab">sample</a>-->
+                        <!--                <ol>-->
+                        <!--                    <li class="likendoPopup"><a href="sp_kendoPopup.html">kendo Popup</a></li>-->
+                        <!--                </ol>-->
+                        <!--            </li>-->
+                    </ul>
+                </nav>
+            </header>
+
+            <!--        <div id="header" data-include-path="header.html"></div>-->
+            <!--    Header END    -->
+
+            <!--    본문영역 START    -->
+            <main class="body-container">
+                <div class="container">
+                    <!-- 소개 섹션 -->
+                    <section id="introduction" class="sec-">
+                        <article class="sec-article">
+                            <p>
+                                이 가이드는 웹표준과 웹접근성의 기본 개념을 이해하고, 실제 퍼블리싱과 개발 업무에 적용할 수 있도록 돕기 위해 제작되었습니다. 모든 사용자에게 최적의 경험을 제공하기 위한
+                                필수 요소들을 소개합니다.
+                            </p>
+                        </article>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <!--    Footer START    -->
+        <!--    Footer END    -->
+    </body>
+</html>

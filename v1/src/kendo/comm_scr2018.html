@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('head.html')
+
+    <title>Kendo Ui</title>
+
+    <link rel="stylesheet" href="../css/style2.css">
+
+</head>
+<body>
+    <!-- 자동완성 방지용  -->
+    <input type="text" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <input type="password" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <!-- 자동완성 방지용  -->
+
+    <div class="wrap">
+        <!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('header.html')
+        <!--        <div id="header" data-include-path="header.html"></div>-->
+        <!--    Header END    -->
+
+        <!--    본문영역 START    -->
+        <main class="body-container">
+            <div class="container">
+                <!-- 소개 섹션 -->
+                <section id="introduction" class="sec-">
+                    <article class="sec-article">
+                        <p>
+                            이 가이드는 웹표준과 웹접근성의 기본 개념을 이해하고, 실제 퍼블리싱과 개발 업무에 적용할 수 있도록 돕기 위해 제작되었습니다.
+                            모든 사용자에게 최적의 경험을 제공하기 위한 필수 요소들을 소개합니다.
+                        </p>
+                    </article>
+
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!--    Footer START    -->
+    <!--    Footer END    -->
+</body>
+</html>
