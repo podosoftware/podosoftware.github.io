@@ -265,6 +265,17 @@ input[type="checkbox"].check22:checked + label .icon{ background: #1460D2 url(".
 .tag .tag-training-D { border: 1px solid var(--color-edu-list-tag-D); color: var(--color-edu-list-tag-D);}
 .tag .tag-training-G { border: 1px solid var(--color-myClass-training-G); color: var(--color-myClass-training-G);}
 
+
+/*
+*--------------------------------------------*
+|                   List                     |
+*--------------------------------------------*
+*/
+/* circle */
+.kw-lis-ci { display: flex; flex-direction: column; gap: 7px;}
+.kw-lis-ci .lis { display: flex; gap: 10px; align-items: flex-start;}
+.kw-lis-ci .lis .circle { flex-shrink: 0; width: 5px; height: 5px; margin-top: 10px; border-radius: 50%; background: var(--primary-500);}
+
 /*
 *--------------------------------------------*
 |                   Icons                    |

@@ -9,7 +9,8 @@
     "html": "gulp --gulpfile gulpfile-html.js",
     "kendo": "gulp --gulpfile gulpfile-kendo.js",
     "podo": "gulp --gulpfile gulpfile-podosw.js",
-    "testdev": "gulp --gulpfile gulpfile-test.js"
+    "testdev": "gulp --gulpfile gulpfile-test.js",
+    "web": "gulp --gulpfile gulpfile-web.js"
   },
   "keywords": [],
   "author": "",
