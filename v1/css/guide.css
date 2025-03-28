@@ -123,6 +123,7 @@ body, input, select, div, textarea, table, button { font-size: 16px;}
 .sec-article { padding: 30px; border-radius: 3px; background: #fff;}
 
 .sec-article h3 { margin-top: 30px; margin-bottom: 10px; font-weight: 600;}
+.sec-article h3:first-child { margin-top: 0;}
 
 
 /* Color */
@@ -558,6 +559,10 @@ progress::-webkit-progress-value { border-radius: 3px; background: var(--primary
 *--------------------------------------------*
 */
 .product { height: auto;}
+
+.sec-article .btn-copy { margin: 5px 0;}
+.btn-copy { padding: 5px 10px; border: 1px solid var(--primary-400); border-radius: 3px; background: #fff; font-size: 14px;}
+.btn-copy:hover { background: var(--primary-400); color: #fff;}
 
 /*
 *--------------------------------------------*

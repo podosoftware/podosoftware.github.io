@@ -47,63 +47,123 @@
                         <article id="badge" class="article-">
                             <h3 class="title"># Template</h3>
 
-<!--                            <h4>main grid</h4>-->
-<!--                            <main-grid></main-grid>-->
+                            <h4 class="pd-mt30 pd-mb10">에디터</h4>
+                            <podo-editor id="edtior"></podo-editor>
 
-<!--                            <h4 class="pd-mt30">popup</h4>-->
-<!--                            <button type="button" class="btn-default" onclick="openBtnPopup();">kendo popup</button>-->
+                            <h4 class="pd-mt30 pd-mb10">업로드</h4>
+                            <input type="hidden" id="objectId_myList" class="objectId" value="1">
+                            <input type="hidden" id="objectType_myList" class="objectType" value="56">
 
-                            <h4 class="pd-mt30">에디터</h4>
-                            <podo-editor></podo-editor>
+                            <input type="hidden" id="objectId2_myListSecond" class="objectId" value="1">
+                            <input type="hidden" id="objectType2_myListSecond" class="objectType" value="56">
 
-                            <h4 class="pd-mt30">업로드</h4>
-                            <input type="hidden" id="objectId1" class="objectId" value="1">
-                            <input type="hidden" id="objectType1" class="objectType" value="56">
-                            <podo-upload type="img"></podo-upload>
+                            <input type="hidden" id="objectId3" class="objectId" value="1">
+                            <input type="hidden" id="objectType3" class="objectType" value="56">
 
-                            <h4 class="pd-mt30">그리드 업로드</h4>
-                            <podo-grid-upload type="file"></podo-grid-upload>
+                            <podo-upload type="img" upload-id="myUpload" list-id="myList"></podo-upload>
+                            <podo-upload type="img" upload-id="myUploadSecond" list-id="myListSecond"></podo-upload>
+                            <podo-upload type="img" ></podo-upload>
+
+                            <h4 class="pd-mt30 pd-mb10">그리드 업로드</h4>
+                            <podo-grid-upload type="file" upload-id="myGridUpload" list-id="myGridList"></podo-grid-upload>
 
                             <div class="g-code-box">
                                 <pre data-src="code/template_upload.html"></pre>
                             </div>
 
-                            <h4 class="pd-mt30">썸네일 업로드</h4>
-                            <div class="img-zone-wrap">
-                                <div class="thumbnail-zone img-zone">
-                                    <div class="img-box" id="thumbnailImg">
-                                    </div>
-                                    <button class="select-img" onclick="selectImgPop('1', 1);">이미지 선택</button>
-                                </div>
-                                <div class="tip-box">
-                                    <span>Tip</span>
-                                    <ul>
-                                        <li>1. 해당 과정의 썸네일 이미지가 있을 경우 아래에서 [파일선택]을 통해 업로드 합니다.</li>
-                                        <li>2. 만일 썸네일 이미지가 없을 경우 이미지선택을 통해 이미지 풀에서 가져다 쓸 수 있습니다.</li>
-                                        <li>3. 이미지 제작에 관해선 헬프데스크(070-7432-2657)로 문의 주시기 바랍니다.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <podo-thumbnail-upload></podo-thumbnail-upload>
+<!--                            <h4 class="pd-mt30">썸네일 업로드</h4>-->
+<!--                            <div class="img-zone-wrap">-->
+<!--                                <div class="thumbnail-zone img-zone">-->
+<!--                                    <div class="img-box" id="thumbnailImg">-->
+<!--                                    </div>-->
+<!--                                    <button class="select-img" onclick="selectImgPop('1', 1);">이미지 선택</button>-->
+<!--                                </div>-->
+<!--                                <div class="tip-box">-->
+<!--                                    <span>Tip</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>1. 해당 과정의 썸네일 이미지가 있을 경우 아래에서 [파일선택]을 통해 업로드 합니다.</li>-->
+<!--                                        <li>2. 만일 썸네일 이미지가 없을 경우 이미지선택을 통해 이미지 풀에서 가져다 쓸 수 있습니다.</li>-->
+<!--                                        <li>3. 이미지 제작에 관해선 헬프데스크(070-7432-2657)로 문의 주시기 바랍니다.</li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <podo-thumbnail-upload></podo-thumbnail-upload>-->
 
-                            <h4 class="pd-mt30">라디오 버튼</h4>
+                            <h4 class="pd-mt30 pd-mb10">라디오 버튼</h4>
                             <podo-radio id="radio1" name="radioGroup1" length="1"></podo-radio>
                             <podo-radio id="radio2" name="radioGroup2" length="0"></podo-radio>
                             <div class="g-code-box">
                                 <pre data-src="code/template_radio.html"></pre>
                             </div>
 
-                            <h4 class="pd-mt30">체크박스 버튼</h4>
+                            <h4 class="pd-mt30 pd-mb10">체크박스 버튼</h4>
                             <podo-checkbox id="checkbox1" name="checkGroup1" length="1"></podo-checkbox>
                             <podo-checkbox id="checkbox2" name="checkGroup2" length="0"></podo-checkbox>
                             <div class="g-code-box">
                                 <pre data-src="code/template_check.html"></pre>
                             </div>
 
+                            <h4 class="pd-mt30 pd-mb10">Kendo UI DropDownList</h4>
+                            <podo-dropdown
+                                    dropdown-id="myDropdown"
+                                    data='[{"text": "Apple", "value": "1"}, {"text": "Banana", "value": "2"}, {"text": "Cherry", "value": "3"}]'
+                                    placeholder="과일 선택">
+                            </podo-dropdown>
+                            <div class="g-code-box">
+                                <pre data-src="code/template_dropdownlist.html"></pre>
+                            </div>
+
+                            <h4 class="pd-mt30 pd-mb10">Kendo UI NumericTextBox</h4>
+                            <podo-numeric-textbox
+                                    input-id="myNumericTextBox"
+                                    value="10"
+                                    min="0"
+                                    max="100"
+                                    step="5"
+                                    format="n0">
+                            </podo-numeric-textbox>
+                            <div class="g-code-box">
+                                <pre data-src="code/template_numericTextBox.html"></pre>
+                            </div>
+
+                            <h4 class="pd-mt30 pd-mb10">Kendo UI DatePicker/DateTimePicker</h4>
+                            <div class="pd-mb10">
+                                <podo-date-picker
+                                        input-id="myDatePicker"
+                                        value="2025-04-01"
+                                        min="2025-01-01"
+                                        max="2025-12-31"
+                                        format="yyyy-MM-dd">
+                                </podo-date-picker>
+                            </div>
+
+                            <div class="pd-mb10">
+                                <podo-date-time-picker
+                                        input-id="myDateTimePicker"
+                                        value="2025-04-01T15:30"
+                                        min="2025-01-01T00:00"
+                                        max="2025-12-31T23:59"
+                                        format="yyyy-MM-dd HH:mm">
+                                </podo-date-time-picker>
+                            </div>
+
+                            <podo-time-picker
+                                    input-id="myTimePicker"
+                                    value="15:30:00"
+                                    min="08:00:00"
+                                    max="18:00:00"
+                                    format="hh:mm tt">
+                            </podo-time-picker>
+                            <div class="g-code-box">
+                                <pre data-src="code/template_date_timePicker.html"></pre>
+                            </div>
+
                             <h4 class="pd-mt30">기본 head 세팅</h4>
                             <div class="g-code-box">
                                 <pre data-src="code/template_head.html"></pre>
                             </div>
+
+
 
                         </article>
                         <!--                // Badge End    -->
@@ -125,6 +185,7 @@
     <script src="../js/front/editor.js"></script>
     <script src="../js/front/upload.js"></script>
     <script src="../js/front/radioCheck.js"></script>
+    <script src="../js/front/dropdownlist.js"></script>
 <!--    <script src="../js/front/popup.js"></script>-->
     <script>
         var now = new Date();

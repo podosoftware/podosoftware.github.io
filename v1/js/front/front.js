@@ -4,9 +4,45 @@ $(function () {
 
     // 아코디언
     $(".accordion-wrap").accordion();
+
+    // 복사버튼
+    frontCopy();
 });
 
+function frontCopy() {
+    $(".btn-copy").on("click", function () {
+        var text = $(this).text();
 
+        console.log(text);
+
+        // 최신 브라우저: Clipboard API 사용
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert("클립보드에 복사되었습니다: " + text);
+            }, function(err) {
+                console.error("복사 실패:", err);
+            });
+        } else {
+            // 구형 브라우저용 fallback: 임시 textarea 생성
+            var $tempTextarea = $("<textarea>");
+            $tempTextarea.val(text).css({
+                position: "fixed",
+                left: "-9999px"
+            });
+            $("body").append($tempTextarea);
+            $tempTextarea.focus();
+            $tempTextarea.select();
+
+            try {
+                document.execCommand("copy");
+                alert("클립보드에 복사되었습니다: " + text);
+            } catch (err) {
+                console.error("복사 실패:", err);
+            }
+            $tempTextarea.remove();
+        }
+    });
+}
 
 
 function frontGnb() {
