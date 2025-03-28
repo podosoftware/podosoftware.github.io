@@ -98,116 +98,96 @@ var fn = (function () {
          *   lang   = 최소 업로드갯수
          */
         fileUploaderDef: function (fileUploadDivTagId, uploadWindowId, objType, fileUploadTemplateId, uploadFileId, fileGridId, objectId, option, lang) {
-            var ver = getInternetExplorerVersion();
-            if( ( ver > -1) && ( ver < 10 ) ){
-                if( $('#'+fileUploadDivTagId).text().length == 0  ) {
-                    var template = kendo.template('<button id="'+uploadWindowId+'" name="'+uploadWindowId+'">파일 업로드 하기</button>');
-                    $('#'+fileUploadDivTagId).html(template({}));
-                    $('#'+uploadWindowId).kendoButton({
-                        click: function(e){
-                            var width = 380;
-                            var height = 220;
-                            var left = (screen.width - width) / 2;
-                            var top = (screen.height - height) / 2;
+            if( $('#'+fileUploadDivTagId).text().length == 0  ) {
+                var template = kendo.template($("#"+fileUploadTemplateId).html());
+                $('#'+fileUploadDivTagId).html(template({}));
+            }
+            $("#"+uploadFileId).kendoUpload({
+                showFileList : false,
+                width : 500,
+                multiple : false,
+                localization:{ select : '파일 선택' , statusUploaded: "완료.", statusFailed : "업로드 실패." },
+                async: {
+                    saveUrl:  "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachments.do",
+                    autoUpload: true
+                },
+                upload: function (e) {
+                    e.data = {objectType: objType, objectId:objectId};
+                },
+                error : function (e){},
+                success : function(e){
+                    handleCallbackUploadResult( fileGridId );
+                },
+                select: function(e){
+                    var loginLogoFileGirdSize = $("#"+fileGridId).data("kendoGrid").dataSource.data().length;
 
-                            var windowUrl = "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachments.do?objectType="+objType+"&objectId=" + objectId +"&fileType=doc" ;
-                            myWindow = window.open(windowUrl, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top="+top+", left="+left+", width="+width+", height="+height);
-                        }
-                    });
-                    $("#"+fileUploadDivTagId).removeClass('hide');
-                }
-            }else{
-                if( $('#'+fileUploadDivTagId).text().length == 0  ) {
-                    var template = kendo.template($("#"+fileUploadTemplateId).html());
-                    $('#'+fileUploadDivTagId).html(template({}));
-                }
-                $("#"+uploadFileId).kendoUpload({
-                    showFileList : false,
-                    width : 500,
-                    multiple : false,
-                    localization:{ select : '파일 선택' , statusUploaded: "완료.", statusFailed : "업로드 실패." },
-                    async: {
-                        saveUrl:  "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachments.do",
-                        autoUpload: true
-                    },
-                    upload: function (e) {
-                        e.data = {objectType: objType, objectId:objectId};
-                    },
-                    error : function (e){},
-                    success : function(e){
-                        handleCallbackUploadResult( fileGridId );
-                    },
-                    select: function(e){
-                        var loginLogoFileGirdSize = $("#"+fileGridId).data("kendoGrid").dataSource.data().length;
+                    if(loginLogoFileGirdSize>0 && lang == 1){
+                        e.preventDefault();
+                        alert("이미 등록된 파일을 삭제 후 다시 시도해주세요.");
+                    }else{
+                        $.each(e.files, function(index, value) {
+                            if(value.size>10485760){
+                                e.preventDefault();
+                                alert("파일 사이즈는 10M로 제한되어 있습니다.");
+                            }else{
+                                if(option == "img") {
+                                    if(value.extension != ".JPG" && value.extension != ".jpg"
+                                        && value.extension != ".GIF" && value.extension != ".gif"
+                                        && value.extension != ".BMP" && value.extension != ".bmp"
+                                        && value.extension != ".PNG" && value.extension != ".png") {
+                                        e.preventDefault();
+                                        alert("이미지 파일만 선택해주세요.");
+                                    }
+                                } else if(option == "video") {
+                                    if(value.extension != ".HWP" && value.extension != ".hwp"
+                                        && value.extension != ".DOC" && value.extension != ".doc"
+                                        && value.extension != ".PPT" && value.extension != ".ppt"
+                                        && value.extension != ".PPTX" && value.extension != ".pptx"
+                                        && value.extension != ".XLS" && value.extension != ".xls"
+                                        && value.extension != ".PDF" && value.extension != ".pdf"
+                                        && value.extension != ".DOCX" && value.extension != ".docx"
+                                        && value.extension != ".PPTX" && value.extension != ".ppt"
+                                        && value.extension != ".XLSX" && value.extension != ".xlsx"
+                                        && value.extension != ".TXT" && value.extension != ".txt"
+                                        && value.extension != ".ZIP" && value.extension != ".zip"
+                                        && value.extension != ".JPG" && value.extension != ".jpg"
+                                        && value.extension != ".JPEG" && value.extension != ".jpeg"
+                                        && value.extension != ".GIF" && value.extension != ".gif"
+                                        && value.extension != ".BMP" && value.extension != ".bmp"
+                                        && value.extension != ".PNG" && value.extension != ".png") {
 
-                        if(loginLogoFileGirdSize>0 && lang == 1){
-                            e.preventDefault();
-                            alert("이미 등록된 파일을 삭제 후 다시 시도해주세요.");
-                        }else{
-                            $.each(e.files, function(index, value) {
-                                if(value.size>10485760){
-                                    e.preventDefault();
-                                    alert("파일 사이즈는 10M로 제한되어 있습니다.");
-                                }else{
-                                    if(option == "img") {
-                                        if(value.extension != ".JPG" && value.extension != ".jpg"
-                                            && value.extension != ".GIF" && value.extension != ".gif"
-                                            && value.extension != ".BMP" && value.extension != ".bmp"
-                                            && value.extension != ".PNG" && value.extension != ".png") {
-                                            e.preventDefault();
-                                            alert("이미지 파일만 선택해주세요.");
-                                        }
-                                    } else if(option == "video") {
-                                        if(value.extension != ".HWP" && value.extension != ".hwp"
-                                            && value.extension != ".DOC" && value.extension != ".doc"
-                                            && value.extension != ".PPT" && value.extension != ".ppt"
-                                            && value.extension != ".PPTX" && value.extension != ".pptx"
-                                            && value.extension != ".XLS" && value.extension != ".xls"
-                                            && value.extension != ".PDF" && value.extension != ".pdf"
-                                            && value.extension != ".DOCX" && value.extension != ".docx"
-                                            && value.extension != ".PPTX" && value.extension != ".ppt"
-                                            && value.extension != ".XLSX" && value.extension != ".xlsx"
-                                            && value.extension != ".TXT" && value.extension != ".txt"
-                                            && value.extension != ".ZIP" && value.extension != ".zip"
-                                            && value.extension != ".JPG" && value.extension != ".jpg"
-                                            && value.extension != ".JPEG" && value.extension != ".jpeg"
-                                            && value.extension != ".GIF" && value.extension != ".gif"
-                                            && value.extension != ".BMP" && value.extension != ".bmp"
-                                            && value.extension != ".PNG" && value.extension != ".png") {
-
-                                            e.preventDefault();
-                                            alert("업로드가 허용된 형식의 파일만 선택해주세요.\n가능한 파일확장자:hwp, doc, ppt, xls, pdf, docx, pptx, xlsx, txt, zip, jpg, jpeg, gif, bmp, png");
-                                        }
-                                    } else {
-                                        if(value.extension != ".HWP" && value.extension != ".hwp"
-                                            && value.extension != ".HWPX" && value.extension != ".hwpx"
-                                            && value.extension != ".TXT" && value.extension != ".txt"
-                                            && value.extension != ".PDF" && value.extension != ".pdf"
-                                            && value.extension != ".PPTX" && value.extension != ".pptx"
-                                            && value.extension != ".XLSX" && value.extension != ".xlsx"
-                                            && value.extension != ".DOCX" && value.extension != ".docx"
-                                            && value.extension != ".JPG" && value.extension != ".jpg"
-                                            && value.extension != ".JPEG" && value.extension != ".jpeg"
-                                            && value.extension != ".PNG" && value.extension != ".png"
-                                            && value.extension != ".ZIP" && value.extension != ".zip"
-                                            && value.extension != ".AVI" && value.extension != ".avi"
-                                            && value.extension != ".MPEG4" && value.extension != ".mpeg4"
-                                            && value.extension != ".MP4" && value.extension != ".mp4"
-                                            && value.extension != ".MOV" && value.extension != ".mov"
-                                            && value.extension != ".WMV" && value.extension != ".wmv"
-                                            && value.extension != ".FLV" && value.extension != ".flv"
-                                            && value.extension != ".ASF" && value.extension != ".asf") {
-                                            e.preventDefault();
-                                            alert("파일은 hwp, hwpx, txt, pdf, pptx, xlsx, docx, jpg, jpeg, png, zip, AVI, MPEG4(MP4), MOV, WMV, FLV, ASF만 업로드 가능합니다.\n파일 확장자를 확인하십시오.");
-                                        }
+                                        e.preventDefault();
+                                        alert("업로드가 허용된 형식의 파일만 선택해주세요.\n가능한 파일확장자:hwp, doc, ppt, xls, pdf, docx, pptx, xlsx, txt, zip, jpg, jpeg, gif, bmp, png");
+                                    }
+                                } else {
+                                    if(value.extension != ".HWP" && value.extension != ".hwp"
+                                        && value.extension != ".HWPX" && value.extension != ".hwpx"
+                                        && value.extension != ".TXT" && value.extension != ".txt"
+                                        && value.extension != ".PDF" && value.extension != ".pdf"
+                                        && value.extension != ".PPTX" && value.extension != ".pptx"
+                                        && value.extension != ".XLSX" && value.extension != ".xlsx"
+                                        && value.extension != ".DOCX" && value.extension != ".docx"
+                                        && value.extension != ".JPG" && value.extension != ".jpg"
+                                        && value.extension != ".JPEG" && value.extension != ".jpeg"
+                                        && value.extension != ".PNG" && value.extension != ".png"
+                                        && value.extension != ".ZIP" && value.extension != ".zip"
+                                        && value.extension != ".AVI" && value.extension != ".avi"
+                                        && value.extension != ".MPEG4" && value.extension != ".mpeg4"
+                                        && value.extension != ".MP4" && value.extension != ".mp4"
+                                        && value.extension != ".MOV" && value.extension != ".mov"
+                                        && value.extension != ".WMV" && value.extension != ".wmv"
+                                        && value.extension != ".FLV" && value.extension != ".flv"
+                                        && value.extension != ".ASF" && value.extension != ".asf") {
+                                        e.preventDefault();
+                                        alert("파일은 hwp, hwpx, txt, pdf, pptx, xlsx, docx, jpg, jpeg, png, zip, AVI, MPEG4(MP4), MOV, WMV, FLV, ASF만 업로드 가능합니다.\n파일 확장자를 확인하십시오.");
                                     }
                                 }
-                            });
-                        }
+                            }
+                        });
                     }
-                });
-                $("#"+fileUploadDivTagId).removeClass('hide');
-            }
+                }
+            });
+            $("#"+fileUploadDivTagId).removeClass('hide');
         }
     }
 })();

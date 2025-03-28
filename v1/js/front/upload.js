@@ -19,15 +19,19 @@ class podoUpload extends HTMLElement {
         super();
         // this.attachShadow({ mode: "open" });
         this.appendChild(uploadTemplate.content.cloneNode(true));
-        // 순차적 ID 설정
-        this.uniqueId = `list_file_upload${podoUpload.uploadCounter}`;
-        this.uniqueId2 = `list_file_grid${podoUpload.uploadCounter}`;
-        podoUpload.uploadCounter++; // ID가 사용될 때마다 uploadCounter 증가
-        podoUpload.uploadCounter2++; // ID가 사용될 때마다 uploadCounter 증가
+        // 속성에서 ID 값을 가져오고, 없으면 순차적 ID 사용
+        this.uniqueId = this.getAttribute('upload-id') || `list_file_upload${podoUpload.uploadCounter}`;
+        this.uniqueId2 = this.getAttribute('list-id') || `list_file_grid${podoUpload.uploadCounter}`;
+
+        // 속성에 지정되지 않은 경우에만 카운터 증가
+        if (!this.getAttribute('upload-id')) {
+            podoUpload.uploadCounter++;
+        }
+
         this.upload = this.querySelector(".my-file-upload");
         this.list = this.querySelector(".file-template");
-        this.upload.setAttribute("id", this.uniqueId); // 고유한 ID 설정
-        this.list.setAttribute("id", this.uniqueId2); // 고유한 ID 설정
+        this.upload.setAttribute("id", this.uniqueId);
+        this.list.setAttribute("id", this.uniqueId2);
     }
 
     // 감시할 속성 목록을 반환
@@ -67,16 +71,17 @@ class podoUpload extends HTMLElement {
             document.body.appendChild(scriptTemplate);
         }
 
-        const objectType = $(`#objectType${podoUpload.uploadCounter2}`).val();
+        console.log("uniqueId2", `${this.uniqueId2}`);
 
-        console.log($(`#${this.uniqueId}`).text().length);
+        const objectType = $(`#objectType_${this.uniqueId2}`).val();
+
         if ($(`#${this.uniqueId}`).text().length == 0) {
             $(`#${this.uniqueId}`).html(`
-                <input name="list_upload_file" id="list_upload_file${podoUpload.uploadCounter2}" type="file"/>
+                <input name="list_upload_file" id="list_upload_file_${this.uniqueId2}" type="file"/>
             `);
         }
 
-        $(`#list_upload_file${podoUpload.uploadCounter2}`).kendoUpload({
+        $(`#list_upload_file_${this.uniqueId2}`).kendoUpload({
             showFileList: false,
             width: 500,
             multiple: false,
@@ -86,21 +91,21 @@ class podoUpload extends HTMLElement {
                 autoUpload: true
             },
             upload: function (e) {
-                e.data = {objectType: objectType, objectId: $(`#objectId${podoUpload.uploadCounter2}`).val()};
+                e.data = {objectType: objectType, objectId: $(`#objectId_${this.uniqueId2}`).val()};
             },
             error: function (e) {
             },
             success: function (e) {
-                $(`#list_file_grid${podoUpload.uploadCounter}`).data('kendoGrid').dataSource.read();
+                $(`#${this.uniqueId2}`).data('kendoGrid').dataSource.read();
 
                 if (objectType == "52") {		//썸네일
                     $("#thumbnailId").val(e.response.attachmentId);
                 }
             },
             select: function (e) {
-                var loginLogoFileGirdSize = $(`#list_file_grid${podoUpload.uploadCounter}`).data("kendoGrid").dataSource.data().length;
+                var gridSize = $(`#${this.uniqueId2}`).data("kendoGrid").dataSource.data().length;
 
-                if (loginLogoFileGirdSize > 0) {
+                if (gridSize > 0) {
                     e.preventDefault();
                     alert("이미 등록된 파일을 삭제 후 다시 시도해주세요.");
                 } else {
@@ -110,39 +115,23 @@ class podoUpload extends HTMLElement {
                             alert("파일 사이즈는 10M로 제한되어 있습니다.");
                         } else {
                             if(type == "img") {
-                                if (value.extension != ".JPG" && value.extension != ".jpg"
-                                    && value.extension != ".GIF" && value.extension != ".gif"
-                                    && value.extension != ".PNG" && value.extension != ".png") {
+                                if (![".JPG", ".jpg", ".GIF", ".gif", ".PNG", ".png"].includes(value.extension)) {
                                     e.preventDefault();
                                     alert("이미지 파일만 선택해주세요.");
                                 }
                             } else if(type == "file") {
-                                if(value.extension != ".HWP" && value.extension != ".hwp"
-                                    && value.extension != ".DOC" && value.extension != ".doc"
-                                    && value.extension != ".PPT" && value.extension != ".ppt"
-                                    && value.extension != ".XLS" && value.extension != ".xls"
-                                    && value.extension != ".PDF" && value.extension != ".pdf"
-                                    && value.extension != ".DOCX" && value.extension != ".docx"
-                                    && value.extension != ".PPTX" && value.extension != ".pptx"
-                                    && value.extension != ".XLSX" && value.extension != ".xlsx"
-                                    && value.extension != ".TXT" && value.extension != ".txt"
-                                    && value.extension != ".ZIP" && value.extension != ".zip"
-                                    && value.extension != ".JPG" && value.extension != ".jpg"
-                                    && value.extension != ".JPEG" && value.extension != ".jpeg"
-                                    && value.extension != ".GIF" && value.extension != ".gif"
-                                    && value.extension != ".BMP" && value.extension != ".bmp"
-                                    && value.extension != ".PNG" && value.extension != ".png") {
-
+                                const allowedExtensions = [
+                                    ".HWP", ".hwp", ".DOC", ".doc", ".PPT", ".ppt", ".XLS", ".xls",
+                                    ".PDF", ".pdf", ".DOCX", ".docx", ".PPTX", ".pptx", ".XLSX", ".xlsx",
+                                    ".TXT", ".txt", ".ZIP", ".zip", ".JPG", ".jpg", ".JPEG", ".jpeg",
+                                    ".GIF", ".gif", ".BMP", ".bmp", ".PNG", ".png"
+                                ];
+                                if (!allowedExtensions.includes(value.extension)) {
                                     e.preventDefault();
-                                    alert("업로드가 허용된 형식의 파일만 선택해주세요.\n가능한 파일확장자:hwp, doc, ppt, xls, pdf, docx, pptx, xlsx, txt, zip, jpg, jpeg, gif, bmp, png");
+                                    alert("업로드가 허용된 형식의 파일만 선택해주세요.\n가능한 파일확장자: hwp, doc, ppt, xls, pdf, docx, pptx, xlsx, txt, zip, jpg, jpeg, gif, bmp, png");
                                 }
                             } else if(type == "video") {
-                                if (value.extension.toLowerCase() != ".avi" && value.extension.toLowerCase() != ".mpg"
-                                    && value.extension.toLowerCase() != ".mpeg" && value.extension.toLowerCase() != ".mpe"
-                                    && value.extension.toLowerCase() != ".mpe" && value.extension.toLowerCase() != ".wmv"
-                                    && value.extension.toLowerCase() != ".mov" && value.extension.toLowerCase() != ".mp4"
-                                    && value.extension.toLowerCase() != ".mkv" && value.extension.toLowerCase() != ".jpeg"
-                                ) {
+                                if (![".avi", ".mpg", ".mpeg", ".mpe", ".wmv", ".mov", ".mp4", ".mkv", ".jpeg"].includes(value.extension.toLowerCase())) {
                                     e.preventDefault();
                                     alert("동영상 파일만 업로드 할 수 있습니다.");
                                 }
@@ -193,15 +182,20 @@ class podoGridUpload extends HTMLElement {
         super();
         // this.attachShadow({ mode: "open" });
         this.appendChild(uploadGridTemplate.content.cloneNode(true));
-        // 순차적 ID 설정
-        this.uniqueId = `grid_file_upload${podoGridUpload.gridCounter}`;
-        this.uniqueId2 = `grid_file${podoGridUpload.gridCounter}`;
-        podoGridUpload.gridCounter++; // ID가 사용될 때마다 gridCounter 증가
-        podoGridUpload.gridCounter2++; // ID가 사용될 때마다 gridCounter 증가
+        // 속성에서 ID 값을 가져오고, 없으면 순차적 ID 사용
+        this.uniqueId = this.getAttribute('upload-id') || `grid_file_upload${podoGridUpload.uploadCounter}`;
+        this.uniqueId2 = this.getAttribute('list-id') || `grid_file${podoGridUpload.uploadCounter}`;
+
+        // 속성에 지정되지 않은 경우에만 카운터 증가
+        if (!this.getAttribute('upload-id')) {
+            podoGridUpload.uploadCounter++;
+        }
+
         this.upload = this.querySelector(".grid-file-upload");
         this.grid = this.querySelector(".gird-file-list");
-        this.upload.setAttribute("id", this.uniqueId); // 고유한 ID 설정
-        this.grid.setAttribute("id", this.uniqueId2); // 고유한 ID 설정
+        this.upload.setAttribute("id", this.uniqueId);
+        this.grid.setAttribute("id", this.uniqueId2);
+
     }
 
     // 감시할 속성 목록을 반환
@@ -222,15 +216,15 @@ class podoGridUpload extends HTMLElement {
         console.log('Initial type:', type);
         // 초기 값에 따른 처리를 여기서 수행할 수 있음
 
-        const objectType = $(`#objectType${podoGridUpload.gridCounter2}`).val();
+        const objectType = $(`#objectType_${this.uniqueId2}`).val();
 
         if ($(`#${this.uniqueId}`).text().length == 0) {
             $(`#${this.uniqueId}`).html(`
-                <input name="grid_upload_file" id="grid_upload_file${podoGridUpload.gridCounter2}" type="file"/>
+                <input name="grid_upload_file" id="grid_upload_file_${this.uniqueId2}" type="file"/>
             `);
         }
 
-        $(`#grid_upload_file${podoGridUpload.gridCounter2}`).kendoUpload({
+        $(`#grid_upload_file_${this.uniqueId2}`).kendoUpload({
             showFileList: false,
             width: 500,
             multiple: false,
@@ -240,21 +234,21 @@ class podoGridUpload extends HTMLElement {
                 autoUpload: true
             },
             upload: function (e) {
-                e.data = {objectType: objectType, objectId: $(`#objectId${podoGridUpload.gridCounter2}`).val()};
+                e.data = {objectType: objectType, objectId: $(`#objectId_${this.uniqueId2}`).val()};
             },
             error: function (e) {
             },
             success: function (e) {
-                $(`#grid_file${podoGridUpload.gridCounter}`).data('kendoGrid').dataSource.read();
+                $(`#${this.uniqueId2}`).data('kendoGrid').dataSource.read();
 
                 if (objectType == "52") {		//썸네일
                     $("#thumbnailId").val(e.response.attachmentId);
                 }
             },
             select: function (e) {
-                var loginLogoFileGirdSize = $(`#grid_file${podoGridUpload.gridCounter}`).data("kendoGrid").dataSource.data().length;
+                var gridSize = $(`#${this.uniqueId2}`).data("kendoGrid").dataSource.data().length;
 
-                if (loginLogoFileGirdSize > 0) {
+                if (gridSize > 0) {
                     e.preventDefault();
                     alert("이미 등록된 파일을 삭제 후 다시 시도해주세요.");
                 } else {
@@ -264,39 +258,23 @@ class podoGridUpload extends HTMLElement {
                             alert("파일 사이즈는 10M로 제한되어 있습니다.");
                         } else {
                             if(type == "img") {
-                                if (value.extension != ".JPG" && value.extension != ".jpg"
-                                    && value.extension != ".GIF" && value.extension != ".gif"
-                                    && value.extension != ".PNG" && value.extension != ".png") {
+                                if (![".JPG", ".jpg", ".GIF", ".gif", ".PNG", ".png"].includes(value.extension)) {
                                     e.preventDefault();
                                     alert("이미지 파일만 선택해주세요.");
                                 }
                             } else if(type == "file") {
-                                if(value.extension != ".HWP" && value.extension != ".hwp"
-                                    && value.extension != ".DOC" && value.extension != ".doc"
-                                    && value.extension != ".PPT" && value.extension != ".ppt"
-                                    && value.extension != ".XLS" && value.extension != ".xls"
-                                    && value.extension != ".PDF" && value.extension != ".pdf"
-                                    && value.extension != ".DOCX" && value.extension != ".docx"
-                                    && value.extension != ".PPTX" && value.extension != ".pptx"
-                                    && value.extension != ".XLSX" && value.extension != ".xlsx"
-                                    && value.extension != ".TXT" && value.extension != ".txt"
-                                    && value.extension != ".ZIP" && value.extension != ".zip"
-                                    && value.extension != ".JPG" && value.extension != ".jpg"
-                                    && value.extension != ".JPEG" && value.extension != ".jpeg"
-                                    && value.extension != ".GIF" && value.extension != ".gif"
-                                    && value.extension != ".BMP" && value.extension != ".bmp"
-                                    && value.extension != ".PNG" && value.extension != ".png") {
-
+                                const allowedExtensions = [
+                                    ".HWP", ".hwp", ".DOC", ".doc", ".PPT", ".ppt", ".XLS", ".xls",
+                                    ".PDF", ".pdf", ".DOCX", ".docx", ".PPTX", ".pptx", ".XLSX", ".xlsx",
+                                    ".TXT", ".txt", ".ZIP", ".zip", ".JPG", ".jpg", ".JPEG", ".jpeg",
+                                    ".GIF", ".gif", ".BMP", ".bmp", ".PNG", ".png"
+                                ];
+                                if (!allowedExtensions.includes(value.extension)) {
                                     e.preventDefault();
-                                    alert("업로드가 허용된 형식의 파일만 선택해주세요.\n가능한 파일확장자:hwp, doc, ppt, xls, pdf, docx, pptx, xlsx, txt, zip, jpg, jpeg, gif, bmp, png");
+                                    alert("업로드가 허용된 형식의 파일만 선택해주세요.\n가능한 파일확장자: hwp, doc, ppt, xls, pdf, docx, pptx, xlsx, txt, zip, jpg, jpeg, gif, bmp, png");
                                 }
                             } else if(type == "video") {
-                                if (value.extension.toLowerCase() != ".avi" && value.extension.toLowerCase() != ".mpg"
-                                    && value.extension.toLowerCase() != ".mpeg" && value.extension.toLowerCase() != ".mpe"
-                                    && value.extension.toLowerCase() != ".mpe" && value.extension.toLowerCase() != ".wmv"
-                                    && value.extension.toLowerCase() != ".mov" && value.extension.toLowerCase() != ".mp4"
-                                    && value.extension.toLowerCase() != ".mkv" && value.extension.toLowerCase() != ".jpeg"
-                                ) {
+                                if (![".avi", ".mpg", ".mpeg", ".mpe", ".wmv", ".mov", ".mp4", ".mkv", ".jpeg"].includes(value.extension.toLowerCase())) {
                                     e.preventDefault();
                                     alert("동영상 파일만 업로드 할 수 있습니다.");
                                 }
@@ -317,9 +295,9 @@ class podoGridUpload extends HTMLElement {
             //         destroy: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do", type:'POST' },
             //         parameterMap: function (options, operation){
             //             if (operation != "read" && options) {
-            //                 return { objectType: objectType, objectId: $(`#objectId${podoUpload.gridCounter2}`).val(), attachmentId: options.attachmentId};
+            //                 return { objectType: objectType, objectId: $(`#objectId_${this.uniqueId2}`).val(), attachmentId: options.attachmentId};
             //             }else{
-            //                 return { objectType: objectType, objectId: $(`#objectId${podoUpload.gridCounter2}`).val(), startIndex: options.skip, pageSize: options.pageSize };
+            //                 return { objectType: objectType, objectId: $(`#objectId_${this.uniqueId2}`).val(), startIndex: options.skip, pageSize: options.pageSize };
             //             }
             //         }
             //     },
