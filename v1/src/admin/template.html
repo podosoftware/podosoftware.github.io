@@ -47,10 +47,10 @@
                         <article id="badge" class="article-">
                             <h3 class="title"># Template</h3>
 
-                            <h4 class="pd-mt30">에디터</h4>
+                            <h4 class="pd-mt30 pd-mb10">에디터</h4>
                             <podo-editor id="edtior"></podo-editor>
 
-                            <h4 class="pd-mt30">업로드</h4>
+                            <h4 class="pd-mt30 pd-mb10">업로드</h4>
                             <input type="hidden" id="objectId_myList" class="objectId" value="1">
                             <input type="hidden" id="objectType_myList" class="objectType" value="56">
 
@@ -64,7 +64,7 @@
                             <podo-upload type="img" upload-id="myUploadSecond" list-id="myListSecond"></podo-upload>
                             <podo-upload type="img" ></podo-upload>
 
-                            <h4 class="pd-mt30">그리드 업로드</h4>
+                            <h4 class="pd-mt30 pd-mb10">그리드 업로드</h4>
                             <podo-grid-upload type="file" upload-id="myGridUpload" list-id="myGridList"></podo-grid-upload>
 
                             <div class="g-code-box">
@@ -89,24 +89,81 @@
 <!--                            </div>-->
 <!--                            <podo-thumbnail-upload></podo-thumbnail-upload>-->
 
-                            <h4 class="pd-mt30">라디오 버튼</h4>
+                            <h4 class="pd-mt30 pd-mb10">라디오 버튼</h4>
                             <podo-radio id="radio1" name="radioGroup1" length="1"></podo-radio>
                             <podo-radio id="radio2" name="radioGroup2" length="0"></podo-radio>
                             <div class="g-code-box">
                                 <pre data-src="code/template_radio.html"></pre>
                             </div>
 
-                            <h4 class="pd-mt30">체크박스 버튼</h4>
+                            <h4 class="pd-mt30 pd-mb10">체크박스 버튼</h4>
                             <podo-checkbox id="checkbox1" name="checkGroup1" length="1"></podo-checkbox>
                             <podo-checkbox id="checkbox2" name="checkGroup2" length="0"></podo-checkbox>
                             <div class="g-code-box">
                                 <pre data-src="code/template_check.html"></pre>
                             </div>
 
+                            <h4 class="pd-mt30 pd-mb10">Kendo UI DropDownList</h4>
+                            <podo-dropdown
+                                    dropdown-id="myDropdown"
+                                    data='[{"text": "Apple", "value": "1"}, {"text": "Banana", "value": "2"}, {"text": "Cherry", "value": "3"}]'
+                                    placeholder="과일 선택">
+                            </podo-dropdown>
+                            <div class="g-code-box">
+                                <pre data-src="code/template_dropdownlist.html"></pre>
+                            </div>
+
+                            <h4 class="pd-mt30 pd-mb10">Kendo UI NumericTextBox</h4>
+                            <podo-numeric-textbox
+                                    input-id="myNumericTextBox"
+                                    value="10"
+                                    min="0"
+                                    max="100"
+                                    step="5"
+                                    format="n0">
+                            </podo-numeric-textbox>
+                            <div class="g-code-box">
+                                <pre data-src="code/template_numericTextBox.html"></pre>
+                            </div>
+
+                            <h4 class="pd-mt30 pd-mb10">Kendo UI DatePicker/DateTimePicker</h4>
+                            <div class="pd-mb10">
+                                <podo-date-picker
+                                        input-id="myDatePicker"
+                                        value="2025-04-01"
+                                        min="2025-01-01"
+                                        max="2025-12-31"
+                                        format="yyyy-MM-dd">
+                                </podo-date-picker>
+                            </div>
+
+                            <div class="pd-mb10">
+                                <podo-date-time-picker
+                                        input-id="myDateTimePicker"
+                                        value="2025-04-01T15:30"
+                                        min="2025-01-01T00:00"
+                                        max="2025-12-31T23:59"
+                                        format="yyyy-MM-dd HH:mm">
+                                </podo-date-time-picker>
+                            </div>
+
+                            <podo-time-picker
+                                    input-id="myTimePicker"
+                                    value="15:30:00"
+                                    min="08:00:00"
+                                    max="18:00:00"
+                                    format="hh:mm tt">
+                            </podo-time-picker>
+                            <div class="g-code-box">
+                                <pre data-src="code/template_date_timePicker.html"></pre>
+                            </div>
+
                             <h4 class="pd-mt30">기본 head 세팅</h4>
                             <div class="g-code-box">
                                 <pre data-src="code/template_head.html"></pre>
                             </div>
+
+
 
                         </article>
                         <!--                // Badge End    -->
@@ -128,6 +185,7 @@
     <script src="../js/front/editor.js"></script>
     <script src="../js/front/upload.js"></script>
     <script src="../js/front/radioCheck.js"></script>
+    <script src="../js/front/dropdownlist.js"></script>
 <!--    <script src="../js/front/popup.js"></script>-->
     <script>
         var now = new Date();
