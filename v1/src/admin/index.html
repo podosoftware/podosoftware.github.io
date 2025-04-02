@@ -4,10 +4,42 @@
     <!-- 여기에 head.html을 인클루드 -->
     @@include('head.html')
 
-    <title>관리자</title>
+    <title>포도소프트웨어 솔루션 가이드 :: 관리자</title>
 
     <script>
+        // 메뉴 누르면 스크롤 + active
         $(function () {
+            $(".left-header-menu-wrap ol > li > a").on("click", function () {
+                var targetId = $(this).attr("href");
+
+                $(".left-header-menu-wrap ol li a").removeClass("active");
+                $(this).addClass("active");
+            });
+
+            // 2. 스크롤 시 active 클래스 관리
+            $(".body-container").on('scroll', function () {
+                var sections = $('section.sec-');
+                var navLinks = $('.left-header-menu-wrap ol li');
+                var scrollPos = $(".body-container").scrollTop();
+
+                sections.each(function() {
+                    var currSection = $(this);
+                    var sectionTop = currSection.offset().top; // 약간의 오프셋을 줘서 좀 더 부드러운 전환 효과
+                    var sectionBottom = sectionTop + currSection.outerHeight();
+
+                    // console.log(scrollPos >= sectionTop && scrollPos < sectionBottom);
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        var id = currSection.attr('id');
+                        navLinks.find("a").removeClass('active');
+                        // console.log(id);
+                        $('.left-header-menu-wrap a[href="#' + id + '"]').addClass('active');
+                    }
+                });
+            });
+
+            // 초기 active 설정 (페이지 로드 시 스크롤 위치에 따라 active 클래스 추가)
+            $(window).trigger('scroll');
         });
     </script>
 
@@ -26,41 +58,177 @@
 <!--    Header START    -->
         <!-- 여기에 Header.html을 인클루드 -->
         @@include('header.html')
-<!--        <div id="header" data-include-path="header.html"></div>-->
-
-<!--        <script>-->
-<!--            window.addEventListener('load', function() {-->
-<!--                var allElements = document.getElementsByTagName('*');-->
-<!--                Array.prototype.forEach.call(allElements, function(el) {-->
-<!--                    var includePath = el.dataset.includePath;-->
-<!--                    if (includePath) {-->
-<!--                        var xhttp = new XMLHttpRequest();-->
-<!--                        xhttp.onreadystatechange = function () {-->
-<!--                            if (this.readyState == 4 && this.status == 200) {-->
-<!--                                el.outerHTML = this.responseText;-->
-<!--                            }-->
-<!--                        };-->
-<!--                        xhttp.open('GET', includePath, true);-->
-<!--                        xhttp.send();-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        </script>-->
-<!--    Header END    -->
 
 <!--    본문영역 START    -->
         <main class="body-container">
 <!--        breadcrumb START        -->
-            <section class="breadcrumb">
-                <div class="container">
-                    <ul class="menu">
-                        <li><a href="index.html"><i class="icon-home"></i></a></li>
-                    </ul>
-                </div>
-            </section>
+<!--            <section class="breadcrumb">-->
+<!--                <div class="container">-->
+<!--                    <ul class="menu">-->
+<!--                        <li><a href="index.html"><i class="icon-home"></i></a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </section>-->
 <!--        breadcrumb END        -->
 
-            <section class="sec-info">
+            <div class="container">
+                <!-- 소개 섹션 -->
+                <section id="introduction" class="sec-">
+                    <h2>소개</h2>
+                    <article class="sec-article">
+                        <p>
+                            이 가이드는 포도솔루션 관리자 작업시 실제 퍼블리싱과 개발 업무에 적용할 수 있도록 돕기 위해 제작되었습니다.
+                            모든 사용자에게 최적의 경험을 제공하기 위한 필수 요소들을 소개합니다.
+                        </p>
+                        <p>
+                            kendo ui 버전에 따라 다른 점은 <a href="https://podosoftware.github.io/v1/kendo/index.html">kendo</a> 가이드에서 확인해주세요.
+                        </p>
+                    </article>
+
+                </section>
+
+                <!-- Script 섹션 -->
+                <section id="script" class="sec-">
+                    <h2>Script</h2>
+                    <article class="sec-article">
+                        <p>
+                            필수 스크립트들과 상황에 따라 불러오는 스크립트가 있습니다. 가이드의 기준은 2025년 04월 02일 &rdquo;런웨이&rdquo;를 기준으로 제작되었습니다.
+                        </p>
+
+                        <p class="pd-mt30 pd-mb10">
+                            <strong>필수 스크립트 :</strong>
+                        </p>
+                        <ul class="kw-lis-ci">
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/jquery/jquery-3.7.1.min.js</button>
+                                <span>jquery 최신 버전. 무조건 최상위에 불러와야 한다.</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/yepnope/1.5.4/yepnope.js</button>
+                                <span>yepnope을 쓰기 위한 라이브러리</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/kendo/2025.1.211/kendo.custom.min.js</button>
+                                <span>kendo ui 자주 사용하는거 따로 모아서 빌드 한 js</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/kendo/2023.1.314/kendo.splitter.min.js</button>
+                                <span>2025버전에서 splitter가 기존과 많이 달라 그 전버전을 불러와야 한다.</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/kendo/2025.1.211/telerik-license.js</button>
+                                <span>kendo ui 2025버전 라이센스 반드시 필요!!</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/kendo/2025.1.211/cultures/kendo.culture.ko-KR.min.js</button>
+                                <span>kendo ui 한글</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/kendo.extension/kendo.ko_KR.js</button>
+                                <span>kendo ui 메세지 한글</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/podo.ui/page/kendoComponentUtil.js</button>
+                                <span>포도에서 kendo ui component util 만들어진것.</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/common/top-menu.js</button>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/admin/gnb.js</button>
+                                <span>관리자 메뉴 js</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/admin/operator.js</button>
+                                <span>관리자 용 제이쿼리 모음</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/common/common.js</button>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/common/common.models.js</button>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/podo.ui/podo.ui.core.js</button>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/js/podo.ui/podo.ui.core.min.js</button>
+                            </li>
+                        </ul>
+                    </article>
+
+                </section>
+
+                <!-- Css 섹션 -->
+                <section id="css" class="sec-">
+                    <h2>Css</h2>
+                    <article class="sec-article">
+                        <p>
+                            관리자에서 사용하는 css 입니다. 가이드의 기준은 2025년 04월 02일 &rdquo;런웨이&rdquo;를 기준으로 제작되었습니다.
+                        </p>
+
+                        <p class="pd-mt30 pd-mb10">
+                            <strong>Css :</strong>
+                        </p>
+                        <ul class="kw-lis-ci">
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/kendo/2025.1.211/bootstrap-3.css</button>
+                                <span>kendo ui 2025버전 메인 테마로, 우선 이걸 입혀서 기본 레이아웃을 잡아줍니다.</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/reset2.css</button>
+                                <span>초기화 css</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/admin/root_admin.css</button>
+                                <span>관리자 용 root css</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/util.css</button>
+                                <span>사용자/관리자 공통 유틸 css</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/pd_kendo.css</button>
+                                <span>사용자/관리자 공통 kendo custom css</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/admin/common.css</button>
+                                <span>관리자 공통 common css</span>
+                            </li>
+                            <li class="lis">
+                                <i class="circle"></i>
+                                <button type="button" class="btn-copy">/css/admin/admin.css</button>
+                                <span>관리자 스타일 css</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                </section>
+            </div>
+
+            <!-- 가이드 작업자들을 위한 가이드 -->
+            <section class="sec-info" style="display: none;">
                 <div class="container">
                     <h2>머리말</h2>
 
