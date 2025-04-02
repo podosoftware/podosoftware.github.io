@@ -179,7 +179,7 @@ body, input, select, div, textarea, table, button { font-size: 16px;}
 /* guid header */
 .left-header { flex-shrink: 0; position: sticky; top: 0; left: 0; width: 300px; height: 100vh; border-right: 1px solid var(--line); background: var(--white);}
 .left-header .left-header-top { display: flex; gap: 10px; justify-content: space-between; padding: 20px;}
-.left-header .left-header-top .logo { float: none; font-size: 20px; font-weight: bold;}
+.left-header .left-header-top .logo { float: none; padding-left: 0; font-size: 20px; font-weight: bold;}
 .left-header .left-header-top img { height: 40px;}
 .left-header .left-header-top > a { display: inline-flex; align-items: center; justify-content: center; padding: 0 10px; border: 1px solid var(--black-400); border-radius: 4px; font-size: 14px;}
 .left-header-menu-wrap { overflow: auto; width: 100%; height: calc(100% - 91px); padding-bottom: 60px;}
@@ -561,7 +561,7 @@ progress::-webkit-progress-value { border-radius: 3px; background: var(--primary
 .product { height: auto;}
 
 .sec-article .btn-copy { margin: 5px 0;}
-.btn-copy { padding: 5px 10px; border: 1px solid var(--primary-400); border-radius: 3px; background: #fff; font-size: 14px;}
+.btn-copy { padding: 5px 10px; border: 1px solid var(--primary-400); border-radius: 3px; background: #fff; font-size: 14px; color: var(--black-600);}
 .btn-copy:hover { background: var(--primary-400); color: #fff;}
 
 /*
@@ -690,6 +690,8 @@ progress::-webkit-progress-value { border-radius: 3px; background: var(--primary
 .title.pd-flex- .tip-wrap { margin-top: 0;}
 .title.pd-flex- .search-wrap { margin-left: 20px;}
 .title.pd-flex- .search-wrap form { display: flex;}
+
+.kw-lis-ci .lis .btn-copy + span { display: inline-block; margin-left: 10px;}
 
 /*
 *--------------------------------------------*

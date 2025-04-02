@@ -609,6 +609,10 @@ a.skip:active, a.skip:focus {
   color: var(--orange-650);
 }
 
+.col-main {
+  color: var(--primary-400);
+}
+
 /* Font */
 /*
 *--------------------------------------------*
