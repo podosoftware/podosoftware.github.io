@@ -53,15 +53,14 @@
         "notification",
         "popover",
         "tilelayout",
-        "tooltip"
-    ],
-    "cultures": [
-        "en-US",
-        "ko-KR"
-    ],
-    "languages": [
-        "en-US",
-        "ko-KR"
+        "tooltip",
+        "treelist",
+        "data",
+        "resizable",
+        "reorderable",
+        "columnmenu",
+        "filtermenu",
+        "groupable"
     ],
     "includeStyles": true,
     "includeSource": false,
