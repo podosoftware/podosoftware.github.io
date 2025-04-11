@@ -14,9 +14,9 @@ $breakpoints: (
 // 뷰포트 기준을 설정합니다.
 $viewport-width: 1920; // 뷰포트 너비 (기준)
 // 미디어 쿼리별 뷰포트 너비 설정
-$viewport-width-xlarge: 1279;  // 큰 화면 기준 뷰포트 너비
+$viewport-width-xlarge: 1279px;  // 큰 화면 기준 뷰포트 너비
 $viewport-width-large: 1024;  // 큰 화면 기준 뷰포트 너비
-$viewport-width-medium: 820;  // 중간 화면 기준 뷰포트 너비
+$viewport-width-medium: 820px;  // 중간 화면 기준 뷰포트 너비
 $viewport-width-small: 480;   // 작은 화면 기준 뷰포트 너비
 
 // 미디어 쿼리용 믹스인 정의
@@ -31,6 +31,69 @@ $viewport-width-small: 480;   // 작은 화면 기준 뷰포트 너비
         @media (max-width: 1279px) { @content; }
     }
 }
+
+@function round-to($number, $digits: 2) {
+    $factor: math.pow(10, $digits);
+    @return math.div(math.round($number * $factor), $factor);
+}
+
+// 단위를 제거하는 헬퍼 함수
+@function strip-unit($value) {
+    @if type-of($value) == 'number' and not unitless($value) {
+        @return $value / ($value * 0 + 1);
+    }
+    @return $value;
+}
+
+@mixin vw($property, $values) {
+    $vw-list: ();
+
+    @each $val in $values {
+        @if type-of($val) == 'number' {
+            @if $val == 0 {
+                $vw-list: append($vw-list, 0);
+            } @else {
+                $px: strip-unit($val);
+                $vw: round-to(math.div($px, $viewport-width-small) * 100, 2);
+                $vw-list: append($vw-list, $vw + vw);
+            }
+        } @else {
+            $vw-list: append($vw-list, $val);
+        }
+    }
+
+    @media (max-width: #{$viewport-width-large}px) {
+        #{$property}: $vw-list;
+    }
+}
+
+//
+//@mixin vw($property, $px)  {
+//
+//    //viewport 계산식
+//    $viewportWidth: math.div(1px, $viewport-width-small) * 100;
+//    $pxs: null;
+//    $vws: null;
+//
+//    //속성값이 1개일경우, 여러개일 경우
+//    @each $value in $px {
+//        @if type-of($value) == 'number' {
+//            $px: math.div($value, 1px);
+//            $pxs: append($pxs, if($px == 0, 0, $px + px));
+//            $vw: $px * $viewportWidth;
+//            $vws: append($vws, if($vw == 0, 0, $vw + vw));
+//        }
+//        @else {
+//            $pxs: append($pxs, $value);
+//            $vws: append($vws, $value);
+//        }
+//    }
+//
+//    //모바일 사이즈에서만 사용
+//    @media (max-width: $viewport-width-large) {
+//        #{$property}: $vws;
+//    }
+//}
 
 // px를 vw로 변환하는 함수
 //@function px-to-vw($px, $viewport-width) {
@@ -940,29 +1003,10 @@ a.skip:active, a.skip:focus {
 }
 @for $i from 1 through 100 {
     .pd-my#{$i * 1} {
-        margin-top: #{$i * 1}px;
-        margin-bottom: #{$i * 1}px;
-        //
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        margin: #{$i * 1}px 0;
+
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin, ($i * 1 0));
     }
 }
 
@@ -972,29 +1016,11 @@ a.skip:active, a.skip:focus {
 }
 @for $i from 1 through 100 {
     .pd-mx#{$i * 1} {
-        margin-left: #{$i * 1}px;
-        margin-right: #{$i * 1}px;
+        margin: 0 #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin, (0 $i * 1));
+
     }
 }
 
@@ -1005,22 +1031,8 @@ a.skip:active, a.skip:focus {
     .pd-mt#{$i * 1} {
         margin-top: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin-top, ($i * 1));
     }
 }
 
@@ -1028,22 +1040,8 @@ a.skip:active, a.skip:focus {
     .pd--mt#{$i * 1} {
         margin-top: -#{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-top: px-to-vw(-#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin-top, (-$i * 1));
     }
 }
 
@@ -1054,22 +1052,8 @@ a.skip:active, a.skip:focus {
     .pd-ml#{$i * 1} {
         margin-left: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin-left, ($i * 1));
     }
 }
 
@@ -1080,22 +1064,9 @@ a.skip:active, a.skip:focus {
     .pd-mr#{$i * 1} {
         margin-right: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin-right, ($i * 1));
+
     }
 }
 
@@ -1106,22 +1077,9 @@ a.skip:active, a.skip:focus {
     .pd-mb#{$i * 1} {
         margin-bottom: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    margin-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(margin-bottom, ($i * 1));
+
     }
 }
 
@@ -1136,22 +1094,9 @@ a.skip:active, a.skip:focus {
     .pd-padding#{$i * 1} {
         padding: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        // 미디어 쿼리를 활용한 반응형 스타일
+        @include vw(padding, ($i * 1));
+
     }
 }
 
@@ -1161,29 +1106,9 @@ a.skip:active, a.skip:focus {
 }
 @for $i from 1 through 100 {
     .pd-py#{$i * 1} {
-        padding-top: #{$i * 1}px;
-        padding-bottom: #{$i * 1}px;
+        padding: #{$i * 1}px 0;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        @include vw(padding, ($i * 1 0));
     }
 }
 
@@ -1193,29 +1118,9 @@ a.skip:active, a.skip:focus {
 }
 @for $i from 1 through 100 {
     .pd-px#{$i * 1} {
-        padding-left: #{$i * 1}px;
-        padding-right: #{$i * 1}px;
+        padding: 0 #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        @include vw(padding, (0 $i * 1));
     }
 }
 
@@ -1226,22 +1131,7 @@ a.skip:active, a.skip:focus {
     .pd-pt#{$i * 1} {
         padding-top: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding-top: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        @include vw(padding-top, ($i * 1));
     }
 }
 
@@ -1252,22 +1142,7 @@ a.skip:active, a.skip:focus {
     .pd-pl#{$i * 1} {
         padding-left: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding-left: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        @include vw(padding-left, ($i * 1));
     }
 }
 
@@ -1278,22 +1153,8 @@ a.skip:active, a.skip:focus {
     .pd-pr#{$i * 1} {
         padding-right: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding-right: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        @include vw(padding-right, ($i * 1));
+
     }
 }
 
@@ -1304,22 +1165,8 @@ a.skip:active, a.skip:focus {
     .pd-pb#{$i * 1} {
         padding-bottom: #{$i * 1}px;
 
-        //// 미디어 쿼리를 활용한 반응형 스타일
-        //@include respond-to('xlarge') {
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-xlarge); // 280px을 vw로 변환 (뷰포트 1279px 이하)
-        //}
-        //
-        //@include respond-to('large') {
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-large); // 12px을 vw로 변환
-        //}
-        //
-        //@include respond-to('medium') {
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-medium); // 8px을 vw로 변환
-        //}
-        //
-        //@include respond-to('small') {
-        //    padding-bottom: px-to-vw(#{$i * 1}, $viewport-width-small); // 8px을 vw로 변환
-        //}
+        @include vw(padding-bottom, ($i * 1));
+
     }
 }
 
