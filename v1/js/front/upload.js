@@ -86,7 +86,7 @@ class podoUpload extends HTMLElement {
             multiple: false,
             localization: {select: '파일 선택', statusUploaded: "완료.", statusFailed: "업로드 실패."},
             async: {
-                saveUrl: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachment.do",
+                saveUrl: "/comm/save_my_attachment.do",
                 autoUpload: true
             },
             upload: function (e) {
@@ -229,7 +229,7 @@ class podoGridUpload extends HTMLElement {
             multiple: false,
             localization: {select: '파일 선택', statusUploaded: "완료.", statusFailed: "업로드 실패."},
             async: {
-                saveUrl: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachment.do",
+                saveUrl: "/comm/save_my_attachment.do",
                 autoUpload: true
             },
             upload: function (e) {
@@ -291,8 +291,8 @@ class podoGridUpload extends HTMLElement {
             dataSource: fileGridData,
             // dataSource: {
             //     transport: {
-            //         read: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/list_my_attachments.do", type: 'POST' },
-            //         destroy: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do", type:'POST' },
+            //         read: { url:"/comm/list_my_attachments.do", type: 'POST' },
+            //         destroy: { url:"/comm/delete_my_attachment.do", type:'POST' },
             //         parameterMap: function (options, operation){
             //             if (operation != "read" && options) {
             //                 return { objectType: objectType, objectId: $(`#objectId_${this.uniqueId2}`).val(), attachmentId: options.attachmentId};
@@ -327,7 +327,7 @@ class podoGridUpload extends HTMLElement {
                     width: "160px",
                     template: function(dataItem){
                         return "<div class='grid-btn-box'>" +
-                            "<button type='button' onclick=\"location.href='<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" " +
+                            "<button type='button' onclick=\"location.href='/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" " +
                             "class=\"btn_inner k-button\" style=\"text-decoration:none\"><span>다운로드</span></button>"+
                             "<button type='button' class=\"btn_inner k-button\" onclick=\"deleteFile('"+objectType+"', "+dataItem.attachmentId+", '"+uniqueId2+"')\"><span>삭제</span></button></div>"
                     }
@@ -413,7 +413,7 @@ class podoThumbnailUpload extends HTMLElement {
             multiple: false,
             localization: {select: '파일 선택', statusUploaded: "완료.", statusFailed: "업로드 실패."},
             async: {
-                saveUrl: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachment.do",
+                saveUrl: "/comm/save_my_attachment.do",
                 autoUpload: true
             },
             upload: function (e) {
@@ -467,8 +467,8 @@ class podoThumbnailUpload extends HTMLElement {
             dataSource: fileGridData,
             // dataSource: {
             //     transport: {
-            //         read: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/list_my_attachments.do", type: 'POST' },
-            //         destroy: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do", type:'POST' },
+            //         read: { url:"/comm/list_my_attachments.do", type: 'POST' },
+            //         destroy: { url:"/comm/delete_my_attachment.do", type:'POST' },
             //         parameterMap: function (options, operation){
             //             if (operation != "read" && options) {
             //                 return { objectType: objectType, objectId: $(`#objectId${podoThumbnailUpload.thumbnailCounter2}`).val(), attachmentId: options.attachmentId};
@@ -503,7 +503,7 @@ class podoThumbnailUpload extends HTMLElement {
                     width: "160px",
                     template: function(dataItem){
                         return "<div class='grid-btn-box'>" +
-                            "<button type='button' onclick=\"location.href='<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" " +
+                            "<button type='button' onclick=\"location.href='/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" " +
                             "class=\"btn_inner k-button\" style=\"text-decoration:none\"><span>다운로드</span></button>"+
                             "<button type='button' class=\"btn_inner k-button\" onclick=\"deleteFileImg('"+objectType+"', "+dataItem.attachmentId+", '"+uniqueId2+"')\"><span>삭제</span></button></div>"
                     }
@@ -552,7 +552,7 @@ function deleteFileImg (objType, attachmentId , gname){
         //loadingOpen();
         $.ajax({
             type: 'POST',
-            url: '<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do?output=json',
+            url: '/comm/delete_my_attachment.do?output=json',
             data: {attachmentId: attachmentId},
             success: function (response) {
                 $("#"+gname).data('kendoGrid').dataSource.read();
@@ -654,7 +654,7 @@ function selectImgPop(type, count){
         dataSource: {
             transport: {
                 read: {
-                    url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/operator/sbjct/get_sbjct_img_pool_list.do",
+                    url: "/operator/sbjct/get_sbjct_img_pool_list.do",
                     type: "POST", dataType: 'json'
                 },
                 parameterMap: function (options, operation) {

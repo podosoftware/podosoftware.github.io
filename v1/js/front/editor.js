@@ -165,7 +165,7 @@ class podoKendoEditor extends HTMLElement {
                 multiple : false,
                 localization:{ select : "파일 선택" , statusUploaded: "완료", statusFailed : "업로드 실패" },
                 async: {
-                    saveUrl:  '<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachments.do',
+                    saveUrl:  '/comm/save_my_attachments.do',
                     autoUpload: true
                 },
                 upload: function (e) {
@@ -177,7 +177,7 @@ class podoKendoEditor extends HTMLElement {
                     if(e.response){
                         var _src =
                             $(".thumbnail").eq(1).find('img').attr({
-                                src: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/image_view.do?objectType="+objectType+"&objectId="+$('#img_objectId').val()+"&thumbnail=true"
+                                src: "/comm/image_view.do?objectType="+objectType+"&objectId="+$('#img_objectId').val()+"&thumbnail=true"
                             });
                     }
                 },

@@ -12,8 +12,8 @@ var fn = (function () {
             $("#"+gridNm).kendoGrid({
                 dataSource: {
                     transport: {
-                        read: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/list_my_attachments.do", type: 'POST', dataType:"json" },
-                        destroy: { url:"<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do", type:'POST', dataType:"json" },
+                        read: { url:"/comm/list_my_attachments.do", type: 'POST', dataType:"json" },
+                        destroy: { url:"/comm/delete_my_attachment.do", type:'POST', dataType:"json" },
                         parameterMap: function (options, operation){
                             if (operation != "read" && options) {
                                 return { objectType: objType, objectId:objectId, attachmentId :options.attachmentId };
@@ -47,7 +47,7 @@ var fn = (function () {
                     {
                         width: "160px" ,
                         template: function(dataItem){
-                            return "<div class=\"grid-btn-box\"><button onclick=\"location.href='<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" class=\"btn_inner k-button k-grid-edit\" style=\"text-decoration:none\"><span>다운로드</span></button>"+
+                            return "<div class=\"grid-btn-box\"><button onclick=\"location.href='/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" class=\"btn_inner k-button k-grid-edit\" style=\"text-decoration:none\"><span>다운로드</span></button>"+
                                 "<button class=\"btn_inner k-button k-grid-delete\" onclick=\"deleteFile("+dataItem.attachmentId+", '"+gridNm+"')\"><span>삭제</span></button></div>";
                         }
                     }
@@ -63,8 +63,8 @@ var fn = (function () {
             $("#"+gridNm).kendoGrid({
                 dataSource: {
                     transport: {
-                        read: { url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/list_my_attachments.do?output=json", type: 'POST', dataType:"json" },
-                        destroy: { url: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do?output=json", type:'POST', dataType:"json" },
+                        read: { url: "/comm/list_my_attachments.do?output=json", type: 'POST', dataType:"json" },
+                        destroy: { url: "/comm/delete_my_attachment.do?output=json", type:'POST', dataType:"json" },
                         parameterMap: function (options, operation){
                             if (operation != "read" && options) {
                                 return { objectType: objType, objectId:objectId, attachmentId :options.attachmentId };
@@ -108,7 +108,7 @@ var fn = (function () {
                 multiple : false,
                 localization:{ select : '파일 선택' , statusUploaded: "완료.", statusFailed : "업로드 실패." },
                 async: {
-                    saveUrl:  "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachments.do",
+                    saveUrl:  "/comm/save_my_attachments.do",
                     autoUpload: true
                 },
                 upload: function (e) {
@@ -210,7 +210,7 @@ function handleCallbackUploadResult(gridNm){
 
 //첨부파일 다운
 function downloadFile (attachmentId){
-    location.href = "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/download-my-attachment.do?attachmentId="+attachmentId;
+    location.href = "/download-my-attachment.do?attachmentId="+attachmentId;
 }
 
 //첨부파일 삭제.
@@ -218,7 +218,7 @@ function deleteFile (attachmentId, gridNm){
     if(confirm("삭제하시겠습니까?")){
         $.ajax({
             type : 'POST',
-            url : "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/delete_my_attachment.do?output=json",
+            url : "/comm/delete_my_attachment.do?output=json",
             data : { attachmentId : attachmentId },
             success : function(response){
                 handleCallbackUploadResult(gridNm);

@@ -143,7 +143,7 @@ var fn = (function () {
 
 //             $.ajax({
 //                 type : 'POST',
-//                 url : '<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/service/em/get_std_hw_info.do',
+//                 url : '/service/em/get_std_hw_info.do',
 //                 data :   {
 //                     OPEN_NUM: openNum,
 //                     HW_NUM: hwNum
@@ -240,7 +240,7 @@ var fn = (function () {
 
                 $.ajax({
                     type : 'POST',
-                    url : '<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/service/em/save_class_hw_rst.do',
+                    url : '/service/em/save_class_hw_rst.do',
                     data :   {
                         OPEN_NUM : openNum,
                         HW_NUM: $("#hwNum").val(),
@@ -293,7 +293,7 @@ var fn = (function () {
 
             var pcEditor = $("#"+obj).kendoEditor({
                 // stylesheets: [
-                //     "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/css/solution/solution_ui.css"
+                //     "/css/solution/solution_ui.css"
                 // ],
                 tools: [
                     "bold", "italic", "underline", "strikethrough", "justifyLeft", "justifyCenter", "justifyRight",
@@ -365,7 +365,7 @@ var fn = (function () {
                     multiple : false,
                     localization:{ select : "파일 선택" , statusUploaded: "완료", statusFailed : "업로드 실패" },
                     async: {
-                        saveUrl:  '<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/save_my_attachments.do',
+                        saveUrl:  '/comm/save_my_attachments.do',
                         autoUpload: true
                     },
                     upload: function (e) {
@@ -377,7 +377,7 @@ var fn = (function () {
                         if(e.response){
                             var _src =
                                 $(".thumbnail").eq(1).find('img').attr({
-                                    src: "<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/image_view.do?objectType="+objectType+"&objectId="+$('#img_objectId').val()+"&thumbnail=true"
+                                    src: "/comm/image_view.do?objectType="+objectType+"&objectId="+$('#img_objectId').val()+"&thumbnail=true"
                                 });
                         }
                     },
