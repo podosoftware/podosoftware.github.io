@@ -11,8 +11,8 @@ class podoKendoEditor extends HTMLElement {
         super();
         // this.attachShadow({ mode: "open" });
         this.appendChild(kendoEditorTemplate.content.cloneNode(true));
-        // 순차적 ID 설정
-        this.uniqueId = `editor-${podoKendoEditor.counter}`;
+        // 속성에서 ID 값을 가져오고, 없으면 순차적 ID 사용
+        this.uniqueId = this.getAttribute('editor-id') || `editor${podoKendoEditor.counter}`;
         podoKendoEditor.counter++; // ID가 사용될 때마다 counter 증가
         this.textarea = this.querySelector(".editor-textarea");
         this.textarea.setAttribute("id", this.uniqueId); // 고유한 ID 설정
@@ -120,7 +120,9 @@ class podoKendoEditor extends HTMLElement {
                 "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn", "formatting",
                 "cleanFormatting", "fontName", "fontSize", "foreColor", "backColor", "tableWizard",
                 "mergeCellsHorizontally", "mergeCellsVertically", "splitCellHorizontally", "splitCellVertically",
-                "tableAlignLeft", "tableAlignCenter", "tableAlignRight", "viewHtml"
+                "tableAlignLeft", "tableAlignCenter", "tableAlignRight"
+                // 원하는 경우 조건 true일 경우에만 가능하게 바꿔야함
+                // , "viewHtml"
             ],
             fontName: [].concat(	//폰트추가(구글웹폰트만가능)
                 kendo.ui.Editor.fn.options.fontName,

@@ -783,7 +783,6 @@ div.k-grid-footer{ border: 0;}
 .k-popup .k-list .k-item,
 .k-list-ul { padding: 0; background: #ffffff; color: #404040; line-height: 35px;}
 .k-popup.k-list-container { padding: 0; border: 1px solid #dddddd; border-radius: 3px; background: #ffffff; box-shadow: 0 0 7px rgba(0, 0, 0, 0.05), 4px 4px 10px rgba(0, 0, 0, 0.08);}
-.k-popup>.k-list {}
 .k-popup .k-list .k-selected { background: #F8F6FB; color: #404040;}
 .k-popup .k-list .k-hover { background: var(--primary-500); color: #ffffff;}
 /* 2025 */
