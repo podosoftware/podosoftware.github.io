@@ -96,13 +96,27 @@ class podoKendoEditor extends HTMLElement {
                 "bold", "italic", "underline", "strikethrough", "justifyLeft", "justifyCenter", "justifyRight",
                 "justifyFull", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "createLink",
                 "unlink",
-                { 	name: "insertImage",
+                // 2025 버전부터 이걸
+                { 	name: "customInsertImage",
+                    // { 	name: "insertImage",
                     tooltip: "이미지삽입",
-                    exec: (e) => {
-                        this.insertImg(e);     // 클래스 메서드 호출
-                        return false;
-                    }
-                }, "subscript", "superscript", "createTable", "addRowAbove", "addRowBelow",
+                    ui: {
+                        type: "button",
+                        text: "Toggle",
+                        togglable: false,
+                        icon: "image"
+                    },
+                    exec: this.insertImg
+                },
+                // 2025 버전 아래부터 이걸
+                // { 	name: "insertImage",
+                //     tooltip: "이미지삽입",
+                //     exec: (e) => {
+                //         this.insertImg(e);     // 클래스 메서드 호출
+                //         return false;
+                //     }
+                // },
+                "subscript", "superscript", "createTable", "addRowAbove", "addRowBelow",
                 "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn", "formatting",
                 "cleanFormatting", "fontName", "fontSize", "foreColor", "backColor", "tableWizard",
                 "mergeCellsHorizontally", "mergeCellsVertically", "splitCellHorizontally", "splitCellVertically",
@@ -207,8 +221,8 @@ class podoKendoEditor extends HTMLElement {
     }
 
     insertImg(e) {
-        $('.thumbnail').eq(0).find('img').attr('src','/images/runway/none_photo2.gif');
-        $('.thumbnail').eq(1).find('img').attr('src','/images/runway/none_photo2.gif');
+        $('.thumbnail').eq(0).find('img').attr('src','../images/runway/none_photo2.gif');
+        $('.thumbnail').eq(1).find('img').attr('src','../images/runway/none_photo2.gif');
         $('#url').val("");
         $('#urlWidth').val("");
         $('#urlHeight').val("");
@@ -216,8 +230,12 @@ class podoKendoEditor extends HTMLElement {
         $('#fileHeight').val("");
         $('#imgTxt').val("");
         $('#fileImgTxt').val("");
-        var parent = e.target.parentElement.parentElement;
-        var editorId = parent.getAttribute("aria-controls");
+        // var parent = e.target.parentElement.parentElement;
+        // var editorId = parent.getAttribute("aria-controls");
+
+        // var 2025 부터는 이렇게
+        var parent = e.target.parents(".k-editor");
+        var editorId = parent.find("textarea").attr("id");
 
         var rendorTo = $(".bbs_img_upload_popup");
         rendorTo.kendoWindow({

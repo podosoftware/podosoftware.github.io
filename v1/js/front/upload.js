@@ -51,6 +51,7 @@ class podoUpload extends HTMLElement {
         const type = this.getAttribute('type'); // 초기 값 가져오기
         console.log('Initial type:', type);
         // 초기 값에 따른 처리를 여기서 수행할 수 있음
+        const objectType = $(`#objectType_${this.uniqueId2}`).val();
 
         // 파일리스트 템플릿
         if (!document.getElementById("fileList")) {
@@ -63,7 +64,7 @@ class podoUpload extends HTMLElement {
                     <div class="file-list">
                         <a href="/comm/download_my_attachment.do?attachmentId=#:attachmentId#" class="file-tit"><span class="file-icon"></span>#:name#</a>
                         <span class="file-size">#= commaStr(data.size) #byte</span>
-                        <button type="button" class="del-file" onclick="deleteFile(#:attachmentId#, '${this.uniqueId2}')"></button>
+                        <button type="button" class="del-file" onclick="deleteFile(`+objectType+`, #:attachmentId#, '${this.uniqueId2}')"></button>
                     </div>
                 </td>
             </tr>
@@ -72,8 +73,6 @@ class podoUpload extends HTMLElement {
         }
 
         console.log("uniqueId2", `${this.uniqueId2}`);
-
-        const objectType = $(`#objectType_${this.uniqueId2}`).val();
 
         if ($(`#${this.uniqueId}`).text().length == 0) {
             $(`#${this.uniqueId}`).html(`
@@ -286,6 +285,7 @@ class podoGridUpload extends HTMLElement {
         });
         $(`#${this.uniqueId}`).removeClass('hide');
 
+        var uniqueId2 = `${this.uniqueId2}`;
 
         $(this.querySelector(`#${this.uniqueId2}`)).kendoGrid({
             dataSource: fileGridData,
@@ -329,7 +329,7 @@ class podoGridUpload extends HTMLElement {
                         return "<div class='grid-btn-box'>" +
                             "<button type='button' onclick=\"location.href='<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" " +
                             "class=\"btn_inner k-button\" style=\"text-decoration:none\"><span>다운로드</span></button>"+
-                            "<button type='button' class=\"btn_inner k-button\" onclick=\"deleteFile('"+objectType+"', "+dataItem.attachmentId+", '"+`${this.uniqueId2}`+"')\"><span>삭제</span></button></div>"
+                            "<button type='button' class=\"btn_inner k-button\" onclick=\"deleteFile('"+objectType+"', "+dataItem.attachmentId+", '"+uniqueId2+"')\"><span>삭제</span></button></div>"
                     }
                 }
             ],
@@ -461,6 +461,7 @@ class podoThumbnailUpload extends HTMLElement {
         });
         $(`#${this.uniqueId}`).removeClass('hide');
 
+        var uniqueId2 = `${this.uniqueId2}`;
 
         $(this.querySelector(`#${this.uniqueId2}`)).kendoGrid({
             dataSource: fileGridData,
@@ -504,7 +505,7 @@ class podoThumbnailUpload extends HTMLElement {
                         return "<div class='grid-btn-box'>" +
                             "<button type='button' onclick=\"location.href='<%= com.podosw.web.util.ServletUtils.getContextPath(request) %>/comm/download_my_attachment.do?attachmentId="+dataItem.attachmentId+"'\" " +
                             "class=\"btn_inner k-button\" style=\"text-decoration:none\"><span>다운로드</span></button>"+
-                            "<button type='button' class=\"btn_inner k-button\" onclick=\"deleteFileImg('"+objectType+"', "+dataItem.attachmentId+", '"+`${this.uniqueId2}`+"')\"><span>삭제</span></button></div>"
+                            "<button type='button' class=\"btn_inner k-button\" onclick=\"deleteFileImg('"+objectType+"', "+dataItem.attachmentId+", '"+uniqueId2+"')\"><span>삭제</span></button></div>"
                     }
                 }
             ],
@@ -520,8 +521,8 @@ customElements.define("podo-upload", podoUpload);
 customElements.define("podo-grid-upload", podoGridUpload);
 customElements.define("podo-thumbnail-upload", podoThumbnailUpload);
 
-function deleteFile(attachmentId, gname) {
-    console.log(`파일 삭제: ${attachmentId}, ${gname}`);
+function deleteFile(objType, attachmentId, gname) {
+    console.log("파일 삭제", "objType :", objType, "attachmentId :", attachmentId, "gname", gname);
     // if (confirm("첨부파일을 삭제 하시겠습니까?")) { //첨부파일을 삭제 하시겠습니까?
     //     //로딩바 생성.
     //     //loadingOpen();

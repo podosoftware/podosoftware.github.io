@@ -9,6 +9,10 @@
     <script>
         // 메뉴 누르면 스크롤 + active
         $(function () {
+            // 처음 들어오자마자
+            $(".left-header-menu-wrap ol li a").removeClass("active");
+            $(".left-header-menu-wrap ol li").eq(0).find("a").addClass("active");
+
             $(".left-header-menu-wrap ol > li > a").on("click", function () {
                 var targetId = $(this).attr("href");
 
@@ -33,7 +37,7 @@
                         var id = currSection.attr('id');
                         navLinks.find("a").removeClass('active');
                         // console.log(id);
-                        $('.left-header-menu-wrap a[href="#' + id + '"]').addClass('active');
+                        $('.left-header-menu-wrap a[href="index.html#' + id + '"]').addClass('active');
                     }
                 });
             });

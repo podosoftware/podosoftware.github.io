@@ -24,7 +24,7 @@
 
         <link rel="stylesheet" href="../css/reset2.css" />
         <link rel="stylesheet" href="../css/admin/root_admin.css" />
-        <link rel="stylesheet" href="../css/kendo/2022.1.119/kendo.common.min.css" />
+        <link rel="stylesheet" href="../css/kendo/2025.1.211/bootstrap-3.css" />
         <!--    <link rel="stylesheet" href="../css/font.css">-->
         <link rel="stylesheet" href="../css/pd_kendo.css" />
         <link rel="stylesheet" href="../css/util.css" />
@@ -34,7 +34,9 @@
         <link rel="stylesheet" href="../css/guide.css" />
 
         <script src="../js/jquery/jquery-3.7.1.min.js"></script>
-        <script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>
+        <!--<script src="../js/kendo/2022.1.119/kendo.all.min.js"></script>-->
+        <script src="../js/kendo/2025.1.211/kendo.custom.min.js"></script>
+        <script src="../js/kendo/2025.1.211/telerik-license.js"></script>
         <script src="../js/kendo/2022.1.119/cultures/kendo.culture.ko-KR.min.js"></script>
         <script src="../js/kendo/kendo.messages.ko-KR.js"></script>
         <script src="../js/common2.js"></script>
@@ -48,6 +50,10 @@
         <script>
             // 메뉴 누르면 스크롤 + active
             $(function () {
+                // 처음 들어오자마자
+                $('.left-header-menu-wrap ol li a').removeClass('active');
+                $('.left-header-menu-wrap ol li').eq(0).find('a').addClass('active');
+
                 $('.left-header-menu-wrap ol > li > a').on('click', function () {
                     var targetId = $(this).attr('href');
 
@@ -72,7 +78,7 @@
                             var id = currSection.attr('id');
                             navLinks.find('a').removeClass('active');
                             // console.log(id);
-                            $('.left-header-menu-wrap a[href="#' + id + '"]').addClass('active');
+                            $('.left-header-menu-wrap a[href="index.html#' + id + '"]').addClass('active');
                         }
                     });
                 });
@@ -113,9 +119,9 @@
                         <li class="first info">
                             <span class="tab">가이드</span>
                             <ol>
-                                <li class="li_introduction"><a href="#introduction" class="active" data-hash="#introduction">소개</a></li>
-                                <li class="li_script"><a href="#script" data-hash="#script">script</a></li>
-                                <li class="li_css"><a href="#css" data-hash="#css">css</a></li>
+                                <li class="li_introduction"><a href="index.html#introduction" data-hash="#introduction">소개</a></li>
+                                <li class="li_script"><a href="index.html#script" data-hash="#script">script</a></li>
+                                <li class="li_css"><a href="index.html#css" data-hash="#css">css</a></li>
                             </ol>
                         </li>
                         <li class="two util">
