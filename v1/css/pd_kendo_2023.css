@@ -514,11 +514,10 @@ table.tabular tbody tr td strong{ float: left; line-height: 32px; font-size: 18p
 /*.k-multicheck-wrap .k-item label input[type="checkbox"]:checked + span:before { background: url("../images/runway/admin/icon_map.png") no-repeat -47px -61px;}*/
 .k-grid .k-grid-content tr:first-child td { border-top: 0;}
 .k-grid .impor-box { display: inline-block; padding: 5px 10px 6px; border-radius: 3px; background: #FFEBEA; font-size: 11px; font-weight: 500; color: #D43527; line-height: 100%; letter-spacing: -0.02em;}
-/* var 2022 2025 */
+/* var 2022 */
 .k-grid .k-cell-inner>.k-link { justify-content: center;}
 .k-header .k-grid-filter { top: 10px;}
 .k-filter-menu .k-action-buttons { margin: 0;}
-.k-numerictextbox { border: 1px solid var(--white-500); border-radius: 3px;}
 .k-grid .k-grid-content table tr td .k-numerictextbox input.k-input-inner,
 .k-numerictextbox input.k-input-inner { padding: 7px 3px; border-radius: 3px 0 0 3px; text-align: center;}
 .k-grid input.k-input-inner { height: auto;}
@@ -602,6 +601,8 @@ form.k-filter-menu .k-widget { width: 100%;}
 .k-grid .k-cell-inner>.k-link { justify-content: center;}
 .k-header .k-grid-filter { top: 10px;}
 .k-filter-menu .k-action-buttons { margin: 0;}
+.k-grid .k-grid-content table tr td .k-numerictextbox input.k-input-inner,
+.k-numerictextbox input.k-input-inner { padding: 7px 3px; border-radius: 3px 0 0 3px; text-align: center;}
 .k-grid .k-grid-content table tr td .k-numerictextbox .k-button,
 .k-numerictextbox .k-button { width: 100%; padding: 0; border: 0; background: #ffffff;}
 .k-grid .k-grid-content table tr td .k-numerictextbox .k-input-spinner,
@@ -789,7 +790,6 @@ div.k-grid-footer{ border: 0;}
 /* 2025 */
 .k-upload .k-dropzone, .k-upload .k-upload-dropzone { background: transparent;}
 .file-grid .k-grid-content.k-auto-scrollable { border-left: 1px solid #e8e8e8; border-bottom: 0;}
-.file-template.k-grid .k-grid-content table tr td { border-left: 0;}
 
 .grid-btn-box { display: flex; gap: 7px;}
 .grid-btn-box .btn_inner { margin: 0;}

@@ -528,7 +528,7 @@ function deleteFile(objType, attachmentId, gname) {
     //     //loadingOpen();
     //     $.ajax({
     //         type: 'POST',
-    //         url: '<%=com.podosw.web.util.ServletUtils.getContextPath(request)%>/comm/delete_my_attachment.do?output=json',
+    //         url: '/comm/delete_my_attachment.do?output=json',
     //         data: {attachmentId: attachmentId},
     //         success: function (response) {
     //             $("#"+gname).data('kendoGrid').dataSource.read();

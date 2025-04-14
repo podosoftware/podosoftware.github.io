@@ -52,7 +52,7 @@ class podoKendoEditor extends HTMLElement {
                     <li><label for="urlHeight">Height</label><input type="text" id="urlHeight" data-bind="value:imageHeight"/></li>
                     <li>
                         <label for="imgTxt">대체텍스트</label>
-                        <textarea name="imgTxt" id="imgTxt" class="k-textbox pd-w-full" data-bind="value:imageText" style="height: 90px;"></textarea>
+                        <textarea name="imgTxt" id="imgTxt" class="k-textbox pd-w-full" data-bind="value:imageText" style="height: 50px;"></textarea>
                     </li>
                 </ul>
                 <div class="bottom_btn">
@@ -72,7 +72,7 @@ class podoKendoEditor extends HTMLElement {
                     <li><label for="fileHeight">Height</label><input type="text" data-bind="value:imageFileHeight" id="fileHeight"/></li>
                     <li>
                         <label for="fileImgTxt">대체텍스트</label>
-                        <textarea name="fileImgTxt" id="fileImgTxt" class="k-textbox pd-w-full" data-bind="value:imageFileText" style="height: 90px;"></textarea>
+                        <textarea name="fileImgTxt" id="fileImgTxt" class="k-textbox pd-w-full" data-bind="value:imageFileText" style="height: 50px;"></textarea>
                     </li>
                 </ul>
                 <div class="bottom_btn">
@@ -175,7 +175,7 @@ class podoKendoEditor extends HTMLElement {
                 },
                 success : function(e){
                     if(e.response){
-                        var _src =
+                        // var _src =
                             $(".thumbnail").eq(1).find('img').attr({
                                 src: "/comm/image_view.do?objectType="+objectType+"&objectId="+$('#img_objectId').val()+"&thumbnail=true"
                             });
@@ -262,7 +262,7 @@ class podoKendoEditor extends HTMLElement {
                 var editor = $("#"+editorId).data("kendoEditor");
                 var imgTag = $('.thumbnail').eq(0).find('img')[0];
                 var _src = $(imgTag).attr("src");
-                if(_src == "/images/runway/none_photo2.gif") {
+                if(_src == "../images/runway/none_photo2.gif") {
                     alert("업로드할 이미지를 선택해주세요.");
                     return false;
                 } else {
@@ -276,7 +276,7 @@ class podoKendoEditor extends HTMLElement {
                 var editor = $("#"+editorId).data("kendoEditor");
                 var imgTag = $('.thumbnail').eq(1).find('img')[0];
                 var _src = $(imgTag).attr("src");
-                if(_src == "/images/runway/none_photo2.gif") {
+                if(_src == "../images/runway/none_photo2.gif") {
                     alert("업로드할 이미지를 선택해주세요.");
                     return false;
                 } else {
