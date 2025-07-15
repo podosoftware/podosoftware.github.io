@@ -1,1 +1,4 @@
 v1/css/fonts/spoqa-han-sans-main/.travis.yml
+
+*storybook.log
+storybook-static

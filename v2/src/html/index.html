@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 여기에 head.html을 인클루드 -->
+    @@include('../components/head.html')
+
+    <title>홈</title>
+
+</head>
+<body>
+    <!-- 자동완성 방지용  -->
+    <input type="text" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <input type="password" title="자동완성 방지용" style="width:0;height:0;position: absolute;">
+    <!-- 자동완성 방지용  -->
+
+    <div class="wrap">
+<!--    Header START    -->
+        <!-- 여기에 Header.html을 인클루드 -->
+        @@include('../components/header.html')
+
+<!--        <div id="header" data-include-path="header.html"></div>-->
+<!--    Header END    -->
+
+<!--    본문영역 START    -->
+        <main id="app"></main>
+<!--    본문영역 END    -->
+
+    </div>
+
+    <script src="../../js/menuLoader.js"></script>
+
+</body>
+</html>

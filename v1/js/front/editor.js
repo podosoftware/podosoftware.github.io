@@ -223,8 +223,8 @@ class podoKendoEditor extends HTMLElement {
     }
 
     insertImg(e) {
-        $('.thumbnail').eq(0).find('img').attr('src','../images/runway/none_photo2.gif');
-        $('.thumbnail').eq(1).find('img').attr('src','../images/runway/none_photo2.gif');
+        $('.thumbnail').eq(0).find('img').attr('src','/images/runway/none_photo2.gif');
+        $('.thumbnail').eq(1).find('img').attr('src','/images/runway/none_photo2.gif');
         $('#url').val("");
         $('#urlWidth').val("");
         $('#urlHeight').val("");
@@ -264,7 +264,7 @@ class podoKendoEditor extends HTMLElement {
                 var editor = $("#"+editorId).data("kendoEditor");
                 var imgTag = $('.thumbnail').eq(0).find('img')[0];
                 var _src = $(imgTag).attr("src");
-                if(_src == "../images/runway/none_photo2.gif") {
+                if(_src == "/images/runway/none_photo2.gif") {
                     alert("업로드할 이미지를 선택해주세요.");
                     return false;
                 } else {
@@ -278,7 +278,7 @@ class podoKendoEditor extends HTMLElement {
                 var editor = $("#"+editorId).data("kendoEditor");
                 var imgTag = $('.thumbnail').eq(1).find('img')[0];
                 var _src = $(imgTag).attr("src");
-                if(_src == "../images/runway/none_photo2.gif") {
+                if(_src == "/images/runway/none_photo2.gif") {
                     alert("업로드할 이미지를 선택해주세요.");
                     return false;
                 } else {
