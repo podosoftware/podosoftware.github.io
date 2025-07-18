@@ -47,6 +47,12 @@
         ]
     },
     {
+        "title": "Admin",
+        "children": [
+            { "title": "라이브러리", "link": "#lrbraryAdmin", "hash": "#lrbraryAdmin" }
+        ]
+    },
+    {
         "title": "COLOR",
         "children": [
             { "title": "Primary(theme)", "link": "color_primary.html" },

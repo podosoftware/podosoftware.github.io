@@ -1339,4 +1339,10 @@ a.skip:active, a.skip:focus {
 .radio-box-wrap { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 20px;}
 .radio-box-wrap li { flex-shrink: 0;}
 
+/*
+*--------------------------------------------*
+|                   code css                 |
+*--------------------------------------------*
+*/
+.pd-code-tag { background: linear-gradient(90deg, var(--color), var(--color2), var(--color3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent;}
 
