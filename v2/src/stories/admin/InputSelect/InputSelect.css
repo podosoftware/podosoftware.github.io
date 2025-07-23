@@ -1,0 +1,44 @@
+@import url("../rootAdmin.css");
+@import url("../commonAdmin.css");
+@import url("../admin.css");
+
+/****** Podosoftware CSS ******/
+/* 제목 옆 검색 */
+.cont_body-top { margin-bottom: 25px;}
+.cont_body-top .title { flex-shrink: 0; position: relative; margin-bottom: 0; font-size: 25px; color: #262527; font-weight: 500; letter-spacing: -0.05em; vertical-align: middle;}
+.cont_body-top .btn_search { flex-shrink: 0; margin-left: 0;}
+.cont_body-top > div.table_btn { flex-shrink: 0;}
+.cont_body-top > div.table_btn.fl-right { width: auto;}
+.cont_body-top .k-textbox { height: 42px;}
+.cont_body-top .select_wrap { display: inline-block; margin-left: 22.35px;}
+.cont_body-top .select_wrap > ul { display: flex; flex-wrap: nowrap;}
+.cont_body-top .select_wrap > ul li:first-child { margin-right: 5px;}
+.cont_body-top .search-wrap,
+.grid-top-box .search-wrap { display: inline-flex; align-items: center; gap: 7px; width: 100%;}
+.cont_body-top .search-wrap .input-box .btn_top { flex-shrink: 0; margin-left: 0;}
+.cont_body-top .search-wrap .k-dropdownlist,
+.cont_body-top .search-wrap .k-dropdown { height: 42px; font-size: 14px; font-weight: 500; line-height: 19px; box-sizing: border-box}
+.cont_body-top .k-dropdown .k-dropdown-wrap .k-input { line-height: 37px;}
+.cont_body-top .k-datepicker,
+.grid-top-box .k-datepicker { height: 42px; font-size: 13px; font-weight: 500; line-height: 19px; box-sizing: border-box}
+.cont_body-top .k-datepicker .k-picker-wrap .k-input { height: 40px; padding: 8px 0;}
+.cont_body-top .k-datepicker .k-picker-wrap .k-select { line-height: 40px;}
+.cont_body-top .date-box-wrap .label_text { line-height: 40px;}
+.cont_body-top .k-dropdown { height: 42px; font-size: 14px; font-weight: 500; line-height: 19px;}
+.cont_body-top .k-dropdown .k-dropdown-wrap .k-input { line-height: 37px;}
+.cont_body-top .radio-box-wrap .search-wrap > li { display: inline-flex; gap: 7px; align-items: center;}
+.cont_body-top .radio-box-wrap .search-wrap > li > span,
+.cont_body-top .radio-box-wrap .search-wrap > li .btn_search { flex-shrink: 0;}
+.cont_body-top .radio-box-wrap .search-wrap > li .btn_search { margin: 0;}
+.cont_body-top .search-wrap li.text > span{ display: inline-block; flex-shrink: 0; margin-right: 15px; font-size: 14px; font-weight: 500; color: #262527; line-height: 19px; letter-spacing: -0.02em;}
+.cont_body-top .search-wrap .pd-flex-.pd-gap7 .date-box-wrap { width: 300px;}
+#content .cont_body .title { flex-shrink: 0;}
+.cont_body-top.pd-flex- { display: flex; align-items: center; justify-content: space-between;}
+.cont_body-top.pd-flex- > div.table_btn { flex-shrink: 0; width: auto;}
+.cont_body-top .radio-box-wrap { display: inline-flex; align-items: center; width: auto; margin-left: 15px;}
+.cont_body-topChasu2 { display: flex; justify-content: space-between;}
+.cont_body-topChasu2 > div.table_btn { width: 85%;}
+.cont_body-topChasu2 .search-wrap { margin-left: 20px;}
+.cont_body-topChasu2 .search-wrap > li:first-child { flex-shrink: 0;}
+.cont_body-topChasu2 .search-wrap .last { display: flex;}
+

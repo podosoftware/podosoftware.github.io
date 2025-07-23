@@ -1,70 +1,63 @@
 import { fn } from 'storybook/test';
 
-import { createButton } from './ContentButton';
+import {ContentsTopButton} from './ContentsTopButton';
+import {ContentsBottomButton} from './ContentsBottomButton';
+import {ContentsTopSearchButton} from './ContentsTopSearchButton';
+import {ContentsTableTopButton} from './ContentsTableTopButton';
+import {ContentsSearchButton} from './ContentsSearchButton';
+import {PopupBottomButton} from './PopupBottomButton';
 
 export default {
     title: 'Components/Admin/Button/콘텐츠 버튼',
     tags: ['autodocs'],
-    render: ({ label, ...args }) => createButton({ label, ...args }),
-    argTypes: {
-        backgroundColor: { control: 'color' },
-        label: { control: 'text' },
-        onClick: { action: 'onClick' },
-        primary: { control: 'boolean' },
-        size: {
-            control: { type: 'select' },
-            options: ['small', 'medium', 'large'],
-        },
-    },
-    args: { onClick: fn() },
 };
 
 export const 최상단 = {
     args: {
         label: '최상단 버튼',
-        type: "top",
-        size: 'medium',
+        disabled: false,
     },
+    render: (args) => ContentsTopButton(args),
 };
 
 export const 최하단 = {
     args: {
         label: '최하단 버튼',
-        type: "bottom",
-        size: 'medium',
+        disabled: false,
     },
+    render: (args) => ContentsBottomButton(args),
 };
 
 export const 최상단검색 = {
     args: {
         label: '최상단 검색 버튼',
-        type: "top search",
-        size: 'medium',
+        disabled: false,
     },
+    render: (args) => ContentsTopSearchButton(args),
 };
 
 export const 테이블상단 = {
     args: {
         label: '테이블 상단 버튼',
-        type: "top table",
-        size: 'medium',
+        disabled: false,
     },
+    render: (args) => ContentsTableTopButton(args),
 };
 
 export const 검색 = {
     args: {
-        label: '검색 버튼',
-        type: "search",
-        size: 'medium',
+        resetLabel: '초기화',
+        pointLabel: '검색'
     },
+    render: (args) => ContentsSearchButton(args),
 };
 
 export const 팝업최하단 = {
     args: {
-        label: '팝업 최 하단 버튼',
-        type: "bottom popup",
-        size: 'medium',
+        defaultLabel: '취소',
+        pointLabel: '저장'
     },
+    render: (args) => PopupBottomButton(args),
 };
 
 // 📌 Docs를 스토리로 등록
