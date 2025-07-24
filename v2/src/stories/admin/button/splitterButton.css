@@ -2,6 +2,8 @@
 @import url("../commonAdmin.css");
 @import url("../admin.css");
 
+.icon-search { width: 20px; height: 20px; background: url(../../assets/images/runway/admin/icon_search.png) no-repeat -20px -22px;}
+
 /****** Podosoftware CSS ******/
 /*
 *--------------------------------------------*

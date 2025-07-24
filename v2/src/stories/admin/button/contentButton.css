@@ -1,3 +1,7 @@
+@import url("../rootAdmin.css");
+@import url("../commonAdmin.css");
+@import url("../admin.css");
+
 [class*="btn-"] { cursor: pointer;}
 /*버튼_top기본*/
 .btn_top{ height: 42px; margin-left: 5px; padding: 0 16px; letter-spacing: -1px; border-radius: 5px; border: 1px solid #d1d1d1; background: #fff; box-sizing: border-box; cursor: pointer; }
