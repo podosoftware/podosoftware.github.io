@@ -45,6 +45,25 @@
     --color-text-disabled: #d6d6d6;
     --color-text-placeholder: #757580;
 
+    --bg-table-base: #FFFFFF;
+    --bg-table-variant-1: #fcfcfc;
+    --bg-table-variant-2: #F8F8F8;
+    --bg-table-variant-3: #F8F6FB;
+
+    --color-bg-state-default:  #8B5CD4;
+    --color-bg-state-warning:  #FA7C35;
+    --color-bg-state-critical: #F86A0E;
+    --color-bg-state-info:     #2269D1;
+    --color-bg-state-pending:  #5C61D4;
+    --color-bg-state-success:  #80B430;
+    --color-bg-state-disabled: #EEEEEE;
+
+    --color-button-line: #D1D1D1;
+    --color-button-blue-over: #4549AB;
+    --color-button-blue-base: #5C61D4;
+    --color-button-orange-over: #F86A0E;
+    --color-button-orange-base: #FA7C35;
+
     --black-300: #B8B8B8;
     --black-400: #8E8E8E;
     --black-500: #555555;

@@ -105,3 +105,159 @@ export const textColorTokens = [
         className: 'color-text-placeholder',
     }
 ];
+
+export const tableLineColorTokens = [
+    {
+        name: 'color-text-strongest',
+        token: '--color-text-strongest',
+        hex: '#f5f5f5',
+        className: 'color-text-strongest',
+    },
+    {
+        name: 'color-text-strong',
+        token: '--color-text-strong',
+        hex: '#ebecf0',
+        className: 'color-text-strong',
+    },
+    {
+        name: 'color-text-default',
+        token: '--color-text-default',
+        hex: '#e8e8e8',
+        className: 'color-text-default',
+    },
+    {
+        name: 'color-text-muted',
+        token: '--color-text-muted',
+        hex: '#dddddd',
+        className: 'color-text-muted',
+    },
+    {
+        name: 'color-text-secondary',
+        token: '--color-text-secondary',
+        hex: '#d1d1d1',
+        className: 'color-text-secondary',
+    },
+    {
+        name: 'color-text-tertiary',
+        token: '--color-text-tertiary',
+        hex: '#dad7df',
+        className: 'color-text-tertiary',
+    },
+    {
+        name: 'color-text-disabled',
+        token: '--color-text-disabled',
+        hex: '#dfe3e9',
+        className: 'color-text-disabled',
+    },
+    {
+        name: 'color-text-placeholder',
+        token: '--color-text-placeholder',
+        hex: '#ebecf0',
+        className: 'color-text-placeholder',
+    }
+];
+
+export const tableBgColorTokens = [
+    {
+        name: 'bg-table-base',
+        token: '--bg-table-base',
+        hex: '#FFFFFF',
+        className: 'bg-table-base',
+    },
+    {
+        name: 'bg-table-variant-1',
+        token: '--bg-table-variant-1',
+        hex: '#fcfcfc',
+        className: 'bg-table-variant-1',
+    },
+    {
+        name: 'bg-table-variant-2',
+        token: '--bg-table-variant-2',
+        hex: '#F8F8F8',
+        className: 'bg-table-variant-2',
+    },
+    {
+        name: 'bg-table-variant-3',
+        token: '--bg-table-variant-3',
+        hex: '#F8F6FB',
+        className: 'bg-table-variant-3',
+    }
+];
+
+export const statesBgColorTokens = [
+    {
+        name: 'color-bg-state-default',
+        token: '--color-bg-state-default',
+        hex: '#8B5CD4',
+        className: 'color-bg-state-default',
+    },
+    {
+        name: 'color-bg-state-warning',
+        token: '--color-bg-state-warning',
+        hex: '#FA7C35',
+        className: 'color-bg-state-warning',
+    },
+    {
+        name: 'color-bg-state-critical',
+        token: '--color-bg-state-critical',
+        hex: '#F86A0E',
+        className: 'color-bg-state-critical',
+    },
+    {
+        name: 'color-bg-state-info',
+        token: '--color-bg-state-info',
+        hex: '#2269D1',
+        className: 'color-bg-state-info',
+    },
+    {
+        name: 'color-bg-state-pending',
+        token: '--color-bg-state-pending',
+        hex: '#5C61D4',
+        className: 'color-bg-state-pending',
+    },
+    {
+        name: 'color-bg-state-success',
+        token: '--color-bg-state-success',
+        hex: '#80B430',
+        className: 'color-bg-state-success',
+    },
+    {
+        name: 'color-bg-state-disabled',
+        token: '--color-bg-state-disabled',
+        hex: '#EEEEEE',
+        className: 'color-bg-state-disabled',
+    }
+];
+
+export const buttonColorTokens = [
+    {
+        name: 'color-button-line',
+        token: '--color-button-line',
+        hex: '#D1D1D1',
+        className: 'color-button-line',
+    },
+    {
+        name: 'color-button-blue-over',
+        token: '--color-button-blue-over',
+        hex: '#4549AB',
+        className: 'color-button-blue-over',
+    },
+    {
+        name: 'color-button-blue-base',
+        token: '--color-button-blue-base',
+        hex: '#5C61D4',
+        className: 'color-button-blue-base',
+    },
+    {
+        name: 'color-button-orange-over',
+        token: '--color-button-orange-over',
+        hex: '#F86A0E',
+        className: 'color-button-orange-over',
+    },
+    {
+        name: 'color-button-orange-base',
+        token: '--color-button-orange-base',
+        hex: '#FA7C35',
+        className: 'color-button-orange-base',
+    }
+];

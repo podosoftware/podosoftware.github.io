@@ -37,3 +37,23 @@ button:focus { outline: 2px solid #000; outline-offset: 0; box-shadow: 0 0 0 3px
 .palette-box .palette.color-text-disabled { background: var(--color-text-disabled);}
 .palette-box .palette.color-text-placeholder { background: var(--color-text-placeholder);}
 
+.palette-box .palette.bg-table-base { background: var(--bg-table-base);}
+.palette-box .palette.bg-table-variant-1 { background: var(--bg-table-variant-1);}
+.palette-box .palette.bg-table-variant-2 { background: var(--bg-table-variant-2);}
+.palette-box .palette.bg-table-variant-3 { background: var(--bg-table-variant-3);}
+
+.palette-box .palette.color-bg-state-default { background: var(--color-bg-state-default);}
+.palette-box .palette.color-bg-state-warning { background: var(--color-bg-state-warning);}
+.palette-box .palette.color-bg-state-critical { background: var(--color-bg-state-critical);}
+.palette-box .palette.color-bg-state-info { background: var(--color-bg-state-info);}
+.palette-box .palette.color-bg-state-pending { background: var(--color-bg-state-pending);}
+.palette-box .palette.color-bg-state-success { background: var(--color-bg-state-success);}
+.palette-box .palette.color-bg-state-disabled { background: var(--color-bg-state-disabled);}
+
+.palette-box .palette.color-button-line { background: var(--color-button-line);}
+.palette-box .palette.color-button-blue-over { background: var(--color-button-blue-over);}
+.palette-box .palette.color-button-blue-base { background: var(--color-button-blue-base);}
+.palette-box .palette.color-button-orange-over { background: var(--color-button-orange-over);}
+.palette-box .palette.color-button-orange-base { background: var(--color-button-orange-base);}
+
+
