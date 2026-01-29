@@ -26,6 +26,17 @@
 
     /* Color */
     /*  Primary(theme)  */
+    /* --primary-50: #F8F9FD;
+    --primary-100: #F2F2FC;
+    --primary-200: #EBEBFA;
+    --primary-300: #999CE4;
+    --primary-400: #7A7EE8;
+    --primary-500: #5C61D4;
+    --primary-600: #4549AB;
+    --primary-700: #37396D;
+    --primary-800: #0A0B25; */
+    
+    /*  Primary(theme)  */
     --color-lightest-primary: #F8F9FD;
     --color-lighter-primary: #F2F2FC;
     --color-light-primary: #EBEBFA;

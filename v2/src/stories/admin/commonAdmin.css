@@ -126,3 +126,5 @@ textarea.k-textbox::placeholder { font-weight: 400; color: #8E8E8E;}
 .radio-box-wrap:after { content: ''; display: block; clear: both;}
 .radio-box-wrap li { display: inline-block; flex-shrink: 0; float: left; padding-left: 20px;}
 .radio-box-wrap li:first-child { padding-left: 0;}
+
+.ico-copy { background-image: url("../assets/images/icon/copy2.svg"); background-repeat: no-repeat; background-size: contain;}

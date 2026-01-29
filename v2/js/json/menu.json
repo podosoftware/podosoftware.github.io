@@ -29,20 +29,6 @@
                 "title": "라이브러리",
                 "link": "#library",
                 "hash": "#library"
-            },
-            {
-                "title": "UTIL",
-                "children": [
-                    { "title": "font", "link": "util.html", "hash": "#font" },
-                    { "title": "margin/padding", "link": "util_mgPd.html", "hash": "#mgPd" },
-                    { "title": "줄임표", "link": "util_clamp.html", "hash": "#clamp" },
-                    { "title": "flex", "link": "util_flex.html", "hash": "#flex" },
-                    { "title": "줄임표", "link": "util_clamp.html", "hash": "#clamp" },
-                    { "title": "flex", "link": "util_flex.html", "hash": "#flex" },
-                    { "title": "hide", "link": "util_hide.html", "hash": "#hide" },
-                    { "title": "No Data", "link": "util_noData.html", "hash": "#noData" },
-                    { "title": "Etc", "link": "util_etc.html" }
-                ]
             }
         ]
     },
@@ -50,115 +36,6 @@
         "title": "Admin",
         "children": [
             { "title": "라이브러리", "link": "#lrbraryAdmin", "hash": "#lrbraryAdmin" }
-        ]
-    },
-    {
-        "title": "COLOR",
-        "children": [
-            { "title": "Primary(theme)", "link": "color_primary.html" },
-            { "title": "Text", "link": "color_text.html" },
-            { "title": "Background&Line", "link": "color_bg.html" },
-            { "title": "badge", "link": "color_badge.html" },
-            { "title": "etc", "link": "color_etc.html" }
-        ]
-    },
-    {
-        "title": "BUTTON",
-        "children": [
-            { "title": "size", "link": "Button.html", "hash": "#size" },
-            { "title": "popup", "link": "Button_popupBtn.html", "hash": "#popup" },
-            { "title": "table button", "link": "Button_tableBtn.html", "hash": "#tableBtn" }
-        ]
-    },
-    {
-        "title": "Input/Select",
-        "children": [
-            { "title": "Input box", "link": "input.html", "hash": "#input" },
-            { "title": "Select", "link": "input_select.html", "hash": "#select" },
-            { "title": "Checkbox/Radio", "link": "input_radioChk.html", "hash": "#radioCheck" },
-            { "title": "Textarea box", "link": "input_textBox.html", "hash": "#textareaBox" },
-            { "title": "input Size", "link": "input_size.html", "hash": "#inputSize" },
-            { "title": "input Search", "link": "input_search.html", "hash": "#inputSearch" }
-        ]
-    },
-    {
-        "title": "Popup",
-        "children": [
-            { "title": "Style", "link": "popup.html", "hash": "#style" },
-            { "title": "Popup in table", "link": "popup_popupTable.html" }
-        ]
-    },
-    {
-        "title": "Breakpoint",
-        "children": [
-            { "title": "Breakpoint", "link": "breakpoint.html" }
-        ]
-    },
-    {
-        "title": "Login",
-        "children": [
-            { "title": "Login", "link": "login.html" }
-        ]
-    },
-    {
-        "title": "Tip",
-        "children": [
-            { "title": "Tips", "link": "tips.html", "hash": "#tip" }
-        ]
-    },
-    {
-        "title": "별점",
-        "children": [
-            { "title": "별점", "link": "star.html", "hash": "#star" }
-        ]
-    },
-    {
-        "title": "TAB",
-        "children": [
-            { "title": "Tab", "link": "tab.html", "hash": "#tabStyle" },
-            { "title": "Kendo Tab", "link": "tab_kendoTab.html", "hash": "#tabKendo" },
-            { "title": "Filter", "link": "tab_filter.html", "hash": "#filter" },
-            { "title": "Filter 교육신청", "link": "tab_filterEduList.html", "hash": "#filterEduList" }
-        ]
-    },
-    {
-        "title": "테이블",
-        "children": [
-            { "title": "table", "link": "table.html" },
-            { "title": "Kendo Grid", "link": "table_grid.html" }
-        ]
-    },
-    {
-        "title": "리스트",
-        "children": [
-            { "title": "메인", "link": "edu.html", "hash": "#main" },
-            { "title": "교육신청", "link": "edu_eduApply.html", "hash": "#eduApply" },
-            { "title": "나의강의실 수강중", "link": "edu_myClassIng.html", "hash": "#myClassIng" },
-            { "title": "나의강의실 종료", "link": "edu_myClassEnd.html", "hash": "#myClassEnd" },
-            { "title": "교육계획 현황", "link": "edu_myCdp.html", "hash": "#myCdp" }
-        ]
-    },
-    {
-        "title": "아코디언",
-        "children": [
-            { "title": "서브페이지", "link": "accordion.html", "hash": "#accordion" },
-            { "title": "강의목차", "link": "accordion_list.html", "hash": "#accordion2" }
-        ]
-    },
-    {
-        "title": "Chart",
-        "children": [
-            { "title": "bullet", "link": "chartBullet.html" },
-            { "title": "column", "link": "chartColumn.html" },
-            { "title": "donut", "link": "chartDonut.html" },
-            { "title": "donut half", "link": "chartDonutHalf.html" },
-            { "title": "radarArea", "link": "chartRadarArea.html" }
-        ]
-    },
-    {
-        "title": "Badge",
-        "children": [
-            { "title": "Badge", "link": "badge.html" }
         ]
     }
 ]

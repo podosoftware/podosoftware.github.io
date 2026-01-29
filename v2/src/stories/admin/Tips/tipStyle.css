@@ -1,0 +1,133 @@
+@import url("../rootAdmin.css");
+@import url("../commonAdmin.css");
+@import url("../admin.css");
+@import url("../util.css");
+@import url("../pd_kendo.css");
+
+/*
+*--------------------------------------------*
+|                   Tip                      |
+*--------------------------------------------*
+*/
+/*운영관리_화상강의 Tip박스*/
+.tip-box{ display: inline-block; width: calc(100% - 40px); height: auto; padding: 18px 20px; margin: 0 0 20px; border: 1px solid var(--white-500); box-sizing: border-box;}
+.tip-box > span{ display: inline-block; float: none; width: 40px; height: 18px; line-height: 17px; margin-bottom: 10px; padding-bottom: 1px; text-align: center; font-size: 11px; color: #fff; font-weight: bold; letter-spacing: -0.02em; border-radius: 30px; background: #7A7EE8;}
+.tip-box > ul{ float: none; /*width: calc(100% - 60px);*/ width: 100%;}
+.tip-box > ul > li{ width: 100%; margin-bottom: 8px; text-align: left; line-height: 20px; font-size: 13px; color: #555555; font-weight: 400; letter-spacing: -0.02em; word-break: keep-all;}
+.tip-box > ul > li:last-child{ margin-bottom: 0;}
+.tip-box > ul > li > span{ display: inline-block; width: auto; height: 22px; padding: 0 8px; margin-right: 5px; text-align: center; line-height: 20px; font-size: 12px; color: #444; font-weight: 400; letter-spacing: -0.02em; border: 1px solid #676872; background: #fff; box-sizing: border-box;}
+/* 과정관리 - 이미지 tip박스 */
+.schdls table { border-left: 1px solid var(--white-500);}
+.schdls .btn_input{ margin-left: 0;}
+.schdls .btn-down{ width: 32px; height: 32px; border: 1px solid #D1D1D1; border-radius: 3px; background: #ffffff; text-align: center; cursor: pointer;}
+.schdls .btn-down .icon { vertical-align: middle;}
+.schdls.k-grid .k-grid-content{ height: auto!important;}
+/*#cmptDivWrap #cmpltGrid.k-grid .k-grid-content{ height: auto!important;}*/
+
+/*운영관리_화상강의 출석관리팝업*/
+.attend-div-wrap { display: flex; justify-content: space-between;}
+#attendMng > div.attend-div{ width: 100%; box-sizing: border-box; }
+#attendMng > div#zoomDiv{ padding-right: 9px; padding-left: 25px;}
+#attendMng > div#userDiv{ padding-right: 25px; padding-left: 9px;}
+#attendMng div.attend-div .title-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;}
+#attendMng div.attend-div .title-box .info-txt { display: flex; align-items: center; width: 48%;}
+/*#attendMng div.attend-div .title-box .info-txt .icon { vertical-align: top;}*/
+#attendMng div.attend-div .title-box .info-txt span { color: #8E8E8E;}
+#attendMng div.attend-div p.attend-tit{ text-align: left; line-height: 27px; font-size: 18px; color: #232323; font-weight: 500; letter-spacing: -0.02em;}
+#attendMng div.attend-div p.attend-tit > span{ display: inline-block; float: left; padding: 0 10px; margin-right: 5px; line-height: 26px; text-align: center; font-size: 12px; font-weight: 500; letter-spacing: -0.02em; border-radius: 20px; box-sizing: border-box;}
+#attendMng div#zoomDiv p.attend-tit > span{ color: #FA7C35; border: 1px solid #FA7C35;}
+#attendMng div#userDiv p.attend-tit > span{ color: var(--primary-500); border: 1px solid var(--primary-500);}
+#attendMng input.zoom-radio{ display: none;}
+#attendMng input.zoom-radio + label{ /* float: left; */ margin-bottom: 0; text-align: left; font-size: 13px; color: #444; font-weight: 400; letter-spacing: -0.02em;}
+#attendMng input.zoom-radio + label > span{ display: inline-block; float: left; width: 18px; height: 18px; margin-right: 10px; border-radius: 100%; border: 1px solid #dadada; background: #fff; box-sizing: border-box;}
+#attendMng input.zoom-radio:checked + label > span{ background: url(/images/sub/bg_checked.png) no-repeat 50% 50%;}
+#attendMng > div.attend-div .attend-grid{ width: 100%;}
+/*#attendMng > div.attend-div .attend-grid.k-grid .k-grid-header{ }*/
+/*#attendMng > div.attend-div .attend-grid.k-grid .k-grid-header .k-grid-header-wrap table th{ border: 1px solid #dfdfdf; border-top: none;}*/
+/*#attendMng > div.attend-div .attend-grid.k-grid .k-grid-content{ border-bottom: none;}*/
+#attendMng > div.attend-div .attend-grid.k-grid .k-grid-content table tr{ background: #fff;}
+/*#attendMng > div.attend-div .attend-grid.k-grid .k-grid-content table tr td{ border: 1px solid #dfdfdf; border-top: none;}*/
+#attendMng > div.attend-div .attend-grid.k-grid .k-grid-norecords{ height: 350px; line-height: 350px;}
+
+.surv-ansr .not-data-cont,
+.survNoRstDiv .not-data-cont { display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; text-align: center;}
+.surv-ansr .not-data-cont span,
+.survNoRstDiv .not-data-cont span { display: block; width: 100%; font-size: 13px; color: #8E8E8E; text-align: center; line-height: 30px; letter-spacing: -0.02em;}
+
+.copy-url{ display: inline-block; width: 32px; height: 32px; margin-left: 5px; border: 1px solid #D1D1D1; border-radius: 3px; background: #ffffff; cursor: pointer;}
+.copy-url .icon { vertical-align: middle;}
+.icon-copyUrl { width: 21px; height: 21px; background: url("../../images/runway/admin/icon_copy_url.png") no-repeat 0 0;}
+
+/*과정관리_과정정보 이미지파일*/
+.img-zone-wrap { display: flex; margin-bottom: 10px;}
+.img-zone{ display: inline-block; margin-right: 10px; border-radius: 3px; box-sizing: border-box;}
+.img-zone.thumbnail-zone{ width: calc(100% - 20px);}
+.img-zone.detail-zone{ width: calc(100% - 20px);}
+.img-zone > .img-box{ position: relative; width: 100%; height: 192px; min-height: 192px; line-height: 192px; text-align: center; border-radius: 3px 3px 0 0; border: 1px solid var(--white-500); border-bottom: none; background: #fbfbfb; box-sizing: border-box; overflow: hidden;}
+.img-zone > .img-box > img{ display: block; width: 380px; height: 224px; min-height: 100%; margin: 0 auto; line-height: 135px; vertical-align:middle;}
+.img-zone > button{ width: 100%; padding: 7px 12px; background: var(--primary-100); line-height: 17px; text-align: center; font-size: 13px; color: var(--primary-600); font-weight: 500; border-radius: 0 0 3px 3px; border: 1px solid var(--primary-100); box-sizing: border-box;}
+.img-zone > button:hover{ border: 1px solid #D1D1D1; background: #ffffff;}
+.img-zone > button:disabled { border: 1px solid #F8F8F8; background: #F8F8F8;}
+.img-zone > button:focus { border: 1px solid #D1D1D1; background: #FFFFFF; color: #404040;}
+.empty-img{ position: absolute; top: 50%; width: 100%; text-align: center; background: #fbfbfb; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); box-sizing: border-box;}
+.empty-img > img{ display: block; margin: 0 auto 12px;}
+.empty-img > p{ line-height: 20px; font-size: 12px; color: #b0b0b0; font-weight: 400; letter-spacing: -0.02em;}
+
+.img-zone-wrap2 { display: block;}
+.img-zone-wrap2 .img-zone.detail-zone { width: 100%; margin-right: 0; margin-bottom: 10px;}
+.img-zone-wrap2 .tip-box { width: 100%; margin: 0;}
+.img-zone-wrap2 .img-zone > .img-box { height: 224px; min-height: 171px; line-height: 171px;}
+
+.img-tip-box{ margin: 0; height: 170px;}
+.img-tip-box.thumb-tip-box{ width: calc(70% - 15px);}
+.img-tip-box.detail-tip-box{ width: calc(50% - 15px);}
+
+#original_size_window{ overflow-x: auto; line-height: 560px;}
+#original_size_window #originalImg{ display: block; margin: 0 auto;}
+#selectImgGrid.k-grid .k-pager-wrap{ background: #fff;}
+
+.info-txt { display: flex;}
+.info-txt .icon { margin-right: 5px; vertical-align: middle;}
+.info-txt span { display: inline-block; width: calc(100% - 30px); font-size: 13px; font-weight: normal; color: #757580; line-height: 19px; letter-spacing: -0.02em; vertical-align: text-top; word-break: keep-all;}
+.info-txt-gray { color: #8E8E8E; line-height: 18px;}
+.info-txt-gray.info-txt span { color: #8E8E8E; line-height: 24px;}
+.info-txt-box { display: flex; gap: 10px; padding: 15px; border-radius: 5px; background: #F8F9FD;}
+.info-txt-rong span { vertical-align: top;}
+
+.cont-tip-box { display: flex; justify-content: flex-start; align-items: flex-start; width: 100%; padding: 20px; border-radius: 5px; background: #F8F9FD; box-sizing: border-box;}
+.cont-tip-box .tip-title { position: relative; padding-top: 10px; margin-right: 50px; font-size: 14px; font-weight: 500; color: #0A0B25; line-height: 19px;}
+.cont-tip-box .tip-title:after { content: ''; display: inline-block; position: absolute; top: 0; left: 0; width: 14px; height: 2px; background: #0A0B25;}
+.cont-tip-box.cmptDiv-tip-box ul li { padding-top: 5px; font-size: 13px; font-weight: normal; color: #555555; line-height: 25px; letter-spacing: -0.02em; word-break: keep-all;}
+.cont-tip-box ul li:first-child { padding-top: 0;}
+.cont-tip-box.cmptDiv-tip-box ul li > .pd-tag { display: inline-block; margin: 0 5px; padding: 0 8px; border: 1px solid #D1D1D1; border-radius: 3px; background: #FFFFFF; font-size: 12px; font-weight: 500; color: var(--color-dark-primary); line-height: 24px; letter-spacing: -0.02em;}
+.cont-tip-box ul li .icon-box,
+.cont-tip-box.cmptDiv-tip-box ul li > span.icon-box { padding: 0 4px;}
+.cont-tip-box ul li .icon-download { margin-bottom: 4px; vertical-align: middle;}
+.cont-tip-box .txt { display: inline-block; margin-left: 7px; font-size: 14px; font-weight: normal; color: #555555; line-height: 20px; letter-spacing: -0.02em; vertical-align: middle;}
+.cont-tip-box2 p { width: 100%;}
+.cont-tip-box2 .info-txt .icon { margin-top: -3px;}
+
+
+/*
+*--------------------------------------------*
+|                   Tooltip                  |
+*--------------------------------------------*
+*/
+.tooltip-wrap { display: none; position: absolute; top: 50%; left: 50%; z-index: 2; width: 161px; padding: 17px 15px; border-radius: 8px; background: rgba(0, 0, 0, 0.7); text-align: center; transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);}
+.tooltip-wrap p { margin-top: 10px; font-size: 1.2em; font-weight: 500; color: #FFFFFF; line-height: 24px; letter-spacing: -0.02em;}
+.tip-wrap { display: inline-block; position: relative; z-index: 2; margin-top: -5px; margin-left: 9.25px; vertical-align: middle;}
+.title_box{ position: relative; display: none; width: auto; height: auto; white-space: nowrap; padding: 15px 30px 15px 15px; border-radius: 8px; border: 1px solid #E8E8E8; background: #fff; box-shadow: 0 0 7px rgba(0, 0, 0, 0.05), 4px 4px 10px rgba(0, 0, 0, 0.08); box-sizing: border-box; position: absolute; top: 22px; left: 0; z-index: 99; }
+.title_box > span{ position: absolute; top: -18px; left: 35px; }
+.title_box .tit{ font-size: 16px; color: #4549AB; font-weight: 700; margin-bottom: 4px; line-height: 29px;}
+.title_box .px{ font-size: 13px; font-weight: 500; line-height: 20px; color: #757580; letter-spacing: -0.02em;}
+.title_box .px2 .px2_tit{ margin-top: 10px; color: #000; font-weight: 500; letter-spacing: 0px; }
+.title_box table{ width: 100%; margin-top: 5px; border: 1px solid #EBEBEB; }
+.title_box table th{ font-size: 13px; font-weight: 500; color: #8E8E8E; background: #FCFCFC; border-bottom: 1px solid #E8E8E8; text-align: center; line-height: 15px;}
+.title_box table td{ font-size: 13px; font-weight: normal; color: #404040; border: 1px solid #EBEBEB; line-height: 19px;}
+.title_box button { position: absolute; top: 15px; right: 15px; border: 0; background: transparent; box-shadow: none;}
+.title.pd-flex- { display: inline-flex; align-items: center;}
+.title.pd-flex- .tip-wrap { margin-top: 0;}
+.title.pd-flex- .search-wrap { margin-left: 20px;}
+.title.pd-flex- .search-wrap form { display: flex;}
+
+.kw-lis-ci .lis .btn-copy + span { display: inline-block; margin-left: 10px;}
