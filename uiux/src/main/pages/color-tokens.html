@@ -1,0 +1,193 @@
+<!-- 브레드크럼 -->
+<nav class="breadcrumb">
+  <span>홈</span>
+  <span class="breadcrumb-sep">›</span>
+  <span>디자인 토큰</span>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-cur">컬러 토큰</span>
+</nav>
+
+<!-- 히어로 -->
+<div class="page-hero" data-label="Color">
+  <div class="hero-eyebrow"><span></span>Design Tokens</div>
+  <h1 class="hero-title">컬러 <strong>토큰</strong></h1>
+  <p class="hero-desc">색상은 CSS 변수로 중앙 관리합니다. 코드에서 hex값을 직접 사용하지 말고, 반드시 토큰을 참조하세요.</p>
+  <div class="hero-meta">
+    <span>
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="2" width="12" height="11" rx="1.5"/><line x1="1" y1="6" x2="13" y2="6"/><line x1="4.5" y1="4" x2="4.5" y2="1"/><line x1="9.5" y1="4" x2="9.5" y2="1"/></svg>
+      2025-01-15
+    </span>
+    <span>
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><polyline points="7,4 7,7 9.5,9"/></svg>
+      6 min read
+    </span>
+    <span>v3.0에서 업데이트됨</span>
+  </div>
+</div>
+
+<!-- 콘텐츠 -->
+<div id="doc-content">
+
+  <h2 class="sec" id="s-primary"><span class="sec-num">01</span>Primary Palette</h2>
+  <p class="prose">브랜드 컬러 <code>Slate Blue</code> 스케일입니다. <code>--primary-500</code>이 기준값이며, 숫자가 클수록 어두워집니다.</p>
+
+  <div class="palette">
+    <div class="pal-cell" style="background:#F8F9FD"><div class="pal-label" style="color:#aaa"><div class="pal-n">50</div><div class="pal-hex">#F8F9FD</div></div></div>
+    <div class="pal-cell" style="background:#F2F2FC"><div class="pal-label" style="color:#999"><div class="pal-n">100</div><div class="pal-hex">#F2F2FC</div></div></div>
+    <div class="pal-cell" style="background:#EBEBFA"><div class="pal-label" style="color:#999"><div class="pal-n">200</div><div class="pal-hex">#EBEBFA</div></div></div>
+    <div class="pal-cell" style="background:#999CE4"><div class="pal-label" style="color:#fff"><div class="pal-n">300</div><div class="pal-hex">#999CE4</div></div></div>
+    <div class="pal-cell" style="background:#7A7EE8"><div class="pal-label" style="color:#fff"><div class="pal-n">400</div><div class="pal-hex">#7A7EE8</div></div></div>
+    <div class="pal-cell" style="background:#5C61D4;outline:2px solid #1a1714;outline-offset:-2px"><div class="pal-label" style="color:#fff"><div class="pal-n" style="font-weight:700">500 ★</div><div class="pal-hex">#5C61D4</div></div></div>
+    <div class="pal-cell" style="background:#4549AB"><div class="pal-label" style="color:#fff"><div class="pal-n">600</div><div class="pal-hex">#4549AB</div></div></div>
+    <div class="pal-cell" style="background:#37396D"><div class="pal-label" style="color:#ddd"><div class="pal-n">700</div><div class="pal-hex">#37396D</div></div></div>
+    <div class="pal-cell" style="background:#0A0B25"><div class="pal-label" style="color:#666"><div class="pal-n">800</div><div class="pal-hex">#0A0B25</div></div></div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-label">root-tokens.css</div>
+    <div class="code-block">
+      <div class="code-topbar">
+        <span class="code-file">assets/css/tokens/root-tokens.css</span>
+        <button class="copy-btn" onclick="copyCode(this,'cb1')">copy</button>
+      </div>
+      <div class="code-body"><pre id="cb1"><span class="prop">:root</span> {
+  <span class="prop">--primary-50</span>:  <span class="num">#F8F9FD</span>;  <span class="cm">/* 배경 강조 */</span>
+  <span class="prop">--primary-100</span>: <span class="num">#F2F2FC</span>;  <span class="cm">/* 활성 nav 배경 */</span>
+  <span class="prop">--primary-200</span>: <span class="num">#EBEBFA</span>;
+  <span class="prop">--primary-300</span>: <span class="num">#999CE4</span>;
+  <span class="prop">--primary-400</span>: <span class="num">#7A7EE8</span>;
+  <span class="prop">--primary-500</span>: <span class="num">#5C61D4</span>;  <span class="cm">/* ★ 기준 브랜드 컬러 */</span>
+  <span class="prop">--primary-600</span>: <span class="num">#4549AB</span>;  <span class="cm">/* hover 상태 */</span>
+  <span class="prop">--primary-700</span>: <span class="num">#37396D</span>;  <span class="cm">/* GNB hover bg */</span>
+  <span class="prop">--primary-800</span>: <span class="num">#0A0B25</span>;
+}</pre></div>
+    </div>
+  </div>
+
+  <h2 class="sec" id="s-semantic"><span class="sec-num">02</span>Semantic Colors</h2>
+  <p class="prose">UI 상태를 표현하는 의미론적 컬러입니다. 이 4가지 외의 색상을 상태 표현에 사용하지 마세요.</p>
+
+  <div class="table-wrap">
+    <table class="doc-table">
+      <thead>
+        <tr><th>토큰</th><th>값</th><th>상태</th><th>사용 예시</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tbl-code">--color-success</span></td>
+          <td><span class="dot-swatch" style="background:#80B430"></span>#80B430</td>
+          <td><span class="pill pill-green">성공</span></td>
+          <td>저장 완료, 승인, 통과</td>
+        </tr>
+        <tr>
+          <td><span class="tbl-code">--color-danger</span></td>
+          <td><span class="dot-swatch" style="background:#E43E3E"></span>#E43E3E</td>
+          <td><span class="pill pill-red">오류</span></td>
+          <td>삭제 경고, 유효성 실패</td>
+        </tr>
+        <tr>
+          <td><span class="tbl-code">--color-warning</span></td>
+          <td><span class="dot-swatch" style="background:#ffbe0b"></span>#ffbe0b</td>
+          <td><span class="pill pill-amber">주의</span></td>
+          <td>진행률 바, 경고 안내</td>
+        </tr>
+        <tr>
+          <td><span class="tbl-code">--color-info</span></td>
+          <td><span class="dot-swatch" style="background:#2269D1"></span>#2269D1</td>
+          <td><span class="pill pill-blue">정보</span></td>
+          <td>링크, 안내 메시지</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec" id="s-button"><span class="sec-num">03</span>Button Tokens</h2>
+
+  <div class="callout warn">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+    <div><strong>v3.0 Breaking Change</strong><code>--btn-line</code>이 삭제됐습니다. 같은 값인 <code>--btn-default-border-color</code>로 일괄 교체하세요.</div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-label">버튼 토큰 전체</div>
+    <div class="code-block">
+      <div class="code-topbar">
+        <span class="code-file">root-tokens.css — buttons</span>
+        <button class="copy-btn" onclick="copyCode(this,'cb2')">copy</button>
+      </div>
+      <div class="code-body"><pre id="cb2"><span class="cm">/* Primary */</span>
+<span class="prop">--btn-main</span>:                <span class="num">#5C61D4</span>;
+<span class="prop">--btn-main-dark</span>:           <span class="num">#4549AB</span>;  <span class="cm">/* hover */</span>
+
+<span class="cm">/* CTA (반전) */</span>
+<span class="prop">--btn-revers</span>:              <span class="num">#FA7C35</span>;
+<span class="prop">--btn-revers-dark</span>:         <span class="num">#F86A0E</span>;  <span class="cm">/* hover */</span>
+
+<span class="cm">/* Line / Default */</span>
+<span class="prop">--btn-default-border-color</span>: <span class="num">#DDDDDD</span>; <span class="cm">/* 구 --btn-line */</span>
+<span class="prop">--btn-default-font-color</span>:   <span class="num">#404040</span>;
+
+<span class="cm">/* Disabled */</span>
+<span class="prop">--btn-disabled-border-color</span>:<span class="num">#DDDDDD</span>;
+<span class="prop">--btn-disabled-bg-color</span>:    <span class="num">#f9f9f9</span>;
+<span class="prop">--btn-disabled-font-color</span>:  <span class="num">#8d96a5</span>;</pre></div>
+    </div>
+  </div>
+
+  <h2 class="sec" id="s-changelog"><span class="sec-num">04</span>변경 이력</h2>
+
+  <div class="changelog">
+    <div class="cl-item">
+      <div class="cl-ver">v3.0</div>
+      <div>
+        <div class="cl-date">2025-01</div>
+        <div class="cl-tags">
+          <span class="cl-tag cl-fix">FIX</span>
+          <span class="cl-tag cl-break">BREAK</span>
+          <span class="cl-tag cl-feat">FEAT</span>
+        </div>
+        <div class="cl-desc">폰트 오타(<code>sans-self</code>) 전체 수정, <code>--btn-line</code> 삭제 및 통합, 텍스트 토큰 시맨틱 통합(<code>--text-primary</code> 등)</div>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-ver">v2.4</div>
+      <div>
+        <div class="cl-date">2024-11</div>
+        <div class="cl-tags"><span class="cl-tag cl-feat">FEAT</span></div>
+        <div class="cl-desc">다크모드 가이드라인 추가, <code>--black-650</code> 스텝 추가</div>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-ver">v2.0</div>
+      <div>
+        <div class="cl-date">2024-08</div>
+        <div class="cl-tags"><span class="cl-tag cl-break">BREAK</span></div>
+        <div class="cl-desc">토큰 시스템 전면 개편, Primary 팔레트 Slate Blue로 변경</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <button class="pnav-btn">
+      <div class="pnav-label">← 이전</div>
+      <div class="pnav-title">토큰 개요</div>
+    </button>
+    <button class="pnav-btn next">
+      <div class="pnav-label">다음 →</div>
+      <div class="pnav-title">타이포그래피 토큰</div>
+    </button>
+  </div>
+
+</div>
+
+<!-- TOC -->
+<aside id="toc-panel">
+  <div class="toc-title">이 페이지</div>
+  <a class="toc-link active" onclick="scrollTo('s-primary')">Primary Palette</a>
+  <a class="toc-link sub"    onclick="scrollTo('s-primary')">팔레트 코드</a>
+  <a class="toc-link"        onclick="scrollTo('s-semantic')">Semantic Colors</a>
+  <a class="toc-link sub"    onclick="scrollTo('s-semantic')">상태별 정의</a>
+  <a class="toc-link"        onclick="scrollTo('s-button')">Button Tokens</a>
+  <a class="toc-link sub"    onclick="scrollTo('s-button')">Breaking Change</a>
+  <a class="toc-link"        onclick="scrollTo('s-changelog')">변경 이력</a>
+</aside>

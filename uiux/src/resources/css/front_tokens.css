@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --bg:        #faf9f6;
+  --bg2:       #ffffff;
+  --bg3:       #f3f1ed;
+  --ink:       #1a1714;
+  --ink2:      #4a4540;
+  --ink3:      #9a9590;
+  --ink4:      #c5c0ba;
+  --rule:      #e8e4de;
+  --rule2:     #d5d0ca;
+  --brand:     #5C61D4;
+  --brand-lt:  #eaebfb;
+  --brand-dk:  #4549AB;
+  --orange:    #e8622a;
+  --serif:     'Fraunces', serif;
+  --sans:      'DM Sans', sans-serif;
+  --mono:      'DM Mono', monospace;
+  --topbar-h:  56px;
+  --sidebar-w: 272px;
+  --toc-w:     216px;
+  --ease:      cubic-bezier(.4,0,.2,1);
+  --dur:       0.22s;
+}

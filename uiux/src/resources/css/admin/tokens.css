@@ -1,0 +1,159 @@
+/*
+*--------------------------------------------*
+|                  Tokens                    |
+*--------------------------------------------*
+*/
+:root {
+    /* =========================================
+     * 1. Layout
+     * ========================================= */
+    --layout-width:   1280px;     /* 레이아웃 넓이 */
+    --layout-padding: 5.13vw;     /* 모바일 안쪽 여백 (20px) */
+    --notch: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);  /* 아이폰 노치 대응 */
+
+    /* =========================================
+     * 2. Typography
+     * ========================================= */
+
+    /* Font Family */
+    --font-pretendard:          "Pretendard", sans-serif;
+    --font-pretendard-variable: "Pretendard Variable", sans-serif;
+    --font-suit:                "SUIT", sans-serif;
+    --font-noto-sans-kr:        "Noto Sans KR", sans-serif;
+    --font-poppins:             "Poppins", sans-serif;
+    --font-spoqa-han-sans-neo:  "Spoqa Han Sans Neo", sans-serif;
+    --font-saira:               "Saira", sans-serif;
+    --font-gmarket-sans-bold:   "GmarketSansBold", sans-serif;
+    --font-gmarket-sans-light:  "GmarketSansLight", sans-serif;
+    --font-malgun-gothic:       "Malgun Gothic", Helvetica, sans-serif;
+
+    /* Font Style */
+    --font-size:        16px;       /* 폰트 크기 */
+    --font-let-spc:     -0.02em;    /* 자간 */
+    --line-height:      1.5;        /* 행간 */
+
+    /* =========================================
+     * 3. Color — Primitive
+     * ========================================= */
+
+    /* Primary (theme) */
+    --color-primary-50:  #F8F9FD;
+    --color-primary-100: #F2F2FC;
+    --color-primary-200: #EBEBFA;
+    --color-primary-300: #999CE4;
+    --color-primary-400: #7A7EE8;
+    --color-primary-500: #5C61D4;
+    --color-primary-600: #4549AB;
+    --color-primary-700: #37396D;
+    --color-primary-800: #0A0B25;
+
+    /* Black */
+    --color-black-300: #B8B8B8;
+    --color-black-400: #8E8E8E;
+    --color-black-500: #555555;
+    --color-black-600: #404040;
+    --color-black-650: #333333;
+    --color-black-660: #343434;
+    --color-black-700: #262527;
+    --color-black-750: #222222;
+    --color-black-800: #0D0914;
+    --color-black-850: #121212;
+    --color-black-900: #000000;
+
+    /* Gray */
+    --color-gray-100: #D6D6D6;
+    --color-gray-200: #D1D1D1;
+    --color-gray-800: #757580;
+    --color-gray-850: #757575;
+    --color-gray-900: #888888;
+    --color-gray-950: #414146;
+
+    /* White */
+    --color-white:     #FFFFFF;
+    --color-white-50:  #FCFCFC;
+    --color-white-100: #FAFAFA;
+    --color-white-150: #F8F8F8;
+    --color-white-300: #F5F5F5;
+    --color-white-400: #F1F1F1;
+    --color-white-500: #E8E8E8;
+    --color-white-600: #DDDDDD;
+
+    /* Tint Gray */
+    --color-purple-gray-50: #DAD7DF;
+    --color-blue-gray-50:   #EBECF0;
+    --color-blue-gray-100:  #DFE3E9;
+
+    /* Accent */
+    --color-bora-500:       #8B5CD4;
+    --color-orange-500:     #FA7C35;
+    --color-orange-600:     #F86A0E;
+    --color-blue-500:       #2269D1;
+    --color-slate-blue-500: #5C61D4;
+    --color-green-500:      #80B430;
+    --color-red-500:        #E43E3E;
+
+    /* =========================================
+     * 4. Color — Semantic
+     * ========================================= */
+
+    /* Text */
+    --color-text-default:  #46464F;   /* 기본 폰트 컬러 */
+    --color-text-strong:   #000000;   /* iOS 강조/제목 */
+    --color-text-muted:    #8E8E93;   /* iOS 연한 텍스트 */
+    --color-text-disabled: #8D96A5;
+
+    /* Surface / Background */
+    --color-bg-base:   #FFFFFF;
+    --color-bg-subtle: #FAFAFF;       /* grey--light */
+    --color-bg-muted:  #EFEFEF;       /* grey--light2 */
+    --color-disabled:  #E7E7E7;
+
+    /* Button */
+    --color-btn-line:            #DDDDDD;
+    --color-btn-main:            #5C61D4;
+    --color-btn-main-dark:       #4549AB;
+    --color-btn-revers:          #FA7C35;
+    --color-btn-revers-dark:     #F86A0E;
+    --color-btn-default-border:  #DDDDDD;
+    --color-btn-default-text:    #404040;
+    --color-btn-disabled-border: #DDDDDD;
+    --color-btn-disabled-bg:     #F9F9F9;
+    --color-btn-disabled-text:   #8D96A5;
+
+    /* State */
+    --color-progress-bar: #FFBE0B;    /* 과정후기 progress bar */
+
+    /* =========================================
+     * 5. Form / Input
+     * ========================================= */
+    --input-h-s:   32px;     /* 작은 사이즈 */
+    --input-h:     35px;     /* 기본 사이즈 */
+    --input-h-big: 42px;     /* 대타이틀 옆 상단 검색 사이즈 */
+
+    /* =========================================
+     * 6. Scroll Bar
+     * ========================================= */
+    --scroll-bar-width:         6px;
+    --scroll-bar-color:         #CACACA;
+    --scroll-bar-bg-color:      #E8E8E8;
+    --scroll-bar-border-radius: 10px;
+
+    /* =========================================
+     * 7. Footer
+     * ========================================= */
+    --footer-top-brd: #4A4A4A;
+    --footer-bg:      #3E3E3E;
+
+    /* =========================================
+     * 8. Skeleton
+     * ========================================= */
+    --skeleton-bg:     linear-gradient(90deg, #E5E5E5 30%, #F0F0F0 38%, #F0F0F0 50%, #E5E5E5 48%);
+    --skeleton-bg-pos: -100% 0;
+    --skeleton-bg-50:  #CBD5E1;
+
+    /* =========================================
+     * 9. Accordion
+     * ========================================= */
+    --acc-round: 10px;       /* 아코디언 라운드 */
+
+}
