@@ -1,0 +1,16 @@
+{
+  "name": "uiux-guide",
+  "version": "3.0.0",
+  "description": "Podo Publisher Guide - UI/UX Documentation",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch",
+    "dev": "gulp watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0"
+  }
+}

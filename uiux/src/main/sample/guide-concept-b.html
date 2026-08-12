@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publisher Guide — Concept B</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #faf9f6;
+  --bg2:       #ffffff;
+  --ink:       #1a1714;
+  --ink2:      #4a4540;
+  --ink3:      #9a9590;
+  --ink4:      #c5c0ba;
+  --rule:      #e8e4de;
+  --rule2:     #d5d0ca;
+  --accent:    #1a1714;
+  --brand:     #5C61D4;
+  --brand-lt:  #eaebfb;
+  --orange:    #e8622a;
+  --green:     #2e7d4f;
+  --serif:     'Fraunces', serif;
+  --sans:      'DM Sans', sans-serif;
+  --mono:      'DM Mono', monospace;
+  --col-w:     680px;
+  --sidebar-w: 280px;
+  --toc-w:     220px;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--sans); cursor: pointer; border: none; background: none; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rule2); }
+
+/* ── 상단 바 ── */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 56px; background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  padding: 0 32px;
+}
+.top-wordmark {
+  font-family: var(--serif); font-size: 17px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink);
+  display: flex; align-items: baseline; gap: 3px;
+}
+.top-wordmark sup {
+  font-size: 9px; font-family: var(--sans); font-weight: 400;
+  color: var(--ink3); letter-spacing: 0.04em; vertical-align: super;
+}
+.top-rule { flex: 1; height: 1px; background: var(--rule); margin: 0 24px; }
+.top-search {
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid var(--rule2); border-radius: 24px;
+  padding: 6px 14px; font-size: 12px; color: var(--ink3);
+  background: var(--bg); transition: all 0.2s; cursor: text;
+}
+.top-search:hover { border-color: var(--rule2); background: var(--bg2); }
+.top-search svg { width: 13px; height: 13px; }
+.top-search kbd {
+  font-family: var(--mono); font-size: 10px;
+  background: var(--rule); padding: 1px 5px; border-radius: 3px;
+  color: var(--ink3); margin-left: 8px;
+}
+.top-right { display: flex; align-items: center; gap: 16px; margin-left: 24px; }
+.top-ver {
+  font-size: 11px; font-family: var(--mono);
+  color: var(--brand); background: var(--brand-lt);
+  padding: 3px 9px; border-radius: 20px;
+}
+.top-icon-btn {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink3); transition: all 0.15s;
+}
+.top-icon-btn:hover { background: var(--rule); color: var(--ink); }
+.top-icon-btn svg { width: 16px; height: 16px; }
+
+/* ── 사이드바 ── */
+#sidebar {
+  position: fixed; left: 0; top: 56px; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--bg2);
+  border-right: 1px solid var(--rule);
+  overflow-y: auto; padding: 28px 0;
+}
+.nav-section { margin-bottom: 8px; }
+.nav-section-title {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink4); padding: 0 28px; margin-bottom: 4px;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 0;
+  padding: 7px 28px; font-size: 13px; color: var(--ink2);
+  cursor: pointer; transition: all 0.1s;
+  position: relative;
+}
+.nav-item::before {
+  content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 2px; height: 0; background: var(--brand);
+  transition: height 0.2s;
+}
+.nav-item:hover { color: var(--ink); background: var(--bg); }
+.nav-item.active {
+  color: var(--brand); font-weight: 500;
+  background: var(--brand-lt);
+}
+.nav-item.active::before { height: 60%; }
+.nav-badge {
+  margin-left: auto; font-size: 10px; font-family: var(--mono);
+  color: var(--orange); letter-spacing: 0.03em;
+}
+.nav-sub { padding-left: 44px; font-size: 12px; color: var(--ink3); }
+.nav-sub.active { color: var(--brand); }
+
+/* ── 레이아웃 ── */
+#layout {
+  display: flex;
+  padding-top: 56px;
+  min-height: 100vh;
+}
+#main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  margin-right: var(--toc-w);
+  min-width: 0;
+}
+
+/* ── 헤더 히어로 ── */
+.page-hero {
+  border-bottom: 1px solid var(--rule);
+  padding: 56px 64px 48px;
+  position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: attr(data-label);
+  position: absolute; right: 64px; top: 56px;
+  font-family: var(--serif); font-size: 140px; font-weight: 700;
+  color: var(--rule); line-height: 1; pointer-events: none;
+  letter-spacing: -0.05em;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 16px;
+}
+.hero-eyebrow span { width: 24px; height: 1px; background: var(--rule2); display: block; }
+.hero-title {
+  font-family: var(--serif); font-size: 44px; font-weight: 300;
+  letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--ink); margin-bottom: 16px;
+}
+.hero-title strong { font-weight: 700; }
+.hero-desc { font-size: 15px; color: var(--ink2); line-height: 1.7; max-width: 560px; }
+.hero-meta {
+  display: flex; gap: 24px; margin-top: 24px;
+  font-size: 12px; color: var(--ink3);
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+.hero-meta svg { width: 13px; height: 13px; }
+
+/* ── 콘텐츠 ── */
+#doc-content { padding: 52px 64px 80px; }
+
+/* 섹션 제목 */
+h2.sec {
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink);
+  margin: 52px 0 6px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: baseline; gap: 12px;
+}
+h2.sec .sec-num {
+  font-family: var(--mono); font-size: 11px; font-weight: 400;
+  color: var(--ink4); letter-spacing: 0.06em;
+}
+h3.subsec {
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--ink); margin: 28px 0 8px;
+}
+
+p.prose {
+  font-size: 14px; color: var(--ink2); line-height: 1.85;
+  margin-bottom: 16px; max-width: 620px;
+}
+p.prose code {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--brand); background: var(--brand-lt);
+  padding: 1px 6px; border-radius: 4px;
+}
+p.prose a { color: var(--brand); border-bottom: 1px solid var(--brand-lt); }
+
+/* 코드 블록 */
+.code-wrap { margin: 20px 0; }
+.code-label {
+  font-size: 11px; font-family: var(--mono); color: var(--ink3);
+  letter-spacing: 0.06em; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.code-label::before { content: ''; flex: 1; max-width: 20px; height: 1px; background: var(--rule2); }
+.code-block {
+  border: 1px solid var(--rule);
+  border-radius: 10px; overflow: hidden;
+  background: #1c1c22;
+}
+.code-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: #141418;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.code-file { font-family: var(--mono); font-size: 11px; color: #6a6870; }
+.copy-btn {
+  font-family: var(--mono); font-size: 10px;
+  color: #6a6870; border: 1px solid #2a2a32;
+  padding: 3px 9px; border-radius: 4px;
+  background: rgba(255,255,255,0.04); transition: all 0.15s;
+}
+.copy-btn:hover { color: #a8ff78; border-color: rgba(168,255,120,0.3); }
+.copy-btn.copied { color: #a8ff78; }
+.code-body { padding: 20px 20px; overflow-x: auto; }
+.code-body pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.75; color: #9da5b4; }
+.kw  { color: #c678dd; }
+.fn  { color: #61afef; }
+.str { color: #98c379; }
+.num { color: #d19a66; }
+.cm  { color: #5c6370; font-style: italic; }
+.prop{ color: #56b6c2; }
+
+/* 팔레트 */
+.palette {
+  display: grid; grid-template-columns: repeat(9, 1fr);
+  gap: 0; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--rule); margin: 20px 0;
+}
+.pal-cell {
+  aspect-ratio: 1 / 1.2;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 6px;
+  position: relative;
+}
+.pal-label {
+  font-family: var(--mono); font-size: 9px; line-height: 1.4;
+}
+.pal-n { font-weight: 500; }
+
+/* 콜아웃 */
+.callout {
+  padding: 16px 20px; margin: 20px 0;
+  border-radius: 8px;
+  display: flex; gap: 14px; align-items: flex-start;
+  font-size: 13px; line-height: 1.7;
+}
+.callout svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout strong { display: block; font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+.callout.info { background: #eef7ff; border: 1px solid #b3d9ff; color: #0044aa; }
+.callout.warn { background: #fffbea; border: 1px solid #ffe08a; color: #7a5800; }
+.callout.tip  { background: #edfbf3; border: 1px solid #a8efca; color: #1a6638; }
+
+/* 테이블 */
+.doc-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 18px 0; }
+.doc-table thead tr { border-bottom: 2px solid var(--rule2); }
+.doc-table th {
+  text-align: left; padding: 8px 16px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink3); background: none;
+}
+.doc-table td {
+  padding: 11px 16px; border-bottom: 1px solid var(--rule);
+  color: var(--ink2); vertical-align: top;
+}
+.doc-table tr:last-child td { border-bottom: none; }
+.doc-table tr:hover td { background: var(--bg); }
+.tbl-code {
+  font-family: var(--mono); font-size: 12px;
+  background: var(--brand-lt); color: var(--brand);
+  padding: 1px 7px; border-radius: 4px;
+}
+.dot-swatch {
+  display: inline-block; width: 12px; height: 12px;
+  border-radius: 50%; vertical-align: middle; margin-right: 7px;
+}
+.pill {
+  display: inline-block; font-size: 11px; padding: 2px 9px;
+  border-radius: 20px; font-weight: 500;
+}
+.pill-green { background: #edfbf3; color: #1a6638; border: 1px solid #a8efca; }
+.pill-red   { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+.pill-amber { background: #fffbea; color: #7a5800; border: 1px solid #ffe08a; }
+.pill-blue  { background: #eef7ff; color: #0044aa; border: 1px solid #b3d9ff; }
+
+/* 변경사항 타임라인 */
+.changelog { margin: 20px 0; }
+.cl-item {
+  display: flex; gap: 20px; padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.cl-item:last-child { border-bottom: none; }
+.cl-ver {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--brand); min-width: 48px; padding-top: 2px;
+}
+.cl-date { font-size: 12px; color: var(--ink3); margin-bottom: 4px; }
+.cl-desc { font-size: 13px; color: var(--ink2); }
+.cl-tag {
+  display: inline-block; font-size: 10px; font-family: var(--mono);
+  padding: 1px 7px; border-radius: 3px; margin-right: 4px;
+  margin-bottom: 4px;
+}
+.cl-fix  { background: #edfbf3; color: #1a6638; }
+.cl-feat { background: var(--brand-lt); color: var(--brand); }
+.cl-break{ background: #fef2f2; color: #991b1b; }
+
+/* TOC */
+#toc-panel {
+  position: fixed; right: 0; top: 56px; bottom: 0;
+  width: var(--toc-w); padding: 40px 24px;
+  overflow-y: auto; border-left: 1px solid var(--rule);
+  background: var(--bg2);
+}
+.toc-title {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink4); margin-bottom: 14px;
+}
+.toc-link {
+  display: block; font-size: 12px; color: var(--ink3);
+  padding: 5px 0 5px 12px;
+  border-left: 1.5px solid var(--rule);
+  margin-bottom: 2px; cursor: pointer; line-height: 1.4;
+  transition: all 0.15s;
+}
+.toc-link:hover { color: var(--ink); border-left-color: var(--rule2); }
+.toc-link.active { color: var(--brand); border-left-color: var(--brand); font-weight: 500; }
+.toc-link.sub { padding-left: 22px; font-size: 11px; }
+
+/* 페이지 네비 */
+.page-nav {
+  display: flex; justify-content: space-between; gap: 16px;
+  margin-top: 64px; padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.pnav-btn {
+  flex: 1; padding: 18px 22px;
+  border: 1px solid var(--rule);
+  border-radius: 10px; background: var(--bg2);
+  transition: all 0.2s; cursor: pointer; text-align: left;
+  max-width: 260px;
+}
+.pnav-btn:hover { border-color: var(--brand); background: var(--brand-lt); }
+.pnav-btn:hover .pnav-title { color: var(--brand); }
+.pnav-label { font-size: 11px; color: var(--ink3); margin-bottom: 4px; font-family: var(--mono); }
+.pnav-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+.pnav-btn.next { text-align: right; margin-left: auto; }
+
+/* 애니메이션 */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+#main { animation: fadeIn 0.3s ease; }
+</style>
+  <script src="files/router.js"></script>
+</head>
+<body>
+
+<!-- 상단 바 -->
+<header id="topbar">
+  <div class="top-wordmark">Publisher Guide<sup>ADMIN</sup></div>
+  <div class="top-rule"></div>
+  <div class="top-search">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+    문서 검색
+    <kbd>⌘K</kbd>
+  </div>
+  <div class="top-right">
+    <span class="top-ver">v3.0</span>
+    <button class="top-icon-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.6 3.6l.85.85M11.55 11.55l.85.85M3.6 12.4l.85-.85M11.55 4.45l.85-.85"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- 사이드바 -->
+<nav id="sidebar">
+  <div class="nav-section">
+    <div class="nav-section-title">시작하기</div>
+    <div class="nav-item">개요</div>
+    <div class="nav-item">환경 설정</div>
+    <div class="nav-item">빠른 시작</div>
+  </div>
+  <div class="nav-section" style="margin-top:8px">
+    <div class="nav-section-title">디자인 토큰</div>
+    <div class="nav-item">토큰 개요</div>
+    <div class="nav-item active">컬러 토큰</div>
+    <div class="nav-item nav-sub">Primary Palette</div>
+    <div class="nav-item nav-sub">Semantic Colors</div>
+    <div class="nav-item nav-sub">Button Tokens</div>
+    <div class="nav-item">타이포그래피</div>
+    <div class="nav-item">간격·사이즈</div>
+  </div>
+  <div class="nav-section" style="margin-top:8px">
+    <div class="nav-section-title">아이콘 시스템</div>
+    <div class="nav-item">아이콘 개요</div>
+    <div class="nav-item">사용법</div>
+    <div class="nav-item">아이콘 목록</div>
+  </div>
+  <div class="nav-section" style="margin-top:8px">
+    <div class="nav-section-title">Kendo UI</div>
+    <div class="nav-item">Kendo 개요 <span class="nav-badge">K</span></div>
+    <div class="nav-item">Grid</div>
+    <div class="nav-item">DropDownList</div>
+    <div class="nav-item">DatePicker</div>
+    <div class="nav-item">Window</div>
+  </div>
+</nav>
+
+<div id="layout">
+  <div id="main">
+
+    <!-- 히어로 헤더 -->
+    <div class="page-hero" data-label="Color">
+      <div class="hero-eyebrow"><span></span>Design Tokens</div>
+      <h1 class="hero-title">컬러 <strong>토큰</strong></h1>
+      <p class="hero-desc">색상은 CSS 변수로 중앙 관리합니다. 코드에서 hex값을 직접 사용하지 말고, 반드시 토큰을 참조하세요.</p>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="2" width="12" height="11" rx="1.5"/><line x1="1" y1="6" x2="13" y2="6"/><line x1="4.5" y1="4" x2="4.5" y2="1"/><line x1="9.5" y1="4" x2="9.5" y2="1"/></svg>2025-01-15</span>
+        <span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><polyline points="7,4 7,7 9.5,9"/></svg>6 min read</span>
+        <span>v3.0에서 업데이트됨</span>
+      </div>
+    </div>
+
+    <div id="doc-content">
+
+      <h2 class="sec"><span class="sec-num">01</span> Primary Palette</h2>
+      <p class="prose">브랜드 컬러 <code>Slate Blue</code> 스케일입니다. <code>--primary-500</code>이 기준값이며, 숫자가 클수록 어두워집니다.</p>
+
+      <div class="palette">
+        <div class="pal-cell" style="background:#F8F9FD"><div class="pal-label" style="color:#aaa"><div class="pal-n">50</div><div>#F8F9FD</div></div></div>
+        <div class="pal-cell" style="background:#F2F2FC"><div class="pal-label" style="color:#999"><div class="pal-n">100</div><div>#F2F2FC</div></div></div>
+        <div class="pal-cell" style="background:#EBEBFA"><div class="pal-label" style="color:#999"><div class="pal-n">200</div><div>#EBEBFA</div></div></div>
+        <div class="pal-cell" style="background:#999CE4"><div class="pal-label" style="color:#fff"><div class="pal-n">300</div><div>#999CE4</div></div></div>
+        <div class="pal-cell" style="background:#7A7EE8"><div class="pal-label" style="color:#fff"><div class="pal-n">400</div><div>#7A7EE8</div></div></div>
+        <div class="pal-cell" style="background:#5C61D4;outline:3px solid #1a1714;outline-offset:-3px"><div class="pal-label" style="color:#fff"><div class="pal-n" style="font-weight:700">500 ★</div><div>#5C61D4</div></div></div>
+        <div class="pal-cell" style="background:#4549AB"><div class="pal-label" style="color:#fff"><div class="pal-n">600</div><div>#4549AB</div></div></div>
+        <div class="pal-cell" style="background:#37396D"><div class="pal-label" style="color:#ddd"><div class="pal-n">700</div><div>#37396D</div></div></div>
+        <div class="pal-cell" style="background:#0A0B25"><div class="pal-label" style="color:#666"><div class="pal-n">800</div><div>#0A0B25</div></div></div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-label">root-tokens.css</div>
+        <div class="code-block">
+          <div class="code-topbar">
+            <span class="code-file">assets/css/tokens/root-tokens.css</span>
+            <button class="copy-btn" onclick="this.textContent='copied ✓';this.classList.add('copied');setTimeout(()=>{this.textContent='copy';this.classList.remove('copied')},1600)">copy</button>
+          </div>
+          <div class="code-body"><pre><span class="prop">:root</span> {
+  <span class="prop">--primary-50</span>:  <span class="num">#F8F9FD</span>;  <span class="cm">/* 배경 강조 */</span>
+  <span class="prop">--primary-100</span>: <span class="num">#F2F2FC</span>;  <span class="cm">/* 활성 nav 배경 */</span>
+  <span class="prop">--primary-200</span>: <span class="num">#EBEBFA</span>;
+  <span class="prop">--primary-300</span>: <span class="num">#999CE4</span>;
+  <span class="prop">--primary-400</span>: <span class="num">#7A7EE8</span>;
+  <span class="prop">--primary-500</span>: <span class="num">#5C61D4</span>;  <span class="cm">/* ★ 기준 브랜드 컬러 */</span>
+  <span class="prop">--primary-600</span>: <span class="num">#4549AB</span>;  <span class="cm">/* hover 상태 */</span>
+  <span class="prop">--primary-700</span>: <span class="num">#37396D</span>;  <span class="cm">/* GNB hover bg */</span>
+  <span class="prop">--primary-800</span>: <span class="num">#0A0B25</span>;
+}</pre></div>
+        </div>
+      </div>
+
+      <h2 class="sec"><span class="sec-num">02</span> Semantic Colors</h2>
+      <p class="prose">UI 상태를 표현하는 의미론적 컬러입니다. 이 4가지 외의 색상을 상태 표현에 사용하지 마세요.</p>
+
+      <table class="doc-table">
+        <thead>
+          <tr><th>토큰</th><th>값</th><th>상태</th><th>사용 예시</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tbl-code">--color-success</span></td>
+            <td><span class="dot-swatch" style="background:#80B430"></span>#80B430</td>
+            <td><span class="pill pill-green">성공</span></td>
+            <td>저장 완료, 승인, 통과</td>
+          </tr>
+          <tr>
+            <td><span class="tbl-code">--color-danger</span></td>
+            <td><span class="dot-swatch" style="background:#E43E3E"></span>#E43E3E</td>
+            <td><span class="pill pill-red">오류</span></td>
+            <td>삭제 경고, 유효성 실패</td>
+          </tr>
+          <tr>
+            <td><span class="tbl-code">--color-warning</span></td>
+            <td><span class="dot-swatch" style="background:#ffbe0b"></span>#ffbe0b</td>
+            <td><span class="pill pill-amber">주의</span></td>
+            <td>진행률 바, 경고 안내</td>
+          </tr>
+          <tr>
+            <td><span class="tbl-code">--color-info</span></td>
+            <td><span class="dot-swatch" style="background:#2269D1"></span>#2269D1</td>
+            <td><span class="pill pill-blue">정보</span></td>
+            <td>링크, 안내 메시지</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="sec"><span class="sec-num">03</span> Button Tokens</h2>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+        <div><strong>v3.0 Breaking Change</strong><code>--btn-line</code>이 삭제됐습니다. 같은 값을 가진 <code>--btn-default-border-color</code>로 일괄 교체하세요.</div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-label">버튼 토큰 전체</div>
+        <div class="code-block">
+          <div class="code-topbar">
+            <span class="code-file">root-tokens.css — buttons</span>
+            <button class="copy-btn" onclick="this.textContent='copied ✓';this.classList.add('copied');setTimeout(()=>{this.textContent='copy';this.classList.remove('copied')},1600)">copy</button>
+          </div>
+          <div class="code-body"><pre><span class="cm">/* Primary */</span>
+<span class="prop">--btn-main</span>:               <span class="num">#5C61D4</span>;
+<span class="prop">--btn-main-dark</span>:          <span class="num">#4549AB</span>;
+
+<span class="cm">/* CTA (반전) */</span>
+<span class="prop">--btn-revers</span>:             <span class="num">#FA7C35</span>;
+<span class="prop">--btn-revers-dark</span>:        <span class="num">#F86A0E</span>;
+
+<span class="cm">/* Line / Default */</span>
+<span class="prop">--btn-default-border-color</span>:<span class="num">#DDDDDD</span>;  <span class="cm">/* 구 --btn-line */</span>
+<span class="prop">--btn-default-font-color</span>:  <span class="num">#404040</span>;
+
+<span class="cm">/* Disabled */</span>
+<span class="prop">--btn-disabled-border-color</span>:<span class="num">#DDDDDD</span>;
+<span class="prop">--btn-disabled-bg-color</span>:   <span class="num">#f9f9f9</span>;
+<span class="prop">--btn-disabled-font-color</span>:  <span class="num">#8d96a5</span>;</pre></div>
+        </div>
+      </div>
+
+      <h2 class="sec"><span class="sec-num">04</span> 변경 이력</h2>
+      <div class="changelog">
+        <div class="cl-item">
+          <div class="cl-ver">v3.0</div>
+          <div>
+            <div class="cl-date">2025-01</div>
+            <div>
+              <span class="cl-tag cl-fix">FIX</span>
+              <span class="cl-tag cl-break">BREAK</span>
+              <span class="cl-tag cl-feat">FEAT</span>
+            </div>
+            <div class="cl-desc">폰트 오타(<code>sans-self</code>) 전체 수정, <code>--btn-line</code> 삭제 및 통합, 텍스트 토큰 시맨틱 통합(<code>--text-primary</code> 등)</div>
+          </div>
+        </div>
+        <div class="cl-item">
+          <div class="cl-ver">v2.4</div>
+          <div>
+            <div class="cl-date">2024-11</div>
+            <div><span class="cl-tag cl-feat">FEAT</span></div>
+            <div class="cl-desc">다크모드 가이드라인 추가, <code>--black-650</code> 스텝 추가</div>
+          </div>
+        </div>
+        <div class="cl-item">
+          <div class="cl-ver">v2.0</div>
+          <div>
+            <div class="cl-date">2024-08</div>
+            <div><span class="cl-tag cl-break">BREAK</span></div>
+            <div class="cl-desc">토큰 시스템 전면 개편, Primary 팔레트 Slate Blue로 변경</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="pnav-btn">
+          <div class="pnav-label">← 이전</div>
+          <div class="pnav-title">토큰 개요</div>
+        </button>
+        <button class="pnav-btn next">
+          <div class="pnav-label">다음 →</div>
+          <div class="pnav-title">타이포그래피 토큰</div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <aside id="toc-panel">
+    <div class="toc-title">이 페이지</div>
+    <div class="toc-link active">Primary Palette</div>
+    <div class="toc-link sub">팔레트 코드</div>
+    <div class="toc-link">Semantic Colors</div>
+    <div class="toc-link sub">상태별 정의</div>
+    <div class="toc-link">Button Tokens</div>
+    <div class="toc-link sub">Breaking Change</div>
+    <div class="toc-link">변경 이력</div>
+  </aside>
+</div>
+
+</body>
+</html>

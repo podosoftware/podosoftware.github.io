@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publisher Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --bg:        #faf9f6;
+  --bg2:       #ffffff;
+  --bg3:       #f3f1ed;
+  --ink:       #1a1714;
+  --ink2:      #4a4540;
+  --ink3:      #9a9590;
+  --ink4:      #c5c0ba;
+  --rule:      #e8e4de;
+  --rule2:     #d5d0ca;
+  --brand:     #5C61D4;
+  --brand-lt:  #eaebfb;
+  --brand-dk:  #4549AB;
+  --orange:    #e8622a;
+  --serif:     'Fraunces', serif;
+  --sans:      'DM Sans', sans-serif;
+  --mono:      'DM Mono', monospace;
+  --topbar-h:  56px;
+  --sidebar-w: 272px;
+  --toc-w:     216px;
+  --ease:      cubic-bezier(.4,0,.2,1);
+  --dur:       0.22s;
+}
+
+/* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--sans); cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rule2); border-radius: 2px; }
+
+/* ═══════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════ */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--topbar-h);
+  background: rgba(250,249,246,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  padding: 0 20px 0 16px;
+  gap: 12px;
+}
+
+/* 햄버거 (태블릿/모바일) */
+#menu-toggle {
+  display: none;
+  width: 36px; height: 36px; border-radius: 8px;
+  align-items: center; justify-content: center;
+  color: var(--ink3); flex-shrink: 0;
+  transition: background var(--dur), color var(--dur);
+}
+#menu-toggle:hover { background: var(--bg3); color: var(--ink); }
+#menu-toggle svg { width: 18px; height: 18px; }
+
+.top-wordmark {
+  font-family: var(--serif); font-size: 16px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink); white-space: nowrap;
+  display: flex; align-items: baseline; gap: 4px; flex-shrink: 0;
+}
+.top-wordmark sup {
+  font-size: 9px; font-family: var(--sans); font-weight: 400;
+  color: var(--ink4); letter-spacing: 0.04em;
+}
+
+.top-divider { flex: 1; height: 1px; background: var(--rule); min-width: 16px; }
+
+#top-search {
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid var(--rule2); border-radius: 24px;
+  padding: 6px 14px; font-size: 12px; color: var(--ink3);
+  background: var(--bg); cursor: text;
+  transition: border-color var(--dur), background var(--dur);
+  white-space: nowrap; flex-shrink: 0;
+}
+#top-search:hover { border-color: var(--brand); background: var(--bg2); }
+#top-search svg { width: 13px; height: 13px; flex-shrink: 0; }
+#top-search kbd {
+  font-family: var(--mono); font-size: 10px;
+  background: var(--rule); padding: 1px 6px; border-radius: 3px;
+  color: var(--ink4); margin-left: 6px;
+}
+
+.top-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: 4px; }
+.top-ver {
+  font-size: 11px; font-family: var(--mono);
+  color: var(--brand); background: var(--brand-lt);
+  padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+}
+.top-icon-btn {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink3); transition: background var(--dur), color var(--dur);
+  flex-shrink: 0;
+}
+.top-icon-btn:hover { background: var(--bg3); color: var(--ink); }
+.top-icon-btn svg { width: 16px; height: 16px; }
+
+/* 검색 오버레이 */
+#search-modal {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(26,23,20,0.5);
+  display: none; align-items: flex-start; justify-content: center;
+  padding-top: 80px;
+}
+#search-modal.open { display: flex; }
+.search-box {
+  background: var(--bg2); border: 1px solid var(--rule2);
+  border-radius: 14px; width: 560px; max-width: calc(100vw - 32px);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(26,23,20,0.2);
+}
+.search-input-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px; border-bottom: 1px solid var(--rule);
+}
+.search-input-row svg { width: 16px; height: 16px; color: var(--ink3); flex-shrink: 0; }
+.search-input-row input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: var(--sans); font-size: 15px; color: var(--ink);
+}
+.search-input-row input::placeholder { color: var(--ink4); }
+.search-close { font-size: 11px; color: var(--ink3); border: 1px solid var(--rule); border-radius: 4px; padding: 2px 7px; font-family: var(--mono); }
+.search-results { padding: 8px; }
+.search-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px; cursor: pointer;
+  transition: background var(--dur);
+}
+.search-item:hover { background: var(--bg3); }
+.search-item-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: var(--bg3); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.search-item-icon svg { width: 13px; height: 13px; color: var(--ink3); }
+.search-item-group { font-size: 11px; color: var(--ink4); margin-bottom: 1px; }
+.search-item-label { font-size: 13px; color: var(--ink); }
+.search-empty { padding: 24px; text-align: center; color: var(--ink3); font-size: 13px; }
+
+/* ═══════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════ */
+#sidebar-overlay {
+  display: none; position: fixed; inset: 0; z-index: 149;
+  background: rgba(26,23,20,0.4);
+  opacity: 0; transition: opacity var(--dur) var(--ease);
+}
+#sidebar-overlay.show { display: block; opacity: 1; }
+
+#sidebar {
+  position: fixed; left: 0; top: var(--topbar-h); bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--bg2);
+  border-right: 1px solid var(--rule);
+  overflow-y: auto; z-index: 150;
+  display: flex; flex-direction: column;
+  transition: transform var(--dur) var(--ease);
+}
+
+.sidebar-inner { padding: 20px 0 40px; flex: 1; }
+
+.nav-group { margin-bottom: 4px; }
+.nav-group-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink4);
+  padding: 14px 24px 5px; display: block;
+}
+.nav-item {
+  display: flex; align-items: center;
+  padding: 7px 24px; font-size: 13px; color: var(--ink2);
+  cursor: pointer; position: relative;
+  transition: color var(--dur), background var(--dur);
+  line-height: 1.4;
+}
+.nav-item::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%); width: 2px; height: 0;
+  background: var(--brand); transition: height var(--dur) var(--ease);
+  border-radius: 0 2px 2px 0;
+}
+.nav-item:hover { color: var(--ink); background: var(--bg3); }
+.nav-item.active {
+  color: var(--brand); font-weight: 500;
+  background: var(--brand-lt);
+}
+.nav-item.active::before { height: 58%; }
+.nav-item-badge {
+  margin-left: auto; font-size: 10px; font-family: var(--mono);
+  color: var(--orange); letter-spacing: 0.03em; flex-shrink: 0;
+}
+.nav-sub {
+  padding-left: 40px; font-size: 12px; color: var(--ink3);
+  padding-top: 5px; padding-bottom: 5px;
+}
+.nav-sub.active { color: var(--brand); font-weight: 500; }
+
+/* ═══════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════ */
+#layout {
+  display: flex;
+  padding-top: var(--topbar-h);
+  min-height: 100vh;
+}
+#main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  margin-right: var(--toc-w);
+  min-width: 0;
+  transition: margin var(--dur) var(--ease);
+}
+
+/* ═══════════════════════════════════════
+   PAGE HERO
+═══════════════════════════════════════ */
+.page-hero {
+  border-bottom: 1px solid var(--rule);
+  padding: 52px 60px 44px;
+  position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: attr(data-label);
+  position: absolute; right: 40px; top: 40px;
+  font-family: var(--serif); font-size: 130px; font-weight: 700;
+  color: var(--rule); line-height: 1; pointer-events: none;
+  letter-spacing: -0.05em; user-select: none;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 14px;
+}
+.hero-eyebrow span { width: 24px; height: 1px; background: var(--rule2); display: block; }
+.hero-title {
+  font-family: var(--serif); font-size: 42px; font-weight: 300;
+  letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--ink); margin-bottom: 14px;
+}
+.hero-title strong { font-weight: 700; }
+.hero-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; max-width: 540px; }
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 22px;
+  font-size: 12px; color: var(--ink3);
+}
+.hero-meta span { display: flex; align-items: center; gap: 5px; }
+.hero-meta svg { width: 12px; height: 12px; }
+
+/* ═══════════════════════════════════════
+   BREADCRUMB
+═══════════════════════════════════════ */
+.breadcrumb {
+  padding: 12px 60px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--ink3);
+  background: var(--bg2);
+}
+.breadcrumb-sep { color: var(--rule2); }
+.breadcrumb-cur { color: var(--ink2); }
+
+/* ═══════════════════════════════════════
+   DOC CONTENT
+═══════════════════════════════════════ */
+#doc-content { padding: 48px 60px 80px; }
+
+h2.sec {
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink);
+  margin: 52px 0 8px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: baseline; gap: 12px;
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+h2.sec .sec-num {
+  font-family: var(--mono); font-size: 11px; font-weight: 400;
+  color: var(--ink4); letter-spacing: 0.06em;
+}
+h2.sec:first-of-type { margin-top: 0; }
+
+h3.subsec {
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--ink); margin: 28px 0 8px;
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+
+p.prose {
+  font-size: 14px; color: var(--ink2); line-height: 1.85;
+  margin-bottom: 16px;
+}
+p.prose code {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--brand); background: var(--brand-lt);
+  padding: 1px 6px; border-radius: 4px;
+}
+ul.doc-list { padding-left: 20px; margin-bottom: 16px; }
+ul.doc-list li { font-size: 14px; color: var(--ink2); line-height: 1.85; margin-bottom: 5px; }
+ul.doc-list li code { font-family: var(--mono); font-size: 12px; color: var(--brand); background: var(--brand-lt); padding: 1px 6px; border-radius: 4px; }
+
+/* ═══════════════════════════════════════
+   PALETTE
+═══════════════════════════════════════ */
+.palette {
+  display: grid; grid-template-columns: repeat(9, 1fr);
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--rule); margin: 18px 0;
+}
+.pal-cell {
+  aspect-ratio: 1 / 1.3;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 6px;
+  position: relative; transition: flex 0.2s;
+}
+.pal-cell:hover { flex: 1.4; }
+.pal-label { font-family: var(--mono); font-size: 9px; line-height: 1.45; }
+.pal-n { font-weight: 500; }
+.pal-hex { opacity: 0.7; }
+
+/* ═══════════════════════════════════════
+   CODE BLOCK
+═══════════════════════════════════════ */
+.code-wrap { margin: 20px 0; }
+.code-label {
+  font-size: 11px; font-family: var(--mono); color: var(--ink3);
+  letter-spacing: 0.06em; margin-bottom: 7px;
+  display: flex; align-items: center; gap: 8px;
+}
+.code-label::before { content: ''; width: 16px; height: 1px; background: var(--rule2); }
+.code-block {
+  border: 1px solid var(--rule); border-radius: 10px;
+  overflow: hidden; background: #141418;
+}
+.code-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 16px; background: #0f0f12;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 10px;
+}
+.code-file {
+  font-family: var(--mono); font-size: 11px; color: #5a5870;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  min-width: 0;
+}
+.copy-btn {
+  font-family: var(--mono); font-size: 10px; color: #5a5870;
+  border: 1px solid #252530; padding: 3px 9px; border-radius: 4px;
+  background: rgba(255,255,255,0.03); transition: all var(--dur);
+  flex-shrink: 0; white-space: nowrap;
+}
+.copy-btn:hover { color: #a8ff78; border-color: rgba(168,255,120,0.3); }
+.copy-btn.copied { color: #a8ff78; border-color: rgba(168,255,120,0.3); }
+.code-body { padding: 18px 20px; overflow-x: auto; }
+.code-body pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.75; color: #9da5b4; }
+.kw  { color: #c678dd; } .fn { color: #61afef; } .str { color: #98c379; }
+.num { color: #d19a66; } .cm { color: #5c6370; font-style: italic; }
+.prop{ color: #56b6c2; } .tag { color: #e06c75; } .attr { color: #d19a66; }
+
+/* ═══════════════════════════════════════
+   CALLOUT
+═══════════════════════════════════════ */
+.callout {
+  padding: 14px 18px; margin: 18px 0;
+  border-radius: 8px; display: flex; gap: 12px;
+  align-items: flex-start; font-size: 13px; line-height: 1.7;
+}
+.callout svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; }
+.callout strong { display: block; font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+.callout code { font-family: var(--mono); font-size: 11px; }
+.callout.info { background: #eef7ff; border: 1px solid #b3d9ff; color: #0044aa; }
+.callout.warn { background: #fffbea; border: 1px solid #ffe08a; color: #7a5800; }
+.callout.tip  { background: #edfbf3; border: 1px solid #a8efca; color: #1a6638; }
+
+/* ═══════════════════════════════════════
+   TABLE
+═══════════════════════════════════════ */
+.table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 8px; border: 1px solid var(--rule); }
+.doc-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+.doc-table thead tr { border-bottom: 1px solid var(--rule2); }
+.doc-table th {
+  text-align: left; padding: 9px 16px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink3);
+  background: var(--bg3); white-space: nowrap;
+}
+.doc-table td {
+  padding: 11px 16px; border-bottom: 1px solid var(--rule);
+  color: var(--ink2); vertical-align: top;
+}
+.doc-table tr:last-child td { border-bottom: none; }
+.doc-table tr:hover td { background: var(--bg3); }
+.tbl-code {
+  font-family: var(--mono); font-size: 11.5px;
+  background: var(--brand-lt); color: var(--brand);
+  padding: 1px 7px; border-radius: 4px; white-space: nowrap;
+}
+.dot-swatch {
+  display: inline-block; width: 12px; height: 12px;
+  border-radius: 50%; vertical-align: middle; margin-right: 6px; flex-shrink: 0;
+}
+.pill {
+  display: inline-block; font-size: 11px; padding: 2px 9px;
+  border-radius: 20px; font-weight: 500; white-space: nowrap;
+}
+.pill-green { background: #edfbf3; color: #1a6638; border: 1px solid #a8efca; }
+.pill-red   { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+.pill-amber { background: #fffbea; color: #7a5800; border: 1px solid #ffe08a; }
+.pill-blue  { background: #eef7ff; color: #0044aa; border: 1px solid #b3d9ff; }
+
+/* ═══════════════════════════════════════
+   CHANGELOG
+═══════════════════════════════════════ */
+.changelog { margin: 18px 0; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.cl-item {
+  display: flex; gap: 20px; padding: 16px 20px;
+  border-bottom: 1px solid var(--rule);
+}
+.cl-item:last-child { border-bottom: none; }
+.cl-ver {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--brand); min-width: 48px; padding-top: 1px; flex-shrink: 0;
+}
+.cl-date { font-size: 12px; color: var(--ink3); margin-bottom: 5px; }
+.cl-desc { font-size: 13px; color: var(--ink2); line-height: 1.65; }
+.cl-desc code { font-family: var(--mono); font-size: 11px; color: var(--brand); background: var(--brand-lt); padding: 1px 5px; border-radius: 3px; }
+.cl-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
+.cl-tag {
+  font-size: 10px; font-family: var(--mono);
+  padding: 1px 7px; border-radius: 3px; font-weight: 500;
+}
+.cl-fix  { background: #edfbf3; color: #1a6638; }
+.cl-feat { background: var(--brand-lt); color: var(--brand); }
+.cl-break{ background: #fef2f2; color: #991b1b; }
+
+/* ═══════════════════════════════════════
+   PAGE NAV
+═══════════════════════════════════════ */
+.page-nav {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  margin-top: 64px; padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.pnav-btn {
+  flex: 1; min-width: 180px; padding: 16px 20px;
+  border: 1px solid var(--rule); border-radius: 10px;
+  background: var(--bg2); cursor: pointer; text-align: left;
+  transition: border-color var(--dur), background var(--dur);
+}
+.pnav-btn:hover { border-color: var(--brand); background: var(--brand-lt); }
+.pnav-btn:hover .pnav-title { color: var(--brand); }
+.pnav-btn.next { text-align: right; }
+.pnav-label { font-size: 11px; color: var(--ink3); margin-bottom: 4px; font-family: var(--mono); }
+.pnav-title { font-size: 14px; font-weight: 500; color: var(--ink); transition: color var(--dur); }
+
+/* ═══════════════════════════════════════
+   TOC PANEL
+═══════════════════════════════════════ */
+#toc-panel {
+  position: fixed; right: 0; top: var(--topbar-h); bottom: 0;
+  width: var(--toc-w); padding: 36px 20px 36px 24px;
+  overflow-y: auto; border-left: 1px solid var(--rule);
+  background: var(--bg2);
+}
+.toc-title {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink4); margin-bottom: 14px;
+}
+.toc-link {
+  display: block; font-size: 12px; color: var(--ink3);
+  padding: 5px 0 5px 12px;
+  border-left: 1.5px solid var(--rule);
+  margin-bottom: 1px; cursor: pointer; line-height: 1.4;
+  transition: color var(--dur), border-color var(--dur);
+}
+.toc-link:hover { color: var(--ink2); border-left-color: var(--rule2); }
+.toc-link.active { color: var(--brand); border-left-color: var(--brand); font-weight: 500; }
+.toc-link.sub { padding-left: 20px; font-size: 11px; }
+
+/* ═══════════════════════════════════════
+   MOBILE BOTTOM NAV
+═══════════════════════════════════════ */
+#bottom-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 180;
+  background: rgba(250,249,246,0.95);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--rule);
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  flex-direction: row; justify-content: space-around;
+}
+.bn-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 3px; padding: 4px 0;
+  color: var(--ink3); cursor: pointer;
+  transition: color var(--dur);
+}
+.bn-item.active { color: var(--brand); }
+.bn-item svg { width: 20px; height: 20px; }
+.bn-item span { font-size: 10px; font-weight: 400; }
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-hero, #doc-content { animation: fadeUp 0.3s var(--ease); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — 1280px 이하: TOC 숨김
+═══════════════════════════════════════ */
+@media (max-width: 1280px) {
+  #toc-panel { display: none; }
+  #main { margin-right: 0; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — 1024px 이하: 사이드바 오버레이
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  #menu-toggle { display: flex; }
+
+  #sidebar {
+    transform: translateX(calc(-1 * var(--sidebar-w)));
+    box-shadow: none;
+  }
+  #sidebar.open {
+    transform: translateX(0);
+    box-shadow: 8px 0 32px rgba(26,23,20,0.12);
+  }
+
+  #main { margin-left: 0; }
+
+  #top-search { max-width: 200px; }
+  #top-search kbd { display: none; }
+
+  .page-hero { padding: 40px 40px 36px; }
+  .page-hero::after { font-size: 100px; right: 24px; top: 30px; }
+  .hero-title { font-size: 36px; }
+  #doc-content { padding: 40px 40px 80px; }
+  .breadcrumb { padding: 12px 40px; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — 768px 이하: 모바일
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root { --topbar-h: 52px; }
+
+  #topbar { padding: 0 14px; gap: 8px; }
+  .top-divider { display: none; }
+  #top-search { display: none; }
+  .top-ver { display: none; }
+
+  /* 모바일 검색은 아이콘 버튼으로 */
+  #search-btn-mobile { display: flex; }
+
+  #bottom-nav { display: flex; }
+
+  #main { padding-bottom: 68px; }
+
+  .page-hero {
+    padding: 28px 20px 24px;
+  }
+  .page-hero::after { display: none; }
+  .hero-title { font-size: 28px; }
+  .hero-desc { font-size: 14px; }
+  .hero-meta { gap: 12px 16px; }
+
+  .breadcrumb { padding: 10px 20px; font-size: 11px; }
+
+  #doc-content { padding: 28px 20px 60px; }
+
+  h2.sec { font-size: 19px; }
+
+  .palette { grid-template-columns: repeat(5, 1fr); }
+  .palette .pal-cell:nth-child(n+6) { display: none; }
+
+  .pnav-btn { min-width: 0; }
+  .pnav-btn.next { text-align: left; }
+  .pnav-label::before {
+    content: '';
+  }
+
+  .table-wrap { border-radius: 0; margin-left: -20px; margin-right: -20px; border-left: none; border-right: none; border-radius: 0; }
+
+  .code-body { padding: 14px 14px; }
+  .code-body pre { font-size: 11.5px; }
+
+  .cl-item { flex-direction: column; gap: 6px; }
+  .cl-ver { font-size: 13px; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — 480px 이하
+═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+  h2.sec { font-size: 17px; }
+  .palette { grid-template-columns: repeat(3, 1fr); }
+  .palette .pal-cell:nth-child(n+4) { display: none; }
+}
+</style>
+    <script src="../../../Users/podo/eclipse-workspace/uiux/src/resources/js/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- ═══ 검색 오버레이 ═══ -->
+<div id="search-modal" onclick="if(event.target===this)closeSearch()">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+      <input id="search-input" type="text" placeholder="문서 검색..." oninput="doSearch(this.value)" autocomplete="off">
+      <button class="search-close" onclick="closeSearch()">ESC</button>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<!-- ═══ 사이드바 오버레이 ═══ -->
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- ═══ 상단 바 ═══ -->
+<header id="topbar">
+  <button id="menu-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
+    <svg id="icon-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <line x1="2" y1="5"  x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/>
+    </svg>
+  </button>
+
+  <div class="top-wordmark">
+    Publisher Guide<sup>ADMIN</sup>
+  </div>
+
+  <div class="top-divider"></div>
+
+  <div id="top-search" onclick="openSearch()">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+    문서 검색
+    <kbd>⌘K</kbd>
+  </div>
+
+  <div class="top-right">
+    <span class="top-ver">v3.0</span>
+    <button class="top-icon-btn" id="search-btn-mobile" style="display:none" onclick="openSearch()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+    </button>
+    <button class="top-icon-btn" onclick="toggleTheme()" id="theme-btn" title="다크모드">
+      <svg id="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.6 3.6l.85.85M11.55 11.55l.85.85M3.6 12.4l.85-.85M11.55 4.45l.85-.85"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ═══ 사이드바 ═══ -->
+<nav id="sidebar">
+  <div class="sidebar-inner">
+    <div class="nav-group">
+      <span class="nav-group-label">시작하기</span>
+      <div class="nav-item" onclick="navClick(this)">개요</div>
+      <div class="nav-item" onclick="navClick(this)">환경 설정</div>
+      <div class="nav-item" onclick="navClick(this)">빠른 시작</div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">기본 원칙</span>
+      <div class="nav-item" onclick="navClick(this)">그리드 시스템</div>
+      <div class="nav-item" onclick="navClick(this)">타이포그래피</div>
+      <div class="nav-item" onclick="navClick(this)">간격 규칙</div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">디자인 토큰</span>
+      <div class="nav-item" onclick="navClick(this)">토큰 개요</div>
+      <div class="nav-item active" onclick="navClick(this)">컬러 토큰</div>
+      <div class="nav-item nav-sub active" onclick="navClick(this)">Primary Palette</div>
+      <div class="nav-item nav-sub" onclick="navClick(this)">Semantic Colors</div>
+      <div class="nav-item nav-sub" onclick="navClick(this)">Button Tokens</div>
+      <div class="nav-item" onclick="navClick(this)">타이포그래피 토큰</div>
+      <div class="nav-item" onclick="navClick(this)">간격·사이즈</div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">아이콘 시스템</span>
+      <div class="nav-item" onclick="navClick(this)">아이콘 개요</div>
+      <div class="nav-item" onclick="navClick(this)">사용법</div>
+      <div class="nav-item" onclick="navClick(this)">아이콘 목록</div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">컴포넌트</span>
+      <div class="nav-item" onclick="navClick(this)">버튼</div>
+      <div class="nav-item" onclick="navClick(this)">폼 요소</div>
+      <div class="nav-item" onclick="navClick(this)">테이블</div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">Kendo UI</span>
+      <div class="nav-item" onclick="navClick(this)">Kendo 개요 <span class="nav-item-badge">K</span></div>
+      <div class="nav-item" onclick="navClick(this)">Grid</div>
+      <div class="nav-item" onclick="navClick(this)">DropDownList</div>
+      <div class="nav-item" onclick="navClick(this)">DatePicker</div>
+      <div class="nav-item" onclick="navClick(this)">Window</div>
+      <div class="nav-item" onclick="navClick(this)">TreeView</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ 메인 레이아웃 ═══ -->
+<div id="layout">
+  <div id="main">
+
+    <!-- 브레드크럼 -->
+    <nav class="breadcrumb">
+      <span>홈</span>
+      <span class="breadcrumb-sep">›</span>
+      <span>디자인 토큰</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-cur">컬러 토큰</span>
+    </nav>
+
+    <!-- 히어로 -->
+    <div class="page-hero" data-label="Color">
+      <div class="hero-eyebrow"><span></span>Design Tokens</div>
+      <h1 class="hero-title">컬러 <strong>토큰</strong></h1>
+      <p class="hero-desc">색상은 CSS 변수로 중앙 관리합니다. 코드에서 hex값을 직접 사용하지 말고, 반드시 토큰을 참조하세요.</p>
+      <div class="hero-meta">
+        <span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="2" width="12" height="11" rx="1.5"/><line x1="1" y1="6" x2="13" y2="6"/><line x1="4.5" y1="4" x2="4.5" y2="1"/><line x1="9.5" y1="4" x2="9.5" y2="1"/></svg>
+          2025-01-15
+        </span>
+        <span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><polyline points="7,4 7,7 9.5,9"/></svg>
+          6 min read
+        </span>
+        <span>v3.0에서 업데이트됨</span>
+      </div>
+    </div>
+
+    <!-- 콘텐츠 -->
+    <div id="doc-content">
+
+      <h2 class="sec" id="s-primary"><span class="sec-num">01</span>Primary Palette</h2>
+      <p class="prose">브랜드 컬러 <code>Slate Blue</code> 스케일입니다. <code>--primary-500</code>이 기준값이며, 숫자가 클수록 어두워집니다.</p>
+
+      <div class="palette">
+        <div class="pal-cell" style="background:#F8F9FD"><div class="pal-label" style="color:#aaa"><div class="pal-n">50</div><div class="pal-hex">#F8F9FD</div></div></div>
+        <div class="pal-cell" style="background:#F2F2FC"><div class="pal-label" style="color:#999"><div class="pal-n">100</div><div class="pal-hex">#F2F2FC</div></div></div>
+        <div class="pal-cell" style="background:#EBEBFA"><div class="pal-label" style="color:#999"><div class="pal-n">200</div><div class="pal-hex">#EBEBFA</div></div></div>
+        <div class="pal-cell" style="background:#999CE4"><div class="pal-label" style="color:#fff"><div class="pal-n">300</div><div class="pal-hex">#999CE4</div></div></div>
+        <div class="pal-cell" style="background:#7A7EE8"><div class="pal-label" style="color:#fff"><div class="pal-n">400</div><div class="pal-hex">#7A7EE8</div></div></div>
+        <div class="pal-cell" style="background:#5C61D4;outline:2px solid #1a1714;outline-offset:-2px"><div class="pal-label" style="color:#fff"><div class="pal-n" style="font-weight:700">500 ★</div><div class="pal-hex">#5C61D4</div></div></div>
+        <div class="pal-cell" style="background:#4549AB"><div class="pal-label" style="color:#fff"><div class="pal-n">600</div><div class="pal-hex">#4549AB</div></div></div>
+        <div class="pal-cell" style="background:#37396D"><div class="pal-label" style="color:#ddd"><div class="pal-n">700</div><div class="pal-hex">#37396D</div></div></div>
+        <div class="pal-cell" style="background:#0A0B25"><div class="pal-label" style="color:#666"><div class="pal-n">800</div><div class="pal-hex">#0A0B25</div></div></div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-label">root-tokens.css</div>
+        <div class="code-block">
+          <div class="code-topbar">
+            <span class="code-file">assets/css/tokens/root-tokens.css</span>
+            <button class="copy-btn" onclick="copyCode(this,'cb1')">copy</button>
+          </div>
+          <div class="code-body"><pre id="cb1"><span class="prop">:root</span> {
+  <span class="prop">--primary-50</span>:  <span class="num">#F8F9FD</span>;  <span class="cm">/* 배경 강조 */</span>
+  <span class="prop">--primary-100</span>: <span class="num">#F2F2FC</span>;  <span class="cm">/* 활성 nav 배경 */</span>
+  <span class="prop">--primary-200</span>: <span class="num">#EBEBFA</span>;
+  <span class="prop">--primary-300</span>: <span class="num">#999CE4</span>;
+  <span class="prop">--primary-400</span>: <span class="num">#7A7EE8</span>;
+  <span class="prop">--primary-500</span>: <span class="num">#5C61D4</span>;  <span class="cm">/* ★ 기준 브랜드 컬러 */</span>
+  <span class="prop">--primary-600</span>: <span class="num">#4549AB</span>;  <span class="cm">/* hover 상태 */</span>
+  <span class="prop">--primary-700</span>: <span class="num">#37396D</span>;  <span class="cm">/* GNB hover bg */</span>
+  <span class="prop">--primary-800</span>: <span class="num">#0A0B25</span>;
+}</pre></div>
+        </div>
+      </div>
+
+      <h2 class="sec" id="s-semantic"><span class="sec-num">02</span>Semantic Colors</h2>
+      <p class="prose">UI 상태를 표현하는 의미론적 컬러입니다. 이 4가지 외의 색상을 상태 표현에 사용하지 마세요.</p>
+
+      <div class="table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>토큰</th><th>값</th><th>상태</th><th>사용 예시</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tbl-code">--color-success</span></td>
+              <td><span class="dot-swatch" style="background:#80B430"></span>#80B430</td>
+              <td><span class="pill pill-green">성공</span></td>
+              <td>저장 완료, 승인, 통과</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-code">--color-danger</span></td>
+              <td><span class="dot-swatch" style="background:#E43E3E"></span>#E43E3E</td>
+              <td><span class="pill pill-red">오류</span></td>
+              <td>삭제 경고, 유효성 실패</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-code">--color-warning</span></td>
+              <td><span class="dot-swatch" style="background:#ffbe0b"></span>#ffbe0b</td>
+              <td><span class="pill pill-amber">주의</span></td>
+              <td>진행률 바, 경고 안내</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-code">--color-info</span></td>
+              <td><span class="dot-swatch" style="background:#2269D1"></span>#2269D1</td>
+              <td><span class="pill pill-blue">정보</span></td>
+              <td>링크, 안내 메시지</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sec" id="s-button"><span class="sec-num">03</span>Button Tokens</h2>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+        <div><strong>v3.0 Breaking Change</strong><code>--btn-line</code>이 삭제됐습니다. 같은 값인 <code>--btn-default-border-color</code>로 일괄 교체하세요.</div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-label">버튼 토큰 전체</div>
+        <div class="code-block">
+          <div class="code-topbar">
+            <span class="code-file">root-tokens.css — buttons</span>
+            <button class="copy-btn" onclick="copyCode(this,'cb2')">copy</button>
+          </div>
+          <div class="code-body"><pre id="cb2"><span class="cm">/* Primary */</span>
+<span class="prop">--btn-main</span>:                <span class="num">#5C61D4</span>;
+<span class="prop">--btn-main-dark</span>:           <span class="num">#4549AB</span>;  <span class="cm">/* hover */</span>
+
+<span class="cm">/* CTA (반전) */</span>
+<span class="prop">--btn-revers</span>:              <span class="num">#FA7C35</span>;
+<span class="prop">--btn-revers-dark</span>:         <span class="num">#F86A0E</span>;  <span class="cm">/* hover */</span>
+
+<span class="cm">/* Line / Default */</span>
+<span class="prop">--btn-default-border-color</span>: <span class="num">#DDDDDD</span>; <span class="cm">/* 구 --btn-line */</span>
+<span class="prop">--btn-default-font-color</span>:   <span class="num">#404040</span>;
+
+<span class="cm">/* Disabled */</span>
+<span class="prop">--btn-disabled-border-color</span>:<span class="num">#DDDDDD</span>;
+<span class="prop">--btn-disabled-bg-color</span>:    <span class="num">#f9f9f9</span>;
+<span class="prop">--btn-disabled-font-color</span>:  <span class="num">#8d96a5</span>;</pre></div>
+        </div>
+      </div>
+
+      <h2 class="sec" id="s-changelog"><span class="sec-num">04</span>변경 이력</h2>
+
+      <div class="changelog">
+        <div class="cl-item">
+          <div class="cl-ver">v3.0</div>
+          <div>
+            <div class="cl-date">2025-01</div>
+            <div class="cl-tags">
+              <span class="cl-tag cl-fix">FIX</span>
+              <span class="cl-tag cl-break">BREAK</span>
+              <span class="cl-tag cl-feat">FEAT</span>
+            </div>
+            <div class="cl-desc">폰트 오타(<code>sans-self</code>) 전체 수정, <code>--btn-line</code> 삭제 및 통합, 텍스트 토큰 시맨틱 통합(<code>--text-primary</code> 등)</div>
+          </div>
+        </div>
+        <div class="cl-item">
+          <div class="cl-ver">v2.4</div>
+          <div>
+            <div class="cl-date">2024-11</div>
+            <div class="cl-tags"><span class="cl-tag cl-feat">FEAT</span></div>
+            <div class="cl-desc">다크모드 가이드라인 추가, <code>--black-650</code> 스텝 추가</div>
+          </div>
+        </div>
+        <div class="cl-item">
+          <div class="cl-ver">v2.0</div>
+          <div>
+            <div class="cl-date">2024-08</div>
+            <div class="cl-tags"><span class="cl-tag cl-break">BREAK</span></div>
+            <div class="cl-desc">토큰 시스템 전면 개편, Primary 팔레트 Slate Blue로 변경</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="pnav-btn">
+          <div class="pnav-label">← 이전</div>
+          <div class="pnav-title">토큰 개요</div>
+        </button>
+        <button class="pnav-btn next">
+          <div class="pnav-label">다음 →</div>
+          <div class="pnav-title">타이포그래피 토큰</div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <aside id="toc-panel">
+    <div class="toc-title">이 페이지</div>
+    <a class="toc-link active" onclick="scrollTo('s-primary')">Primary Palette</a>
+    <a class="toc-link sub"    onclick="scrollTo('s-primary')">팔레트 코드</a>
+    <a class="toc-link"        onclick="scrollTo('s-semantic')">Semantic Colors</a>
+    <a class="toc-link sub"    onclick="scrollTo('s-semantic')">상태별 정의</a>
+    <a class="toc-link"        onclick="scrollTo('s-button')">Button Tokens</a>
+    <a class="toc-link sub"    onclick="scrollTo('s-button')">Breaking Change</a>
+    <a class="toc-link"        onclick="scrollTo('s-changelog')">변경 이력</a>
+  </aside>
+</div>
+
+<!-- 모바일 하단 네비 -->
+<nav id="bottom-nav">
+  <div class="bn-item active">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 2h10a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H3"/><path d="M3 17V2"/><line x1="7" y1="7" x2="11" y2="7"/><line x1="7" y1="11" x2="10" y2="11"/></svg>
+    <span>문서</span>
+  </div>
+  <div class="bn-item" onclick="toggleSidebar()">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="14" y2="15"/></svg>
+    <span>메뉴</span>
+  </div>
+  <div class="bn-item" onclick="openSearch()">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><line x1="14" y1="14" x2="18" y2="18"/></svg>
+    <span>검색</span>
+  </div>
+  <div class="bn-item">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v1.5M10 16.5V18M2 10h1.5M16.5 10H18M4.2 4.2l1.1 1.1M14.7 14.7l1.1 1.1M4.2 15.8l1.1-1.1M14.7 5.3l1.1-1.1"/></svg>
+    <span>설정</span>
+  </div>
+</nav>
+
+<script>
+/* ── 사이드바 ── */
+let sidebarOpen = false;
+function toggleSidebar() {
+  sidebarOpen = !sidebarOpen;
+  document.getElementById('sidebar').classList.toggle('open', sidebarOpen);
+  document.getElementById('sidebar-overlay').classList.toggle('show', sidebarOpen);
+  document.body.style.overflow = sidebarOpen ? 'hidden' : '';
+}
+function closeSidebar() {
+  sidebarOpen = false;
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1024) closeSidebar();
+});
+
+/* ── 네비 클릭 ── */
+function navClick(el) {
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  if (window.innerWidth <= 1024) closeSidebar();
+}
+
+/* ── 검색 ── */
+const SEARCH_ITEMS = [
+  { group: '시작하기', label: '개요' },
+  { group: '시작하기', label: '환경 설정' },
+  { group: '디자인 토큰', label: '컬러 토큰' },
+  { group: '디자인 토큰', label: '타이포그래피 토큰' },
+  { group: '디자인 토큰', label: '간격·사이즈' },
+  { group: '아이콘 시스템', label: '아이콘 개요' },
+  { group: '아이콘 시스템', label: '사용법' },
+  { group: 'Kendo UI', label: 'Grid' },
+  { group: 'Kendo UI', label: 'DropDownList' },
+  { group: 'Kendo UI', label: 'DatePicker' },
+  { group: 'Kendo UI', label: 'Window' },
+];
+function openSearch() {
+  document.getElementById('search-modal').classList.add('open');
+  setTimeout(() => document.getElementById('search-input').focus(), 50);
+  doSearch('');
+}
+function closeSearch() {
+  document.getElementById('search-modal').classList.remove('open');
+  document.getElementById('search-input').value = '';
+}
+function doSearch(q) {
+  const res = document.getElementById('search-results');
+  const items = q ? SEARCH_ITEMS.filter(i => i.label.includes(q) || i.group.includes(q)) : SEARCH_ITEMS.slice(0, 6);
+  if (!items.length) {
+    res.innerHTML = '<div class="search-empty">검색 결과가 없습니다</div>';
+    return;
+  }
+  res.innerHTML = items.map(i => `
+    <div class="search-item" onclick="closeSearch()">
+      <div class="search-item-icon">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 1.5h7a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H2"/><path d="M2 12.5V1.5"/></svg>
+      </div>
+      <div>
+        <div class="search-item-group">${i.group}</div>
+        <div class="search-item-label">${i.label}</div>
+      </div>
+    </div>`).join('');
+}
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+});
+
+/* ── 코드 복사 ── */
+function copyCode(btn, id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
+/* ── TOC 스크롤 ── */
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── TOC 스파이 ── */
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = ['s-primary','s-semantic','s-button','s-changelog'];
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const idx = sections.indexOf(entry.target.id);
+      if (idx >= 0 && tocLinks[idx * 2]) tocLinks[idx * 2].classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+
+/* ── 모바일 검색 버튼 가시성 ── */
+function checkSearchBtn() {
+  const btn = document.getElementById('search-btn-mobile');
+  if (btn) btn.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+}
+window.addEventListener('resize', checkSearchBtn);
+checkSearchBtn();
+
+/* ── 스크롤 탑 ── */
+window.addEventListener('scroll', () => {
+  const top = window.scrollY;
+  document.querySelector('#topbar').style.borderBottomColor = top > 4 ? 'var(--rule)' : 'transparent';
+});
+</script>
+</body>
+</html>

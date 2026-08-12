@@ -5,7 +5,6 @@
 
 // ┌─ ROUTING 설정 ─────────────────────────────────────────────┐
 const ROUTES = {
-  // 라우트 정의: path -> html 파일
   overview: { path: '/overview', file: 'pages/overview.html', label: '개요' },
   settings: { path: '/settings', file: 'pages/settings.html', label: '환경 설정' },
   quickStart: { path: '/quick-start', file: 'pages/quick-start.html', label: '빠른 시작' },
@@ -30,7 +29,6 @@ const ROUTES = {
   kendoTreeview: { path: '/kendo/treeview', file: 'pages/kendo-treeview.html', label: 'TreeView' },
 };
 
-// 역방향 라우트 매핑 (path -> routeKey)
 const PATH_TO_ROUTE = {};
 Object.entries(ROUTES).forEach(([key, route]) => {
   PATH_TO_ROUTE[route.path] = key;
@@ -38,7 +36,7 @@ Object.entries(ROUTES).forEach(([key, route]) => {
 // └─────────────────────────────────────────────────────────────┘
 
 
-// ┌─ SIDEBAR MENU 데이터 (라우팅과 연결) ──────────────────────┐
+// ┌─ SIDEBAR MENU 데이터 ──────────────────────────────────────┐
 const SIDEBAR_MENU = [
   {
     group: '시작하기',
@@ -109,29 +107,24 @@ const Router = {
   currentPath: '',
   isLoading: false,
 
-  // 초기화
   init() {
-    // 초기 경로 설정 (기본: /tokens/color)
-    const initialPath = ROUTES.colorTokens.path;
+    // 초기 경로 설정 (기본: /overview)
+    const initialPath = ROUTES.overview.path;
     
-    // 브라우저 히스토리 이벤트 처리
     window.addEventListener('popstate', e => {
       const path = e.state?.path || initialPath;
       this.navigate(path, false);
     });
 
-    // 초기 페이지 로드
     this.navigate(initialPath, false);
   },
 
-  // 페이지 네비게이션
   navigate(path, pushHistory = true) {
     if (this.currentPath === path) return;
     if (this.isLoading) return;
 
     this.isLoading = true;
 
-    // 라우트 정보 가져오기
     const routeKey = PATH_TO_ROUTE[path];
     const route = routeKey ? ROUTES[routeKey] : null;
 
@@ -141,35 +134,27 @@ const Router = {
       return;
     }
 
-    // HTML 파일 로드
     this._loadPage(route.file)
       .then(html => {
-        // 메인 콘텐츠 영역에 삽입
         const mainEl = document.getElementById('main');
         if (mainEl) {
           mainEl.innerHTML = html;
         }
 
-        // 현재 경로 업데이트
         this.currentPath = path;
 
-        // 브라우저 히스토리 추가
         if (pushHistory) {
           window.history.pushState({ path }, route.label, path);
         }
 
-        // 메뉴 활성화 상태 업데이트
         Sidebar.updateActiveMenu(path);
 
-        // 사이드바 닫기 (모바일)
         if (window.innerWidth <= 1024) {
           Sidebar.close();
         }
 
-        // 스크롤 맨 위로
         window.scrollTo(0, 0);
 
-        // 페이지별 스크립트 실행
         this._executePageScripts();
 
         console.log('✓ Loaded:', route.label);
@@ -186,7 +171,6 @@ const Router = {
       });
   },
 
-  // HTML 파일 로드
   async _loadPage(filePath) {
     const response = await fetch(filePath);
     if (!response.ok) {
@@ -195,15 +179,8 @@ const Router = {
     return await response.text();
   },
 
-  // 페이지별 스크립트 실행
   _executePageScripts() {
-    // 페이지 로드 후 동적으로 스크립트 실행
-    // 예: TOC 재구성, 코드 복사 버튼 재설정 등
-    
-    // TOC 재구성
     TOC.init();
-
-    // 스크롤 이펙트 재설정
     UI._setupScrollEffects();
   }
 };
@@ -216,7 +193,6 @@ const Sidebar = {
     isOpen: false,
   },
   
-  // DOM 선택자
   selectors: {
     container: '#sidebar',
     overlay: '#sidebar-overlay',
@@ -224,13 +200,11 @@ const Sidebar = {
     navItems: '.nav-item',
   },
 
-  // 초기화
   init() {
     this.render();
     this._setupEventListeners();
   },
 
-  // 사이드바 렌더링
   render() {
     const inner = document.querySelector(this.selectors.inner);
     if (!inner) return;
@@ -238,7 +212,6 @@ const Sidebar = {
     inner.innerHTML = SIDEBAR_MENU.map(group => this._createGroupHTML(group)).join('');
   },
 
-  // 네비 그룹 HTML 생성
   _createGroupHTML(group) {
     const itemsHTML = group.items
       .map(item => this._createItemHTML(item))
@@ -251,7 +224,6 @@ const Sidebar = {
       </div>`;
   },
 
-  // 네비 아이템 HTML 생성
   _createItemHTML(item) {
     const { label, path, badge = null, sub = false, children = null } = item;
     
@@ -273,19 +245,16 @@ const Sidebar = {
     return html;
   },
 
-  // 활성화 메뉴 업데이트
   updateActiveMenu(path) {
     document.querySelectorAll(this.selectors.navItems).forEach(item => {
       item.classList.remove('active');
     });
 
-    // 현재 경로와 일치하는 메뉴 찾기
     const activeItem = document.querySelector(
       `.nav-item[onclick*="'${path}'"]`
     );
     if (activeItem) {
       activeItem.classList.add('active');
-      // 부모 그룹의 첫 번째 아이템도 활성화 (시각적 효과)
       const parent = activeItem.parentElement?.querySelector('.nav-item:first-child');
       if (parent && parent !== activeItem) {
         parent.classList.add('active');
@@ -293,12 +262,10 @@ const Sidebar = {
     }
   },
 
-  // 토글 열기/닫기
   toggle() {
     this.state.isOpen ? this.close() : this.open();
   },
 
-  // 사이드바 열기
   open() {
     this.state.isOpen = true;
     document.querySelector(this.selectors.container)?.classList.add('open');
@@ -306,7 +273,6 @@ const Sidebar = {
     document.body.style.overflow = 'hidden';
   },
 
-  // 사이드바 닫기
   close() {
     this.state.isOpen = false;
     document.querySelector(this.selectors.container)?.classList.remove('open');
@@ -314,7 +280,6 @@ const Sidebar = {
     document.body.style.overflow = '';
   },
 
-  // 이벤트 리스너 등록
   _setupEventListeners() {
     window.addEventListener('resize', () => {
       if (window.innerWidth > 1024) {
@@ -462,7 +427,7 @@ const UI = {
     });
   },
 
-  scrollTo(id) {
+  smoothScroll(id) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   },
 
@@ -499,7 +464,7 @@ const UI = {
 
 // ┌─ TOC 목차 관리 ────────────────────────────────────────────┐
 const TOC = {
-  sections: ['s-primary', 's-semantic', 's-button', 's-changelog'],
+  sections: ['s-primary', 's-semantic', 's-button', 's-changelog', 's-intro', 's-purpose', 's-structure', 's-quick', 's-updates', 's-css', 's-js', 's-html', 's-custom', 's-step1', 's-step2', 's-step3'],
   observer: null,
 
   init() {
@@ -507,7 +472,6 @@ const TOC = {
   },
 
   _setupObserver() {
-    // 기존 observer 제거
     if (this.observer) {
       this.observer.disconnect();
     }
@@ -521,8 +485,8 @@ const TOC = {
           if (entry.isIntersecting) {
             tocLinks.forEach(link => link.classList.remove('active'));
             const idx = this.sections.indexOf(entry.target.id);
-            if (idx >= 0 && tocLinks[idx * 2]) {
-              tocLinks[idx * 2].classList.add('active');
+            if (idx >= 0 && tocLinks[idx]) {
+              tocLinks[idx].classList.add('active');
             }
           }
         });
@@ -570,18 +534,19 @@ function copyCode(btn, id) {
   UI.copyCode(btn, id);
 }
 
-function scrollTo(id) {
-  UI.scrollTo(id);
+// 브라우저의 기본 scrollTo() 메서드와 충돌 방지
+function smoothScroll(id) {
+  UI.smoothScroll(id);
 }
 // └─────────────────────────────────────────────────────────────┘
 
 
 // ┌─ 초기화 ──────────────────────────────────────────────────┐
 function initLayout() {
-  Sidebar.init();      // 사이드바 렌더링
-  Search.init();       // 검색 기능
-  UI.init();           // UI 효과
-  Router.init();       // SPA 라우터 초기화 (반드시 마지막)
+  Sidebar.init();
+  Search.init();
+  UI.init();
+  Router.init();
   console.log('✓ baseLayout initialized (SPA mode)');
 }
 

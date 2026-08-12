@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publisher Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ───────── TOKENS ───────── */
+:root {
+  --bg:        #f7f6f2;
+  --bg2:       #ffffff;
+  --bg3:       #f0efe9;
+  --sidebar-bg:#1a1a1a;
+  --sidebar-fg:#a8a8a0;
+  --sidebar-hover:#2a2a2a;
+  --sidebar-active:#ffffff;
+  --sidebar-accent:#c8f264;
+  --text:      #1a1a1a;
+  --text2:     #5a5a52;
+  --text3:     #9a9a90;
+  --border:    #e2e0d8;
+  --border2:   #ccc9be;
+  --accent:    #1a1a1a;
+  --accent-bg: #c8f264;
+  --info-bg:   #eef7ff;
+  --info-border:#b3d9ff;
+  --info-text: #0062cc;
+  --warn-bg:   #fffbea;
+  --warn-border:#ffe08a;
+  --warn-text: #7a5800;
+  --tip-bg:    #edfbf3;
+  --tip-border:#a8efca;
+  --tip-text:  #0a6638;
+  --code-bg:   #f0efe9;
+  --code-border:#e2e0d8;
+  --topbar-h:  52px;
+  --sidebar-w: 240px;
+  --toc-w:     200px;
+  --radius:    6px;
+  --font-body: 'IBM Plex Sans KR', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --transition: 0.18s ease;
+}
+[data-theme="dark"] {
+  --bg:        #141414;
+  --bg2:       #1e1e1e;
+  --bg3:       #242424;
+  --sidebar-bg:#0e0e0e;
+  --sidebar-fg:#6a6a62;
+  --sidebar-hover:#1a1a1a;
+  --sidebar-active:#f0efe9;
+  --sidebar-accent:#c8f264;
+  --text:      #e8e6de;
+  --text2:     #9a9892;
+  --text3:     #5a5a52;
+  --border:    #2e2e2e;
+  --border2:   #3a3a3a;
+  --accent:    #c8f264;
+  --accent-bg: #c8f264;
+  --info-bg:   #0d1f33;
+  --info-border:#1a4080;
+  --info-text: #7ab8ff;
+  --warn-bg:   #1f1800;
+  --warn-border:#5a4000;
+  --warn-text: #ffcc44;
+  --tip-bg:    #0a1f12;
+  --tip-border:#1a5a30;
+  --tip-text:  #44d480;
+  --code-bg:   #242424;
+  --code-border:#2e2e2e;
+}
+
+/* ───────── RESET ───────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7;transition:background var(--transition),color var(--transition)}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--font-body);cursor:pointer;border:none;background:none}
+pre,code{font-family:var(--font-mono)}
+img{max-width:100%;display:block}
+
+/* ───────── SCROLLBAR ───────── */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* ───────── TOPBAR ───────── */
+#topbar {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  height: var(--topbar-h);
+  background: var(--sidebar-bg);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+#sidebar-toggle {
+  width:32px; height:32px; border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  color:#888;
+  transition:background var(--transition),color var(--transition);
+  flex-shrink:0;
+}
+#sidebar-toggle:hover{background:rgba(255,255,255,0.08);color:#ddd}
+#sidebar-toggle svg{width:16px;height:16px}
+
+#logo {
+  display:flex;align-items:center;gap:8px;
+  color:#e8e6de;font-size:14px;font-weight:500;letter-spacing:-0.01em;
+}
+#logo .logo-badge {
+  background:var(--sidebar-accent);color:#111;
+  font-size:10px;font-weight:500;
+  padding:2px 7px;border-radius:20px;letter-spacing:0.03em;
+}
+
+#search-box {
+  flex:1;max-width:320px;
+  height:32px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);
+  display:flex;align-items:center;padding:0 10px;gap:8px;
+  transition:background var(--transition),border-color var(--transition);
+}
+#search-box:focus-within{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+#search-box svg{width:13px;height:13px;color:#666;flex-shrink:0}
+#search-input {
+  flex:1;background:none;border:none;outline:none;
+  font-family:var(--font-body);font-size:13px;color:#ccc;
+}
+#search-input::placeholder{color:#555}
+#search-shortcut {
+  font-size:11px;color:#444;border:1px solid #333;border-radius:4px;
+  padding:1px 5px;font-family:var(--font-mono);
+}
+
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.topbar-icon-btn {
+  width:32px;height:32px;border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  color:#888;
+  transition:background var(--transition),color var(--transition);
+}
+.topbar-icon-btn:hover{background:rgba(255,255,255,0.08);color:#ddd}
+.topbar-icon-btn svg{width:16px;height:16px}
+#version-badge {
+  font-size:11px;padding:3px 9px;border-radius:20px;
+  background:rgba(200,242,100,0.15);color:var(--sidebar-accent);
+  border:1px solid rgba(200,242,100,0.25);font-weight:500;
+}
+
+/* ───────── SEARCH DROPDOWN ───────── */
+#search-results {
+  position:fixed;top:calc(var(--topbar-h) + 4px);left:50%;
+  transform:translateX(-50%);
+  width:440px;max-width:90vw;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.12);
+  display:none;z-index:200;
+}
+#search-results.show{display:block}
+.sr-item {
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background var(--transition);
+}
+.sr-item:last-child{border-bottom:none}
+.sr-item:hover{background:var(--bg3)}
+.sr-item-icon{width:28px;height:28px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sr-item-icon svg{width:13px;height:13px;color:var(--text3)}
+.sr-group{font-size:11px;color:var(--text3);margin-bottom:2px}
+.sr-label{font-size:13px;color:var(--text);font-weight:500}
+.sr-empty{padding:24px;text-align:center;font-size:13px;color:var(--text3)}
+mark{background:rgba(200,242,100,0.4);color:inherit;border-radius:2px;padding:0 1px}
+
+/* ───────── LAYOUT ───────── */
+#layout {
+  display:flex;
+  padding-top:var(--topbar-h);
+  min-height:100vh;
+}
+
+/* ───────── SIDEBAR ───────── */
+#sidebar {
+  position:fixed;top:var(--topbar-h);left:0;bottom:0;
+  width:var(--sidebar-w);
+  background:var(--sidebar-bg);
+  overflow-y:auto;
+  padding:16px 0 32px;
+  transition:transform var(--transition),width var(--transition);
+  z-index:90;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+#sidebar.collapsed{transform:translateX(calc(-1 * var(--sidebar-w)))}
+
+.nav-group-label {
+  font-size:10px;font-weight:500;
+  color:rgba(255,255,255,0.25);
+  padding:16px 20px 6px;
+  letter-spacing:0.09em;text-transform:uppercase;
+}
+.nav-group-label:first-child{padding-top:4px}
+
+.nav-item {
+  display:flex;align-items:center;gap:9px;
+  padding:7px 20px;
+  font-size:13px;color:var(--sidebar-fg);
+  border-left:2px solid transparent;
+  transition:all var(--transition);
+  cursor:pointer;
+}
+.nav-item:hover{background:var(--sidebar-hover);color:#ccc}
+.nav-item.active{
+  color:var(--sidebar-active);font-weight:500;
+  border-left-color:var(--sidebar-accent);
+  background:rgba(200,242,100,0.07);
+}
+.nav-item svg{width:13px;height:13px;flex-shrink:0;opacity:0.6}
+.nav-item.active svg{opacity:1}
+.nav-badge{
+  margin-left:auto;font-size:10px;padding:1px 6px;border-radius:10px;
+  background:rgba(200,242,100,0.15);color:var(--sidebar-accent);
+}
+
+/* ───────── MAIN ───────── */
+#main {
+  flex:1;
+  margin-left:var(--sidebar-w);
+  margin-right:var(--toc-w);
+  min-width:0;
+  padding:40px 48px 80px;
+  transition:margin-left var(--transition);
+}
+#main.sidebar-collapsed{margin-left:0}
+
+/* ───────── TOC ───────── */
+#toc-panel {
+  position:fixed;top:var(--topbar-h);right:0;bottom:0;
+  width:var(--toc-w);
+  padding:32px 20px;
+  overflow-y:auto;
+  border-left:1px solid var(--border);
+  background:var(--bg);
+}
+.toc-heading{font-size:10px;font-weight:500;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px}
+.toc-link {
+  display:block;font-size:12px;color:var(--text3);
+  padding:4px 0 4px 10px;
+  border-left:1.5px solid var(--border);
+  transition:all var(--transition);cursor:pointer;
+  line-height:1.4;
+}
+.toc-link:hover{color:var(--text);border-left-color:var(--border2)}
+.toc-link.active{color:var(--text);border-left-color:var(--text);font-weight:500}
+.toc-link.sub{padding-left:20px;font-size:11px}
+.toc-divider{margin:16px 0;border:none;border-top:1px solid var(--border)}
+
+/* ───────── BREADCRUMB ───────── */
+#breadcrumb {
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:var(--text3);margin-bottom:24px;
+}
+#breadcrumb span{transition:color var(--transition)}
+#breadcrumb span:last-child{color:var(--text)}
+#breadcrumb .sep{color:var(--border2)}
+
+/* ───────── CONTENT ───────── */
+#doc-title{font-size:26px;font-weight:500;letter-spacing:-0.02em;margin-bottom:8px;line-height:1.3}
+#doc-meta{font-size:12px;color:var(--text3);margin-bottom:36px;display:flex;gap:16px;flex-wrap:wrap}
+#doc-meta span{display:flex;align-items:center;gap:5px}
+#doc-meta svg{width:12px;height:12px}
+#doc-content h2 {
+  font-size:17px;font-weight:500;margin:40px 0 12px;
+  padding-bottom:8px;border-bottom:1px solid var(--border);
+  letter-spacing:-0.01em;
+}
+#doc-content h3{font-size:14px;font-weight:500;margin:24px 0 8px;color:var(--text)}
+#doc-content p{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:14px}
+#doc-content ul,#doc-content ol{padding-left:20px;margin-bottom:14px}
+#doc-content li{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:4px}
+#doc-content strong{font-weight:500;color:var(--text)}
+#doc-content code:not(pre code){
+  font-family:var(--font-mono);font-size:12px;
+  background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:4px;padding:1px 5px;color:var(--text);
+}
+#doc-content a{color:var(--info-text);border-bottom:1px solid transparent;transition:border-color var(--transition)}
+#doc-content a:hover{border-bottom-color:var(--info-text)}
+
+/* ───────── CODE BLOCK ───────── */
+.code-block {
+  background:var(--sidebar-bg);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius);
+  margin:16px 0;overflow:hidden;
+}
+[data-theme="light"] .code-block{background:#1e1e2e;border-color:#2e2e3e}
+.code-header {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 16px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.03);
+}
+.code-lang{font-size:11px;color:#666;font-family:var(--font-mono);font-weight:500;letter-spacing:0.05em}
+.copy-btn {
+  font-size:11px;font-family:var(--font-body);
+  padding:3px 10px;border-radius:4px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.05);
+  color:#888;
+  transition:all var(--transition);
+  display:flex;align-items:center;gap:5px;
+}
+.copy-btn:hover{background:rgba(255,255,255,0.1);color:#ccc;border-color:rgba(255,255,255,0.2)}
+.copy-btn.copied{color:var(--sidebar-accent);border-color:rgba(200,242,100,0.3)}
+.copy-btn svg{width:11px;height:11px}
+.code-body{padding:16px;overflow-x:auto}
+.code-body pre{margin:0;font-size:12.5px;line-height:1.7;color:#abb2bf}
+/* simple syntax colors */
+.kw{color:#c678dd}.fn{color:#61afef}.str{color:#98c379}
+.cm{color:#5c6370;font-style:italic}.num{color:#d19a66}
+.tag{color:#e06c75}.attr{color:#d19a66}.prop{color:#abb2bf}
+
+/* ───────── CALLOUT ───────── */
+.callout {
+  border-radius:var(--radius);padding:12px 16px;margin:16px 0;
+  display:flex;gap:10px;align-items:flex-start;
+  border-left:3px solid;
+}
+.callout svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
+.callout-body{font-size:13px;line-height:1.7}
+.callout-body strong{font-size:12px;display:block;margin-bottom:2px;font-weight:500}
+.callout.info{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}
+.callout.warn{background:var(--warn-bg);border-color:var(--warn-border);color:var(--warn-text)}
+.callout.tip {background:var(--tip-bg); border-color:var(--tip-border); color:var(--tip-text)}
+
+/* ───────── TABLE ───────── */
+.doc-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.doc-table th{text-align:left;padding:9px 14px;background:var(--bg3);color:var(--text);font-weight:500;border-bottom:1px solid var(--border2)}
+.doc-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.doc-table tr:last-child td{border-bottom:none}
+.doc-table tr:hover td{background:var(--bg3)}
+.tbl-code{font-family:var(--font-mono);font-size:11.5px;background:var(--code-bg);padding:1px 6px;border-radius:4px;border:1px solid var(--code-border);color:var(--text)}
+.badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500}
+.badge-good{background:var(--tip-bg);color:var(--tip-text);border:1px solid var(--tip-border)}
+.badge-warn{background:var(--warn-bg);color:var(--warn-text);border:1px solid var(--warn-border)}
+.badge-info{background:var(--info-bg);color:var(--info-text);border:1px solid var(--info-border)}
+
+/* ───────── PAGE NAV ───────── */
+#page-nav {
+  display:flex;justify-content:space-between;gap:12px;
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+}
+.page-nav-btn {
+  flex:1;padding:14px 18px;
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg2);color:var(--text2);
+  transition:all var(--transition);text-align:left;
+  max-width:220px;
+}
+.page-nav-btn:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
+.page-nav-btn.next{text-align:right;margin-left:auto}
+.page-nav-label{font-size:11px;color:var(--text3);margin-bottom:3px;display:block}
+.page-nav-title{font-size:13px;font-weight:500}
+
+/* ───────── RESPONSIVE ───────── */
+@media(max-width:1100px){
+  #toc-panel{display:none}
+  #main{margin-right:0}
+}
+@media(max-width:768px){
+  #sidebar{transform:translateX(calc(-1 * var(--sidebar-w)))}
+  #sidebar.mobile-open{transform:translateX(0)}
+  #main{margin-left:0;padding:24px 20px 60px}
+  #mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:89;display:none}
+  #mobile-overlay.show{display:block}
+  #doc-title{font-size:20px}
+}
+
+/* ───────── MISC ───────── */
+.section-divider{margin:40px 0;border:none;border-top:1px solid var(--border)}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);color:var(--text2)}
+
+#scroll-top {
+  position:fixed;bottom:24px;right:24px;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--sidebar-bg);border:1px solid rgba(255,255,255,0.1);
+  color:#888;display:none;align-items:center;justify-content:center;
+  transition:all var(--transition);z-index:50;
+}
+#scroll-top.show{display:flex}
+#scroll-top:hover{color:#ccc;background:#2a2a2a}
+#scroll-top svg{width:14px;height:14px}
+
+.loading-bar{position:fixed;top:0;left:0;height:2px;background:var(--sidebar-accent);width:0%;transition:width 0.2s;z-index:999}
+</style>
+</head>
+<body>
+
+<div class="loading-bar" id="loading-bar"></div>
+<div id="mobile-overlay" onclick="closeMobile()"></div>
+<div id="search-results"></div>
+
+<!-- ── TOPBAR ── -->
+<header id="topbar">
+  <button id="sidebar-toggle" onclick="toggleSidebar()">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="12" x2="14" y2="12"/>
+    </svg>
+  </button>
+  <div id="logo">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <rect x="1" y="1" width="7" height="7" rx="1.5" fill="#c8f264"/>
+      <rect x="10" y="1" width="7" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+      <rect x="10" y="6" width="4" height="2" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="1" y="10" width="16" height="2" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="1" y="14" width="10" height="2" rx="1" fill="rgba(255,255,255,0.1)"/>
+    </svg>
+    Publisher Guide
+    <span class="logo-badge">v2.4</span>
+  </div>
+
+  <div id="search-box">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/>
+    </svg>
+    <input type="text" id="search-input" placeholder="문서 검색..." autocomplete="off" oninput="doSearch(this.value)" onkeydown="searchKey(event)">
+    <span id="search-shortcut">⌘K</span>
+  </div>
+
+  <div class="topbar-right">
+    <button class="topbar-icon-btn" onclick="toggleDark()" id="dark-btn" title="다크모드 토글">
+      <svg id="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="2.5"/><line x1="8" y1="13.5" x2="8" y2="15"/>
+        <line x1="1" y1="8" x2="2.5" y2="8"/><line x1="13.5" y1="8" x2="15" y2="8"/>
+        <line x1="3" y1="3" x2="4.1" y2="4.1"/><line x1="11.9" y1="11.9" x2="13" y2="13"/>
+        <line x1="13" y1="3" x2="11.9" y2="4.1"/><line x1="4.1" y1="11.9" x2="3" y2="13"/>
+      </svg>
+      <svg id="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="display:none">
+        <path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ── SIDEBAR ── -->
+<nav id="sidebar"></nav>
+
+<!-- ── LAYOUT ── -->
+<div id="layout">
+  <main id="main">
+    <nav id="breadcrumb"></nav>
+    <h1 id="doc-title"></h1>
+    <div id="doc-meta"></div>
+    <div id="doc-content"></div>
+    <nav id="page-nav"></nav>
+  </main>
+  <aside id="toc-panel">
+    <div class="toc-heading">이 페이지</div>
+    <div id="toc-list"></div>
+  </aside>
+</div>
+
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <polyline points="3,10 8,5 13,10"/>
+  </svg>
+</button>
+
+<script>
+/* ═══════════════════════════════════════════════
+   DATA — 메뉴 & 콘텐츠 하드코딩
+   새 페이지 추가: MENU에 항목, PAGES에 내용 추가
+═══════════════════════════════════════════════ */
+const MENU = [
+  { group: '시작하기', items: [
+    { id: 'overview',    label: '개요',        icon: 'book' },
+    { id: 'setup',       label: '환경 설정',   icon: 'settings' },
+    { id: 'quickstart',  label: '빠른 시작',   icon: 'zap', badge: 'NEW' },
+  ]},
+  { group: '기본 원칙', items: [
+    { id: 'grid',        label: '그리드 시스템', icon: 'grid' },
+    { id: 'typography',  label: '타이포그래피',  icon: 'type' },
+    { id: 'color',       label: '색상 팔레트',   icon: 'palette' },
+    { id: 'spacing',     label: '간격 규칙',     icon: 'spacing' },
+  ]},
+  { group: '컴포넌트', items: [
+    { id: 'buttons',     label: '버튼',          icon: 'cursor' },
+    { id: 'forms',       label: '폼 요소',        icon: 'form' },
+    { id: 'cards',       label: '카드',           icon: 'card' },
+    { id: 'modal',       label: '모달',           icon: 'modal' },
+    { id: 'table',       label: '테이블',         icon: 'table' },
+    { id: 'toast',       label: '토스트 알림',    icon: 'bell' },
+  ]},
+  { group: '레이아웃', items: [
+    { id: 'header',      label: '헤더',           icon: 'layout' },
+    { id: 'footer',      label: '푸터',           icon: 'footer' },
+    { id: 'responsive',  label: '반응형 규칙',    icon: 'mobile' },
+  ]},
+  { group: '코딩 규칙', items: [
+    { id: 'html-rules',  label: 'HTML 구조',      icon: 'code' },
+    { id: 'css-naming',  label: 'CSS 네이밍',     icon: 'hash' },
+    { id: 'js-pattern',  label: 'JS 패턴',        icon: 'js' },
+    { id: 'perf',        label: '성능 최적화',    icon: 'speed' },
+  ]},
+  { group: '디자인 토큰', items: [
+    { id: 'tokens-overview', label: '토큰 개요',      icon: 'token' },
+    { id: 'tokens-color',    label: '컬러 토큰',      icon: 'palette' },
+    { id: 'tokens-typo',     label: '타이포 토큰',    icon: 'type' },
+    { id: 'tokens-spacing',  label: '간격·사이즈',    icon: 'spacing' },
+  ]},
+  { group: '아이콘 시스템', items: [
+    { id: 'icon-overview',   label: '아이콘 개요',    icon: 'star' },
+    { id: 'icon-usage',      label: '사용법',         icon: 'code' },
+    { id: 'icon-list',       label: '아이콘 목록',    icon: 'grid' },
+  ]},
+  { group: 'Kendo UI', items: [
+    { id: 'kendo-overview',      label: 'Kendo 개요',          icon: 'kendo',  badge: 'K' },
+    { id: 'kendo-grid',          label: 'Grid',                icon: 'table' },
+    { id: 'kendo-dropdown',      label: 'DropDownList',        icon: 'form' },
+    { id: 'kendo-multiselect',   label: 'MultiSelect',         icon: 'form' },
+    { id: 'kendo-autocomplete',  label: 'AutoComplete',        icon: 'form' },
+    { id: 'kendo-datepicker',    label: 'DatePicker',          icon: 'cal' },
+    { id: 'kendo-daterangepicker', label: 'DateRangePicker',   icon: 'cal' },
+    { id: 'kendo-timepicker',    label: 'TimePicker',          icon: 'clock' },
+    { id: 'kendo-numeric',       label: 'NumericTextBox',      icon: 'hash' },
+    { id: 'kendo-editor',        label: 'Editor',              icon: 'edit' },
+    { id: 'kendo-tab',           label: 'TabStrip',            icon: 'tab' },
+    { id: 'kendo-window',        label: 'Window',              icon: 'modal' },
+    { id: 'kendo-treeview',      label: 'TreeView',            icon: 'tree' },
+    { id: 'kendo-splitter',      label: 'Splitter',            icon: 'split' },
+  ]},
+];
+
+const PAGES = {
+  overview: {
+    title: '퍼블리셔 가이드 개요',
+    group: '시작하기',
+    updated: '2025-01-15',
+    readTime: '3분',
+    prev: null,
+    next: { id: 'setup', label: '환경 설정' },
+    toc: [
+      { id: 's-intro',   label: '소개',         level: 1 },
+      { id: 's-scope',   label: '적용 범위',    level: 1 },
+      { id: 's-version', label: '버전 관리',    level: 1 },
+      { id: 's-contact', label: '문의 및 기여', level: 1 },
+    ],
+    content: `
+      <h2 id="s-intro">소개</h2>
+      <p>이 가이드는 회사 UI 개발의 기준을 정의합니다. 모든 퍼블리셔는 이 문서를 기준으로 마크업하며, 일관된 품질의 결과물을 제공합니다.</p>
+      <div class="callout info">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>이 문서는 살아있는 문서입니다</strong>컴포넌트나 규칙이 변경될 때마다 이 가이드가 업데이트됩니다. 수정 이력은 팀 슬랙 #pub-guide 채널에서 확인하세요.</div>
+      </div>
+      <h2 id="s-scope">적용 범위</h2>
+      <p>이 가이드는 다음 프로젝트에 적용됩니다.</p>
+      <ul>
+        <li>회사 메인 사이트 및 서브 도메인</li>
+        <li>내부 어드민 페이지</li>
+        <li>마케팅 랜딩 페이지</li>
+        <li>이메일 템플릿 (별도 섹션 참조)</li>
+      </ul>
+      <div class="callout warn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>예외 처리</strong>가이드를 벗어난 구현이 필요한 경우, 반드시 디자인팀과 사전 협의 후 진행하세요. 임의 변경은 품질 검수에서 반려될 수 있습니다.</div>
+      </div>
+      <h2 id="s-version">버전 관리</h2>
+      <p>가이드는 <code>MAJOR.MINOR</code> 버전 체계를 따릅니다. 현재 버전은 <code>v2.4</code>입니다.</p>
+      <table class="doc-table">
+        <thead><tr><th>버전</th><th>날짜</th><th>주요 변경 사항</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tbl-code">v2.4</span></td><td>2025-01</td><td>토스트 알림 컴포넌트 추가, 반응형 breakpoint 수정</td></tr>
+          <tr><td><span class="tbl-code">v2.3</span></td><td>2024-11</td><td>다크모드 가이드라인 추가</td></tr>
+          <tr><td><span class="tbl-code">v2.0</span></td><td>2024-08</td><td>전면 개편 — 그리드 시스템 변경, BEM 도입</td></tr>
+          <tr><td><span class="tbl-code">v1.x</span></td><td>2023</td><td>초기 버전</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-contact">문의 및 기여</h2>
+      <p>오류 발견 또는 추가 요청은 슬랙 <code>#pub-guide</code> 채널 또는 퍼블팀 리드에게 직접 연락해주세요.</p>
+      <div class="callout tip">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="1.5,9 5.5,13 14.5,3"/></svg>
+        <div class="callout-body"><strong>기여 방법</strong>PR 형식으로 수정 제안이 가능합니다. 가이드 수정 시 반드시 디자인팀 리뷰를 받아야 합니다.</div>
+      </div>
+    `
+  },
+
+  setup: {
+    title: '환경 설정',
+    group: '시작하기',
+    updated: '2025-01-10',
+    readTime: '5분',
+    prev: { id: 'overview', label: '개요' },
+    next: { id: 'quickstart', label: '빠른 시작' },
+    toc: [
+      { id: 's-req',    label: '개발 환경 요구사항', level: 1 },
+      { id: 's-tools',  label: '권장 도구',           level: 1 },
+      { id: 's-vscode', label: 'VS Code 설정',         level: 2 },
+      { id: 's-lint',   label: '린트 설정',            level: 1 },
+    ],
+    content: `
+      <h2 id="s-req">개발 환경 요구사항</h2>
+      <p>작업 전 아래 환경이 준비되어 있는지 확인하세요.</p>
+      <table class="doc-table">
+        <thead><tr><th>항목</th><th>버전</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>Node.js</td><td><span class="tbl-code">18+</span></td><td>LTS 권장</td></tr>
+          <tr><td>npm</td><td><span class="tbl-code">9+</span></td><td>yarn 사용 가능</td></tr>
+          <tr><td>브라우저</td><td>Chrome 최신</td><td>개발 기준 브라우저</td></tr>
+          <tr><td>OS</td><td>macOS / Windows</td><td>Linux도 지원</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-tools">권장 도구</h2>
+      <p>팀 전체가 동일한 도구를 사용하면 코드 품질이 일관됩니다.</p>
+      <div class="tag-row">
+        <span class="tag">VS Code</span><span class="tag">Prettier</span><span class="tag">ESLint</span>
+        <span class="tag">Stylelint</span><span class="tag">Live Server</span><span class="tag">Git</span>
+      </div>
+      <h2 id="s-vscode">VS Code 설정</h2>
+      <p>아래 <code>.vscode/settings.json</code>을 프로젝트 루트에 추가하세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">json</span><button class="copy-btn" onclick="copyCode(this,'c-vscode')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-vscode">{
+  <span class="str">"editor.formatOnSave"</span>: <span class="kw">true</span>,
+  <span class="str">"editor.defaultFormatter"</span>: <span class="str">"esbenp.prettier-vscode"</span>,
+  <span class="str">"editor.tabSize"</span>: <span class="num">2</span>,
+  <span class="str">"editor.insertSpaces"</span>: <span class="kw">true</span>,
+  <span class="str">"css.validate"</span>: <span class="kw">false</span>,
+  <span class="str">"stylelint.enable"</span>: <span class="kw">true</span>
+}</pre></div>
+      </div>
+      <h2 id="s-lint">린트 설정</h2>
+      <p>프로젝트 루트에 아래 파일을 추가해 코드 스타일을 자동으로 검사하세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">.prettierrc</span><button class="copy-btn" onclick="copyCode(this,'c-prettier')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-prettier">{
+  <span class="str">"printWidth"</span>: <span class="num">100</span>,
+  <span class="str">"tabWidth"</span>: <span class="num">2</span>,
+  <span class="str">"useTabs"</span>: <span class="kw">false</span>,
+  <span class="str">"semi"</span>: <span class="kw">true</span>,
+  <span class="str">"singleQuote"</span>: <span class="kw">true</span>,
+  <span class="str">"trailingComma"</span>: <span class="str">"es5"</span>
+}</pre></div>
+      </div>
+    `
+  },
+
+  quickstart: {
+    title: '빠른 시작',
+    group: '시작하기',
+    updated: '2025-01-15',
+    readTime: '4분',
+    prev: { id: 'setup', label: '환경 설정' },
+    next: { id: 'grid', label: '그리드 시스템' },
+    toc: [
+      { id: 's-clone',  label: '저장소 클론',    level: 1 },
+      { id: 's-struct', label: '디렉토리 구조',  level: 1 },
+      { id: 's-first',  label: '첫 페이지 작성', level: 1 },
+    ],
+    content: `
+      <h2 id="s-clone">저장소 클론</h2>
+      <p>팀 GitLab에서 베이스 템플릿을 클론해 시작합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this,'c-clone')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-clone"><span class="cm"># 저장소 클론</span>
+git clone https://gitlab.company.com/pub/base-template.git
+<span class="kw">cd</span> base-template
+
+<span class="cm"># 의존성 설치</span>
+npm install
+
+<span class="cm"># 개발 서버 시작</span>
+npm run dev</pre></div>
+      </div>
+      <h2 id="s-struct">디렉토리 구조</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this,'c-tree')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-tree">project/
+├── assets/
+│   ├── css/
+│   │   ├── base.css        <span class="cm"># 리셋, 변수</span>
+│   │   ├── components.css  <span class="cm"># 컴포넌트</span>
+│   │   └── layout.css      <span class="cm"># 레이아웃</span>
+│   ├── js/
+│   │   └── main.js
+│   └── images/
+├── components/             <span class="cm"># HTML 스니펫</span>
+├── pages/                  <span class="cm"># 실제 페이지</span>
+└── index.html</pre></div>
+      </div>
+      <h2 id="s-first">첫 페이지 작성</h2>
+      <p>모든 HTML 페이지의 기본 골격입니다. 이 구조에서 벗어나지 마세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-base')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-base"><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"ko"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="str">"viewport"</span> <span class="attr">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>페이지 제목 | 서비스명<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"/assets/css/base.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"page-wrap"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;header</span> <span class="attr">class</span>=<span class="str">"site-header"</span><span class="tag">&gt;&lt;/header&gt;</span>
+    <span class="tag">&lt;main</span> <span class="attr">class</span>=<span class="str">"content"</span><span class="tag">&gt;&lt;/main&gt;</span>
+    <span class="tag">&lt;footer</span> <span class="attr">class</span>=<span class="str">"site-footer"</span><span class="tag">&gt;&lt;/footer&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></div>
+      </div>
+    `
+  },
+
+  grid: {
+    title: '그리드 시스템',
+    group: '기본 원칙',
+    updated: '2024-12-20',
+    readTime: '6분',
+    prev: { id: 'quickstart', label: '빠른 시작' },
+    next: { id: 'typography', label: '타이포그래피' },
+    toc: [
+      { id: 's-12col',  label: '12 컬럼 그리드', level: 1 },
+      { id: 's-bp',     label: 'Breakpoint',     level: 1 },
+      { id: 's-gutter', label: 'Gutter 규칙',    level: 1 },
+    ],
+    content: `
+      <h2 id="s-12col">12 컬럼 그리드</h2>
+      <p>모든 레이아웃은 12컬럼 기반 그리드를 사용합니다. CSS Grid 또는 Flexbox로 구현하세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-grid')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-grid"><span class="prop">.container</span> {
+  <span class="attr">max-width</span>: <span class="num">1200px</span>;
+  <span class="attr">margin</span>: <span class="num">0</span> auto;
+  <span class="attr">padding</span>: <span class="num">0 24px</span>;
+}
+<span class="prop">.grid</span> {
+  <span class="attr">display</span>: grid;
+  <span class="attr">grid-template-columns</span>: <span class="fn">repeat</span>(<span class="num">12</span>, <span class="num">1fr</span>);
+  <span class="attr">gap</span>: <span class="num">24px</span>;
+}
+<span class="prop">.col-6</span>  { <span class="attr">grid-column</span>: <span class="fn">span</span> <span class="num">6</span>; }
+<span class="prop">.col-4</span>  { <span class="attr">grid-column</span>: <span class="fn">span</span> <span class="num">4</span>; }
+<span class="prop">.col-3</span>  { <span class="attr">grid-column</span>: <span class="fn">span</span> <span class="num">3</span>; }</pre></div>
+      </div>
+      <h2 id="s-bp">Breakpoint</h2>
+      <table class="doc-table">
+        <thead><tr><th>이름</th><th>범위</th><th>컬럼 수</th><th>Gutter</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-info">xs</span></td><td>~ 480px</td><td>4</td><td>16px</td></tr>
+          <tr><td><span class="badge badge-info">sm</span></td><td>481 ~ 768px</td><td>8</td><td>16px</td></tr>
+          <tr><td><span class="badge badge-good">md</span></td><td>769 ~ 1024px</td><td>12</td><td>20px</td></tr>
+          <tr><td><span class="badge badge-good">lg</span></td><td>1025px ~</td><td>12</td><td>24px</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-gutter">Gutter 규칙</h2>
+      <p>Gutter(컬럼 사이 간격)는 <code>gap</code> 속성으로 제어합니다. 임의의 margin 값을 사용하지 마세요.</p>
+      <div class="callout tip">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="1.5,9 5.5,13 14.5,3"/></svg>
+        <div class="callout-body"><strong>권장</strong>컴포넌트 내부 간격은 그리드 시스템과 분리해서 관리하세요. 컴포넌트 자체 padding은 그리드 gutter에 영향을 받지 않습니다.</div>
+      </div>
+    `
+  },
+
+  typography: {
+    title: '타이포그래피',
+    group: '기본 원칙',
+    updated: '2024-12-18',
+    readTime: '5분',
+    prev: { id: 'grid', label: '그리드 시스템' },
+    next: { id: 'color', label: '색상 팔레트' },
+    toc: [
+      { id: 's-font',  label: '폰트 패밀리', level: 1 },
+      { id: 's-scale', label: '타입 스케일', level: 1 },
+      { id: 's-lh',    label: '행간 / 자간', level: 1 },
+    ],
+    content: `
+      <h2 id="s-font">폰트 패밀리</h2>
+      <p>서비스 전체에서 아래 세 가지 폰트만 사용합니다.</p>
+      <table class="doc-table">
+        <thead><tr><th>역할</th><th>폰트</th><th>사용 범위</th></tr></thead>
+        <tbody>
+          <tr><td>본문</td><td><span class="tbl-code">Pretendard</span></td><td>일반 텍스트, UI 전반</td></tr>
+          <tr><td>영문 헤딩</td><td><span class="tbl-code">Instrument Serif</span></td><td>주요 제목 (영문 한정)</td></tr>
+          <tr><td>코드</td><td><span class="tbl-code">JetBrains Mono</span></td><td>코드 블록, 인라인 코드</td></tr>
+        </tbody>
+      </table>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-font')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-font"><span class="prop">:root</span> {
+  <span class="attr">--font-body</span>: <span class="str">'Pretendard'</span>, sans-serif;
+  <span class="attr">--font-heading</span>: <span class="str">'Instrument Serif'</span>, serif;
+  <span class="attr">--font-mono</span>: <span class="str">'JetBrains Mono'</span>, monospace;
+}</pre></div>
+      </div>
+      <h2 id="s-scale">타입 스케일</h2>
+      <table class="doc-table">
+        <thead><tr><th>레벨</th><th>크기</th><th>굵기</th><th>용도</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tbl-code">h1</span></td><td>32px</td><td>600</td><td>페이지 대제목</td></tr>
+          <tr><td><span class="tbl-code">h2</span></td><td>24px</td><td>600</td><td>섹션 제목</td></tr>
+          <tr><td><span class="tbl-code">h3</span></td><td>18px</td><td>500</td><td>서브섹션</td></tr>
+          <tr><td><span class="tbl-code">body</span></td><td>15px</td><td>400</td><td>본문</td></tr>
+          <tr><td><span class="tbl-code">small</span></td><td>13px</td><td>400</td><td>보조 텍스트</td></tr>
+          <tr><td><span class="tbl-code">caption</span></td><td>11px</td><td>400</td><td>캡션, 레이블</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-lh">행간 / 자간</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-lh')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-lh"><span class="cm">/* 행간 (line-height) */</span>
+<span class="prop">h1, h2</span>    { <span class="attr">line-height</span>: <span class="num">1.25</span>; }
+<span class="prop">h3</span>        { <span class="attr">line-height</span>: <span class="num">1.4</span>; }
+<span class="prop">body, p</span>   { <span class="attr">line-height</span>: <span class="num">1.8</span>; }
+
+<span class="cm">/* 자간 (letter-spacing) */</span>
+<span class="prop">h1</span>        { <span class="attr">letter-spacing</span>: <span class="str">-0.03em</span>; }
+<span class="prop">h2</span>        { <span class="attr">letter-spacing</span>: <span class="str">-0.02em</span>; }
+<span class="prop">.caption</span>  { <span class="attr">letter-spacing</span>: <span class="str">0.04em</span>; }</pre></div>
+      </div>
+    `
+  },
+
+  color: {
+    title: '색상 팔레트',
+    group: '기본 원칙',
+    updated: '2024-12-10',
+    readTime: '4분',
+    prev: { id: 'typography', label: '타이포그래피' },
+    next: { id: 'spacing', label: '간격 규칙' },
+    toc: [
+      { id: 's-primary',   label: '브랜드 컬러',   level: 1 },
+      { id: 's-semantic',  label: '시맨틱 컬러',   level: 1 },
+      { id: 's-darkmode',  label: '다크모드 대응', level: 1 },
+    ],
+    content: `
+      <h2 id="s-primary">브랜드 컬러</h2>
+      <p>모든 색상은 CSS 변수로 관리합니다. 직접 hex 값을 쓰지 마세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-color')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-color"><span class="prop">:root</span> {
+  <span class="cm">/* 브랜드 */</span>
+  <span class="attr">--color-primary</span>:      <span class="num">#1a1a1a</span>;
+  <span class="attr">--color-primary-hover</span>:<span class="num">#333333</span>;
+  <span class="attr">--color-accent</span>:       <span class="num">#c8f264</span>;
+
+  <span class="cm">/* 텍스트 */</span>
+  <span class="attr">--color-text</span>:         <span class="num">#1a1a1a</span>;
+  <span class="attr">--color-text-muted</span>:   <span class="num">#5a5a52</span>;
+  <span class="attr">--color-text-faint</span>:   <span class="num">#9a9a90</span>;
+
+  <span class="cm">/* 배경 */</span>
+  <span class="attr">--color-bg</span>:           <span class="num">#f7f6f2</span>;
+  <span class="attr">--color-surface</span>:      <span class="num">#ffffff</span>;
+  <span class="attr">--color-subtle</span>:       <span class="num">#f0efe9</span>;
+}</pre></div>
+      </div>
+      <h2 id="s-semantic">시맨틱 컬러</h2>
+      <table class="doc-table">
+        <thead><tr><th>역할</th><th>변수명</th><th>상태</th></tr></thead>
+        <tbody>
+          <tr><td>성공</td><td><span class="tbl-code">--color-success</span></td><td><span class="badge badge-good">정상</span></td></tr>
+          <tr><td>경고</td><td><span class="tbl-code">--color-warning</span></td><td><span class="badge badge-warn">주의</span></td></tr>
+          <tr><td>오류</td><td><span class="tbl-code">--color-danger</span></td><td><span class="badge" style="background:#fde8e8;color:#c0392b;border:1px solid #f5b7b7">위험</span></td></tr>
+          <tr><td>정보</td><td><span class="tbl-code">--color-info</span></td><td><span class="badge badge-info">안내</span></td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-darkmode">다크모드 대응</h2>
+      <p>CSS 변수를 사용하면 다크모드 대응이 자동화됩니다. <code>[data-theme="dark"]</code> 속성으로 전환합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-dark')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-dark"><span class="prop">[data-theme="dark"]</span> {
+  <span class="attr">--color-bg</span>:      <span class="num">#141414</span>;
+  <span class="attr">--color-surface</span>: <span class="num">#1e1e1e</span>;
+  <span class="attr">--color-text</span>:    <span class="num">#e8e6de</span>;
+}
+
+<span class="cm">/* JS로 전환 */</span>
+<span class="fn">document</span>.<span class="fn">documentElement</span>.<span class="fn">setAttribute</span>(
+  <span class="str">'data-theme'</span>, <span class="str">'dark'</span>
+);</pre></div>
+      </div>
+    `
+  },
+
+  spacing: {
+    title: '간격 규칙',
+    group: '기본 원칙',
+    updated: '2024-11-28',
+    readTime: '3분',
+    prev: { id: 'color', label: '색상 팔레트' },
+    next: { id: 'buttons', label: '버튼' },
+    toc: [
+      { id: 's-scale', label: '간격 스케일', level: 1 },
+      { id: 's-usage', label: '사용 원칙',   level: 1 },
+    ],
+    content: `
+      <h2 id="s-scale">간격 스케일</h2>
+      <p>4px 배수 시스템을 기반으로 간격을 정의합니다. CSS 변수로 관리하세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-space')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-space"><span class="prop">:root</span> {
+  <span class="attr">--sp-1</span>:  <span class="num">4px</span>;   <span class="cm">/* 극소 */</span>
+  <span class="attr">--sp-2</span>:  <span class="num">8px</span>;   <span class="cm">/* 소 */</span>
+  <span class="attr">--sp-3</span>:  <span class="num">12px</span>;  <span class="cm">/* 중소 */</span>
+  <span class="attr">--sp-4</span>:  <span class="num">16px</span>;  <span class="cm">/* 중 */</span>
+  <span class="attr">--sp-6</span>:  <span class="num">24px</span>;  <span class="cm">/* 대 */</span>
+  <span class="attr">--sp-8</span>:  <span class="num">32px</span>;  <span class="cm">/* 특대 */</span>
+  <span class="attr">--sp-12</span>: <span class="num">48px</span>;  <span class="cm">/* 섹션 간격 */</span>
+  <span class="attr">--sp-16</span>: <span class="num">64px</span>;  <span class="cm">/* 페이지 간격 */</span>
+}</pre></div>
+      </div>
+      <h2 id="s-usage">사용 원칙</h2>
+      <ul>
+        <li>컴포넌트 내부 패딩: <code>--sp-2</code> ~ <code>--sp-4</code></li>
+        <li>컴포넌트 간 간격: <code>--sp-4</code> ~ <code>--sp-6</code></li>
+        <li>섹션 간 간격: <code>--sp-12</code> ~ <code>--sp-16</code></li>
+        <li>임의 픽셀값 사용 금지 — 반드시 변수 사용</li>
+      </ul>
+      <div class="callout warn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>매직 넘버 금지</strong><code>margin: 13px</code>, <code>padding: 7px</code> 같은 임의의 숫자는 사용하지 마세요. 반드시 스케일 변수를 사용하거나, 필요하면 디자인팀에 변수 추가를 요청하세요.</div>
+      </div>
+    `
+  },
+
+  buttons: {
+    title: '버튼',
+    group: '컴포넌트',
+    updated: '2025-01-05',
+    readTime: '5분',
+    prev: { id: 'spacing', label: '간격 규칙' },
+    next: { id: 'forms', label: '폼 요소' },
+    toc: [
+      { id: 's-types',  label: '버튼 종류',   level: 1 },
+      { id: 's-size',   label: '버튼 크기',   level: 1 },
+      { id: 's-state',  label: '상태 스타일', level: 1 },
+    ],
+    content: `
+      <h2 id="s-types">버튼 종류</h2>
+      <p>버튼은 4가지 종류만 사용합니다. 임의로 스타일을 변형하지 마세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-btn')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-btn"><span class="cm">&lt;!-- Primary: 핵심 액션 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="str">"btn btn--primary"</span><span class="tag">&gt;</span>저장하기<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Secondary: 보조 액션 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="str">"btn btn--secondary"</span><span class="tag">&gt;</span>취소<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Ghost: 강조 불필요한 액션 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="str">"btn btn--ghost"</span><span class="tag">&gt;</span>더보기<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Danger: 파괴적 액션 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="str">"btn btn--danger"</span><span class="tag">&gt;</span>삭제<span class="tag">&lt;/button&gt;</span></pre></div>
+      </div>
+      <h2 id="s-size">버튼 크기</h2>
+      <table class="doc-table">
+        <thead><tr><th>크기</th><th>클래스</th><th>높이</th><th>패딩</th><th>폰트</th></tr></thead>
+        <tbody>
+          <tr><td>Large</td><td><span class="tbl-code">btn--lg</span></td><td>48px</td><td>0 24px</td><td>15px</td></tr>
+          <tr><td>Medium (기본)</td><td>-</td><td>40px</td><td>0 18px</td><td>14px</td></tr>
+          <tr><td>Small</td><td><span class="tbl-code">btn--sm</span></td><td>32px</td><td>0 12px</td><td>13px</td></tr>
+          <tr><td>X-Small</td><td><span class="tbl-code">btn--xs</span></td><td>26px</td><td>0 10px</td><td>12px</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-state">상태 스타일</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-btnst')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-btnst"><span class="prop">.btn</span>:hover   { <span class="attr">opacity</span>: <span class="num">0.88</span>; }
+<span class="prop">.btn</span>:active  { <span class="attr">transform</span>: <span class="fn">scale</span>(<span class="num">0.98</span>); }
+<span class="prop">.btn</span>:disabled {
+  <span class="attr">opacity</span>: <span class="num">0.4</span>;
+  <span class="attr">cursor</span>: not-allowed;
+  <span class="attr">pointer-events</span>: none;
+}
+<span class="prop">.btn.is-loading</span> {
+  <span class="attr">pointer-events</span>: none;
+  <span class="cm">/* 스피너 아이콘 삽입 */</span>
+}</pre></div>
+      </div>
+    `
+  },
+
+  'html-rules': {
+    title: 'HTML 구조 규칙',
+    group: '코딩 규칙',
+    updated: '2025-01-08',
+    readTime: '7분',
+    prev: { id: 'responsive', label: '반응형 규칙' },
+    next: { id: 'css-naming', label: 'CSS 네이밍' },
+    toc: [
+      { id: 's-semantic', label: '시맨틱 태그',    level: 1 },
+      { id: 's-attr',     label: '필수 속성',      level: 1 },
+      { id: 's-indent',   label: '들여쓰기 규칙',  level: 1 },
+      { id: 's-comment',  label: '주석 규칙',      level: 1 },
+    ],
+    content: `
+      <h2 id="s-semantic">시맨틱 태그</h2>
+      <p>의미에 맞는 HTML 태그를 사용해 접근성과 SEO를 개선하세요.</p>
+      <table class="doc-table">
+        <thead><tr><th>태그</th><th>용도</th><th>주의사항</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tbl-code">&lt;header&gt;</span></td><td>페이지/섹션 헤더</td><td>페이지당 1개 권장</td></tr>
+          <tr><td><span class="tbl-code">&lt;nav&gt;</span></td><td>주요 네비게이션</td><td>aria-label 필수</td></tr>
+          <tr><td><span class="tbl-code">&lt;main&gt;</span></td><td>주요 콘텐츠</td><td>페이지당 반드시 1개</td></tr>
+          <tr><td><span class="tbl-code">&lt;article&gt;</span></td><td>독립적 콘텐츠 단위</td><td>블로그 글, 카드 등</td></tr>
+          <tr><td><span class="tbl-code">&lt;section&gt;</span></td><td>주제별 섹션 구분</td><td>제목 태그 포함 권장</td></tr>
+          <tr><td><span class="tbl-code">&lt;aside&gt;</span></td><td>보조 콘텐츠</td><td>사이드바, 광고 영역</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-attr">필수 속성</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-attr')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-attr"><span class="cm">&lt;!-- 이미지: alt 필수 --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"photo.jpg"</span> <span class="attr">alt</span>=<span class="str">"팀 단체 사진"</span> <span class="attr">width</span>=<span class="str">"800"</span> <span class="attr">height</span>=<span class="str">"600"</span><span class="tag">&gt;</span>
+
+<span class="cm">&lt;!-- 링크: 빈 href 금지 --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"/about"</span><span class="tag">&gt;</span>회사 소개<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- 외부 링크: 보안 속성 추가 --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"https://..."</span> <span class="attr">target</span>=<span class="str">"_blank"</span>
+   <span class="attr">rel</span>=<span class="str">"noopener noreferrer"</span><span class="tag">&gt;</span>외부 링크<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- 버튼: type 필수 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"button"</span><span class="tag">&gt;</span>클릭<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>제출<span class="tag">&lt;/button&gt;</span></pre></div>
+      </div>
+      <h2 id="s-indent">들여쓰기 규칙</h2>
+      <ul>
+        <li>스페이스 2칸 사용 (탭 금지)</li>
+        <li>중첩 depth가 5단계를 넘으면 컴포넌트 분리 검토</li>
+        <li>인라인 요소는 같은 줄에 작성 가능</li>
+        <li>블록 요소는 반드시 줄 바꿈</li>
+      </ul>
+      <h2 id="s-comment">주석 규칙</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-comment')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-comment"><span class="cm">&lt;!-- ── 섹션 시작: Header ── --&gt;</span>
+<span class="tag">&lt;header</span> <span class="attr">class</span>=<span class="str">"site-header"</span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/header&gt;</span>
+<span class="cm">&lt;!-- ── 섹션 끝: Header ── --&gt;</span>
+
+<span class="cm">&lt;!-- TODO: 모바일 메뉴 구현 필요 --&gt;</span>
+<span class="cm">&lt;!-- FIXME: IE 호환성 문제 --&gt;</span></pre></div>
+      </div>
+    `
+  },
+
+  'css-naming': {
+    title: 'CSS 네이밍',
+    group: '코딩 규칙',
+    updated: '2025-01-08',
+    readTime: '5분',
+    prev: { id: 'html-rules', label: 'HTML 구조 규칙' },
+    next: { id: 'js-pattern', label: 'JS 패턴' },
+    toc: [
+      { id: 's-bem',    label: 'BEM 방법론',    level: 1 },
+      { id: 's-prefix', label: '접두사 규칙',   level: 1 },
+      { id: 's-var',    label: 'CSS 변수 네이밍', level: 1 },
+    ],
+    content: `
+      <h2 id="s-bem">BEM 방법론</h2>
+      <p>Block, Element, Modifier 방식으로 클래스 이름을 작성합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-bem')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-bem"><span class="cm">/* Block: 독립적인 컴포넌트 */</span>
+<span class="prop">.card</span> { }
+
+<span class="cm">/* Element: 블록의 구성 요소 (__) */</span>
+<span class="prop">.card__header</span> { }
+<span class="prop">.card__body</span>   { }
+<span class="prop">.card__footer</span> { }
+<span class="prop">.card__title</span>  { }
+<span class="prop">.card__image</span>  { }
+
+<span class="cm">/* Modifier: 상태나 변형 (--) */</span>
+<span class="prop">.card--featured</span>  { }
+<span class="prop">.card--dark</span>       { }
+<span class="prop">.card--horizontal</span> { }</pre></div>
+      </div>
+      <h2 id="s-prefix">접두사 규칙</h2>
+      <table class="doc-table">
+        <thead><tr><th>접두사</th><th>용도</th><th>예시</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tbl-code">is-</span></td><td>상태 클래스</td><td><span class="tbl-code">is-active</span>, <span class="tbl-code">is-open</span></td></tr>
+          <tr><td><span class="tbl-code">has-</span></td><td>자식 요소 존재 여부</td><td><span class="tbl-code">has-icon</span>, <span class="tbl-code">has-badge</span></td></tr>
+          <tr><td><span class="tbl-code">js-</span></td><td>JS 훅 (스타일 없음)</td><td><span class="tbl-code">js-toggle</span></td></tr>
+          <tr><td><span class="tbl-code">u-</span></td><td>유틸리티</td><td><span class="tbl-code">u-sr-only</span>, <span class="tbl-code">u-hidden</span></td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-var">CSS 변수 네이밍</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-varname')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-varname"><span class="cm">/* 패턴: --[범주]-[속성]-[변형] */</span>
+<span class="attr">--color-text-primary</span>
+<span class="attr">--color-text-muted</span>
+<span class="attr">--color-bg-surface</span>
+<span class="attr">--size-font-body</span>
+<span class="attr">--space-gap-md</span>
+<span class="attr">--radius-card</span>
+<span class="attr">--shadow-dropdown</span></pre></div>
+      </div>
+    `
+  },
+
+  perf: {
+    title: '성능 최적화',
+    group: '코딩 규칙',
+    updated: '2025-01-08',
+    readTime: '4분',
+    prev: { id: 'js-pattern', label: 'JS 패턴' },
+    next: { id: 'tokens-overview', label: '토큰 개요' },
+    toc: [
+      { id: 's-img',    label: '이미지 최적화',  level: 1 },
+      { id: 's-css',    label: 'CSS 최적화',     level: 1 },
+      { id: 's-js',     label: 'JS 로딩 전략',  level: 1 },
+    ],
+    content: `
+      <h2 id="s-img">이미지 최적화</h2>
+      <p>이미지는 페이지 용량의 대부분을 차지합니다. 아래 규칙을 준수하세요.</p>
+      <ul>
+        <li>PNG → WebP 변환 우선 사용 (용량 25~35% 절감)</li>
+        <li>아이콘은 SVG 스프라이트 사용 (별도 아이콘 시스템 가이드 참조)</li>
+        <li><code>width</code>, <code>height</code> 속성 반드시 명시 (Layout Shift 방지)</li>
+        <li>뷰포트 밖 이미지에 <code>loading="lazy"</code> 적용</li>
+      </ul>
+      <h2 id="s-css">CSS 최적화</h2>
+      <ul>
+        <li>CSS 파일은 <code>&lt;head&gt;</code> 상단에서 로드 (렌더 블로킹 방지)</li>
+        <li>사용하지 않는 셀렉터 제거 (PurgeCSS 활용)</li>
+        <li>애니메이션은 <code>transform</code>, <code>opacity</code>만 사용 (GPU 가속)</li>
+      </ul>
+      <h2 id="s-js">JS 로딩 전략</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-perf-js')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-perf-js"><span class="cm">&lt;!-- defer: DOM 파싱 완료 후 실행 (권장) --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"app.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span>
+
+<span class="cm">&lt;!-- async: 다운로드 즉시 실행 (독립 스크립트) --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"analytics.js"</span> <span class="attr">async</span><span class="tag">&gt;&lt;/script&gt;</span>
+
+<span class="cm">&lt;!-- Kendo: body 닫기 태그 직전 로드 --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"kendo.all.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"js/kendo-init.js"</span><span class="tag">&gt;&lt;/script&gt;</span></pre></div>
+      </div>
+    `
+  },
+
+  /* ─── 디자인 토큰 ─── */
+  'tokens-overview': {
+    title: '디자인 토큰 개요',
+    group: '디자인 토큰',
+    updated: '2025-01-15',
+    readTime: '4분',
+    prev: { id: 'perf', label: '성능 최적화' },
+    next: { id: 'tokens-color', label: '컬러 토큰' },
+    toc: [
+      { id: 's-what',   label: '토큰이란',         level: 1 },
+      { id: 's-struct', label: '토큰 구조',         level: 1 },
+      { id: 's-file',   label: '파일 위치',         level: 1 },
+      { id: 's-rule',   label: '사용 규칙',         level: 1 },
+    ],
+    content: `
+      <h2 id="s-what">토큰이란</h2>
+      <p>디자인 토큰은 색상, 폰트, 간격 등 UI의 시각적 속성을 CSS 변수로 중앙에서 관리하는 시스템입니다. 하드코딩된 값 대신 토큰을 사용하면 테마 변경, 유지보수, 다크모드 대응이 일관되게 처리됩니다.</p>
+      <div class="callout info">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>핵심 원칙</strong>코드에서 <code>#5C61D4</code>, <code>16px</code> 같은 값을 직접 쓰지 않습니다. 반드시 <code>var(--primary-500)</code>, <code>var(--font-size)</code> 형태의 토큰을 사용하세요.</div>
+      </div>
+      <h2 id="s-struct">토큰 구조</h2>
+      <p>토큰은 3단계 계층으로 구성됩니다.</p>
+      <table class="doc-table">
+        <thead><tr><th>계층</th><th>설명</th><th>예시</th></tr></thead>
+        <tbody>
+          <tr><td><strong>원시(Primitive)</strong></td><td>팔레트의 실제 값</td><td><code>--primary-500: #5C61D4</code></td></tr>
+          <tr><td><strong>시맨틱(Semantic)</strong></td><td>역할 기반 별칭</td><td><code>--text-primary</code>, <code>--btn-main</code></td></tr>
+          <tr><td><strong>컴포넌트(Component)</strong></td><td>특정 컴포넌트 전용</td><td><code>--input-h</code>, <code>--acc-round</code></td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-file">파일 위치</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this,'c-tok-tree')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-tok-tree">assets/css/
+├── tokens/
+│   ├── root-tokens.css   <span class="cm"># :root 변수 전체 정의 (v3.0)</span>
+│   ├── color.css         <span class="cm"># 컬러 팔레트</span>
+│   └── component.css     <span class="cm"># 컴포넌트 토큰</span>
+└── base.css              <span class="cm"># @import tokens/root-tokens.css</span></pre></div>
+      </div>
+      <h2 id="s-rule">사용 규칙</h2>
+      <ul>
+        <li>원시 토큰(<code>--primary-500</code>)은 토큰 정의 파일에서만 사용</li>
+        <li>컴포넌트 CSS에서는 시맨틱 토큰(<code>--btn-main</code>) 사용</li>
+        <li>새 값이 필요하면 임의 하드코딩 금지 — 퍼블팀 리드에게 토큰 추가 요청</li>
+      </ul>
+    `
+  },
+
+  'tokens-color': {
+    title: '컬러 토큰',
+    group: '디자인 토큰',
+    updated: '2025-01-15',
+    readTime: '6분',
+    prev: { id: 'tokens-overview', label: '토큰 개요' },
+    next: { id: 'tokens-typo', label: '타이포 토큰' },
+    toc: [
+      { id: 's-primary',  label: 'Primary 팔레트',  level: 1 },
+      { id: 's-neutral',  label: 'Neutral 팔레트',  level: 1 },
+      { id: 's-semantic', label: '시맨틱 컬러',     level: 1 },
+      { id: 's-button',   label: '버튼 토큰',       level: 1 },
+    ],
+    content: `
+      <h2 id="s-primary">Primary 팔레트 (Slate Blue)</h2>
+      <p>브랜드 컬러입니다. <code>--primary-500</code>이 기준값이며, 숫자가 클수록 어둡습니다.</p>
+      <div style="display:flex;gap:4px;margin:12px 0 16px;border-radius:6px;overflow:hidden">
+        <div style="flex:1;height:48px;background:#F8F9FD;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#999;font-family:var(--font-mono)">50</div>
+        <div style="flex:1;height:48px;background:#F2F2FC;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#999;font-family:var(--font-mono)">100</div>
+        <div style="flex:1;height:48px;background:#EBEBFA;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#aaa;font-family:var(--font-mono)">200</div>
+        <div style="flex:1;height:48px;background:#999CE4;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#fff;font-family:var(--font-mono)">300</div>
+        <div style="flex:1;height:48px;background:#7A7EE8;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#fff;font-family:var(--font-mono)">400</div>
+        <div style="flex:1;height:48px;background:#5C61D4;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#fff;font-weight:600;font-family:var(--font-mono)">500★</div>
+        <div style="flex:1;height:48px;background:#4549AB;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#fff;font-family:var(--font-mono)">600</div>
+        <div style="flex:1;height:48px;background:#37396D;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#fff;font-family:var(--font-mono)">700</div>
+        <div style="flex:1;height:48px;background:#0A0B25;display:flex;align-items:flex-end;padding:4px;font-size:10px;color:#fff;font-family:var(--font-mono)">800</div>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-col-prim')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-col-prim"><span class="prop">:root</span> {
+  <span class="attr">--primary-50</span>:  <span class="num">#F8F9FD</span>;
+  <span class="attr">--primary-100</span>: <span class="num">#F2F2FC</span>;
+  <span class="attr">--primary-200</span>: <span class="num">#EBEBFA</span>;
+  <span class="attr">--primary-300</span>: <span class="num">#999CE4</span>;
+  <span class="attr">--primary-400</span>: <span class="num">#7A7EE8</span>;
+  <span class="attr">--primary-500</span>: <span class="num">#5C61D4</span>; <span class="cm">/* ★ 메인 브랜드 */</span>
+  <span class="attr">--primary-600</span>: <span class="num">#4549AB</span>;
+  <span class="attr">--primary-700</span>: <span class="num">#37396D</span>;
+  <span class="attr">--primary-800</span>: <span class="num">#0A0B25</span>;
+}</pre></div>
+      </div>
+      <h2 id="s-neutral">Neutral 팔레트</h2>
+      <p><code>--black-*</code> 스케일은 50 단위 체계입니다. <code>--black-550</code>(#404040)이 버튼 기본 텍스트 등에 사용됩니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-col-neu')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-col-neu"><span class="prop">:root</span> {
+  <span class="attr">--black-300</span>: <span class="num">#B8B8B8</span>; <span class="cm">/* 비활성 텍스트 */</span>
+  <span class="attr">--black-400</span>: <span class="num">#8E8E8E</span>; <span class="cm">/* 보조/플레이스홀더 */</span>
+  <span class="attr">--black-500</span>: <span class="num">#555555</span>; <span class="cm">/* 중간 텍스트 */</span>
+  <span class="attr">--black-550</span>: <span class="num">#404040</span>; <span class="cm">/* 버튼 기본 텍스트 */</span>
+  <span class="attr">--black-600</span>: <span class="num">#333333</span>; <span class="cm">/* 강조 텍스트 */</span>
+  <span class="attr">--black-700</span>: <span class="num">#262527</span>; <span class="cm">/* 본문 기본 */</span>
+  <span class="attr">--black-800</span>: <span class="num">#0D0914</span>; <span class="cm">/* 최강조 */</span>
+  <span class="attr">--black-900</span>: <span class="num">#000000</span>;
+
+  <span class="attr">--white-100</span>: <span class="num">#FCFCFC</span>;
+  <span class="attr">--white-200</span>: <span class="num">#F8F8F8</span>;
+  <span class="attr">--white-300</span>: <span class="num">#F5F5F5</span>;
+  <span class="attr">--white-400</span>: <span class="num">#F1F1F1</span>;
+  <span class="attr">--white-500</span>: <span class="num">#E8E8E8</span>;
+  <span class="attr">--white-600</span>: <span class="num">#DDDDDD</span>;
+}</pre></div>
+      </div>
+      <h2 id="s-semantic">시맨틱 컬러</h2>
+      <table class="doc-table">
+        <thead><tr><th>토큰</th><th>값</th><th>사용처</th></tr></thead>
+        <tbody>
+          <tr><td><code>--color-success</code></td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#80B430;vertical-align:middle;margin-right:6px"></span>#80B430</td><td>완료, 성공 상태</td></tr>
+          <tr><td><code>--color-danger</code></td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#E43E3E;vertical-align:middle;margin-right:6px"></span>#E43E3E</td><td>오류, 삭제 경고</td></tr>
+          <tr><td><code>--color-warning</code></td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ffbe0b;vertical-align:middle;margin-right:6px"></span>#ffbe0b</td><td>주의, 진행률 바</td></tr>
+          <tr><td><code>--color-info</code></td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#2269D1;vertical-align:middle;margin-right:6px"></span>#2269D1</td><td>정보, 링크</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-button">버튼 토큰</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-col-btn')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-col-btn"><span class="attr">--btn-main</span>:               <span class="num">#5C61D4</span>; <span class="cm">/* Primary 버튼 */</span>
+<span class="attr">--btn-main-dark</span>:          <span class="num">#4549AB</span>; <span class="cm">/* Primary hover */</span>
+<span class="attr">--btn-revers</span>:             <span class="num">#FA7C35</span>; <span class="cm">/* 반전(CTA) 버튼 */</span>
+<span class="attr">--btn-revers-dark</span>:        <span class="num">#F86A0E</span>; <span class="cm">/* 반전 hover */</span>
+<span class="attr">--btn-default-border-color</span>:<span class="num">#DDDDDD</span>; <span class="cm">/* 라인 버튼 border */</span>
+<span class="attr">--btn-disabled-bg-color</span>:  <span class="num">#f9f9f9</span>;
+<span class="attr">--btn-disabled-font-color</span>:<span class="num">#8d96a5</span>;</pre></div>
+      </div>
+      <div class="callout warn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>v3.0 변경 사항</strong><code>--btn-line</code>이 <code>--btn-default-border-color</code>로 통합됐습니다. 기존 코드에서 <code>--btn-line</code> 사용 시 교체해주세요.</div>
+      </div>
+    `
+  },
+
+  'tokens-typo': {
+    title: '타이포그래피 토큰',
+    group: '디자인 토큰',
+    updated: '2025-01-12',
+    readTime: '4분',
+    prev: { id: 'tokens-color', label: '컬러 토큰' },
+    next: { id: 'tokens-spacing', label: '간격·사이즈' },
+    toc: [
+      { id: 's-font-fam', label: '폰트 패밀리', level: 1 },
+      { id: 's-text-tok', label: '텍스트 토큰', level: 1 },
+    ],
+    content: `
+      <h2 id="s-font-fam">폰트 패밀리</h2>
+      <p>9가지 폰트 변수가 정의되어 있습니다. <strong>v3.0에서 오타(<code>sans-self</code>) 전체 수정 완료</strong>되었습니다.</p>
+      <div class="callout tip">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="1.5,9 5.5,13 14.5,3"/></svg>
+        <div class="callout-body"><strong>기본 폰트</strong>관리자 페이지 전반에는 <code>var(--Pretendard)</code>를 사용합니다. 영문 전용 UI에는 <code>var(--Poppins)</code>를 사용할 수 있습니다.</div>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-typo-fam')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-typo-fam"><span class="attr">--Pretendard</span>:         <span class="str">"Pretendard"</span>,          sans-serif; <span class="cm">/* 기본 */</span>
+<span class="attr">--SUIT</span>:               <span class="str">"SUIT"</span>,                sans-serif;
+<span class="attr">--notosansKr</span>:         <span class="str">"Noto Sans KR"</span>,        sans-serif;
+<span class="attr">--Poppins</span>:            <span class="str">"Poppins"</span>,             sans-serif; <span class="cm">/* 영문 전용 */</span>
+<span class="attr">--spoqaHanSansNeo</span>:    <span class="str">"Spoqa Han Sans Neo"</span>,  sans-serif;
+<span class="attr">--pretendardVariable</span>: <span class="str">"Pretendard Variable"</span>, sans-serif;
+<span class="attr">--Saira</span>:              <span class="str">"Saira"</span>,               sans-serif;
+<span class="attr">--GmarketSansBold</span>:    <span class="str">"GmarketSansBold"</span>,     sans-serif;
+<span class="attr">--GmarketSansLight</span>:   <span class="str">"GmarketSansLight"</span>,    sans-serif;</pre></div>
+      </div>
+      <h2 id="s-text-tok">텍스트 토큰</h2>
+      <p>v3.0에서 텍스트 색상 토큰이 시맨틱 방식으로 통합됐습니다.</p>
+      <table class="doc-table">
+        <thead><tr><th>토큰 (신)</th><th>구 토큰</th><th>용도</th></tr></thead>
+        <tbody>
+          <tr><td><code>--text-primary</code></td><td><code>--text-color</code></td><td>강조·제목</td></tr>
+          <tr><td><code>--text-body</code></td><td><code>--default-font-color</code></td><td>본문 기본</td></tr>
+          <tr><td><code>--text-secondary</code></td><td><code>--text-color02</code></td><td>보조 설명</td></tr>
+          <tr><td><code>--text-disabled</code></td><td>—</td><td>비활성 텍스트</td></tr>
+        </tbody>
+      </table>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-typo-text')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-typo-text"><span class="attr">--font-size</span>:     <span class="num">16px</span>;
+<span class="attr">--font-let-spc</span>:  <span class="num">-0.02em</span>;
+<span class="attr">--line-height</span>:   <span class="num">1.5</span>;
+
+<span class="attr">--text-primary</span>:  <span class="num">#262527</span>; <span class="cm">/* 강조·제목 */</span>
+<span class="attr">--text-body</span>:     <span class="num">#46464F</span>; <span class="cm">/* 본문 */</span>
+<span class="attr">--text-secondary</span>:<span class="num">#8e8e93</span>; <span class="cm">/* 보조 */</span>
+<span class="attr">--text-disabled</span>: <span class="num">#B8B8B8</span>; <span class="cm">/* 비활성 */</span></pre></div>
+      </div>
+    `
+  },
+
+  'tokens-spacing': {
+    title: '간격·사이즈 토큰',
+    group: '디자인 토큰',
+    updated: '2025-01-12',
+    readTime: '3분',
+    prev: { id: 'tokens-typo', label: '타이포 토큰' },
+    next: { id: 'icon-overview', label: '아이콘 개요' },
+    toc: [
+      { id: 's-input-h', label: '인풋 높이',  level: 1 },
+      { id: 's-layout',  label: '레이아웃',   level: 1 },
+      { id: 's-radius',  label: 'Radius',     level: 1 },
+    ],
+    content: `
+      <h2 id="s-input-h">인풋 높이</h2>
+      <p>인풋 크기는 3단계 토큰으로 관리합니다.</p>
+      <div style="display:flex;gap:12px;align-items:flex-end;margin:12px 0 16px">
+        <div style="text-align:center"><div style="width:80px;height:32px;border:1px solid #5C61D4;border-radius:4px;background:#F2F2FC"></div><div style="font-size:11px;color:#8E8E8E;margin-top:4px;font-family:monospace">--input-h-s<br>32px</div></div>
+        <div style="text-align:center"><div style="width:80px;height:35px;border:1px solid #5C61D4;border-radius:4px;background:#F2F2FC"></div><div style="font-size:11px;color:#8E8E8E;margin-top:4px;font-family:monospace">--input-h<br>35px</div></div>
+        <div style="text-align:center"><div style="width:80px;height:42px;border:1px solid #5C61D4;border-radius:4px;background:#F2F2FC"></div><div style="font-size:11px;color:#8E8E8E;margin-top:4px;font-family:monospace">--input-h-big<br>42px</div></div>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-sp-input')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-sp-input"><span class="prop">.input-sm</span>      { <span class="attr">height</span>: <span class="fn">var</span>(--input-h-s,   <span class="num">32px</span>); }
+<span class="prop">.input-default</span> { <span class="attr">height</span>: <span class="fn">var</span>(--input-h,     <span class="num">35px</span>); }
+<span class="prop">.input-search</span>  { <span class="attr">height</span>: <span class="fn">var</span>(--input-h-big, <span class="num">42px</span>); }</pre></div>
+      </div>
+      <h2 id="s-layout">레이아웃</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-sp-layout')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-sp-layout"><span class="attr">--layout-width</span>:   <span class="num">1280px</span>; <span class="cm">/* 최대 컨테이너 */</span>
+<span class="attr">--layout-padding</span>: <span class="num">5.13vw</span>; <span class="cm">/* 모바일 좌우 여백 */</span></pre></div>
+      </div>
+      <h2 id="s-radius">Radius</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-sp-radius')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-sp-radius"><span class="attr">--acc-round</span>: <span class="num">10px</span>; <span class="cm">/* 아코디언 */</span>
+<span class="cm">/* 일반 radius는 컴포넌트별 직접 정의 */</span>
+<span class="cm">/* 예: border-radius: 4px (input), 6px (btn), 8px (card) */</span></pre></div>
+      </div>
+    `
+  },
+
+  /* ─── 아이콘 시스템 ─── */
+  'icon-overview': {
+    title: '아이콘 시스템 개요',
+    group: '아이콘 시스템',
+    updated: '2025-01-15',
+    readTime: '4분',
+    prev: { id: 'tokens-spacing', label: '간격·사이즈' },
+    next: { id: 'icon-usage', label: '사용법' },
+    toc: [
+      { id: 's-why',    label: '왜 SVG 스프라이트인가', level: 1 },
+      { id: 's-files',  label: '파일 구성',             level: 1 },
+      { id: 's-perf',   label: '성능 비교',             level: 1 },
+    ],
+    content: `
+      <h2 id="s-why">왜 SVG 스프라이트인가</h2>
+      <p>기존에는 <code>icon_map.png</code> 스프라이트와 개별 PNG 파일이 혼재했습니다. v3.0부터 SVG 스프라이트 단일 방식으로 통합했습니다.</p>
+      <table class="doc-table">
+        <thead><tr><th>방식</th><th>HTTP 요청</th><th>색상 변경</th><th>레티나</th><th>관리</th></tr></thead>
+        <tbody>
+          <tr><td>PNG 개별</td><td><span class="badge badge-warn">N개</span></td><td>불가</td><td>@2x 별도 필요</td><td>보통</td></tr>
+          <tr><td>PNG 스프라이트</td><td><span class="badge badge-good">1개</span></td><td>불가</td><td>background-size 필요</td><td>좌표 관리 불편</td></tr>
+          <tr><td><strong>SVG 스프라이트 ✓</strong></td><td><span class="badge badge-good">1개</span></td><td><span class="badge badge-good">CSS 변수</span></td><td><span class="badge badge-good">자동</span></td><td>id로 직관적</td></tr>
+        </tbody>
+      </table>
+      <div class="callout tip">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="1.5,9 5.5,13 14.5,3"/></svg>
+        <div class="callout-body"><strong>hover 색상 변경 비교</strong>이전에는 <code>icon_logout.png</code> / <code>icon_logout_on.png</code> 두 파일이 필요했지만, 이제는 CSS 한 줄 <code>color: var(--primary-600)</code>으로 처리됩니다.</div>
+      </div>
+      <h2 id="s-files">파일 구성</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this,'c-ico-tree')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ico-tree">assets/
+├── images/
+│   └── icons.svg     <span class="cm"># SVG 스프라이트 (26종)</span>
+└── css/
+    └── icon.css      <span class="cm"># 아이콘 기본 스타일 + 유틸</span></pre></div>
+      </div>
+      <h2 id="s-perf">성능 비교</h2>
+      <p>PNG 방식 대비 SVG 스프라이트 전환 후 효과입니다.</p>
+      <table class="doc-table">
+        <thead><tr><th>항목</th><th>이전</th><th>이후</th></tr></thead>
+        <tbody>
+          <tr><td>이미지 파일 수</td><td>~30개 (on/off 각 1장)</td><td>1개 (icons.svg)</td></tr>
+          <tr><td>총 파일 용량</td><td>~80KB</td><td>~8KB</td></tr>
+          <tr><td>hover 처리</td><td>별도 이미지 스왑</td><td>CSS color 전환</td></tr>
+          <tr><td>레티나 지원</td><td>@2x 별도 작업</td><td>자동 (벡터)</td></tr>
+        </tbody>
+      </table>
+    `
+  },
+
+  'icon-usage': {
+    title: '아이콘 사용법',
+    group: '아이콘 시스템',
+    updated: '2025-01-15',
+    readTime: '5분',
+    prev: { id: 'icon-overview', label: '아이콘 개요' },
+    next: { id: 'icon-list', label: '아이콘 목록' },
+    toc: [
+      { id: 's-basic',   label: '기본 사용',    level: 1 },
+      { id: 's-size',    label: '크기 클래스',  level: 1 },
+      { id: 's-color',   label: '색상 클래스',  level: 1 },
+      { id: 's-btn',     label: '버튼 조합',    level: 1 },
+      { id: 's-radio',   label: '라디오/체크',  level: 1 },
+    ],
+    content: `
+      <h2 id="s-basic">기본 사용</h2>
+      <p><code>&lt;body&gt;</code> 최상단에 스프라이트를 한 번 삽입하고, 이후 <code>&lt;use&gt;</code>로 참조합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-ico-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ico-basic"><span class="cm">&lt;!-- body 최상단에 1회 삽입 --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">style</span>=<span class="str">"display:none"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;symbol</span> <span class="attr">id</span>=<span class="str">"search"</span> <span class="attr">viewBox</span>=<span class="str">"0 0 20 20"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/symbol&gt;</span>
+<span class="tag">&lt;/svg&gt;</span>
+
+<span class="cm">&lt;!-- 사용 --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;use</span> <span class="attr">href</span>=<span class="str">"#search"</span><span class="tag">&gt;&lt;/use&gt;</span>
+<span class="tag">&lt;/svg&gt;</span>
+
+<span class="cm">&lt;!-- 외부 파일 참조 (다른 페이지에서도 캐시 활용) --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;use</span> <span class="attr">href</span>=<span class="str">"/images/icons.svg#search"</span><span class="tag">&gt;&lt;/use&gt;</span>
+<span class="tag">&lt;/svg&gt;</span></pre></div>
+      </div>
+      <h2 id="s-size">크기 클래스</h2>
+      <table class="doc-table">
+        <thead><tr><th>클래스</th><th>크기</th><th>사용 위치</th></tr></thead>
+        <tbody>
+          <tr><td><code>.icon-xs</code></td><td>12px</td><td>뱃지 내부</td></tr>
+          <tr><td><code>.icon-sm</code></td><td>16px</td><td>텍스트 옆 인라인 (권장)</td></tr>
+          <tr><td><code>.icon-md</code></td><td>18px</td><td>버튼 아이콘</td></tr>
+          <tr><td><code>.icon-lg</code></td><td>20px</td><td>GNB, 헤더 버튼</td></tr>
+          <tr><td><code>.icon-xl</code></td><td>24px</td><td>빈 상태(empty state)</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-color">색상 클래스</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-ico-color')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ico-color"><span class="cm">&lt;!-- 색상 클래스 --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg icon-primary"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg icon-muted"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg icon-danger"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg icon-success"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+
+<span class="cm">&lt;!-- CSS 직접 제어 --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg"</span> <span class="attr">style</span>=<span class="str">"color: var(--primary-600)"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span></pre></div>
+      </div>
+      <h2 id="s-btn">버튼 조합</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-ico-btn')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ico-btn"><span class="cm">&lt;!-- 아이콘 단독 버튼 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"button"</span> <span class="attr">class</span>=<span class="str">"icon-btn"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg"</span><span class="tag">&gt;&lt;use</span> <span class="attr">href</span>=<span class="str">"#search"</span><span class="tag">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- 텍스트 + 아이콘 --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"button"</span> <span class="attr">class</span>=<span class="str">"btn btn--primary"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-sm"</span><span class="tag">&gt;&lt;use</span> <span class="attr">href</span>=<span class="str">"#download"</span><span class="tag">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+  다운로드
+<span class="tag">&lt;/button&gt;</span></pre></div>
+      </div>
+      <h2 id="s-radio">라디오/체크박스</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-ico-radio')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ico-radio"><span class="tag">&lt;label</span> <span class="attr">class</span>=<span class="str">"radio-box"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"radio"</span> <span class="attr">name</span>=<span class="str">"opt"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg icon-state-off"</span><span class="tag">&gt;&lt;use</span> <span class="attr">href</span>=<span class="str">"#radio-off"</span><span class="tag">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"icon icon-lg icon-state-on"</span><span class="tag">&gt;&lt;use</span> <span class="attr">href</span>=<span class="str">"#radio-on"</span><span class="tag">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+  옵션 1
+<span class="tag">&lt;/label&gt;</span></pre></div>
+      </div>
+    `
+  },
+
+  'icon-list': {
+    title: '아이콘 목록',
+    group: '아이콘 시스템',
+    updated: '2025-01-15',
+    readTime: '2분',
+    prev: { id: 'icon-usage', label: '사용법' },
+    next: { id: 'kendo-overview', label: 'Kendo 개요' },
+    toc: [
+      { id: 's-form-icons', label: 'Form',       level: 1 },
+      { id: 's-act-icons',  label: 'Action',     level: 1 },
+      { id: 's-nav-icons',  label: 'Navigation', level: 1 },
+      { id: 's-ui-icons',   label: 'UI / Status',level: 1 },
+      { id: 's-adm-icons',  label: 'Admin',      level: 1 },
+    ],
+    content: `
+      <h2 id="s-form-icons">Form (7종)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        ${['radio-off','radio-on','radio-disabled','check-off','check-on','check-disabled','select-arrow'].map(id=>`
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 10px;border:1px solid var(--border);border-radius:6px;min-width:76px;background:var(--bg2)">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="#5C61D4" stroke-width="1.5" stroke-linecap="round">${id==='radio-off'?'<circle cx="10" cy="10" r="8.5"/>':id==='radio-on'?'<circle cx="10" cy="10" r="8.5"/><circle cx="10" cy="10" r="5" fill="#5C61D4" stroke="none"/>':id==='radio-disabled'?'<circle cx="10" cy="10" r="8.5" stroke-dasharray="2 2"/>':id==='check-off'?'<rect x="1.5" y="1.5" width="17" height="17" rx="3.5"/>':id==='check-on'?'<rect x="1.5" y="1.5" width="17" height="17" rx="3.5" fill="#5C61D4" stroke="none"/><polyline points="4.5,10.5 8.5,14.5 15.5,6.5" stroke="#fff" stroke-width="2"/>':id==='check-disabled'?'<rect x="1.5" y="1.5" width="17" height="17" rx="3.5" stroke-dasharray="2 2"/>':'<polyline points="1,1.5 6,6.5 11,1.5" viewBox="0 0 12 8"/>'}</svg>
+          <span style="font-size:10px;color:var(--text3);font-family:var(--font-mono)">#${id}</span>
+        </div>`).join('')}
+      </div>
+      <h2 id="s-act-icons">Action (4종)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        ${[
+          {id:'search',path:'<circle cx="8.5" cy="8.5" r="6" stroke-width="1.6"/><line x1="13" y1="13" x2="18.5" y2="18.5" stroke-width="1.8"/>'},
+          {id:'download',path:'<line x1="9" y1="2" x2="9" y2="12"/><polyline points="4.5,8 9,13 13.5,8" stroke-linejoin="round"/><line x1="2" y1="16" x2="16" y2="16"/>'},
+          {id:'upload',path:'<line x1="9" y1="12" x2="9" y2="2"/><polyline points="4.5,6 9,1 13.5,6" stroke-linejoin="round"/><line x1="2" y1="16" x2="16" y2="16"/>'},
+          {id:'search-sm',path:'<circle cx="7.5" cy="7.5" r="5"/><line x1="11.5" y1="11.5" x2="16" y2="16"/>'},
+        ].map(({id,path})=>`
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 10px;border:1px solid var(--border);border-radius:6px;min-width:76px;background:var(--bg2)">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="#5C61D4" stroke-width="1.5" stroke-linecap="round">${path}</svg>
+          <span style="font-size:10px;color:var(--text3);font-family:var(--font-mono)">#${id}</span>
+        </div>`).join('')}
+      </div>
+      <h2 id="s-nav-icons">Navigation (6종)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        ${[
+          {id:'arrow-up',path:'<polyline points="4,13 10,7 16,13" stroke-linejoin="round"/>'},
+          {id:'arrow-down',path:'<polyline points="4,7 10,13 16,7" stroke-linejoin="round"/>'},
+          {id:'arrow-right',path:'<polyline points="5,4 11,10 5,16" stroke-linejoin="round"/>'},
+          {id:'gnb-close',path:'<polyline points="13,4 7,10 13,16" stroke-linejoin="round"/><line x1="16" y1="4" x2="16" y2="16"/>'},
+          {id:'gnb-open',path:'<polyline points="7,4 13,10 7,16" stroke-linejoin="round"/><line x1="4" y1="4" x2="4" y2="16"/>'},
+          {id:'hamburger',path:'<line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/>'},
+        ].map(({id,path})=>`
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 10px;border:1px solid var(--border);border-radius:6px;min-width:76px;background:var(--bg2)">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="#5C61D4" stroke-width="1.5" stroke-linecap="round">${path}</svg>
+          <span style="font-size:10px;color:var(--text3);font-family:var(--font-mono)">#${id}</span>
+        </div>`).join('')}
+      </div>
+      <h2 id="s-ui-icons">UI / Status (5종)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        ${[
+          {id:'info',path:'<circle cx="9" cy="9" r="7.5"/><line x1="9" y1="8" x2="9" y2="13"/><circle cx="9" cy="5.5" r="1" fill="#5C61D4"/>',vb:'0 0 18 18'},
+          {id:'info-filled',path:'<circle cx="9" cy="9" r="8" fill="#5C61D4"/><line x1="9" y1="8" x2="9" y2="13" stroke="#fff" stroke-width="1.7"/><circle cx="9" cy="5.5" r="1.1" fill="#fff" stroke="none"/>',vb:'0 0 18 18'},
+          {id:'tip-close',path:'<line x1="3.5" y1="3.5" x2="14.5" y2="14.5"/><line x1="14.5" y1="3.5" x2="3.5" y2="14.5"/>',vb:'0 0 18 18'},
+          {id:'alert',path:'<path d="M10 2L18.5 17H1.5L10 2z" stroke-linejoin="round"/><line x1="10" y1="8.5" x2="10" y2="12.5"/><circle cx="10" cy="15" r="1" fill="#5C61D4"/>',vb:'0 0 20 20'},
+          {id:'check-circle',path:'<circle cx="10" cy="10" r="8.5"/><polyline points="5.5,10.5 8.5,13.5 14.5,7" stroke-linejoin="round"/>',vb:'0 0 20 20'},
+        ].map(({id,path,vb})=>`
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 10px;border:1px solid var(--border);border-radius:6px;min-width:76px;background:var(--bg2)">
+          <svg viewBox="${vb}" width="20" height="20" fill="none" stroke="#5C61D4" stroke-width="1.5" stroke-linecap="round">${path}</svg>
+          <span style="font-size:10px;color:var(--text3);font-family:var(--font-mono)">#${id}</span>
+        </div>`).join('')}
+      </div>
+      <h2 id="s-adm-icons">Admin (6종)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${[
+          {id:'mypage',path:'<circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7"/>'},
+          {id:'change-pw',path:'<rect x="3.5" y="9" width="13" height="9.5" rx="2.5"/><path d="M6.5 9V6.5a3.5 3.5 0 0 1 7 0V9"/><circle cx="10" cy="14" r="1.5" fill="#5C61D4"/>'},
+          {id:'logout',path:'<path d="M8 3H4a1.5 1.5 0 0 0-1.5 1.5v11A1.5 1.5 0 0 0 4 17h4"/><polyline points="13,7 17.5,10 13,13" stroke-linejoin="round"/><line x1="7.5" y1="10" x2="17.5" y2="10"/>'},
+          {id:'home',path:'<path d="M2.5 9L10 2.5 17.5 9" stroke-linejoin="round"/><path d="M4.5 7.5V17h4v-4.5h3V17h4V7.5" stroke-linejoin="round"/>'},
+          {id:'all',path:'<rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/>',vb:'0 0 16 16'},
+          {id:'my',path:'<circle cx="8" cy="6" r="2.8"/><path d="M2 14.5c0-3.314 2.686-6 6-6s6 2.686 6 6"/>',vb:'0 0 16 16'},
+        ].map(({id,path,vb='0 0 20 20'})=>`
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 10px;border:1px solid var(--border);border-radius:6px;min-width:76px;background:var(--bg2)">
+          <svg viewBox="${vb}" width="20" height="20" fill="none" stroke="#5C61D4" stroke-width="1.5" stroke-linecap="round">${path}</svg>
+          <span style="font-size:10px;color:var(--text3);font-family:var(--font-mono)">#${id}</span>
+        </div>`).join('')}
+      </div>
+    `
+  },
+
+  /* ─── Kendo UI ─── */
+  'kendo-overview': {
+    title: 'Kendo UI 개요',
+    group: 'Kendo UI',
+    updated: '2025-01-15',
+    readTime: '5분',
+    prev: { id: 'icon-list', label: '아이콘 목록' },
+    next: { id: 'kendo-grid', label: 'Grid' },
+    toc: [
+      { id: 's-k-intro',  label: '관리자 환경 구성',   level: 1 },
+      { id: 's-k-cdn',    label: 'CDN / 파일 로드',    level: 1 },
+      { id: 's-k-theme',  label: '테마 커스터마이징',  level: 1 },
+      { id: 's-k-init',   label: '공통 초기화 패턴',   level: 1 },
+    ],
+    content: `
+      <h2 id="s-k-intro">관리자 환경 구성</h2>
+      <p>관리자 페이지는 Kendo UI jQuery 기반으로 구성됩니다. 각 컴포넌트는 별도 JS 파일로 분리 관리합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this,'c-k-tree')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-k-tree">assets/js/kendo/
+├── kendo-grid.js          <span class="cm"># Grid 초기화</span>
+├── kendo-dropdown.js      <span class="cm"># DropDownList / MultiSelect / AutoComplete</span>
+├── kendo-datepicker.js    <span class="cm"># DatePicker / DateRangePicker / TimePicker</span>
+├── kendo-numeric.js       <span class="cm"># NumericTextBox</span>
+├── kendo-editor.js        <span class="cm"># Editor</span>
+├── kendo-tab.js           <span class="cm"># TabStrip</span>
+├── kendo-window.js        <span class="cm"># Window (팝업)</span>
+├── kendo-treeview.js      <span class="cm"># TreeView</span>
+└── kendo-splitter.js      <span class="cm"># Splitter</span></pre></div>
+      </div>
+      <h2 id="s-k-cdn">CDN / 파일 로드</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-k-cdn')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-k-cdn"><span class="tag">&lt;head&gt;</span>
+  <span class="cm">&lt;!-- Kendo CSS (테마) --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span>
+    <span class="attr">href</span>=<span class="str">"kendo/css/kendo.common.min.css"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span>
+    <span class="attr">href</span>=<span class="str">"kendo/css/kendo.custom.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  ...
+  <span class="cm">&lt;!-- body 닫기 직전 순서대로 로드 --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"jquery.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"kendo/js/kendo.all.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"js/kendo-grid.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span></pre></div>
+      </div>
+      <h2 id="s-k-theme">테마 커스터마이징</h2>
+      <p>Kendo 기본 테마에 디자인 토큰을 덮어씁니다. <code>kendo.custom.css</code>에서 관리합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-k-theme')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-k-theme"><span class="cm">/* 포커스/선택 컬러 → primary 토큰 적용 */</span>
+<span class="prop">.k-state-focused,
+.k-state-selected</span> {
+  <span class="attr">border-color</span>: <span class="fn">var</span>(--primary-500) <span class="kw">!important</span>;
+  <span class="attr">color</span>: <span class="fn">var</span>(--primary-600) <span class="kw">!important</span>;
+}
+<span class="prop">.k-list .k-item.k-state-selected</span> {
+  <span class="attr">background</span>: <span class="fn">var</span>(--primary-100);
+  <span class="attr">color</span>: <span class="fn">var</span>(--primary-700);
+}
+<span class="cm">/* 높이 토큰 통일 */</span>
+<span class="prop">.k-dropdown,
+.k-datepicker,
+.k-timepicker</span> {
+  <span class="attr">height</span>: <span class="fn">var</span>(--input-h-big, <span class="num">42px</span>);
+}</pre></div>
+      </div>
+      <h2 id="s-k-init">공통 초기화 패턴</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-k-init')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-k-init"><span class="cm">// 공통 패턴 — 각 kendo-*.js 파일 상단 구조</span>
+$(<span class="fn">document</span>).<span class="fn">ready</span>(<span class="kw">function</span>() {
+  <span class="kw">const</span> widget = $(<span class="str">'#targetId'</span>).<span class="fn">kendoDropDownList</span>({
+    dataTextField:  <span class="str">'text'</span>,
+    dataValueField: <span class="str">'value'</span>,
+    dataSource: [],
+    change: <span class="kw">function</span>(e) {
+      <span class="cm">// 변경 이벤트 처리</span>
+    }
+  }).<span class="fn">data</span>(<span class="str">'kendoDropDownList'</span>);
+
+  <span class="cm">// 외부에서 인스턴스 접근</span>
+  window.<span class="fn">getWidget</span> = () => widget;
+});</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-grid': {
+    title: 'Kendo Grid',
+    group: 'Kendo UI',
+    updated: '2025-01-15',
+    readTime: '8분',
+    prev: { id: 'kendo-overview', label: 'Kendo 개요' },
+    next: { id: 'kendo-dropdown', label: 'DropDownList' },
+    toc: [
+      { id: 's-kg-basic',  label: '기본 구조',    level: 1 },
+      { id: 's-kg-col',    label: '컬럼 설정',    level: 1 },
+      { id: 's-kg-page',   label: '페이징',       level: 1 },
+      { id: 's-kg-select', label: '행 선택',      level: 1 },
+      { id: 's-kg-css',    label: 'CSS 커스텀',   level: 1 },
+    ],
+    content: `
+      <h2 id="s-kg-basic">기본 구조</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html</span><button class="copy-btn" onclick="copyCode(this,'c-kg-html')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kg-html"><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"grid"</span><span class="tag">&gt;&lt;/div&gt;</span></pre></div>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kg-js')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kg-js">$(<span class="str">'#grid'</span>).<span class="fn">kendoGrid</span>({
+  dataSource: {
+    data: [],
+    pageSize: <span class="num">20</span>
+  },
+  pageable: { <span class="attr">buttonCount</span>: <span class="num">5</span>, <span class="attr">pageSizes</span>: [<span class="num">10</span>, <span class="num">20</span>, <span class="num">50</span>] },
+  sortable: <span class="kw">true</span>,
+  columns: [
+    { <span class="attr">field</span>: <span class="str">'name'</span>, <span class="attr">title</span>: <span class="str">'이름'</span>, <span class="attr">width</span>: <span class="num">120</span> },
+    { <span class="attr">field</span>: <span class="str">'status'</span>, <span class="attr">title</span>: <span class="str">'상태'</span>, <span class="attr">width</span>: <span class="num">80</span>,
+      <span class="attr">template</span>: <span class="str">'#= status == 1 ? "활성" : "비활성" #'</span> }
+  ]
+});</pre></div>
+      </div>
+      <h2 id="s-kg-col">컬럼 설정</h2>
+      <table class="doc-table">
+        <thead><tr><th>속성</th><th>타입</th><th>설명</th></tr></thead>
+        <tbody>
+          <tr><td><code>field</code></td><td>String</td><td>데이터 필드명</td></tr>
+          <tr><td><code>title</code></td><td>String</td><td>헤더 표시명</td></tr>
+          <tr><td><code>width</code></td><td>Number</td><td>컬럼 너비 (px)</td></tr>
+          <tr><td><code>template</code></td><td>String</td><td>셀 렌더링 템플릿</td></tr>
+          <tr><td><code>hidden</code></td><td>Boolean</td><td>컬럼 숨김 여부</td></tr>
+          <tr><td><code>locked</code></td><td>Boolean</td><td>컬럼 고정 (좌측)</td></tr>
+          <tr><td><code>attributes</code></td><td>Object</td><td>td에 추가할 속성/클래스</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-kg-page">페이징</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kg-page')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kg-page">pageable: {
+  <span class="attr">buttonCount</span>: <span class="num">5</span>,
+  <span class="attr">pageSizes</span>: [<span class="num">10</span>, <span class="num">20</span>, <span class="num">50</span>, <span class="num">100</span>],
+  <span class="attr">messages</span>: {
+    <span class="attr">display</span>: <span class="str">"{0}-{1} / {2}건"</span>,
+    <span class="attr">itemsPerPage</span>: <span class="str">"건씩 보기"</span>,
+    <span class="attr">first</span>: <span class="str">"처음"</span>,
+    <span class="attr">last</span>:  <span class="str">"마지막"</span>
+  }
+},</pre></div>
+      </div>
+      <h2 id="s-kg-select">행 선택</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kg-sel')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kg-sel"><span class="cm">// 단일 행 선택</span>
+selectable: <span class="str">'row'</span>,
+change: <span class="kw">function</span>() {
+  <span class="kw">const</span> row  = <span class="kw">this</span>.<span class="fn">select</span>();
+  <span class="kw">const</span> data = <span class="kw">this</span>.<span class="fn">dataItem</span>(row);
+  console.<span class="fn">log</span>(data);
+},
+
+<span class="cm">// 체크박스 다중 선택</span>
+selectable: <span class="str">'multiple, row'</span>,
+columns: [
+  { <span class="attr">selectable</span>: <span class="kw">true</span>, <span class="attr">width</span>: <span class="num">40</span>,
+    <span class="attr">headerAttributes</span>: { <span class="attr">class</span>: <span class="str">'only-chk'</span> } },
+  <span class="cm">/* ... */</span>
+]</pre></div>
+      </div>
+      <h2 id="s-kg-css">CSS 커스텀</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">css</span><button class="copy-btn" onclick="copyCode(this,'c-kg-css')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kg-css"><span class="cm">/* 헤더 배경 */</span>
+<span class="prop">.k-grid .k-grid-header</span> {
+  <span class="attr">background</span>: <span class="fn">var</span>(--white-300);
+}
+<span class="cm">/* 선택된 행 */</span>
+<span class="prop">.k-grid tr.k-state-selected > td</span> {
+  <span class="attr">background</span>: <span class="fn">var</span>(--primary-100);
+  <span class="attr">color</span>: <span class="fn">var</span>(--primary-700);
+}
+<span class="cm">/* hover 행 */</span>
+<span class="prop">.k-grid tr:hover > td</span> {
+  <span class="attr">background</span>: <span class="fn">var</span>(--white-200);
+}</pre></div>
+      </div>
+      <div class="callout warn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L14.5 13H1.5L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>주의</strong>그리드 내부의 <code>input</code>, <code>radio</code>, <code>checkbox</code>는 Kendo 클래스가 적용됩니다. <code>admin-base.css</code>의 그리드 내부 전용 스타일을 참고하세요.</div>
+      </div>
+    `
+  },
+
+  'kendo-dropdown': {
+    title: 'DropDownList',
+    group: 'Kendo UI',
+    updated: '2025-01-12',
+    readTime: '5분',
+    prev: { id: 'kendo-grid', label: 'Grid' },
+    next: { id: 'kendo-multiselect', label: 'MultiSelect' },
+    toc: [
+      { id: 's-kd-basic', label: '기본 사용',   level: 1 },
+      { id: 's-kd-ds',    label: 'DataSource', level: 1 },
+      { id: 's-kd-opt',   label: '주요 옵션',  level: 1 },
+    ],
+    content: `
+      <h2 id="s-kd-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html + js</span><button class="copy-btn" onclick="copyCode(this,'c-kd-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kd-basic"><span class="cm">&lt;!-- HTML --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"ddl"</span> <span class="attr">class</span>=<span class="str">"k-input-inner"</span><span class="tag">&gt;</span>
+
+<span class="cm">// JS</span>
+$(<span class="str">'#ddl'</span>).<span class="fn">kendoDropDownList</span>({
+  dataTextField:  <span class="str">'text'</span>,
+  dataValueField: <span class="str">'value'</span>,
+  optionLabel:    <span class="str">'선택하세요'</span>,
+  dataSource: [
+    { text: <span class="str">'옵션 1'</span>, value: <span class="num">1</span> },
+    { text: <span class="str">'옵션 2'</span>, value: <span class="num">2</span> }
+  ],
+  change: <span class="kw">function</span>(e) {
+    console.<span class="fn">log</span>(<span class="kw">this</span>.<span class="fn">value</span>());
+  }
+});</pre></div>
+      </div>
+      <h2 id="s-kd-ds">DataSource — Ajax 연동</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kd-ds')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kd-ds">dataSource: {
+  <span class="attr">transport</span>: {
+    <span class="attr">read</span>: {
+      <span class="attr">url</span>: <span class="str">'/api/codes'</span>,
+      <span class="attr">dataType</span>: <span class="str">'json'</span>,
+      <span class="attr">type</span>: <span class="str">'GET'</span>
+    }
+  },
+  <span class="attr">schema</span>: {
+    <span class="attr">data</span>: <span class="str">'data'</span>,    <span class="cm">// 응답 JSON의 데이터 키</span>
+    <span class="attr">total</span>: <span class="str">'total'</span>  <span class="cm">// 전체 건수 키</span>
+  }
+}</pre></div>
+      </div>
+      <h2 id="s-kd-opt">주요 옵션</h2>
+      <table class="doc-table">
+        <thead><tr><th>옵션</th><th>기본값</th><th>설명</th></tr></thead>
+        <tbody>
+          <tr><td><code>optionLabel</code></td><td>""</td><td>미선택 상태 라벨</td></tr>
+          <tr><td><code>filter</code></td><td>"none"</td><td>"contains" / "startswith"</td></tr>
+          <tr><td><code>suggest</code></td><td>false</td><td>자동완성 제안 여부</td></tr>
+          <tr><td><code>valuePrimitive</code></td><td>false</td><td>객체 대신 원시값 반환</td></tr>
+          <tr><td><code>enable</code></td><td>true</td><td>false → disabled</td></tr>
+          <tr><td><code>cascadeFrom</code></td><td>""</td><td>종속 드롭다운 부모 id</td></tr>
+        </tbody>
+      </table>
+    `
+  },
+
+  'kendo-multiselect': {
+    title: 'MultiSelect',
+    group: 'Kendo UI',
+    updated: '2025-01-12',
+    readTime: '4분',
+    prev: { id: 'kendo-dropdown', label: 'DropDownList' },
+    next: { id: 'kendo-autocomplete', label: 'AutoComplete' },
+    toc: [
+      { id: 's-kms-basic', label: '기본 사용',  level: 1 },
+      { id: 's-kms-tag',   label: '태그 제한',  level: 1 },
+    ],
+    content: `
+      <h2 id="s-kms-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kms-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kms-basic">$(<span class="str">'#ms'</span>).<span class="fn">kendoMultiSelect</span>({
+  dataTextField:  <span class="str">'text'</span>,
+  dataValueField: <span class="str">'value'</span>,
+  placeholder:    <span class="str">'선택하세요'</span>,
+  dataSource: [...],
+  change: <span class="kw">function</span>() {
+    <span class="cm">// this.value() → 선택된 값 배열</span>
+    console.<span class="fn">log</span>(<span class="kw">this</span>.<span class="fn">value</span>());
+  }
+});</pre></div>
+      </div>
+      <h2 id="s-kms-tag">태그 제한 / 최대 선택</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kms-tag')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kms-tag"><span class="cm">// 최대 3개 선택 제한</span>
+select: <span class="kw">function</span>(e) {
+  <span class="kw">if</span> (<span class="kw">this</span>.<span class="fn">value</span>().<span class="attr">length</span> >= <span class="num">3</span>) {
+    e.<span class="fn">preventDefault</span>();
+  }
+},
+
+<span class="cm">// 요약 태그 (3개 초과 시 "+N개" 표시)</span>
+tagMode: <span class="str">'single'</span></pre></div>
+      </div>
+    `
+  },
+
+  'kendo-autocomplete': {
+    title: 'AutoComplete',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '3분',
+    prev: { id: 'kendo-multiselect', label: 'MultiSelect' },
+    next: { id: 'kendo-datepicker', label: 'DatePicker' },
+    toc: [{ id: 's-kac-basic', label: '기본 사용', level: 1 }],
+    content: `
+      <h2 id="s-kac-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kac-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kac-basic">$(<span class="str">'#ac'</span>).<span class="fn">kendoAutoComplete</span>({
+  dataTextField: <span class="str">'name'</span>,
+  filter:        <span class="str">'contains'</span>, <span class="cm">// startswith | contains</span>
+  minLength:     <span class="num">2</span>,           <span class="cm">// 최소 입력 글자수</span>
+  suggest:       <span class="kw">true</span>,
+  dataSource: {
+    <span class="attr">transport</span>: {
+      <span class="attr">read</span>: { <span class="attr">url</span>: <span class="str">'/api/search?q='</span> }
+    },
+    <span class="attr">serverFiltering</span>: <span class="kw">true</span>
+  },
+  select: <span class="kw">function</span>(e) {
+    <span class="kw">const</span> item = e.dataItem;
+    console.<span class="fn">log</span>(item);
+  }
+});</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-datepicker': {
+    title: 'DatePicker',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '4분',
+    prev: { id: 'kendo-autocomplete', label: 'AutoComplete' },
+    next: { id: 'kendo-daterangepicker', label: 'DateRangePicker' },
+    toc: [
+      { id: 's-kdp-basic',  label: '기본 사용',  level: 1 },
+      { id: 's-kdp-format', label: '날짜 포맷',  level: 1 },
+      { id: 's-kdp-range',  label: '날짜 제한',  level: 1 },
+    ],
+    content: `
+      <h2 id="s-kdp-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kdp-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kdp-basic">$(<span class="str">'#dp'</span>).<span class="fn">kendoDatePicker</span>({
+  format: <span class="str">'yyyy-MM-dd'</span>,
+  value:  <span class="kw">new</span> Date(),
+  change: <span class="kw">function</span>() {
+    <span class="cm">// this.value() → Date 객체</span>
+    <span class="kw">const</span> val = kendo.<span class="fn">toString</span>(
+      <span class="kw">this</span>.<span class="fn">value</span>(), <span class="str">'yyyy-MM-dd'</span>
+    );
+    console.<span class="fn">log</span>(val);
+  }
+});</pre></div>
+      </div>
+      <h2 id="s-kdp-format">날짜 포맷</h2>
+      <table class="doc-table">
+        <thead><tr><th>포맷</th><th>예시</th></tr></thead>
+        <tbody>
+          <tr><td><code>yyyy-MM-dd</code></td><td>2025-01-15</td></tr>
+          <tr><td><code>yyyy년 MM월 dd일</code></td><td>2025년 01월 15일</td></tr>
+          <tr><td><code>MM/dd/yyyy</code></td><td>01/15/2025</td></tr>
+          <tr><td><code>yyyyMMdd</code></td><td>20250115</td></tr>
+        </tbody>
+      </table>
+      <h2 id="s-kdp-range">날짜 제한</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kdp-range')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kdp-range">$(<span class="str">'#dp'</span>).<span class="fn">kendoDatePicker</span>({
+  min: <span class="kw">new</span> Date(<span class="num">2020</span>, <span class="num">0</span>, <span class="num">1</span>),  <span class="cm">// 최소 날짜</span>
+  max: <span class="kw">new</span> Date(),             <span class="cm">// 최대 날짜 (오늘)</span>
+  format: <span class="str">'yyyy-MM-dd'</span>
+});</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-daterangepicker': {
+    title: 'DateRangePicker',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '3분',
+    prev: { id: 'kendo-datepicker', label: 'DatePicker' },
+    next: { id: 'kendo-timepicker', label: 'TimePicker' },
+    toc: [{ id: 's-kdrp-basic', label: '기본 사용', level: 1 }],
+    content: `
+      <h2 id="s-kdrp-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html + js</span><button class="copy-btn" onclick="copyCode(this,'c-kdrp-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kdrp-basic"><span class="cm">&lt;!-- HTML: 시작/종료 인풋 2개 필요 --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"date-box-wrap"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"startDate"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="str">"label_text"</span><span class="tag">&gt;</span>~<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"endDate"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cm">// JS — 각각 kendoDatePicker로 초기화</span>
+[<span class="str">'#startDate'</span>, <span class="str">'#endDate'</span>].<span class="fn">forEach</span>(sel => {
+  $(sel).<span class="fn">kendoDatePicker</span>({
+    format: <span class="str">'yyyy-MM-dd'</span>,
+    culture: <span class="str">'ko-KR'</span>
+  });
+});
+
+<span class="cm">// 종료일 >= 시작일 유효성</span>
+$(<span class="str">'#startDate'</span>).<span class="fn">data</span>(<span class="str">'kendoDatePicker'</span>)
+  .<span class="fn">bind</span>(<span class="str">'change'</span>, <span class="kw">function</span>() {
+    $(<span class="str">'#endDate'</span>).<span class="fn">data</span>(<span class="str">'kendoDatePicker'</span>)
+      .<span class="fn">min</span>(<span class="kw">this</span>.<span class="fn">value</span>());
+  });</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-timepicker': {
+    title: 'TimePicker',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '3분',
+    prev: { id: 'kendo-daterangepicker', label: 'DateRangePicker' },
+    next: { id: 'kendo-numeric', label: 'NumericTextBox' },
+    toc: [{ id: 's-ktp-basic', label: '기본 사용', level: 1 }],
+    content: `
+      <h2 id="s-ktp-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-ktp-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ktp-basic">$(<span class="str">'#tp'</span>).<span class="fn">kendoTimePicker</span>({
+  format:   <span class="str">'HH:mm'</span>,
+  interval: <span class="num">30</span>,       <span class="cm">// 30분 단위 목록</span>
+  value:    <span class="str">'09:00'</span>,
+  min:      <span class="str">'00:00'</span>,
+  max:      <span class="str">'23:59'</span>,
+  change: <span class="kw">function</span>() {
+    <span class="cm">// this.value() → Date 객체</span>
+    <span class="kw">const</span> val = kendo.<span class="fn">toString</span>(
+      <span class="kw">this</span>.<span class="fn">value</span>(), <span class="str">'HH:mm'</span>
+    );
+    console.<span class="fn">log</span>(val);
+  }
+});</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-numeric': {
+    title: 'NumericTextBox',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '3분',
+    prev: { id: 'kendo-timepicker', label: 'TimePicker' },
+    next: { id: 'kendo-editor', label: 'Editor' },
+    toc: [{ id: 's-kn-basic', label: '기본 사용', level: 1 }],
+    content: `
+      <h2 id="s-kn-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kn-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kn-basic">$(<span class="str">'#num'</span>).<span class="fn">kendoNumericTextBox</span>({
+  format:   <span class="str">'n0'</span>,       <span class="cm">// n0=정수, n2=소수2자리, p0=퍼센트</span>
+  min:      <span class="num">0</span>,
+  max:      <span class="num">9999</span>,
+  step:     <span class="num">1</span>,
+  value:    <span class="num">0</span>,
+  spinners: <span class="kw">false</span>,     <span class="cm">// 스피너(▲▼) 버튼 숨김</span>
+  change: <span class="kw">function</span>() {
+    console.<span class="fn">log</span>(<span class="kw">this</span>.<span class="fn">value</span>());
+  }
+});</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-editor': {
+    title: 'Editor',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '5분',
+    prev: { id: 'kendo-numeric', label: 'NumericTextBox' },
+    next: { id: 'kendo-tab', label: 'TabStrip' },
+    toc: [
+      { id: 's-ke-basic', label: '기본 사용',   level: 1 },
+      { id: 's-ke-tools', label: '툴바 설정',   level: 1 },
+      { id: 's-ke-val',   label: '값 읽기/쓰기', level: 1 },
+    ],
+    content: `
+      <h2 id="s-ke-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html + js</span><button class="copy-btn" onclick="copyCode(this,'c-ke-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ke-basic"><span class="tag">&lt;textarea</span> <span class="attr">id</span>=<span class="str">"editor"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+
+$(<span class="str">'#editor'</span>).<span class="fn">kendoEditor</span>({
+  tools: [
+    <span class="str">'bold'</span>, <span class="str">'italic'</span>, <span class="str">'underline'</span>, <span class="str">'strikethrough'</span>,
+    <span class="str">'separator'</span>,
+    <span class="str">'justifyLeft'</span>, <span class="str">'justifyCenter'</span>, <span class="str">'justifyRight'</span>,
+    <span class="str">'separator'</span>,
+    <span class="str">'insertUnorderedList'</span>, <span class="str">'insertOrderedList'</span>,
+    <span class="str">'separator'</span>,
+    <span class="str">'createLink'</span>, <span class="str">'insertImage'</span>
+  ]
+});</pre></div>
+      </div>
+      <h2 id="s-ke-tools">툴바 설정</h2>
+      <div class="callout info">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+        <div class="callout-body"><strong>툴 전체 목록</strong>bold, italic, underline, strikethrough, fontName, fontSize, foreColor, backColor, justifyLeft, justifyCenter, justifyRight, justifyFull, insertUnorderedList, insertOrderedList, indent, outdent, createLink, unlink, insertImage, insertFile, subscript, superscript, createTable, viewHtml, cleanFormatting</div>
+      </div>
+      <h2 id="s-ke-val">값 읽기/쓰기</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-ke-val')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ke-val"><span class="kw">const</span> editor = $(<span class="str">'#editor'</span>)
+  .<span class="fn">data</span>(<span class="str">'kendoEditor'</span>);
+
+<span class="cm">// 값 읽기 (HTML)</span>
+<span class="kw">const</span> html = editor.<span class="fn">value</span>();
+
+<span class="cm">// 값 쓰기</span>
+editor.<span class="fn">value</span>(<span class="str">'&lt;p&gt;내용&lt;/p&gt;'</span>);
+
+<span class="cm">// 에디터 초기화</span>
+editor.<span class="fn">value</span>(<span class="str">''</span>);</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-tab': {
+    title: 'TabStrip',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '4분',
+    prev: { id: 'kendo-editor', label: 'Editor' },
+    next: { id: 'kendo-window', label: 'Window' },
+    toc: [
+      { id: 's-kt-basic',  label: '기본 사용',     level: 1 },
+      { id: 's-kt-select', label: '탭 선택/이동',  level: 1 },
+    ],
+    content: `
+      <h2 id="s-kt-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html + js</span><button class="copy-btn" onclick="copyCode(this,'c-kt-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kt-basic"><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"tabs"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li</span> <span class="attr">class</span>=<span class="str">"k-state-active"</span><span class="tag">&gt;</span>탭 1<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>탭 2<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>탭 3<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;div&gt;</span>탭 1 콘텐츠<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div&gt;</span>탭 2 콘텐츠<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div&gt;</span>탭 3 콘텐츠<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+$(<span class="str">'#tabs'</span>).<span class="fn">kendoTabStrip</span>({
+  animation: { open: { effects: <span class="str">'fadeIn'</span> } },
+  select: <span class="kw">function</span>(e) {
+    console.<span class="fn">log</span>(e.item); <span class="cm">// 선택된 탭 li 요소</span>
+  }
+});</pre></div>
+      </div>
+      <h2 id="s-kt-select">탭 선택/이동</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kt-select')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kt-select"><span class="kw">const</span> tab = $(<span class="str">'#tabs'</span>).<span class="fn">data</span>(<span class="str">'kendoTabStrip'</span>);
+
+<span class="cm">// 인덱스로 이동 (0부터)</span>
+tab.<span class="fn">select</span>(<span class="num">1</span>);
+
+<span class="cm">// 현재 선택된 탭 인덱스</span>
+<span class="kw">const</span> idx = tab.<span class="fn">select</span>().<span class="fn">index</span>();</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-window': {
+    title: 'Window (팝업)',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '5분',
+    prev: { id: 'kendo-tab', label: 'TabStrip' },
+    next: { id: 'kendo-treeview', label: 'TreeView' },
+    toc: [
+      { id: 's-kw-basic',  label: '기본 사용',  level: 1 },
+      { id: 's-kw-ctrl',   label: '열기/닫기',  level: 1 },
+      { id: 's-kw-iframe', label: 'iframe 팝업', level: 1 },
+    ],
+    content: `
+      <h2 id="s-kw-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html + js</span><button class="copy-btn" onclick="copyCode(this,'c-kw-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kw-basic"><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"popup"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"popup-content"</span><span class="tag">&gt;</span>팝업 내용<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"popup-foot"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"btnBox-wrap"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"button"</span> <span class="attr">class</span>=<span class="str">"btn-save"</span><span class="tag">&gt;</span>저장<span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"button"</span> <span class="attr">class</span>=<span class="str">"btn-close"</span><span class="tag">&gt;</span>닫기<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+$(<span class="str">'#popup'</span>).<span class="fn">kendoWindow</span>({
+  title:    <span class="str">'팝업 제목'</span>,
+  width:    <span class="str">'600px'</span>,
+  height:   <span class="str">'400px'</span>,
+  modal:    <span class="kw">true</span>,
+  resizable:<span class="kw">false</span>,
+  visible:  <span class="kw">false</span>,   <span class="cm">// 초기 숨김</span>
+  close: <span class="kw">function</span>() {
+    <span class="kw">this</span>.<span class="fn">destroy</span>();
+  }
+});</pre></div>
+      </div>
+      <h2 id="s-kw-ctrl">열기/닫기</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kw-ctrl')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kw-ctrl"><span class="kw">const</span> win = $(<span class="str">'#popup'</span>).<span class="fn">data</span>(<span class="str">'kendoWindow'</span>);
+
+win.<span class="fn">center</span>().<span class="fn">open</span>();   <span class="cm">// 중앙 배치 후 열기</span>
+win.<span class="fn">close</span>();            <span class="cm">// 닫기</span>
+win.<span class="fn">destroy</span>();          <span class="cm">// DOM 완전 제거</span></pre></div>
+      </div>
+      <h2 id="s-kw-iframe">iframe 팝업</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-kw-iframe')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-kw-iframe">$(<span class="str">'&lt;div&gt;&lt;/div&gt;'</span>)
+  .<span class="fn">appendTo</span>(<span class="str">'body'</span>)
+  .<span class="fn">kendoWindow</span>({
+    title:   <span class="str">'외부 페이지'</span>,
+    width:   <span class="str">'800px'</span>,
+    height:  <span class="str">'600px'</span>,
+    modal:   <span class="kw">true</span>,
+    iframe:  <span class="kw">true</span>,
+    content: <span class="str">'/popup/detail?id=123'</span>,
+    close: <span class="kw">function</span>() { <span class="kw">this</span>.<span class="fn">destroy</span>(); }
+  }).<span class="fn">data</span>(<span class="str">'kendoWindow'</span>)
+  .<span class="fn">center</span>().<span class="fn">open</span>();</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-treeview': {
+    title: 'TreeView',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '4분',
+    prev: { id: 'kendo-window', label: 'Window' },
+    next: { id: 'kendo-splitter', label: 'Splitter' },
+    toc: [
+      { id: 's-ktv-basic',  label: '기본 사용',  level: 1 },
+      { id: 's-ktv-check',  label: '체크박스',   level: 1 },
+    ],
+    content: `
+      <h2 id="s-ktv-basic">기본 사용</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-ktv-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ktv-basic">$(<span class="str">'#tree'</span>).<span class="fn">kendoTreeView</span>({
+  dataSource: kendo.observableArray([
+    { text: <span class="str">'부모 1'</span>, items: [
+      { text: <span class="str">'자식 1-1'</span> },
+      { text: <span class="str">'자식 1-2'</span> }
+    ]},
+    { text: <span class="str">'부모 2'</span> }
+  ]),
+  select: <span class="kw">function</span>(e) {
+    <span class="kw">const</span> node = <span class="kw">this</span>.<span class="fn">dataItem</span>(e.node);
+    console.<span class="fn">log</span>(node.text);
+  }
+});</pre></div>
+      </div>
+      <h2 id="s-ktv-check">체크박스 모드</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-ktv-check')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ktv-check">$(<span class="str">'#tree'</span>).<span class="fn">kendoTreeView</span>({
+  checkboxes: {
+    checkChildren: <span class="kw">true</span>  <span class="cm">// 부모 선택 시 자식 전체 선택</span>
+  },
+  dataSource: [...],
+});
+
+<span class="cm">// 체크된 항목 가져오기</span>
+<span class="kw">const</span> tree = $(<span class="str">'#tree'</span>).<span class="fn">data</span>(<span class="str">'kendoTreeView'</span>);
+<span class="kw">const</span> checked = tree.<span class="fn">getCheckedNodes</span>();</pre></div>
+      </div>
+    `
+  },
+
+  'kendo-splitter': {
+    title: 'Splitter',
+    group: 'Kendo UI',
+    updated: '2025-01-10',
+    readTime: '3분',
+    prev: { id: 'kendo-treeview', label: 'TreeView' },
+    next: null,
+    toc: [{ id: 's-ksp-basic', label: '기본 사용', level: 1 }],
+    content: `
+      <h2 id="s-ksp-basic">기본 사용</h2>
+      <p>좌우 또는 상하 분할 레이아웃을 구성합니다. 트리 + 콘텐츠 구성에 주로 사용합니다.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">html + js</span><button class="copy-btn" onclick="copyCode(this,'c-ksp-basic')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-ksp-basic"><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"splitter"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div&gt;</span>좌측 패널 (트리)<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div&gt;</span>우측 패널 (콘텐츠)<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+$(<span class="str">'#splitter'</span>).<span class="fn">kendoSplitter</span>({
+  orientation: <span class="str">'horizontal'</span>,
+  panes: [
+    { size: <span class="str">'240px'</span>, min: <span class="str">'160px'</span>, max: <span class="str">'400px'</span>, collapsible: <span class="kw">true</span> },
+    { }  <span class="cm">// 나머지 공간 차지</span>
+  ]
+});
+
+<span class="cm">// 패널 축소/확장</span>
+<span class="kw">const</span> sp = $(<span class="str">'#splitter'</span>).<span class="fn">data</span>(<span class="str">'kendoSplitter'</span>);
+sp.<span class="fn">collapse</span>(<span class="str">'.k-pane:first'</span>);
+sp.<span class="fn">expand</span>(<span class="str">'.k-pane:first'</span>);</pre></div>
+      </div>
+    `
+  },
+
+  'js-pattern': {
+    title: 'JS 패턴',
+    group: '코딩 규칙',
+    updated: '2025-01-10',
+    readTime: '6분',
+    prev: { id: 'css-naming', label: 'CSS 네이밍' },
+    next: { id: 'perf', label: '성능 최적화' },
+    toc: [
+      { id: 's-dom',     label: 'DOM 선택',    level: 1 },
+      { id: 's-event',   label: '이벤트 처리', level: 1 },
+      { id: 's-module',  label: '모듈 패턴',   level: 1 },
+    ],
+    content: `
+      <h2 id="s-dom">DOM 선택</h2>
+      <p>DOM 접근은 최소화하고, 반복 접근 시 캐싱하세요.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-dom')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-dom"><span class="cm">// ❌ 매번 DOM 접근</span>
+<span class="kw">function</span> <span class="fn">update</span>() {
+  <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">'title'</span>).<span class="attr">textContent</span> = <span class="str">'...'</span>;
+  <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">'title'</span>).<span class="attr">style</span>.<span class="attr">color</span> = <span class="str">'red'</span>;
+}
+
+<span class="cm">// ✅ 캐싱 후 사용</span>
+<span class="kw">const</span> title = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">'title'</span>);
+<span class="kw">function</span> <span class="fn">update</span>() {
+  title.<span class="attr">textContent</span> = <span class="str">'...'</span>;
+  title.<span class="attr">style</span>.<span class="attr">color</span> = <span class="str">'red'</span>;
+}</pre></div>
+      </div>
+      <h2 id="s-event">이벤트 처리</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-event')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-event"><span class="cm">// 이벤트 위임 — 동적 요소에 유용</span>
+<span class="fn">document</span>.<span class="fn">querySelector</span>(<span class="str">'.list'</span>)
+  .<span class="fn">addEventListener</span>(<span class="str">'click'</span>, (e) => {
+    <span class="kw">const</span> item = e.target.<span class="fn">closest</span>(<span class="str">'.list__item'</span>);
+    <span class="kw">if</span> (!item) <span class="kw">return</span>;
+    <span class="fn">handleItemClick</span>(item);
+  });
+
+<span class="cm">// 디바운스 — 입력 이벤트 최적화</span>
+<span class="kw">function</span> <span class="fn">debounce</span>(fn, delay = <span class="num">300</span>) {
+  <span class="kw">let</span> timer;
+  <span class="kw">return</span> (...args) => {
+    <span class="fn">clearTimeout</span>(timer);
+    timer = <span class="fn">setTimeout</span>(() => <span class="fn">fn</span>(...args), delay);
+  };
+}</pre></div>
+      </div>
+      <h2 id="s-module">모듈 패턴</h2>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">js</span><button class="copy-btn" onclick="copyCode(this,'c-module')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사</button></div>
+        <div class="code-body"><pre id="c-module"><span class="cm">// IIFE 모듈 패턴</span>
+<span class="kw">const</span> Modal = (() => {
+  <span class="kw">let</span> isOpen = <span class="kw">false</span>;
+  <span class="kw">const</span> el = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">'modal'</span>);
+
+  <span class="kw">function</span> <span class="fn">open</span>() {
+    isOpen = <span class="kw">true</span>;
+    el.<span class="attr">classList</span>.<span class="fn">add</span>(<span class="str">'is-open'</span>);
+  }
+  <span class="kw">function</span> <span class="fn">close</span>() {
+    isOpen = <span class="kw">false</span>;
+    el.<span class="attr">classList</span>.<span class="fn">remove</span>(<span class="str">'is-open'</span>);
+  }
+
+  <span class="kw">return</span> { open, close, <span class="fn">get</span> <span class="fn">isOpen</span>() { <span class="kw">return</span> isOpen; } };
+})();</pre></div>
+      </div>
+    `
+  },
+};
+
+/* ═══════════════════════════════════════
+   ICONS
+═══════════════════════════════════════ */
+const ICONS = {
+  book:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 2h8a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3"/><path d="M3 14V2"/><line x1="6" y1="6" x2="10" y2="6"/><line x1="6" y1="9" x2="9" y2="9"/></svg>`,
+  settings: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="2.5"/><path d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.6 3.6l.85.85M11.55 11.55l.85.85M3.6 12.4l.85-.85M11.55 4.45l.85-.85"/></svg>`,
+  zap:      `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,1 5,9 8.5,9 7,15 11,7 7.5,7"/></svg>`,
+  grid:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="1.5" width="5" height="5" rx="1"/><rect x="9.5" y="1.5" width="5" height="5" rx="1"/><rect x="1.5" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/></svg>`,
+  type:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="2,4 8,2 14,4"/><line x1="8" y1="2" x2="8" y2="14"/><line x1="5" y1="14" x2="11" y2="14"/></svg>`,
+  palette:  `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><circle cx="5.5" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="10.5" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="8" cy="10.5" r="1" fill="currentColor" stroke="none"/></svg>`,
+  spacing:  `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="4" x2="2" y2="12"/><line x1="14" y1="4" x2="14" y2="12"/></svg>`,
+  cursor:   `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2l10 5.5-5 1.5-2 5.5L3 2z"/></svg>`,
+  form:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="4" width="13" height="4" rx="1.5"/><line x1="1.5" y1="11" x2="9" y2="11"/></svg>`,
+  card:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="3" width="13" height="10" rx="2"/><line x1="1.5" y1="7" x2="14.5" y2="7"/></svg>`,
+  modal:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="2.5" width="10" height="11" rx="2"/><line x1="6" y1="6" x2="10" y2="6"/><line x1="6" y1="9" x2="10" y2="9"/></svg>`,
+  table:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5"/><line x1="1.5" y1="6.5" x2="14.5" y2="6.5"/><line x1="1.5" y1="10" x2="14.5" y2="10"/><line x1="6" y1="6.5" x2="6" y2="13.5"/></svg>`,
+  bell:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1.5a4.5 4.5 0 0 1 4.5 4.5c0 4.5 1.5 5.5 1.5 5.5H2s1.5-1 1.5-5.5A4.5 4.5 0 0 1 8 1.5z"/><path d="M6.5 11.5a1.5 1.5 0 0 0 3 0"/></svg>`,
+  layout:   `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="1.5" width="13" height="4" rx="1"/><rect x="1.5" y="8" width="4.5" height="6.5" rx="1"/><rect x="8" y="8" width="6.5" height="6.5" rx="1"/></svg>`,
+  footer:   `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="10.5" width="13" height="4" rx="1"/><rect x="1.5" y="1.5" width="4.5" height="7" rx="1"/><rect x="8" y="1.5" width="6.5" height="7" rx="1"/></svg>`,
+  mobile:   `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="4.5" y="1" width="7" height="14" rx="2"/><line x1="7.5" y1="12.5" x2="8.5" y2="12.5"/></svg>`,
+  code:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,4 1.5,8 5,12"/><polyline points="11,4 14.5,8 11,12"/><line x1="9" y1="3" x2="7" y2="13"/></svg>`,
+  hash:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="5.5" y1="1.5" x2="4" y2="14.5"/><line x1="12" y1="1.5" x2="10.5" y2="14.5"/><line x1="1.5" y1="5.5" x2="14.5" y2="5.5"/><line x1="1.5" y1="10.5" x2="14.5" y2="10.5"/></svg>`,
+  js:       `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M9 10.5c0 1.5-2.5 1.5-2.5 0v-3"/><path d="M11 7.5v3.5"/></svg>`,
+  speed:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 11a6 6 0 1 1 10 0"/><line x1="8" y1="8" x2="5.5" y2="10.5"/></svg>`,
+  token:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6.5"/></svg>`,
+  star:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="8,1.5 10,6 15,6.5 11.5,10 12.5,15 8,12.5 3.5,15 4.5,10 1,6.5 6,6"/></svg>`,
+  kendo:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 5l3 3-3 3"/><line x1="9" y1="11" x2="12" y2="11"/></svg>`,
+  cal:      `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="2.5" width="13" height="12" rx="1.5"/><line x1="1.5" y1="6.5" x2="14.5" y2="6.5"/><line x1="5" y1="4" x2="5" y2="1"/><line x1="11" y1="4" x2="11" y2="1"/><circle cx="5.5" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="8" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="10.5" cy="10" r="1" fill="currentColor" stroke="none"/></svg>`,
+  clock:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><polyline points="8,4.5 8,8 10.5,10"/></svg>`,
+  edit:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2.5a1.41 1.41 0 0 1 2 2L5 13H2v-3L11.5 2.5z"/></svg>`,
+  tab:      `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="5" width="13" height="9.5" rx="1"/><path d="M1.5 7.5h3V5h-3"/><path d="M4.5 7.5h3.5V5H4.5"/></svg>`,
+  tree:     `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="3" cy="3" r="1.5"/><circle cx="3" cy="8" r="1.5"/><circle cx="3" cy="13" r="1.5"/><circle cx="10" cy="5.5" r="1.5"/><circle cx="10" cy="10.5" r="1.5"/><line x1="3" y1="4.5" x2="3" y2="6.5"/><line x1="3" y1="9.5" x2="3" y2="11.5"/><line x1="4.5" y1="8" x2="8.5" y2="5.5"/><line x1="4.5" y1="8" x2="8.5" y2="10.5"/></svg>`,
+  split:    `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1.5" y="1.5" width="13" height="13" rx="1.5"/><line x1="8" y1="1.5" x2="8" y2="14.5"/><line x1="7" y1="7" x2="9" y2="7"/><line x1="7" y1="9" x2="9" y2="9"/></svg>`,
+};
+
+/* ═══════════════════════════════════════
+   FLAT SEARCH INDEX
+═══════════════════════════════════════ */
+const SEARCH_INDEX = [];
+for (const [id, page] of Object.entries(PAGES)) {
+  SEARCH_INDEX.push({ id, label: page.title, group: page.group, type: 'page' });
+  (page.toc || []).forEach(t => {
+    SEARCH_INDEX.push({ id, anchor: t.id, label: t.label, group: page.title, type: 'section' });
+  });
+}
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+let currentPageId = 'overview';
+let sidebarOpen = true;
+
+/* ═══════════════════════════════════════
+   RENDER SIDEBAR
+═══════════════════════════════════════ */
+function renderSidebar() {
+  const sb = document.getElementById('sidebar');
+  sb.innerHTML = MENU.map(group => `
+    <div class="nav-group-label">${group.group}</div>
+    ${group.items.map(item => `
+      <div class="nav-item ${item.id === currentPageId ? 'active' : ''}"
+           onclick="loadPage('${item.id}')"
+           data-id="${item.id}">
+        ${ICONS[item.icon] || ICONS.book}
+        ${item.label}
+        ${item.badge ? `<span class="nav-badge">${item.badge}</span>` : ''}
+      </div>
+    `).join('')}
+  `).join('');
+}
+
+/* ═══════════════════════════════════════
+   RENDER PAGE
+═══════════════════════════════════════ */
+function loadPage(id, anchor) {
+  const page = PAGES[id];
+  if (!page) return;
+
+  showLoadingBar();
+  currentPageId = id;
+
+  // breadcrumb
+  document.getElementById('breadcrumb').innerHTML =
+    `<span>홈</span><span class="sep">›</span><span>${page.group}</span><span class="sep">›</span><span>${page.title}</span>`;
+
+  // title
+  document.getElementById('doc-title').textContent = page.title;
+
+  // meta
+  document.getElementById('doc-meta').innerHTML = `
+    <span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="2" width="12" height="11" rx="1.5"/><line x1="1" y1="6" x2="13" y2="6"/><line x1="4.5" y1="4" x2="4.5" y2="1"/><line x1="9.5" y1="4" x2="9.5" y2="1"/></svg>${page.updated}</span>
+    <span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><polyline points="7,4 7,7 9.5,9"/></svg>읽는 시간 약 ${page.readTime}</span>
+  `;
+
+  // content
+  document.getElementById('doc-content').innerHTML = page.content;
+
+  // toc
+  const tocList = document.getElementById('toc-list');
+  tocList.innerHTML = (page.toc || []).map(t => `
+    <a class="toc-link ${t.level === 2 ? 'sub' : ''}" onclick="scrollToSection('${t.id}')">${t.label}</a>
+  `).join('');
+
+  // page nav
+  const prev = page.prev;
+  const next = page.next;
+  document.getElementById('page-nav').innerHTML = `
+    ${prev ? `<button class="page-nav-btn" onclick="loadPage('${prev.id}')"><span class="page-nav-label">← 이전</span><span class="page-nav-title">${prev.label}</span></button>` : '<div></div>'}
+    ${next ? `<button class="page-nav-btn next" onclick="loadPage('${next.id}')"><span class="page-nav-label">다음 →</span><span class="page-nav-title">${next.label}</span></button>` : '<div></div>'}
+  `;
+
+  renderSidebar();
+  updateTocActive();
+
+  if (anchor) {
+    setTimeout(() => scrollToSection(anchor), 80);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  hideLoadingBar();
+  closeMobile();
+}
+
+/* ═══════════════════════════════════════
+   TOC SCROLL SPY
+═══════════════════════════════════════ */
+function updateTocActive() {
+  const page = PAGES[currentPageId];
+  if (!page || !page.toc) return;
+  const links = document.querySelectorAll('.toc-link');
+  const sections = page.toc.map(t => document.getElementById(t.id)).filter(Boolean);
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const idx = sections.indexOf(entry.target);
+        if (idx >= 0 && links[idx]) links[idx].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => obs.observe(s));
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+/* ═══════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════ */
+function doSearch(q) {
+  const panel = document.getElementById('search-results');
+  if (!q.trim()) { panel.classList.remove('show'); return; }
+
+  const results = SEARCH_INDEX.filter(item =>
+    item.label.toLowerCase().includes(q.toLowerCase()) ||
+    item.group.toLowerCase().includes(q.toLowerCase())
+  ).slice(0, 8);
+
+  if (!results.length) {
+    panel.innerHTML = `<div class="sr-empty">검색 결과가 없습니다</div>`;
+  } else {
+    panel.innerHTML = results.map(r => {
+      const hl = (s) => s.replace(new RegExp(q, 'gi'), m => `<mark>${m}</mark>`);
+      return `
+        <div class="sr-item" onclick="loadPage('${r.id}', '${r.anchor || ''}'); clearSearch();">
+          <div class="sr-item-icon">${r.type === 'section' ? ICONS.hash : ICONS.book}</div>
+          <div>
+            <div class="sr-group">${hl(r.group)}</div>
+            <div class="sr-label">${hl(r.label)}</div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+  panel.classList.add('show');
+}
+
+function searchKey(e) {
+  if (e.key === 'Escape') clearSearch();
+}
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').classList.remove('show');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('#search-box') && !e.target.closest('#search-results')) clearSearch();
+});
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+  }
+});
+
+/* ═══════════════════════════════════════
+   COPY CODE
+═══════════════════════════════════════ */
+function copyCode(btn, id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const text = el.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="1.5,8 5,11.5 12.5,3"/></svg>복사됨`;
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="5" width="7.5" height="7.5" rx="1.5"/><path d="M3 9H2a1.5 1.5 0 0 1-1.5-1.5V2A1.5 1.5 0 0 1 2 .5h5.5A1.5 1.5 0 0 1 9 2v1"/></svg>복사`;
+    }, 2000);
+  });
+}
+
+/* ═══════════════════════════════════════
+   DARK MODE
+═══════════════════════════════════════ */
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  document.getElementById('icon-sun').style.display = isDark ? '' : 'none';
+  document.getElementById('icon-moon').style.display = isDark ? 'none' : '';
+}
+
+/* ═══════════════════════════════════════
+   SIDEBAR TOGGLE
+═══════════════════════════════════════ */
+function toggleSidebar() {
+  sidebarOpen = !sidebarOpen;
+  const sb = document.getElementById('sidebar');
+  const main = document.getElementById('main');
+  if (window.innerWidth <= 768) {
+    sb.classList.toggle('mobile-open', sidebarOpen);
+    document.getElementById('mobile-overlay').classList.toggle('show', sidebarOpen);
+  } else {
+    sb.classList.toggle('collapsed', !sidebarOpen);
+    main.classList.toggle('sidebar-collapsed', !sidebarOpen);
+  }
+}
+function closeMobile() {
+  document.getElementById('sidebar').classList.remove('mobile-open');
+  document.getElementById('mobile-overlay').classList.remove('show');
+  if (window.innerWidth <= 768) sidebarOpen = false;
+}
+
+/* ═══════════════════════════════════════
+   LOADING BAR
+═══════════════════════════════════════ */
+function showLoadingBar() {
+  const bar = document.getElementById('loading-bar');
+  bar.style.width = '0%';
+  bar.style.transition = 'none';
+  requestAnimationFrame(() => {
+    bar.style.transition = 'width 0.25s ease';
+    bar.style.width = '80%';
+  });
+}
+function hideLoadingBar() {
+  const bar = document.getElementById('loading-bar');
+  bar.style.width = '100%';
+  setTimeout(() => { bar.style.width = '0%'; }, 300);
+}
+
+/* ═══════════════════════════════════════
+   SCROLL TOP BUTTON
+═══════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('scroll-top').classList.toggle('show', window.scrollY > 300);
+});
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+(function init() {
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  if (saved === 'dark') {
+    document.getElementById('icon-sun').style.display = 'none';
+    document.getElementById('icon-moon').style.display = '';
+  }
+
+  const hash = location.hash.slice(1);
+  const startId = PAGES[hash] ? hash : 'overview';
+  loadPage(startId);
+})();
+</script>
+</body>
+</html>

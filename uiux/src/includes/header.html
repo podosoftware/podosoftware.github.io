@@ -1,0 +1,45 @@
+<!-- ═══ 검색 오버레이 ═══ -->
+<div id="search-modal" onclick="if(event.target===this)closeSearch()">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+      <input id="search-input" type="text" placeholder="문서 검색..." oninput="doSearch(this.value)" autocomplete="off">
+      <button class="search-close" onclick="closeSearch()">ESC</button>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<!-- ═══ 사이드바 오버레이 ═══ -->
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- ═══ 상단 바 (고정) ═══ -->
+<header id="topbar">
+  <button id="menu-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
+    <svg id="icon-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <line x1="2" y1="5"  x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/>
+    </svg>
+  </button>
+
+  <div class="top-wordmark">
+    Publisher Guide<sup>ADMIN</sup>
+  </div>
+
+  <div class="top-divider"></div>
+
+  <div id="top-search" onclick="openSearch()">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+    문서 검색
+    <kbd>⌘K</kbd>
+  </div>
+
+  <div class="top-right">
+    <span class="top-ver">v3.0</span>
+    <button class="top-icon-btn" id="search-btn-mobile" style="display:none" onclick="openSearch()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+    </button>
+    <button class="top-icon-btn" onclick="toggleTheme()" id="theme-btn" title="다크모드">
+      <svg id="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.6 3.6l.85.85M11.55 11.55l.85.85M3.6 12.4l.85-.85M11.55 4.45l.85-.85"/></svg>
+    </button>
+  </div>
+</header>

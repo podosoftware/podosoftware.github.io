@@ -1,0 +1,70 @@
+<!-- ═══ 사이드바 (고정, 메뉴) ═══ -->
+<nav id="sidebar">
+  <div class="sidebar-inner">
+    <div class="nav-group">
+      <span class="nav-group-label">시작하기</span>
+      <div class="nav-item"><a href="overview.html">개요</a></div>
+      <div class="nav-item"><a href="settings.html">환경 설정</a></div>
+      <div class="nav-item"><a href="quick-start.html">빠른 시작</a></div>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-group-label">기본 원칙</span>
+      <div class="nav-item"><a href="grid-system.html">그리드 시스템</a></div>
+      <div class="nav-item"><a href="typography.html">타이포그래피</a></div>
+      <div class="nav-item"><a href="spacing.html">간격 규칙</a></div>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-group-label">디자인 토큰</span>
+      <div class="nav-item"><a href="token-overview.html">토큰 개요</a></div>
+      <div class="nav-item"><a href="color-tokens.html">컬러 토큰</a></div>
+      <div class="nav-item"><a href="typography-tokens.html">타이포그래피 토큰</a></div>
+      <div class="nav-item"><a href="sizing.html">간격·사이즈</a></div>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-group-label">아이콘 시스템</span>
+      <div class="nav-item"><a href="icons-overview.html">아이콘 개요</a></div>
+      <div class="nav-item"><a href="icons-usage.html">사용법</a></div>
+      <div class="nav-item"><a href="icons-list.html">아이콘 목록</a></div>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-group-label">컴포넌트</span>
+      <div class="nav-item"><a href="buttons.html">버튼</a></div>
+      <div class="nav-item"><a href="forms.html">폼 요소</a></div>
+      <div class="nav-item"><a href="table.html">테이블</a></div>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-group-label">Kendo UI</span>
+      <div class="nav-item"><a href="kendo-overview.html">Kendo 개요<span class="nav-item-badge">K</span></a></div>
+      <div class="nav-item"><a href="kendo-grid.html">Grid</a></div>
+      <div class="nav-item"><a href="kendo-dropdown.html">DropDownList</a></div>
+      <div class="nav-item"><a href="kendo-datepicker.html">DatePicker</a></div>
+      <div class="nav-item"><a href="kendo-window.html">Window</a></div>
+      <div class="nav-item"><a href="kendo-treeview.html">TreeView</a></div>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 하단 네비 -->
+<nav id="bottom-nav">
+  <div class="bn-item active">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 2h10a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H3"/><path d="M3 17V2"/><line x1="7" y1="7" x2="11" y2="7"/><line x1="7" y1="11" x2="10" y2="11"/></svg>
+    <span>문서</span>
+  </div>
+  <div class="bn-item" onclick="toggleSidebar()">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="14" y2="15"/></svg>
+    <span>메뉴</span>
+  </div>
+  <div class="bn-item" onclick="openSearch()">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><line x1="14" y1="14" x2="18" y2="18"/></svg>
+    <span>검색</span>
+  </div>
+  <div class="bn-item">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v1.5M10 16.5V18M2 10h1.5M16.5 10H18M4.2 4.2l1.1 1.1M14.7 14.7l1.1 1.1M4.2 15.8l1.1-1.1M14.7 5.3l1.1-1.1"/></svg>
+    <span>설정</span>
+  </div>
+</nav>
