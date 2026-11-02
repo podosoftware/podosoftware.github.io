@@ -1,126 +1,86 @@
-# UIUX Guide - MPA with gulp-file-include
+# Podo Publisher Guide (uiux)
 
-SPA 형식에서 MPA(Multi-Page Application) 형식으로 변경되었습니다.  
-Gulp의 `gulp-file-include`를 사용하여 공통 요소(head, header, nav, footer)를 관리합니다.
+관리자 화면 퍼블리싱 가이드 — React + Vite, 디자인은 **Concept B 화이트 에디토리얼**.
 
-## 📁 폴더 구조
+```bash
+npm install      # 최초 1회 (Node.js 20 이상)
+npm run dev      # http://localhost:5173
+npm run build    # dist/ 정적 빌드 (HashRouter 라 어느 경로에 올려도 동작)
+
+npm run tokens   # css/admin/*.css → public/admin/css/ 토큰화 + docs/admin-css-tokenize-report.md
+npm run icons    # src/icons/adminIcons.js → public/admin/icons/*, css/icons.css, js/admin-icon.js
+npm run admin    # tokens + icons
+```
+
+> Windows PowerShell 에서 `npm` 실행이 막히면(`npm.ps1` 실행 정책) `npm.cmd run dev` 로 실행하세요.
+
+## 폴더 구조
 
 ```
 uiux/
+├── public/admin/            # 관리자 화면에 배포하는 결과물
+│   ├── css/tokens.css       # ★ 토큰 단일 소스 (직접 수정) — root_admin.css 대체
+│   ├── css/common.css       # 자동 생성 (npm run tokens) — 직접 수정 금지
+│   ├── css/admin.css        # 자동 생성
+│   ├── css/sub.css          # 자동 생성
+│   ├── css/icons.css        # 자동 생성 (npm run icons)
+│   ├── icons/sprite.svg     # 자동 생성
+│   ├── icons/svg/*.svg      # 자동 생성
+│   ├── js/admin-icon.js     # 자동 생성 (npm run icons) — 아이콘 JS/jQuery 헬퍼
+│   └── js/                  # 공통 스크립트 (kendoComponentUtil.js 등, 기존 resources/js/etc)
+├── vendor/                  # 기존 uiux 전용 외부 라이브러리 사본 (가이드는 사용하지 않음)
+├── scripts/                 # tokenize-admin-css.mjs, build-icons.mjs
+├── docs/                    # 리포트, Kendo 2025 호환성 문서, 디자인 시안
 ├── src/
-│   ├── main/                    # 소스 HTML 파일들
-│   │   ├── index.html          # (삭제됨 - 더 이상 필요 없음)
-│   │   ├── pages/              # 각 페이지 파일들
-│   │   │   ├── overview.html
-│   │   │   ├── quick-start.html
-│   │   │   ├── settings.html
-│   │   │   └── ... (기타 페이지)
-│   │   └── sample/
-│   ├── includes/               # 공통 요소 (새 폴더)
-│   │   ├── head.html           # HTML head 부분
-│   │   ├── header.html         # 상단 바
-│   │   ├── nav.html            # 사이드바/메뉴
-│   │   ├── footer.html         # 푸터
-│   │   └── scripts.html        # 공통 스크립트
-│   └── resources/
-│       ├── css/
-│       ├── js/
-│       ├── fonts/
-│       ├── images/
-│       └── files/
-├── dist/                        # 빌드된 파일 (자동 생성)
-├── package.json                 # 새로 추가됨
-├── gulpfile.js                  # 새로 추가됨
-└── README.md                    # 이 파일
+│   ├── routes.jsx           # ★ 메뉴 + 페이지 등록 (페이지 추가 시 여기만 수정)
+│   ├── layout/              # 상단바, 사이드바, 목차(TOC), 하단 내비, 검색
+│   ├── components/doc/      # DocPage, Section, Example, CodeBlock, Callout …
+│   ├── icons/               # ★ adminIcons.js (아이콘 단일 소스), AdminIcon.jsx
+│   ├── snippets/admin/      # 실사용 마크업(.html) — 원본이던 v1/admin/code 는 삭제됨 (여기가 원본)
+│   ├── pages/               # 문서 페이지
+│   ├── hooks/ utils/ config/ context/
+│   └── styles/              # 가이드 디자인 (guide-tokens → base → layout → doc → components → responsive)
+└── .editorconfig            # 들여쓰기 공백 4칸
 ```
 
-## 🚀 설치 및 빌드
+## 역할 구분
 
-### 1. 의존성 설치
-```bash
-npm install
+- **가이드 사이트 화면** (메뉴, 검색, 목차, 코드 블록, 가이드 UI 아이콘) → React
+- **예제 / 업무 사이트에 쓰는 코드** (마크업, Kendo 초기화, 아이콘 헬퍼) → HTML + jQuery + Kendo UI 2025
+  - 미리보기는 iframe 안에서 업무 사이트와 같은 CSS·스크립트로 예제 코드를 그대로 실행합니다.
+
+## 핵심 원칙
+
+| 항목 | 단일 소스 | 자동으로 따라오는 것 |
+|------|-----------|----------------------|
+| 메뉴 / 페이지 | `src/routes.jsx` | 사이드바, 검색, 브레드크럼, 이전·다음, 라우트 |
+| 관리자 토큰 | `public/admin/css/tokens.css` | 토큰 페이지 화면, `npm run tokens` 치환 기준 |
+| 관리자 아이콘 | `src/icons/adminIcons.js` | icons.css, admin-icon.js, sprite.svg, 개별 svg, 아이콘 페이지, 가이드 내부용 `<AdminIcon>` |
+| 실사용 마크업 | `src/snippets/admin/*.html` | 실시간 미리보기 + 코드 보기 |
+| 목차(TOC) | 페이지의 `<Section id title>` | 우측 "이 페이지" |
+
+## 실시간 미리보기
+
+`<Example>` 은 iframe 안에 **실제 관리자 화면과 같은 순서**로 CSS 를 로드해 그립니다.
+
+```
+reset2.css → base.css → tokens.css → kendo 2025.1.211 bootstrap-3.css → pd_kendo.css → util.css → common.css → admin.css → button.css → icons.css
 ```
 
-### 2. HTML 빌드 (개발)
-```bash
-npm run watch
-```
+`/css`, `/js`, `/images` 는 저장소 루트 원본을 그대로 씁니다. (개발 서버: `vite.config.js` 의 `serveRepoAssets`,
+운영: GitHub Pages 에서는 저장소 루트 = 사이트 루트) — 복사본을 두지 않아 중복 파일이 생기지 않습니다.
 
-### 3. 한 번만 빌드
-```bash
-npm run build
-```
+`kendo` 예제는 여기에 더해 Kendo 2025 스크립트와 `public/admin/js/kendoComponentUtil.js` 를 로드하고,
+`kendoUi.init()` / `kendoUi.setSvgIcons({ url })` 를 먼저 실행합니다. (`src/config/assets.js` 의 `PREVIEW_KENDO_SETUP`)
 
-빌드 후 `dist/` 폴더에 완성된 HTML 파일들이 생성됩니다.
+## Kendo 위젯 / 아이콘
 
-## 🛠️ 새 페이지 작성 방법
+- 위젯은 `$(...).kendoXxx()` 대신 `kendoComponentUtil.js` 의 `kendoUi.createXxx(선택자, 옵션)` 로 만듭니다.
+- Kendo 2025 는 아이콘을 인라인 SVG 로 그려 CSS 아이콘이 먹지 않습니다.
+  `kendoUi.setSvgIcons({ url: '/images/admin/icons/sprite.svg' })` 가 스프라이트를 불러와
+  `kendo.ui.svgIcons` 등록값을 공통 아이콘으로 바꿉니다. (Kendo 원본 파일 수정 없음)
+- 대응표·`map` 옵션은 가이드의 **Kendo 개요 › 아이콘 (SVG 교체)** 참고.
 
-각 페이지는 다음과 같은 구조를 가져야 합니다:
+## 정리 내역
 
-```html
-@@include('./../../includes/head.html', { "title": "페이지 제목 - Podo Publisher Guide" })
-@@include('./../../includes/header.html')
-@@include('./../../includes/nav.html')
-
-<!-- ═══ 메인 콘텐츠 ═══ -->
-<div id="layout">
-  <div id="main">
-    <!-- 페이지 콘텐츠 -->
-  </div>
-</div>
-
-@@include('./../../includes/footer.html')
-@@include('./../../includes/scripts.html')
-</body>
-</html>
-```
-
-### 페이지 간 링크 방법
-```html
-<!-- a 태그로 직접 링크 (MPA) -->
-<a href="overview.html">개요</a>
-<a href="quick-start.html">빠른 시작</a>
-```
-
-## 📝 공통 요소 수정
-
-### head.html
-- 폰트, CSS, 공통 메타 태그 관리
-- `@@title` 변수로 각 페이지 제목 설정
-
-### header.html
-- 상단 바 (검색, 메뉴, 테마 토글)
-- 모든 페이지에 동일
-
-### nav.html
-- 사이드바, 메뉴, 모바일 하단 네비
-
-### scripts.html
-- 공통 JavaScript 함수 (검색, 사이드바 토글, UI 유틸)
-
-## 🗑️ 제거된 항목
-
-- ❌ `src/main/index.html` - SPA 진입점으로 더 이상 필요 없음
-- ❌ `src/resources/js/guide/baseLayout.js` - SPA 라우터 (MPA는 필요 없음)
-
-## ✅ 변경 사항 요약
-
-| 항목 | 기존 (SPA) | 현재 (MPA) |
-|------|----------|----------|
-| 라우팅 | JS 라우터 | 일반 링크 |
-| 페이지 관리 | 동적 로드 | 정적 파일 |
-| 빌드 | 필요 없음 | Gulp 빌드 필수 |
-| 공통 요소 | baseLayout.js | include |
-| 성능 | 초기 로드 느림 | 빠른 로드 |
-| SEO | 약함 | 강함 |
-
-## 💡 사용 팁
-
-- **개발 중**: `npm run watch` 실행하면 파일 변경 시 자동 빌드
-- **배포**: `npm run build`로 최종 빌드 후 `dist/` 폴더 배포
-- **상대 경로**: 모든 리소스는 `../resources/` 상대 경로 사용
-
-## 📚 참고
-
-- [gulp-file-include 문서](https://github.com/coderhaoxin/gulp-file-include)
-- Gulp v4.0+과 호환
+[docs/CLEANUP_REPORT.md](docs/CLEANUP_REPORT.md) 참고.

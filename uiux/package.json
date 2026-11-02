@@ -1,16 +1,24 @@
 {
-  "name": "uiux-guide",
-  "version": "3.0.0",
-  "description": "Podo Publisher Guide - UI/UX Documentation",
-  "main": "gulpfile.js",
-  "scripts": {
-    "build": "gulp",
-    "watch": "gulp watch",
-    "dev": "gulp watch"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-file-include": "^2.3.0"
-  }
+    "name": "podo-publisher-guide",
+    "private": true,
+    "version": "4.0.0",
+    "description": "Podo Publisher Guide - 관리자 퍼블리싱 가이드 (React, Concept B White Editorial)",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "tokens": "node scripts/tokenize-admin-css.mjs",
+        "icons": "node scripts/build-icons.mjs",
+        "admin": "npm run tokens && npm run icons"
+    },
+    "dependencies": {
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "react-router-dom": "^6.30.6"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^6.1.2",
+        "vite": "^8.3.5"
+    }
 }

@@ -1,0 +1,16 @@
+/*
+ * 가이드 사이트 스타일 진입점 — 로드 순서가 곧 우선순위입니다.
+ *
+ *  guide-tokens  : 가이드 전용 변수 (색, 폰트, 레이아웃 치수)
+ *  base          : 리셋 / 기본 요소
+ *  layout        : 상단바, 사이드바, TOC, 하단 내비, 검색 모달
+ *  doc           : 문서 본문 (히어로, 섹션, 코드, 표, 콜아웃 …)
+ *  components    : 가이드 전용 위젯 (팔레트, 미리보기, 아이콘 갤러리 …)
+ *  responsive    : 반응형 (항상 마지막)
+ */
+@import './guide-tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './doc.css';
+@import './components.css';
+@import './responsive.css';

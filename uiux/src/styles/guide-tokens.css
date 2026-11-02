@@ -1,0 +1,51 @@
+/*
+ * 가이드 사이트 전용 토큰 (Concept B — White Editorial)
+ *
+ * 주의: 관리자 화면 토큰(public/admin/css/tokens.css)과는 별개입니다.
+ *       가이드 "껍데기" 디자인에만 쓰이며, 관리자 화면에는 로드하지 않습니다.
+ *       브랜드 컬러만 관리자 Primary 500/600 과 같은 값을 씁니다.
+ */
+:root {
+    /* Surface */
+    --g-bg:       #FAF9F6;   /* 크림 화이트 바탕 */
+    --g-bg2:      #FFFFFF;   /* 카드, 사이드바 */
+    --g-bg3:      #F3F1ED;   /* hover, 표 헤더 */
+
+    /* Ink (글자) */
+    --g-ink:      #1A1714;
+    --g-ink2:     #4A4540;
+    --g-ink3:     #9A9590;
+    --g-ink4:     #C5C0BA;
+
+    /* Rule (선) */
+    --g-rule:     #E8E4DE;
+    --g-rule2:    #D5D0CA;
+
+    /* Brand */
+    --g-brand:    #5C61D4;
+    --g-brand-lt: #EAEBFB;
+    --g-brand-dk: #4549AB;
+    --g-orange:   #E8622A;
+
+    /* Code block */
+    --g-code-bg:     #141418;
+    --g-code-bar:    #0F0F12;
+    --g-code-muted:  #5A5870;
+    --g-code-text:   #9DA5B4;
+    --g-code-accent: #A8FF78;
+
+    /* Type */
+    --g-serif: 'Fraunces', serif;
+    --g-sans:  'DM Sans', 'Pretendard', 'Noto Sans KR', sans-serif;
+    --g-mono:  'DM Mono', monospace;
+
+    /* Layout */
+    --g-topbar-h:  56px;
+    --g-sidebar-w: 272px;
+    --g-toc-w:     216px;
+    --g-content-x: 60px;
+
+    /* Motion */
+    --g-ease: cubic-bezier(.4, 0, .2, 1);
+    --g-dur:  0.22s;
+}

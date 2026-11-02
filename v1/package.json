@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "admin": "gulp --gulpfile gulpfile-admin.js",
     "html": "gulp --gulpfile gulpfile-html.js",
     "kendo": "gulp --gulpfile gulpfile-kendo.js",
     "podo": "gulp --gulpfile gulpfile-podosw.js",

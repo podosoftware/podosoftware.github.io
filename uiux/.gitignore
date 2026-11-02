@@ -1,0 +1,6 @@
+node_modules/
+*.log
+.vite/
+
+# dist/ 는 GitHub Pages 에서 바로 열리도록 커밋합니다. (루트 index.html → uiux/dist/index.html)
+# 소스를 바꾼 뒤에는 `npm run build` 후 함께 커밋하세요.

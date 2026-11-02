@@ -1,0 +1,328 @@
+/* ═══════════════════════════════════════
+   PALETTE (컬러 스케일)
+═══════════════════════════════════════ */
+.g-palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    margin: 18px 0;
+    overflow: hidden;
+    border: 1px solid var(--g-rule);
+    border-radius: 10px;
+}
+
+.g-palette__cell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 96px;
+    padding: 8px;
+    text-align: left;
+    transition: transform var(--g-dur);
+}
+
+.g-palette__cell:hover {
+    z-index: 1;
+    transform: scale(1.04);
+}
+
+.g-palette__cell.is-key {
+    outline: 2px solid var(--g-ink);
+    outline-offset: -2px;
+}
+
+.g-palette__step {
+    font-family: var(--g-mono);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.g-palette__hex {
+    font-family: var(--g-mono);
+    font-size: 9px;
+    opacity: 0.75;
+}
+
+.g-palette__copied {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-family: var(--g-mono);
+    font-size: 9px;
+}
+
+/* ═══════════════════════════════════════
+   EXAMPLE (실시간 미리보기 + 코드)
+═══════════════════════════════════════ */
+.g-example {
+    margin: 20px 0 28px;
+    overflow: hidden;
+    border: 1px solid var(--g-rule);
+    border-radius: 10px;
+    background: var(--g-bg2);
+}
+
+.g-example__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--g-rule);
+}
+
+.g-example__title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--g-ink);
+}
+
+.g-example__file {
+    font-family: var(--g-mono);
+    font-size: 11px;
+    color: var(--g-ink4);
+}
+
+.g-example__desc {
+    padding: 10px 16px 0;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--g-ink2);
+}
+
+.g-example__preview {
+    padding: 16px;
+    background:
+        linear-gradient(45deg, var(--g-bg) 25%, transparent 25%) 0 0 / 16px 16px,
+        linear-gradient(-45deg, var(--g-bg) 25%, transparent 25%) 0 8px / 16px 16px,
+        var(--g-bg2);
+}
+
+.g-example__frame {
+    display: block;
+    width: 100%;
+    border: 1px dashed var(--g-rule2);
+    border-radius: 6px;
+    background: #FFFFFF;
+}
+
+.g-example__toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 9px 16px;
+    border-top: 1px solid var(--g-rule);
+    font-family: var(--g-mono);
+    font-size: 11px;
+    color: var(--g-ink3);
+    transition: color var(--g-dur), background var(--g-dur);
+}
+
+.g-example__toggle:hover {
+    background: var(--g-bg3);
+    color: var(--g-brand);
+}
+
+.g-example .g-code {
+    margin: 0;
+}
+
+.g-example .g-code__block {
+    border: none;
+    border-radius: 0;
+}
+
+/* ═══════════════════════════════════════
+   CLASS TABLE (클래스 → 설명)
+═══════════════════════════════════════ */
+.g-class-name {
+    font-family: var(--g-mono);
+    font-size: 12px;
+    color: var(--g-brand);
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════
+   ICON GALLERY
+═══════════════════════════════════════ */
+.g-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0 14px;
+}
+
+.g-toolbar__search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 320px;
+    padding: 7px 12px;
+    border: 1px solid var(--g-rule2);
+    border-radius: 8px;
+    background: var(--g-bg2);
+    color: var(--g-ink3);
+}
+
+.g-toolbar__search input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--g-sans);
+    font-size: 13px;
+    color: var(--g-ink);
+}
+
+.g-chip {
+    padding: 5px 12px;
+    border: 1px solid var(--g-rule);
+    border-radius: 20px;
+    background: var(--g-bg2);
+    font-size: 12px;
+    color: var(--g-ink2);
+    transition: all var(--g-dur);
+}
+
+.g-chip:hover {
+    border-color: var(--g-brand);
+    color: var(--g-brand);
+}
+
+.g-chip.active {
+    border-color: var(--g-brand);
+    background: var(--g-brand);
+    color: #FFFFFF;
+}
+
+.g-chip__count {
+    margin-left: 4px;
+    font-family: var(--g-mono);
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+.g-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
+    gap: 10px;
+    margin: 0 0 24px;
+}
+
+.g-icon-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 8px 12px;
+    border: 1px solid var(--g-rule);
+    border-radius: 10px;
+    background: var(--g-bg2);
+    color: var(--g-ink);
+    transition: border-color var(--g-dur), box-shadow var(--g-dur), color var(--g-dur);
+}
+
+.g-icon-card:hover {
+    border-color: var(--g-brand);
+    color: var(--g-brand);
+    box-shadow: 0 6px 18px rgba(92, 97, 212, 0.12);
+}
+
+.g-icon-card__name {
+    font-family: var(--g-mono);
+    font-size: 11px;
+    color: var(--g-ink2);
+}
+
+.g-icon-card__label {
+    margin-top: -6px;
+    font-size: 11px;
+    color: var(--g-ink3);
+}
+
+.g-icon-card__copied {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-family: var(--g-mono);
+    font-size: 9px;
+    color: var(--g-brand);
+}
+
+.g-icon-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 28px;
+    margin: 18px 0;
+    padding: 20px 24px;
+    border: 1px solid var(--g-rule);
+    border-radius: 10px;
+    background: var(--g-bg2);
+}
+
+.g-icon-sizes__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--g-mono);
+    font-size: 11px;
+    color: var(--g-ink3);
+}
+
+.g-legacy-list {
+    font-family: var(--g-mono);
+    font-size: 11.5px;
+    line-height: 1.8;
+    color: var(--g-ink3);
+}
+
+/* ═══════════════════════════════════════
+   FONT SAMPLE
+═══════════════════════════════════════ */
+.g-font-sample {
+    font-size: 16px;
+    color: var(--g-ink);
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════
+   FILE TREE
+═══════════════════════════════════════ */
+.g-tree {
+    margin: 18px 0;
+    padding: 18px 20px;
+    overflow-x: auto;
+    border: 1px solid var(--g-rule);
+    border-radius: 10px;
+    background: var(--g-bg2);
+    font-family: var(--g-mono);
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--g-ink2);
+    white-space: pre;
+}
+
+.g-tree em {
+    font-style: normal;
+    color: var(--g-ink4);
+}
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+.g-empty {
+    padding: 32px;
+    border: 1px dashed var(--g-rule2);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--g-ink3);
+}
