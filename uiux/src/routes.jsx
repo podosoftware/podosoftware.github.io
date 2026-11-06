@@ -24,6 +24,8 @@ import BadgesPage from './pages/components/BadgesPage.jsx';
 import UtilitiesPage from './pages/components/UtilitiesPage.jsx';
 import KendoOverviewPage from './pages/kendo/KendoOverviewPage.jsx';
 import KendoWidgetsPage from './pages/kendo/KendoWidgetsPage.jsx';
+import KendoGridPage from './pages/kendo/KendoGridPage.jsx';
+import KendoTreeViewPage from './pages/kendo/KendoTreeViewPage.jsx';
 
 export const GUIDE_VERSION = 'v4.0';
 
@@ -78,7 +80,19 @@ export const NAV_GROUPS = [
                 path: '/kendo/widgets',
                 title: '위젯 예제',
                 component: KendoWidgetsPage,
-                keywords: ['grid', 'datepicker', 'dropdownlist', 'numeric'],
+                keywords: ['datepicker', 'daterangepicker', '기간', '날짜', '월 선택', 'monthpicker', 'timepicker', '시간', 'dropdownlist', 'numeric', 'colorpicker', '색상', 'autocomplete', '자동완성', 'multiselect', '다중 선택'],
+            },
+            {
+                path: '/kendo/grid',
+                title: 'Grid',
+                component: KendoGridPage,
+                keywords: ['grid', '그리드', '목록', 'createGrid', '체크박스', 'numbering', 'readUrl'],
+            },
+            {
+                path: '/kendo/treeview',
+                title: 'TreeView',
+                component: KendoTreeViewPage,
+                keywords: ['treeview', '트리', '조직도', '메뉴', 'createTreeView', '체크박스'],
             },
         ],
     },

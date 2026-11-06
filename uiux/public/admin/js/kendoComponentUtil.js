@@ -355,6 +355,23 @@ const KendoSvgIcon = (() => {
 /**
  * kendoUi - Kendo UI 간편 초기화 유틸리티
  */
+
+/**
+ * 날짜 값 → Date (로컬 시간 기준)
+ *  Date 는 그대로, 'yyyy-MM-dd' / 'yyyyMMdd' / 'yyyy-MM' / 'yyyy-MM-dd HH:mm' 문자열은 kendo.parseDate 로 변환한다.
+ *  new Date('2026-11-01') 은 UTC 자정으로 해석되어 시간대에 따라 하루가 밀릴 수 있어 쓰지 않는다.
+ *  변환할 수 없으면 null.
+ */
+function toLocalDate(value) {
+    if (value === null || value === undefined || value === '') {
+        return null;
+    }
+    if (value instanceof Date) {
+        return isNaN(value.getTime()) ? null : value;
+    }
+    return kendo.parseDate(String(value), ['yyyy-MM-dd', 'yyyyMMdd', 'yyyy-MM', 'yyyyMM', 'yyyy-MM-dd HH:mm', 'yyyy-MM-dd HH:mm:ss']);
+}
+
 const kendoUi = {
     /** kendo Kor */
     init() {
@@ -576,6 +593,8 @@ const kendoUi = {
         } = timeOptions || {};
 
         const toTimeDate = (timeStr) => {
+            // Date 를 넘기면 그대로 사용 (예전에는 무시되어 빈 값이 됐음)
+            if (timeStr instanceof Date) return isNaN(timeStr.getTime()) ? null : timeStr;
             if (!timeStr || typeof timeStr !== 'string') return null;
             const [h, m] = timeStr.split(':');
             const d = new Date();
@@ -657,7 +676,8 @@ const kendoUi = {
             clearButton = true,
             messages = {
                 startLabel: "시작",
-                endLabel: "종료"
+                endLabel: "종료",
+                dateInput: { year: 'YYYY', month: 'MM', day: 'DD' }   // 빈 칸 표시 (기본은 year-month-day)
             },
             ...kendoOptions
         } = dateRangeOptions || {};
@@ -668,11 +688,21 @@ const kendoUi = {
             calendarButton: calendarButton,
             clearButton: clearButton,
             ...kendoOptions,
-            ...(min !== null && { min: new Date(min) }),
-            ...(max !== null && { max: new Date(max) }),
+            ...(toLocalDate(min) && { min: toLocalDate(min) }),
+            ...(toLocalDate(max) && { max: toLocalDate(max) }),
             ...(typeof onChange === 'function' && { change: onChange }),
             messages: messages
         });
+
+        // DateRangePicker 는 messages.dateInput 을 안쪽 입력칸(DateInput)에 넘기지 않으므로 직접 적용한다.
+        if (dateInput && messages && messages.dateInput) {
+            $el.find('input').each(function () {
+                const innerInput = $(this).data('kendoDateInput');
+                if (innerInput) {
+                    innerInput.setOptions({ messages: messages.dateInput });
+                }
+            });
+        }
     },
 
     /**
@@ -703,8 +733,8 @@ const kendoUi = {
         if (!picker) return;
 
         picker.range({
-            start: start ? new Date(start) : null,
-            end: end ? new Date(end) : null
+            start: toLocalDate(start),
+            end: toLocalDate(end)
         });
     },
 
@@ -973,10 +1003,11 @@ const kendoUi = {
             ...kendoOptions
         } = stEdMonthOptions;
 
-        const startVal = defaultStart ? new Date(defaultStart) : null;
-        const endVal = defaultEnd ? new Date(defaultEnd) : null;
-        const minDate = min ? new Date(min) : null;
-        const maxDate = max ? new Date(max) : null;
+        // 'yyyy-MM' 도 받을 수 있게 toLocalDate 로 변환 (new Date('2026-11') 은 UTC 기준이라 쓰지 않음)
+        const startVal = toLocalDate(defaultStart);
+        const endVal = toLocalDate(defaultEnd);
+        const minDate = toLocalDate(min);
+        const maxDate = toLocalDate(max);
 
         const defaultMessages = {
             dateInput: { year: 'YYYY', month: 'MM' }
@@ -1031,25 +1062,43 @@ const kendoUi = {
 
     /**
      * START/END datepicker 범위 동기화 함수
+     *  지금 값 기준으로 "종료 최소값 = 시작일", "시작 최대값 = 종료일" 을 다시 맞춘다.
+     *  값이 비어 있으면 처음 만들 때의 min / max 로 되돌린다.
+     *  (picker.value() 로 값을 넣으면 change 가 실행되지 않아 범위가 갱신되지 않으므로 그 뒤에 호출)
      * */
     syncDatePickerStartEndRange(startId, endId) {
-        return;
+        const startPicker = $(startId).data('kendoDatePicker');
+        const endPicker = $(endId).data('kendoDatePicker');
+
+        if (!startPicker || !endPicker) {
+            console.warn(`[kendoUi] "${startId}" 또는 "${endId}" DatePicker 가 초기화되지 않았습니다.`);
+            return;
+        }
+
+        // 시작의 min, 종료의 max 는 생성 후 바뀌지 않으므로 "처음 범위"로 사용한다.
+        endPicker.min(startPicker.value() || startPicker.min());
+        startPicker.max(endPicker.value() || endPicker.max());
     },
 
     /**
      * START/END datepicker 값을 함께 설정한다.
+     *  값: 'yyyy-MM-dd' / 'yyyyMMdd' / 'yyyy-MM' / Date, 비우려면 null 또는 ''
      * */
     setDatePickerStartEndValues(startId, endId, startValue, endValue) {
         const $elStart = $(startId);
         const $elEnd = $(endId);
         const startPicker = $elStart.data('kendoDatePicker');
         const endPicker = $elEnd.data('kendoDatePicker');
-        const parsedStart = startValue ? kendo.parseDate(startValue) : null;
-        const parsedEnd = endValue ? kendo.parseDate(endValue) : null;
+        const parsedStart = toLocalDate(startValue);
+        const parsedEnd = toLocalDate(endValue);
 
         if (!startPicker || !endPicker) {
             return;
         }
+
+        // 범위를 먼저 풀어 두어야 새 값이 이전 min / max 에 막히지 않는다.
+        endPicker.min(startPicker.min());
+        startPicker.max(endPicker.max());
 
         startPicker.value(parsedStart);
         endPicker.value(parsedEnd);
@@ -1061,6 +1110,8 @@ const kendoUi = {
         if (endPicker.dateView && endPicker.dateView.calendar && parsedEnd) {
             endPicker.dateView.calendar.navigate(parsedEnd);
         }
+
+        kendoUi.syncDatePickerStartEndRange(startId, endId);
     },
 
     /**
@@ -1104,10 +1155,15 @@ const kendoUi = {
         }
 
         $el.kendoAutoComplete({
-            filter: 'contains',
+            // filter / minLength / delay / onChange / 그 밖의 옵션을 받기만 하고 넘기지 않던 것을 전달하도록 수정
+            filter: filter,
+            minLength: minLength,
+            delay: delay,
             placeholder: placeholder,
             dataTextField: field,
-            dataSource: dataSource
+            dataSource: dataSource,
+            ...(typeof onChange === 'function' && { change: onChange }),
+            ...kendoOptions
         });
     },
 
@@ -1560,14 +1616,15 @@ const kendoUi = {
 
         if(gridOptions.selectable) {
             const addColumn = {
-                title: `<input type='checkbox' id='${gridId}_chk_all' class='k-checkbox' onclick='kendoUi.gridChkAllEvent(this);'><label for='${gridId}_chk_all'>`,
+                // Kendo 2025 테마는 크기 클래스(k-checkbox-md)가 있어야 체크박스 크기(16px)가 잡힌다.
+                title: `<input type='checkbox' id='${gridId}_chk_all' class='k-checkbox k-checkbox-md k-rounded-md' onclick='kendoUi.gridChkAllEvent(this);'><label for='${gridId}_chk_all'>`,
                 filterable: false,
                 sortable: false,
                 columnMenu: false,
                 menu: false,
                 width: 42,
                 attributes:{"class":"table-cell", style:"text-align:center"},
-                template: `<input type='checkbox' id='${gridId}_chk_#:uid#' class='k-checkbox' name='CHK_OBJ' value="#: uid #" onclick='kendoUi.gridChkEvent(this);'>`
+                template: `<input type='checkbox' id='${gridId}_chk_#:uid#' class='k-checkbox k-checkbox-md k-rounded-md' name='CHK_OBJ' value="#: uid #" onclick='kendoUi.gridChkEvent(this);'>`
             };
 
             gridOptions.columns.unshift(addColumn);
@@ -1585,7 +1642,9 @@ const kendoUi = {
                 menu: false,
                 width: numberingOpt.width ?? 75,
                 attributes:{"class":"table-cell", style:"text-align:center"},
-                template: `#: (data.rnum !== null && data.rnum !== undefined && data.rnum !== '') ? data.rnum : (kendoUi.getGridRecord('${gridId}'))++ #`
+                // 서버가 rnum 을 주면 그대로, 없으면 화면에서 순번을 매긴다.
+                // (함수 결과에 ++ 를 붙이면 문법 오류라 nextGridRecord 로 값을 꺼내며 1 씩 올린다)
+                template: `#: (data.rnum !== null && data.rnum !== undefined && data.rnum !== '') ? data.rnum : kendoUi.nextGridRecord('${gridId}') #`
             };
 
             if(gridOptions.selectable) gridOptions.columns.splice(1, 0, addColumn);
@@ -1976,6 +2035,18 @@ const kendoUi = {
         return $grid.data('gridRecord') || 0;
     },
 
+    /**
+     * 번호(numbering) 컬럼용 — 현재 순번을 돌려주고 다음 행을 위해 1 올린다.
+     * 시작 값은 dataBinding 에서 ((page - 1) * pageSize) + 1 로 맞춰진다.
+     */
+    nextGridRecord(gridId) {
+        const $grid = $('#' + gridId);
+        if (!$grid.length) return '';
+        const current = $grid.data('gridRecord') || 1;
+        $grid.data('gridRecord', current + 1);
+        return current;
+    },
+
     // 서버전송을 위해 데이터소스에서 파라메터 추출
     getParamterMap(options, operation, readParamFun) {
         if(operation === 'read') {
@@ -2254,7 +2325,8 @@ const kendoUi = {
     */
     getDatePickerValue(id) {
         const _el = $(id).data('kendoDatePicker');
-        if(_el) {
+        // 값이 없으면 '' (kendo.toString(null) 은 null 을 돌려주므로 따로 처리)
+        if(_el && _el.value()) {
             return kendo.toString(_el.value(),'yyyy-MM-dd');
         }
         return '';
@@ -2288,7 +2360,8 @@ const kendoUi = {
     setDatePickerValue(id, value) {
         const _el = $(id).data('kendoDatePicker');
         if(_el) {
-            _el.value(value);
+            // 'yyyy-MM-dd' / 'yyyyMMdd' / Date 모두 받는다. 비우려면 null 또는 ''
+            _el.value(toLocalDate(value));
         }
     },
 
@@ -2297,7 +2370,7 @@ const kendoUi = {
     */
     getTimePickerValue(id) {
         const _el = $(id).data('kendoTimePicker');
-        if(_el) {
+        if(_el && _el.value()) {
             return kendo.toString(_el.value(),'HH:mm');
         }
         return '';
